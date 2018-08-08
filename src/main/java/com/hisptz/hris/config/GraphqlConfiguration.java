@@ -1,6 +1,5 @@
 package com.hisptz.hris.config;
 
-import com.hisptz.hris.Bundles.UserBundle.User;
 import com.hisptz.hris.Bundles.UserBundle.UserRepository;
 import com.hisptz.hris.exception.GraphQLErrorAdapter;
 import com.hisptz.hris.resolver.Mutation;

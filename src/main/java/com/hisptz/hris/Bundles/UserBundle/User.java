@@ -3,10 +3,12 @@ package com.hisptz.hris.Bundles.UserBundle;
 /**
  * Created by Guest on 8/7/18.
  */
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -16,16 +18,19 @@ public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-//    private Integer organisationunitId;
-//    private String username;
-//    private String usernameCanonical;
-//    private String email;
-//    private String emailCanonical;
-//    private boolean enabled;
-//    private String salt;
-//    private String password;
-//    private Timestamp lastLogin;
-//    private boolean locked;
+    private int organisationunitId;
+    private String username;
+    private String usernameCanonical;
+    private String email;
+    private String emailCanonical;
+    private boolean enabled;
+    private String salt;
+    private String password;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @LastModifiedDate
+    private Date lastLogin;
+    private boolean locked;
 //    private boolean expired;
 //    private Timestamp expiresAt;
 //    private String confirmationToken;
@@ -44,6 +49,22 @@ public class User{
 //    private Timestamp deletedat;
 //    private String description;
 
+
+    public User() {
+    }
+
+    public User(int organisationunitId, String username, String usernameCanonical, String email, String emailCanonical, boolean enabled, String salt, String password, boolean locked) {
+        this.organisationunitId = organisationunitId;
+        this.username = username;
+        this.usernameCanonical = usernameCanonical;
+        this.email = email;
+        this.emailCanonical = emailCanonical;
+        this.enabled = enabled;
+        this.salt = salt;
+        this.password = password;
+        this.locked=locked;
+    }
+
     @Basic
     @Column(name = "id")
     public int getId() {
@@ -54,95 +75,95 @@ public class User{
         this.id = id;
     }
 
-//    @Basic
-//    @Column(name = "organisationunit_id")
-//    public Integer getOrganisationunitId() {
-//        return organisationunitId;
-//    }
-//
-//    public void setOrganisationunitId(Integer organisationunitId) {
-//        this.organisationunitId = organisationunitId;
-//    }
-//
-//    @Basic
-//    @Column(name = "username")
-//    public String getUsername() {
-//        return username;
-//    }
-//
-//    public void setUsername(String username) {
-//        this.username = username;
-//    }
-//
-//    @Basic
-//    @Column(name = "username_canonical")
-//    public String getUsernameCanonical() {
-//        return usernameCanonical;
-//    }
-//
-//    public void setUsernameCanonical(String usernameCanonical) {
-//        this.usernameCanonical = usernameCanonical;
-//    }
-//
-//    @Basic
-//    @Column(name = "email")
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
-//
-//    @Basic
-//    @Column(name = "email_canonical")
-//    public String getEmailCanonical() {
-//        return emailCanonical;
-//    }
-//
-//    public void setEmailCanonical(String emailCanonical) {
-//        this.emailCanonical = emailCanonical;
-//    }
-//
-//    @Basic
-//    @Column(name = "enabled")
-//    public boolean isEnabled() {
-//        return enabled;
-//    }
-//
-//    public void setEnabled(boolean enabled) {
-//        this.enabled = enabled;
-//    }
-//
-//    @Basic
-//    @Column(name = "salt")
-//    public String getSalt() {
-//        return salt;
-//    }
-//
-//    public void setSalt(String salt) {
-//        this.salt = salt;
-//    }
-//
-//    @Basic
-//    @Column(name = "password")
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
-//
-//    @Basic
-//    @Column(name = "last_login")
-//    public Timestamp getLastLogin() {
-//        return lastLogin;
-//    }
-//
-//    public void setLastLogin(Timestamp lastLogin) {
-//        this.lastLogin = lastLogin;
-//    }
+    @Basic
+    @Column(name = "organisationunit_id")
+    public int getOrganisationunitId() {
+        return organisationunitId;
+    }
+
+    public void setOrganisationunitId(int organisationunitId) {
+        this.organisationunitId = organisationunitId;
+    }
+
+    @Basic
+    @Column(name = "username")
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Basic
+    @Column(name = "username_canonical")
+    public String getUsernameCanonical() {
+        return usernameCanonical;
+    }
+
+    public void setUsernameCanonical(String usernameCanonical) {
+        this.usernameCanonical = usernameCanonical;
+    }
+
+    @Basic
+    @Column(name = "email")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Basic
+    @Column(name = "email_canonical")
+    public String getEmailCanonical() {
+        return emailCanonical;
+    }
+
+    public void setEmailCanonical(String emailCanonical) {
+        this.emailCanonical = emailCanonical;
+    }
+
+    @Basic
+    @Column(name = "enabled")
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    @Basic
+    @Column(name = "salt")
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    @Basic
+    @Column(name = "password")
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Basic
+    @Column(name = "last_login")
+    public Date getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(Date lastLogin) {
+        this.lastLogin = lastLogin;
+    }
 //
 //    @Basic
 //    @Column(name = "locked")

@@ -3,6 +3,7 @@ package com.hisptz.hris.resolver;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.hisptz.hris.Bundles.UserBundle.User;
 import com.hisptz.hris.Bundles.UserBundle.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,8 +13,8 @@ import java.util.List;
  */
 @Component
 public class Query implements GraphQLQueryResolver {
-
-    UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     public Query(UserRepository userRepository) {
         this.userRepository = userRepository;
