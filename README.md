@@ -13,3 +13,15 @@ and open source Java Web Frameworks. Among the frameworks involved are
     JPA/ Hibernate for persistence
     GraphQl and REST for managing API calls
     Maven Dependency Manager
+
+## Project Configurations
+
+To use this software for testing and development, clone this repository to your drive and edit the file with the path
+
+    hris/src/main/resources/application.properties
+
+to suit your machine:
+
+    spring.datasource.url=jdbc:postgres://localhost:5432/graphql
+    spring.datasource.username=
+    spring.datasource.password=
