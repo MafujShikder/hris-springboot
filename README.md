@@ -22,6 +22,15 @@ To use this software for testing and development, clone this repository to your 
 
 to suit your machine:
 
-    spring.datasource.url=jdbc:postgres://localhost:5432/graphql
+    spring.datasource.url=jdbc:postgres://localhost:5432/hris
     spring.datasource.username=
     spring.datasource.password=
+    
+    
+and create a database with the name 'hris'. Open the link 
+    
+    http://localhost:8080/graphiql
+    
+
+ 
+    
