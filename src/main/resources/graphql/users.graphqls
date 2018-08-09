@@ -1,0 +1,48 @@
+#schema {
+#    query: Query
+#    mutation: Mutation
+#}
+
+type Query {
+    users:[User]!
+}
+
+type Mutation{
+   # newUser(organisationunitId:Int!, username:String!):User!
+    newUser(organisationunitId:Int!, username:String!, usernameCanonical:String!, email:String!,emailCanonical:String!,
+    enabled:String, salt:String, password:String, locked:Int,expired:Int, expiresAt:String, confirmationToken:String,
+    passwordRequestedAt:String,roles:String, credentialsExpired:Int, credentialsExpireAt:String, uid:String,
+    phonenumber:String, jobtitle:String, firstname:String, middlename:String, surname:String, deletedat:String,
+    description:String):User!
+}
+
+type User{
+    id:ID
+    organisationunitId:Int
+    username:String
+    usernameCanonical:String
+    email:String
+    emailCanonical:String
+    enabled:String
+    salt:String
+    password:String
+    lastLogin:String
+    locked:Int
+    expired:Int
+    expiresAt:String
+    confirmationToken:String
+    passwordRequestedAt:String
+    roles:String
+    credentialsExpired:Int
+    credentialsExpireAt:String
+    uid:String
+    phonenumber:String
+    jobtitle:String
+    firstname:String
+    middlename:String
+    surname:String
+    datecreated:String
+    lastupdated:String
+    deletedat:String
+    description:String
+}
