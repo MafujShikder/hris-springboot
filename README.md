@@ -31,6 +31,41 @@ and create a database with the name 'hris'. Open the link
     
     http://localhost:8080/graphiql
     
+Check out the mutations and queries defined in the GraphQL schemas found in the directory below for the possible API operations that can be perfomed with this API.
+
+    /hris/src/main/resources/graphql
+  
+ ## Examples
+    
+ A sample mutation would be like:
+ 
+    mutation{
+          newUser(organisationunitId:4, username:"testing",usernameCanonical:"tester", email:"testing@gmail.com",       emailCanonical:"test@yahoo.com",
+          enabled:"true", salt:"true", password:"my_password", locked:1,expired:1, confirmationToken:"ndsfgldfkgns34535",
+          roles:"admin", credentialsExpired:1, uid:"34534",
+          phonenumber:"0754008843", jobtitle:"Singer", firstname:"Lazarus", middlename:"Andrew", surname:"Jake",
+          description:"We are about to finish this"){
+                organisationunitId
+                username
+                email
+          }
+        }
+ 
+ 
+ A sample query can be like:
+ 
+    {
+    users{
+        id
+        username
+        email
+         }
+    }
+
+
+
+
+
 
  
     
