@@ -3,6 +3,8 @@ package com.hisptz.hris.resolver;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.hisptz.hris.Bundles.FieldBundle.Field;
 import com.hisptz.hris.Bundles.FieldBundle.FieldRepository;
+import com.hisptz.hris.Bundles.FieldGroupBundle.FieldGroup;
+import com.hisptz.hris.Bundles.FieldGroupBundle.FieldGroupRepository;
 import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOption;
 import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOptionRepository;
 import com.hisptz.hris.Bundles.UserBundle.User;
@@ -26,10 +28,14 @@ public class Query implements GraphQLQueryResolver {
     @Autowired
     private FieldOptionRepository fieldOptionRepository;
 
-    public Query(UserRepository userRepository, FieldRepository fieldRepository, FieldOptionRepository fieldOptionRepository) {
+    @Autowired
+    private FieldGroupRepository fieldGroupRepository;
+
+    public Query(UserRepository userRepository, FieldRepository fieldRepository, FieldOptionRepository fieldOptionRepository, FieldGroupRepository fieldGroupRepository) {
         this.userRepository = userRepository;
         this.fieldRepository = fieldRepository;
         this.fieldOptionRepository = fieldOptionRepository;
+        this.fieldGroupRepository = fieldGroupRepository;
     }
 
     /**
@@ -65,6 +71,19 @@ public class Query implements GraphQLQueryResolver {
     public FieldOption getFieldOptionById(Long id){
        return fieldOptionRepository.findOne(id);
     }
+
+
+    /**
+     * FieldGroups Queries
+     */
+    public List<FieldGroup> fieldGroups(){
+        return fieldGroupRepository.findAll();
+    }
+
+    public FieldGroup getFieldGroupById(Long id){
+        return fieldGroupRepository.findOne(id);
+    }
+
 
 
 }

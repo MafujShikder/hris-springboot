@@ -3,6 +3,8 @@ package com.hisptz.hris.resolver;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.hisptz.hris.Bundles.FieldBundle.Field;
 import com.hisptz.hris.Bundles.FieldBundle.FieldRepository;
+import com.hisptz.hris.Bundles.FieldGroupBundle.FieldGroup;
+import com.hisptz.hris.Bundles.FieldGroupBundle.FieldGroupRepository;
 import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOption;
 import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOptionRepository;
 import com.hisptz.hris.Bundles.UserBundle.User;
@@ -27,10 +29,14 @@ public class Mutation implements GraphQLMutationResolver {
     @Autowired
     private FieldOptionRepository fieldOptionRepository;
 
-    public Mutation(UserRepository userRepository, FieldRepository fieldRepository, FieldOptionRepository fieldOptionRepository) {
+    @Autowired
+    private FieldGroupRepository fieldGroupRepository;
+
+    public Mutation(UserRepository userRepository, FieldRepository fieldRepository, FieldOptionRepository fieldOptionRepository, FieldGroupRepository fieldGroupRepository) {
         this.userRepository = userRepository;
         this.fieldRepository = fieldRepository;
         this.fieldOptionRepository = fieldOptionRepository;
+        this.fieldGroupRepository = fieldGroupRepository;
     }
 
     /**
@@ -250,5 +256,37 @@ public class Mutation implements GraphQLMutationResolver {
         fieldOptionRepository.save(fieldOption);
         return fieldOption;
     }
+
+    /**
+     * FieldGroups Mutations
+     */
+    public FieldGroup newFieldGroup(String uid, String name, String description) {
+        FieldGroup fieldGroup = new FieldGroup(uid, name, description);
+
+        fieldGroupRepository.save(fieldGroup);
+        return fieldGroup;
+    }
+
+    public Boolean deleteFieldGroup(Long id){
+        fieldGroupRepository.delete(fieldGroupRepository.findOne(id));
+        return true;
+    }
+
+    public FieldGroup updateFieldGroup(Long id, String uid, String name, String description){
+        FieldGroup fieldGroup = fieldGroupRepository.findOne(id);
+
+        if (uid != null)
+            fieldGroup.setUid(uid);
+
+        if (name != null)
+            fieldGroup.setName(name);
+
+        if (description != null)
+            fieldGroup.setDescription(description);
+
+        fieldGroupRepository.save(fieldGroup);
+        return fieldGroup;
+    }
+
 
 }

@@ -1,0 +1,20 @@
+type FieldGroup{
+    id:ID
+    uid:String
+    name:String
+    description:String
+    datecreated:String
+    lastupdated:String
+}
+extend type Query {
+    fieldGroups:[FieldGroup]!
+    getFieldGroupById(id:ID!):FieldGroup
+}
+
+extend type Mutation {
+    newFieldGroup( uid:String!, name:String!, description:String!):FieldGroup!
+
+    deleteFieldGroup(id:ID!):String
+
+    updateFieldGroup(id:ID!, uid:String, name:String, description:String):FieldGroup!
+}
