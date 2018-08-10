@@ -1,0 +1,22 @@
+type FieldGroupSet{
+    id:ID
+    uid:String
+    name:String
+    description:String
+    datecreated:String
+    lastupdated:String
+}
+
+extend type Query {
+    fieldGroupSets:[FieldGroupSet]!
+    getFieldGroupSetsById(id:ID!):FieldGroupSet
+}
+
+extend type Mutation {
+    newFieldGroupSet(uid:String!, name:String!, description:String!):FieldGroupSet!
+
+    deleteFieldGroupSet(id:ID!):String
+
+    updateFieldGroupSet(id:ID!,uid:String, name:String, description:String):FieldGroupSet
+
+}

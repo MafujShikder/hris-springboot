@@ -1,0 +1,24 @@
+type FieldOptionGroup{
+    id:ID
+    fieldId:Int
+    uid:String
+    operator:String
+    name:String
+    description:String
+    datecreated:String
+    lastupdated:String
+}
+
+extend type Query {
+    fieldOptionGroups:[FieldOptionGroup]!
+    getFieldOptionGroupById(id:ID!):FieldOptionGroup
+}
+
+extend type Mutation {
+    newFieldOptionGroup(uid:String!, name:String!, description:String!, fieldId:String!,operator:String!):FieldOptionGroup!
+
+    deleteFieldOptionGroup(id:ID!):String
+
+    updateFieldOptionGroup(id:ID!,uid:String, name:String, description:String,fieldId:String,operator:String):FieldOptionGroup
+
+}

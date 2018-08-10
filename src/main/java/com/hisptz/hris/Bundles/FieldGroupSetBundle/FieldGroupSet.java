@@ -1,4 +1,4 @@
-package com.hisptz.hris.Bundles.FieldGroupBundle;
+package com.hisptz.hris.Bundles.FieldGroupSetBundle;
 
 /**
  * Created by Guest on 8/10/18.
@@ -13,20 +13,16 @@ import java.util.Objects;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "fieldgroup")
-public class FieldGroup {
+@Table(name = "fieldgroupset")
+public class FieldGroupSet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String operator;
-
-
-
+    
     private String uid;
     private String name;
     private String description;
-
+    
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
     private Date datecreated;
@@ -35,24 +31,15 @@ public class FieldGroup {
     @LastModifiedDate
     private Date lastupdated;
 
-    public FieldGroup() {
+    public FieldGroupSet() {
     }
 
-
-    public FieldGroup(String uid, String name, String description, String operator) {
+    public FieldGroupSet(String uid, String name, String description) {
         this.uid = uid;
         this.name = name;
         this.description = description;
-        this.operator = operator;
     }
 
-    public String getOperator() {
-        return operator;
-    }
-
-    public void setOperator(String operator) {
-        this.operator = operator;
-    }
     @Basic
     @Column(name = "id")
     public Long getId() {
@@ -117,7 +104,7 @@ public class FieldGroup {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        FieldGroup that = (FieldGroup) o;
+        FieldGroupSet that = (FieldGroupSet) o;
         return id == that.id &&
                 Objects.equals(uid, that.uid) &&
                 Objects.equals(name, that.name) &&

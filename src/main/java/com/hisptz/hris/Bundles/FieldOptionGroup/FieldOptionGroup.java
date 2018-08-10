@@ -1,4 +1,4 @@
-package com.hisptz.hris.Bundles.FieldGroupBundle;
+package com.hisptz.hris.Bundles.FieldOptionGroup;
 
 /**
  * Created by Guest on 8/10/18.
@@ -13,16 +13,13 @@ import java.util.Objects;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "fieldgroup")
-public class FieldGroup {
+@Table(name = "fieldoptiongroup")
+public class FieldOptionGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String operator;
-
-
-
+    private Integer fieldId;
     private String uid;
     private String name;
     private String description;
@@ -34,25 +31,21 @@ public class FieldGroup {
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date lastupdated;
+    
+    private String operator;
 
-    public FieldGroup() {
+
+    public FieldOptionGroup() {
     }
 
-
-    public FieldGroup(String uid, String name, String description, String operator) {
+    public FieldOptionGroup(Integer fieldId, String uid, String name, String description, String operator) {
+        this.fieldId = fieldId;
         this.uid = uid;
         this.name = name;
         this.description = description;
         this.operator = operator;
     }
 
-    public String getOperator() {
-        return operator;
-    }
-
-    public void setOperator(String operator) {
-        this.operator = operator;
-    }
     @Basic
     @Column(name = "id")
     public Long getId() {
@@ -61,6 +54,16 @@ public class FieldGroup {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Basic
+    @Column(name = "field_id")
+    public Integer getFieldId() {
+        return fieldId;
+    }
+
+    public void setFieldId(Integer fieldId) {
+        this.fieldId = fieldId;
     }
 
     @Basic
@@ -113,22 +116,34 @@ public class FieldGroup {
         this.lastupdated = lastupdated;
     }
 
+    @Basic
+    @Column(name = "operator")
+    public String getOperator() {
+        return operator;
+    }
+
+    public void setOperator(String operator) {
+        this.operator = operator;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        FieldGroup that = (FieldGroup) o;
+        FieldOptionGroup that = (FieldOptionGroup) o;
         return id == that.id &&
+                Objects.equals(fieldId, that.fieldId) &&
                 Objects.equals(uid, that.uid) &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(description, that.description) &&
                 Objects.equals(datecreated, that.datecreated) &&
-                Objects.equals(lastupdated, that.lastupdated);
+                Objects.equals(lastupdated, that.lastupdated) &&
+                Objects.equals(operator, that.operator);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, uid, name, description, datecreated, lastupdated);
+        return Objects.hash(id, fieldId, uid, name, description, datecreated, lastupdated, operator);
     }
 }

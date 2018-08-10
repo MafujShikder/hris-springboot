@@ -5,8 +5,12 @@ import com.hisptz.hris.Bundles.FieldBundle.Field;
 import com.hisptz.hris.Bundles.FieldBundle.FieldRepository;
 import com.hisptz.hris.Bundles.FieldGroupBundle.FieldGroup;
 import com.hisptz.hris.Bundles.FieldGroupBundle.FieldGroupRepository;
+import com.hisptz.hris.Bundles.FieldGroupSetBundle.FieldGroupSet;
+import com.hisptz.hris.Bundles.FieldGroupSetBundle.FieldGroupSetRepository;
 import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOption;
 import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOptionRepository;
+import com.hisptz.hris.Bundles.FieldOptionGroup.FieldOptionGroup;
+import com.hisptz.hris.Bundles.FieldOptionGroup.FieldOptionGroupRepository;
 import com.hisptz.hris.Bundles.UserBundle.User;
 import com.hisptz.hris.Bundles.UserBundle.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,11 +36,19 @@ public class Mutation implements GraphQLMutationResolver {
     @Autowired
     private FieldGroupRepository fieldGroupRepository;
 
-    public Mutation(UserRepository userRepository, FieldRepository fieldRepository, FieldOptionRepository fieldOptionRepository, FieldGroupRepository fieldGroupRepository) {
+    @Autowired
+    private FieldGroupSetRepository fieldGroupSetRepository;
+
+    @Autowired
+    private FieldOptionGroupRepository fieldOptionGroupRepository;
+
+    public Mutation(UserRepository userRepository, FieldRepository fieldRepository, FieldOptionRepository fieldOptionRepository, FieldGroupRepository fieldGroupRepository, FieldGroupSetRepository fieldGroupSetRepository, FieldOptionGroupRepository fieldOptionGroupRepository) {
         this.userRepository = userRepository;
         this.fieldRepository = fieldRepository;
         this.fieldOptionRepository = fieldOptionRepository;
         this.fieldGroupRepository = fieldGroupRepository;
+        this.fieldGroupSetRepository = fieldGroupSetRepository;
+        this.fieldOptionGroupRepository = fieldOptionGroupRepository;
     }
 
     /**
@@ -232,7 +244,7 @@ public class Mutation implements GraphQLMutationResolver {
     public FieldOption updateFieldOption(Long id, Integer fieldId, String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining) {
         FieldOption fieldOption = fieldOptionRepository.findOne(id);
 
-        if(fieldId != null)
+        if (fieldId != null)
             fieldOption.setFieldId(fieldId);
 
         if (uid != null)
@@ -260,19 +272,19 @@ public class Mutation implements GraphQLMutationResolver {
     /**
      * FieldGroups Mutations
      */
-    public FieldGroup newFieldGroup(String uid, String name, String description) {
-        FieldGroup fieldGroup = new FieldGroup(uid, name, description);
+    public FieldGroup newFieldGroup(String uid, String name, String operator, String description) {
+        FieldGroup fieldGroup = new FieldGroup(uid, name, operator, description);
 
         fieldGroupRepository.save(fieldGroup);
         return fieldGroup;
     }
 
-    public Boolean deleteFieldGroup(Long id){
+    public Boolean deleteFieldGroup(Long id) {
         fieldGroupRepository.delete(fieldGroupRepository.findOne(id));
         return true;
     }
 
-    public FieldGroup updateFieldGroup(Long id, String uid, String name, String description){
+    public FieldGroup updateFieldGroup(Long id, String uid, String name, String operator, String description) {
         FieldGroup fieldGroup = fieldGroupRepository.findOne(id);
 
         if (uid != null)
@@ -284,9 +296,81 @@ public class Mutation implements GraphQLMutationResolver {
         if (description != null)
             fieldGroup.setDescription(description);
 
+        if (operator != null)
+            fieldGroup.setOperator(operator);
+
         fieldGroupRepository.save(fieldGroup);
         return fieldGroup;
     }
 
+    /**
+     * FieldGroupSet Mutations
+     */
+    public FieldGroupSet newFieldGroupSet(String uid, String name, String description) {
+        FieldGroupSet fieldGroupSet = new FieldGroupSet(uid, name, description);
 
+        fieldGroupSetRepository.save(fieldGroupSet);
+        return fieldGroupSet;
+    }
+
+    public Boolean deleteFieldGroupSet(Long id) {
+        fieldGroupSetRepository.delete(fieldGroupSetRepository.findOne(id));
+        return true;
+    }
+
+    public FieldGroupSet updateFieldGroupSet(Long id, String uid, String name, String description) {
+        FieldGroupSet fieldGroupSet = fieldGroupSetRepository.findOne(id);
+
+        if (uid != null)
+            fieldGroupSet.setUid(uid);
+
+        if (name != null)
+            fieldGroupSet.setName(name);
+
+        if (description != null)
+            fieldGroupSet.setDescription(description);
+
+        fieldGroupSetRepository.save(fieldGroupSet);
+        return fieldGroupSet;
+    }
+
+    /**
+     * FieldOptionGroup Mutations
+     */
+
+
+
+    public FieldOptionGroup newFieldOptionGroup(String uid, String name, String description, Integer fieldId, String operator) {
+        FieldOptionGroup fieldOptionGroup = new FieldOptionGroup(fieldId,uid, name, description, operator);
+
+        fieldOptionGroupRepository.save(fieldOptionGroup);
+        return fieldOptionGroup;
+    }
+
+    public Boolean deleteFieldOptionGroup(Long id){
+        fieldOptionGroupRepository.delete(fieldOptionGroupRepository.findOne(id));
+        return true;
+    }
+
+    public FieldOptionGroup updateFieldOptionGroup(Long id, String uid, String name, String description, String operator, Integer fieldId){
+        FieldOptionGroup fieldOptionGroup = fieldOptionGroupRepository.findOne(id);
+
+        if (uid != null)
+            fieldOptionGroup.setUid(uid);
+
+        if (name != null)
+            fieldOptionGroup.setName(name);
+
+        if (description != null)
+            fieldOptionGroup.setDescription(description);
+
+        if (fieldId != null)
+            fieldOptionGroup.setFieldId(fieldId);
+
+        if (operator != null)
+            fieldOptionGroup.setOperator(operator);
+
+        fieldOptionGroupRepository.save(fieldOptionGroup);
+        return fieldOptionGroup;
+    }
 }

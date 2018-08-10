@@ -2,6 +2,7 @@ type FieldGroup{
     id:ID
     uid:String
     name:String
+    operator:String
     description:String
     datecreated:String
     lastupdated:String
@@ -12,9 +13,9 @@ extend type Query {
 }
 
 extend type Mutation {
-    newFieldGroup( uid:String!, name:String!, description:String!):FieldGroup!
+    newFieldGroup( uid:String!, name:String!,operator:String!, description:String!):FieldGroup!
 
     deleteFieldGroup(id:ID!):String
 
-    updateFieldGroup(id:ID!, uid:String, name:String, description:String):FieldGroup!
+    updateFieldGroup(id:ID!, uid:String, name:String,operator:String, description:String):FieldGroup!
 }
