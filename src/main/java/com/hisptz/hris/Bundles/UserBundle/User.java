@@ -18,21 +18,21 @@ import java.util.Objects;
 public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private int organisationunitId;
+    private Long id;
+    private Integer organisationunitId;
     private String username;
     private String usernameCanonical;
     private String email;
     private String emailCanonical;
-    private boolean enabled;
+    private Boolean enabled;
     private String salt;
     private String password;
 
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date lastLogin;
-    private boolean locked;
-    private boolean expired;
+    private Boolean locked;
+    private Boolean expired;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date expiresAt;
@@ -40,7 +40,7 @@ public class User{
     private String confirmationToken;
     private Date passwordRequestedAt;
     private String roles;
-    private boolean credentialsExpired;
+    private Boolean credentialsExpired;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date credentialsExpireAt;
@@ -67,7 +67,7 @@ public class User{
     public User() {
     }
 
-    public User(int organisationunitId, String username, String usernameCanonical, String email, String emailCanonical, boolean enabled, String salt, String password, boolean locked, boolean expired, Date expiresAt, String confirmationToken, Date passwordRequestedAt, String roles, boolean credentialsExpired, Date credentialsExpireAt, String uid, String phonenumber, String jobtitle, String firstname, String middlename, String surname, Date deletedat, String description) {
+    public User(int organisationunitId, String username, String usernameCanonical, String email, String emailCanonical, Boolean enabled, String salt, String password, Boolean locked, Boolean expired, Date expiresAt, String confirmationToken, Date passwordRequestedAt, String roles, Boolean credentialsExpired, Date credentialsExpireAt, String uid, String phonenumber, String jobtitle, String firstname, String middlename, String surname, Date deletedat, String description) {
         this.organisationunitId = organisationunitId;
         this.username = username;
         this.usernameCanonical = usernameCanonical;
@@ -96,11 +96,11 @@ public class User{
 
     @Basic
     @Column(name = "id")
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -156,11 +156,11 @@ public class User{
 
     @Basic
     @Column(name = "enabled")
-    public boolean isEnabled() {
+    public Boolean isEnabled() {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled) {
+    public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
 
@@ -194,19 +194,19 @@ public class User{
         this.lastLogin = lastLogin;
     }
 
-    public boolean isLocked() {
+    public Boolean isLocked() {
         return locked;
     }
 
-    public void setLocked(boolean locked) {
+    public void setLocked(Boolean locked) {
         this.locked = locked;
     }
 
-    public boolean isExpired() {
+    public Boolean isExpired() {
         return expired;
     }
 
-    public void setExpired(boolean expired) {
+    public void setExpired(Boolean expired) {
         this.expired = expired;
     }
 
@@ -242,11 +242,11 @@ public class User{
         this.roles = roles;
     }
 
-    public boolean isCredentialsExpired() {
+    public Boolean isCredentialsExpired() {
         return credentialsExpired;
     }
 
-    public void setCredentialsExpired(boolean credentialsExpired) {
+    public void setCredentialsExpired(Boolean credentialsExpired) {
         this.credentialsExpired = credentialsExpired;
     }
 

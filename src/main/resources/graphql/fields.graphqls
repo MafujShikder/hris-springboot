@@ -1,0 +1,38 @@
+type field{
+    id:ID
+    datatypeId:Int
+    inputtypeId:Int
+    uid:String
+    name:String
+    caption:String
+    compulsory:String
+    isunique:String
+    iscalculated:String
+    description:String
+    calculatedexpression:String
+    hashistory:String
+    hastarget:String
+    fieldrelation:String
+    skipinreport:String
+}
+
+extend type Query {
+    fields:[field]!
+    getFieldById(id:ID!):field
+}
+
+extend type Mutation{
+    newField(datatypeId:Int!,inputtypeId:Int!,uid:String!,
+    name:String!, caption:String!, compulsory:String!, isunique:String!, iscalculated:String!,
+    description:String!, calculatedexpression:String!,
+    hashistory:String!, hastarget:String!, fieldrelation:String!, skipinreport:String!):field!
+
+    deleteField(id:ID!):String
+
+    updateField(id:ID!, datatypeId:Int, inputtypeId:Int, uid:String, name:String, caption:String, compulsory:String,
+    isunique:String, iscalculated:String, description:String, calculatedexpression:String,
+    hashistory:String, hastarget:String, fieldrelation:String, skipinreport:String):field!,
+
+
+}
+

@@ -1,10 +1,13 @@
 package com.hisptz.hris.config;
 
+import com.hisptz.hris.Bundles.FieldBundle.Field;
+import com.hisptz.hris.Bundles.FieldBundle.FieldRepository;
+import com.hisptz.hris.Bundles.FieldBundle.FieldResolver;
 import com.hisptz.hris.Bundles.UserBundle.UserRepository;
 import com.hisptz.hris.exception.GraphQLErrorAdapter;
 import com.hisptz.hris.resolver.Mutation;
 import com.hisptz.hris.resolver.Query;
-import com.hisptz.hris.resolver.UserResolver;
+import com.hisptz.hris.Bundles.UserBundle.UserResolver;
 import graphql.ExceptionWhileDataFetching;
 import graphql.GraphQLError;
 import graphql.servlet.GraphQLErrorHandler;
@@ -48,15 +51,19 @@ public class GraphqlConfiguration {
         return new UserResolver(userRepository);
     }
 
-
     @Bean
-    public Query query(UserRepository userRepository) {
-        return new Query(userRepository);
+    public FieldResolver fieldResolver(FieldRepository fieldRepository){
+        return new FieldResolver(fieldRepository);
     }
 
     @Bean
-    public Mutation mutation(UserRepository userRepository){
-        return new Mutation(userRepository);
+    public Query query(UserRepository userRepository, FieldRepository fieldRepository) {
+        return new Query(userRepository, fieldRepository);
+    }
+
+    @Bean
+    public Mutation mutation(UserRepository userRepository, FieldRepository fieldRepository){
+        return new Mutation(userRepository, fieldRepository);
     }
 
 }

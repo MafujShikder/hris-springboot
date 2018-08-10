@@ -1,4 +1,4 @@
-package com.hisptz.hris.resolver;
+package com.hisptz.hris.Bundles.UserBundle;
 
 import com.coxautodev.graphql.tools.GraphQLResolver;
 import com.hisptz.hris.Bundles.UserBundle.User;
