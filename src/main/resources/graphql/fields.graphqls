@@ -14,6 +14,8 @@ type field{
     hastarget:String
     fieldrelation:String
     skipinreport:String
+    datecreated:String
+    lastupdated:String
 }
 
 extend type Query {

@@ -3,6 +3,8 @@ package com.hisptz.hris.resolver;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.hisptz.hris.Bundles.FieldBundle.Field;
 import com.hisptz.hris.Bundles.FieldBundle.FieldRepository;
+import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOption;
+import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOptionRepository;
 import com.hisptz.hris.Bundles.UserBundle.User;
 import com.hisptz.hris.Bundles.UserBundle.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +24,13 @@ public class Mutation implements GraphQLMutationResolver {
     @Autowired
     private FieldRepository fieldRepository;
 
-    public Mutation(UserRepository userRepository, FieldRepository fieldRepository) {
+    @Autowired
+    private FieldOptionRepository fieldOptionRepository;
+
+    public Mutation(UserRepository userRepository, FieldRepository fieldRepository, FieldOptionRepository fieldOptionRepository) {
         this.userRepository = userRepository;
         this.fieldRepository = fieldRepository;
+        this.fieldOptionRepository = fieldOptionRepository;
     }
 
     /**
@@ -32,104 +38,104 @@ public class Mutation implements GraphQLMutationResolver {
      */
 
     /**
-     *  User Mutations
+     * User Mutations
      */
     public User newUser(Integer organisationunitId, String username, String usernameCanonical, String email, String emailCanonical, Boolean enabled, String salt, String password, Boolean locked, Boolean expired, Date expiresAt, String confirmationToken, Date passwordRequestedAt, String roles, Boolean credentialsExpired, Date credentialsExpireAt, String uid, String phonenumber, String jobtitle, String firstname, String middlename, String surname, Date deletedat, String description) {
-       User user = new User(organisationunitId, username, usernameCanonical, email, emailCanonical, enabled, salt, password, locked, expired, expiresAt, confirmationToken, passwordRequestedAt, roles, credentialsExpired, credentialsExpireAt,  uid, phonenumber,  jobtitle, firstname, middlename, surname, deletedat, description);
+        User user = new User(organisationunitId, username, usernameCanonical, email, emailCanonical, enabled, salt, password, locked, expired, expiresAt, confirmationToken, passwordRequestedAt, roles, credentialsExpired, credentialsExpireAt, uid, phonenumber, jobtitle, firstname, middlename, surname, deletedat, description);
 
         userRepository.save(user);
         return user;
     }
 
-    public Boolean deleteUser(Long id){
+    public Boolean deleteUser(Long id) {
         userRepository.delete(userRepository.findOne(id));
         return true;
     }
 
-    public User updateUser(Long id, Integer organisationunitId, String username, String usernameCanonical, String email, String emailCanonical, Boolean enabled, String salt, String password, Boolean locked, Boolean expired, Date expiresAt, String confirmationToken, Date passwordRequestedAt, String roles, Boolean credentialsExpired, Date credentialsExpireAt, String uid, String phonenumber, String jobtitle, String firstname, String middlename, String surname, Date deletedat, String description){
+    public User updateUser(Long id, Integer organisationunitId, String username, String usernameCanonical, String email, String emailCanonical, Boolean enabled, String salt, String password, Boolean locked, Boolean expired, Date expiresAt, String confirmationToken, Date passwordRequestedAt, String roles, Boolean credentialsExpired, Date credentialsExpireAt, String uid, String phonenumber, String jobtitle, String firstname, String middlename, String surname, Date deletedat, String description) {
         User user = userRepository.findOne(id);
 
         /**
          * TODO: Optimize using the State Pattern
          */
-        if(organisationunitId != null)
+        if (organisationunitId != null)
             user.setOrganisationunitId(organisationunitId);
 
-        
-        if(username != null)
+
+        if (username != null)
             user.setUsername(username);
 
-        
+
         if (usernameCanonical != null)
             user.setUsernameCanonical(usernameCanonical);
 
-        
+
         if (email != null)
             user.setEmail(email);
 
-        
-        if(emailCanonical != null)
+
+        if (emailCanonical != null)
             user.setEmailCanonical(emailCanonical);
 
-        
-        if(enabled != null)
+
+        if (enabled != null)
             user.setEnabled(enabled);
 
-        
-        if(salt != null)
+
+        if (salt != null)
             user.setSalt(salt);
 
-        
-        if(password != null)
+
+        if (password != null)
             user.setPassword(password);
 
-        
-        if(locked != null)
+
+        if (locked != null)
             user.setLocked(locked);
 
-        if(expired != null)
+        if (expired != null)
             user.setExpired(expired);
 
-        if(expiresAt != null)
+        if (expiresAt != null)
             user.setExpiresAt(expiresAt);
 
-        if(confirmationToken != null)
+        if (confirmationToken != null)
             user.setConfirmationToken(confirmationToken);
 
-        if(passwordRequestedAt != null)
+        if (passwordRequestedAt != null)
             user.setPasswordRequestedAt(passwordRequestedAt);
 
-        if(roles != null)
+        if (roles != null)
             user.setRoles(roles);
 
-        if(credentialsExpired != null)
+        if (credentialsExpired != null)
             user.setCredentialsExpired(credentialsExpired);
 
         if (credentialsExpireAt != null)
             user.setCredentialsExpireAt(credentialsExpireAt);
 
-        if(uid != null)
+        if (uid != null)
             user.setUid(uid);
 
-        if(phonenumber != null)
-             user.setPhonenumber(phonenumber);
+        if (phonenumber != null)
+            user.setPhonenumber(phonenumber);
 
-        if(jobtitle != null)
+        if (jobtitle != null)
             user.setJobtitle(jobtitle);
 
-        if(firstname != null)
+        if (firstname != null)
             user.setFirstname(firstname);
 
-        if(middlename != null)
-         user.setMiddlename(middlename);
+        if (middlename != null)
+            user.setMiddlename(middlename);
 
-        if(surname != null)
+        if (surname != null)
             user.setSurname(surname);
 
-        if(deletedat != null)
+        if (deletedat != null)
             user.setDeletedat(deletedat);
 
-        if(description != null)
+        if (description != null)
             user.setDescription(description);
 
         userRepository.save(user);
@@ -138,16 +144,16 @@ public class Mutation implements GraphQLMutationResolver {
 
 
     /**
-     *  Field Mutations
+     * Field Mutations
      */
     public Field newField(Integer datatypeId, Integer inputtypeId, String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport) {
-        Field field = new Field(datatypeId, inputtypeId, uid, name, caption, compulsory, isunique, iscalculated, description,  calculatedexpression, hashistory, hastarget, fieldrelation, skipinreport);
+        Field field = new Field(datatypeId, inputtypeId, uid, name, caption, compulsory, isunique, iscalculated, description, calculatedexpression, hashistory, hastarget, fieldrelation, skipinreport);
 
         fieldRepository.save(field);
         return field;
     }
 
-    public Boolean deleteField(Long id){
+    public Boolean deleteField(Long id) {
         fieldRepository.delete(fieldRepository.findOne(id));
         return true;
     }
@@ -155,7 +161,7 @@ public class Mutation implements GraphQLMutationResolver {
     public Field updateField(Long id, Integer datatypeId, Integer inputtypeId, String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport) {
         Field field = fieldRepository.findOne(id);
 
-        if(datatypeId != null)
+        if (datatypeId != null)
             field.setDatatypeId(datatypeId);
 
         if (inputtypeId != null)
@@ -199,6 +205,50 @@ public class Mutation implements GraphQLMutationResolver {
 
         fieldRepository.save(field);
         return field;
+    }
+
+
+    /**
+     * FieldOption Mutations
+     */
+    public FieldOption newFieldOption(Integer fieldId, String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining) {
+        FieldOption fieldOption = new FieldOption(fieldId, uid, value, skipinreport, description, sort, hastraining);
+
+        fieldOptionRepository.save(fieldOption);
+        return fieldOption;
+    }
+
+    public Boolean deleteFieldOption(Long id) {
+        fieldOptionRepository.delete(fieldOptionRepository.findOne(id));
+        return true;
+    }
+
+    public FieldOption updateFieldOption(Long id, Integer fieldId, String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining) {
+        FieldOption fieldOption = fieldOptionRepository.findOne(id);
+
+        if(fieldId != null)
+            fieldOption.setFieldId(fieldId);
+
+        if (uid != null)
+            fieldOption.setUid(uid);
+
+        if (value != null)
+            fieldOption.setValue(value);
+
+        if (skipinreport != null)
+            fieldOption.setSkipinreport(skipinreport);
+
+        if (description != null)
+            fieldOption.setDescription(description);
+
+        if (sort != null)
+            fieldOption.setSort(sort);
+
+        if (hastraining != null)
+            fieldOption.setHastraining(hastraining);
+
+        fieldOptionRepository.save(fieldOption);
+        return fieldOption;
     }
 
 }

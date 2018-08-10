@@ -1,0 +1,28 @@
+type FieldOption{
+    id:ID
+    fieldId:Int
+    uid:String
+    value:String
+    skipinreport:String
+    description:String
+    sort:String
+    hastraining:String
+    datecreated:String
+    lastupdated:String
+}
+
+extend type Query {
+    fieldOptions:[FieldOption]!
+    getFieldOptionById(id:ID!):FieldOption
+}
+
+extend type Mutation {
+    newFieldOption(fieldId:Int!, uid:String!, value:String!, skipinreport:String!, description:String!,
+    sort:String!, hastraining:String!):FieldOption!
+
+    deleteFieldOption(id:ID!):String
+
+    updateFieldOption(id:ID!, fieldId:Int, uid:String, value:String, skipinreport:String, description:String,
+    sort:String, hastraining:String):FieldOption!
+
+}
