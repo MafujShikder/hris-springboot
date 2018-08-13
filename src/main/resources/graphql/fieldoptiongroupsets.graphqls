@@ -1,0 +1,19 @@
+type FieldOptionGroupSet{
+    id:ID
+    uid:String
+    name:String
+    description:String
+}
+
+extend type Query {
+    fieldOptionGroupSets:[FieldOptionGroupSet]!
+    getFieldOptionGroupSetById(id:ID!):FieldOptionGroupSet
+}
+
+extend type Mutation {
+    newFieldOptionGroupSet(uid:String!, name:String!, description:String!):FieldOptionGroupSet!
+
+    deleteFieldOptionGroupSet(id:ID!):String
+
+    updateFieldOptionGroupSet(id:ID!,uid:String, name:String, description:String):FieldOptionGroupSet
+}

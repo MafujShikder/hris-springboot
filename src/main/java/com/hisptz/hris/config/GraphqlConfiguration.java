@@ -12,6 +12,8 @@ import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOptionRepository;
 import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOptionResolver;
 import com.hisptz.hris.Bundles.FieldOptionGroup.FieldOptionGroupRepository;
 import com.hisptz.hris.Bundles.FieldOptionGroup.FieldOptionGroupResolver;
+import com.hisptz.hris.Bundles.FieldOptionGroupSetBundle.FieldOptionGroupSetRepository;
+import com.hisptz.hris.Bundles.FieldOptionGroupSetBundle.FieldOptionGroupSetResolver;
 import com.hisptz.hris.Bundles.UserBundle.UserRepository;
 import com.hisptz.hris.exception.GraphQLErrorAdapter;
 import com.hisptz.hris.resolver.Mutation;
@@ -84,14 +86,19 @@ public class GraphqlConfiguration {
     public FieldOptionGroupResolver fieldOptionGroupResolver(FieldOptionGroupRepository fieldOptionGroupRepository){
         return new FieldOptionGroupResolver(fieldOptionGroupRepository);
     }
+
     @Bean
-    public Query query(UserRepository userRepository, FieldRepository fieldRepository,FieldOptionRepository fieldOptionRepository,FieldGroupRepository fieldGroupRepository,FieldGroupSetRepository fieldGroupSetRepository, FieldOptionGroupRepository fieldOptionGroupRepository) {
-        return new Query(userRepository, fieldRepository, fieldOptionRepository, fieldGroupRepository,fieldGroupSetRepository,fieldOptionGroupRepository);
+    public FieldOptionGroupSetResolver fieldOptionGroupSetResolver(FieldOptionGroupSetRepository fieldOptionGroupSetRepository){
+        return new FieldOptionGroupSetResolver(fieldOptionGroupSetRepository);
+    }
+    @Bean
+    public Query query(UserRepository userRepository, FieldRepository fieldRepository,FieldOptionRepository fieldOptionRepository,FieldGroupRepository fieldGroupRepository,FieldGroupSetRepository fieldGroupSetRepository, FieldOptionGroupRepository fieldOptionGroupRepository,FieldOptionGroupSetRepository fieldOptionGroupSetRepository) {
+        return new Query(userRepository, fieldRepository, fieldOptionRepository, fieldGroupRepository,fieldGroupSetRepository,fieldOptionGroupRepository,fieldOptionGroupSetRepository);
     }
 
     @Bean
-    public Mutation mutation(UserRepository userRepository, FieldRepository fieldRepository, FieldOptionRepository fieldOptionRepository,FieldGroupRepository fieldGroupRepository ,FieldGroupSetRepository fieldGroupSetRepository, FieldOptionGroupRepository fieldOptionGroupRepository){
-        return new Mutation(userRepository, fieldRepository, fieldOptionRepository, fieldGroupRepository,fieldGroupSetRepository, fieldOptionGroupRepository);
+    public Mutation mutation(UserRepository userRepository, FieldRepository fieldRepository, FieldOptionRepository fieldOptionRepository,FieldGroupRepository fieldGroupRepository ,FieldGroupSetRepository fieldGroupSetRepository, FieldOptionGroupRepository fieldOptionGroupRepository,FieldOptionGroupSetRepository fieldOptionGroupSetRepository){
+        return new Mutation(userRepository, fieldRepository, fieldOptionRepository, fieldGroupRepository,fieldGroupSetRepository, fieldOptionGroupRepository,fieldOptionGroupSetRepository);
     }
 
 }

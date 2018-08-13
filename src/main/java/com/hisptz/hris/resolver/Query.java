@@ -11,6 +11,8 @@ import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOption;
 import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOptionRepository;
 import com.hisptz.hris.Bundles.FieldOptionGroup.FieldOptionGroup;
 import com.hisptz.hris.Bundles.FieldOptionGroup.FieldOptionGroupRepository;
+import com.hisptz.hris.Bundles.FieldOptionGroupSetBundle.FieldOptionGroupSet;
+import com.hisptz.hris.Bundles.FieldOptionGroupSetBundle.FieldOptionGroupSetRepository;
 import com.hisptz.hris.Bundles.UserBundle.User;
 import com.hisptz.hris.Bundles.UserBundle.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,13 +43,17 @@ public class Query implements GraphQLQueryResolver {
     @Autowired
     private FieldOptionGroupRepository fieldOptionGroupRepository;
 
-    public Query(UserRepository userRepository, FieldRepository fieldRepository, FieldOptionRepository fieldOptionRepository, FieldGroupRepository fieldGroupRepository,FieldGroupSetRepository fieldGroupSetRepository,FieldOptionGroupRepository fieldOptionGroupRepository) {
+    @Autowired
+    private FieldOptionGroupSetRepository fieldOptionGroupSetRepository;
+
+    public Query(UserRepository userRepository, FieldRepository fieldRepository, FieldOptionRepository fieldOptionRepository, FieldGroupRepository fieldGroupRepository,FieldGroupSetRepository fieldGroupSetRepository,FieldOptionGroupRepository fieldOptionGroupRepository, FieldOptionGroupSetRepository fieldOptionGroupSetRepository) {
         this.userRepository = userRepository;
         this.fieldRepository = fieldRepository;
         this.fieldOptionRepository = fieldOptionRepository;
         this.fieldGroupRepository = fieldGroupRepository;
         this.fieldGroupSetRepository = fieldGroupSetRepository;
         this.fieldOptionGroupRepository = fieldOptionGroupRepository;
+        this.fieldOptionGroupSetRepository = fieldOptionGroupSetRepository;
     }
 
     /**
@@ -118,5 +124,15 @@ public class Query implements GraphQLQueryResolver {
         return fieldOptionGroupRepository.findOne(id);
     }
 
+    /**
+     * FieldOptionGroupSets Queries
+     */
 
+    public List<FieldOptionGroupSet> fieldOptionGroupSets(){
+        return fieldOptionGroupSetRepository.findAll();
+    }
+
+    public FieldOptionGroupSet getFieldOptionGroupSetById(Long id){
+        return fieldOptionGroupSetRepository.findOne(id);
+    }
 }

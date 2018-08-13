@@ -11,6 +11,8 @@ import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOption;
 import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOptionRepository;
 import com.hisptz.hris.Bundles.FieldOptionGroup.FieldOptionGroup;
 import com.hisptz.hris.Bundles.FieldOptionGroup.FieldOptionGroupRepository;
+import com.hisptz.hris.Bundles.FieldOptionGroupSetBundle.FieldOptionGroupSet;
+import com.hisptz.hris.Bundles.FieldOptionGroupSetBundle.FieldOptionGroupSetRepository;
 import com.hisptz.hris.Bundles.UserBundle.User;
 import com.hisptz.hris.Bundles.UserBundle.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,13 +44,18 @@ public class Mutation implements GraphQLMutationResolver {
     @Autowired
     private FieldOptionGroupRepository fieldOptionGroupRepository;
 
-    public Mutation(UserRepository userRepository, FieldRepository fieldRepository, FieldOptionRepository fieldOptionRepository, FieldGroupRepository fieldGroupRepository, FieldGroupSetRepository fieldGroupSetRepository, FieldOptionGroupRepository fieldOptionGroupRepository) {
+
+    @Autowired
+    private FieldOptionGroupSetRepository fieldOptionGroupSetRepository;
+
+    public Mutation(UserRepository userRepository, FieldRepository fieldRepository, FieldOptionRepository fieldOptionRepository, FieldGroupRepository fieldGroupRepository, FieldGroupSetRepository fieldGroupSetRepository, FieldOptionGroupRepository fieldOptionGroupRepository,FieldOptionGroupSetRepository fieldOptionGroupSetRepository) {
         this.userRepository = userRepository;
         this.fieldRepository = fieldRepository;
         this.fieldOptionRepository = fieldOptionRepository;
         this.fieldGroupRepository = fieldGroupRepository;
         this.fieldGroupSetRepository = fieldGroupSetRepository;
         this.fieldOptionGroupRepository = fieldOptionGroupRepository;
+        this.fieldOptionGroupSetRepository = fieldOptionGroupSetRepository;
     }
 
     /**
@@ -221,6 +228,9 @@ public class Mutation implements GraphQLMutationResolver {
         if (skipinreport != null)
             field.setSkipinreport(skipinreport);
 
+//        if (parent_id != null)
+//            field.setParentField(fieldRepository.getOne(parent_id));
+
         fieldRepository.save(field);
         return field;
     }
@@ -373,4 +383,36 @@ public class Mutation implements GraphQLMutationResolver {
         fieldOptionGroupRepository.save(fieldOptionGroup);
         return fieldOptionGroup;
     }
+
+    /**
+     * FieldOptionGroupSet Mutations
+     */
+    public FieldOptionGroupSet newFieldOptionGroupSet(String uid, String name, String description) {
+        FieldOptionGroupSet fieldOptionGroupSet = new FieldOptionGroupSet(uid, name, description);
+
+        fieldOptionGroupSetRepository.save(fieldOptionGroupSet);
+        return fieldOptionGroupSet;
+    }
+
+    public Boolean deleteFieldOptionGroupSet(Long id){
+        fieldOptionGroupRepository.delete(fieldOptionGroupRepository.findOne(id));
+        return true;
+    }
+
+    public FieldOptionGroupSet updateFieldOptionGroupSet(Long id, String uid, String name, String description){
+        FieldOptionGroupSet fieldOptionGroupSet = fieldOptionGroupSetRepository.findOne(id);
+
+        if (uid != null)
+            fieldOptionGroupSet.setUid(uid);
+
+        if (name != null)
+            fieldOptionGroupSet.setName(name);
+
+        if (description != null)
+            fieldOptionGroupSet.setDescription(description);
+
+        fieldOptionGroupSetRepository.save(fieldOptionGroupSet);
+        return fieldOptionGroupSet;
+    }
+
 }

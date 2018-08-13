@@ -4,6 +4,10 @@ package com.hisptz.hris.Bundles.FieldBundle;
  * Created by Guest on 8/10/18.
  */
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -17,6 +21,9 @@ import java.util.Objects;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "field")
 public class Field {
+//    @Autowired
+//    private static FieldRepository fieldRepository;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -35,6 +42,12 @@ public class Field {
     private Boolean hastarget;
     private Boolean fieldrelation;
     private Boolean skipinreport;
+
+//    @OneToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "parent_id", nullable = false)
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+//    @JsonIgnore
+//    private Field parentField;
 
 
 
@@ -64,7 +77,17 @@ public class Field {
         this.hastarget = hastarget;
         this.fieldrelation = fieldrelation;
         this.skipinreport = skipinreport;
+        //this.parentField = fieldRepository.getOne(parent_id);
     }
+
+//    public Field getParentField() {
+//        return parentField;
+//    }
+//
+//    public void setParentField(Field parentField) {
+//        this.parentField = parentField;
+ //   }
+
     @Basic
     @Column(name = "id")
     public Long getId() {
