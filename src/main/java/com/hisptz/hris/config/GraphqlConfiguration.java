@@ -91,6 +91,7 @@ public class GraphqlConfiguration {
     public FieldOptionGroupSetResolver fieldOptionGroupSetResolver(FieldOptionGroupSetRepository fieldOptionGroupSetRepository){
         return new FieldOptionGroupSetResolver(fieldOptionGroupSetRepository);
     }
+
     @Bean
     public Query query(UserRepository userRepository, FieldRepository fieldRepository,FieldOptionRepository fieldOptionRepository,FieldGroupRepository fieldGroupRepository,FieldGroupSetRepository fieldGroupSetRepository, FieldOptionGroupRepository fieldOptionGroupRepository,FieldOptionGroupSetRepository fieldOptionGroupSetRepository) {
         return new Query(userRepository, fieldRepository, fieldOptionRepository, fieldGroupRepository,fieldGroupSetRepository,fieldOptionGroupRepository,fieldOptionGroupSetRepository);

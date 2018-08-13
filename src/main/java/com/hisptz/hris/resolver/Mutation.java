@@ -25,37 +25,10 @@ import java.util.Date;
  * Created by Guest on 8/7/18.
  */
 @Component
-public class Mutation implements GraphQLMutationResolver {
-    @Autowired
-    private UserRepository userRepository;
+public class Mutation extends Resolver implements GraphQLMutationResolver {
 
-    @Autowired
-    private FieldRepository fieldRepository;
-
-    @Autowired
-    private FieldOptionRepository fieldOptionRepository;
-
-    @Autowired
-    private FieldGroupRepository fieldGroupRepository;
-
-    @Autowired
-    private FieldGroupSetRepository fieldGroupSetRepository;
-
-    @Autowired
-    private FieldOptionGroupRepository fieldOptionGroupRepository;
-
-
-    @Autowired
-    private FieldOptionGroupSetRepository fieldOptionGroupSetRepository;
-
-    public Mutation(UserRepository userRepository, FieldRepository fieldRepository, FieldOptionRepository fieldOptionRepository, FieldGroupRepository fieldGroupRepository, FieldGroupSetRepository fieldGroupSetRepository, FieldOptionGroupRepository fieldOptionGroupRepository,FieldOptionGroupSetRepository fieldOptionGroupSetRepository) {
-        this.userRepository = userRepository;
-        this.fieldRepository = fieldRepository;
-        this.fieldOptionRepository = fieldOptionRepository;
-        this.fieldGroupRepository = fieldGroupRepository;
-        this.fieldGroupSetRepository = fieldGroupSetRepository;
-        this.fieldOptionGroupRepository = fieldOptionGroupRepository;
-        this.fieldOptionGroupSetRepository = fieldOptionGroupSetRepository;
+    public Mutation(UserRepository userRepository, FieldRepository fieldRepository, FieldOptionRepository fieldOptionRepository, FieldGroupRepository fieldGroupRepository, FieldGroupSetRepository fieldGroupSetRepository, FieldOptionGroupRepository fieldOptionGroupRepository, FieldOptionGroupSetRepository fieldOptionGroupSetRepository) {
+        super(userRepository, fieldRepository, fieldOptionRepository, fieldGroupRepository, fieldGroupSetRepository, fieldOptionGroupRepository, fieldOptionGroupSetRepository);
     }
 
     /**
