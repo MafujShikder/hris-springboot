@@ -31,7 +31,7 @@ and create a database with the name 'hris'. Open the link
     
     http://localhost:8080/graphiql
     
-Check out the mutations and queries defined in the GraphQL schemas found in the directory below for the possible API operations that can be perfomed with this API.
+Check out the mutations and queries defined in the GraphQL schemas found in the directory below for the possible API operations that can be perfomed with this API or at the Docs link in the graphiql interface at the address above.
 
     /hris/src/main/resources/graphql
   
@@ -62,6 +62,11 @@ Check out the mutations and queries defined in the GraphQL schemas found in the 
          }
     }
 
+Instead of using the graphiql interface the same responce above can be initiated via a HTTP post to hrhis.hisptz.org/graphql.
+    
+    {
+        "query":"{users{id, username, email}}"
+    }
 
 
 
