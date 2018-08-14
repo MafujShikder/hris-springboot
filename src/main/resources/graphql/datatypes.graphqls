@@ -1,0 +1,25 @@
+type DataType{
+    id:ID
+    uid:String
+    name:String
+    description:String
+    dateCreated:String
+    lastUpdated:String
+}
+
+extend type Query {
+    dataTypes:[DataType]!
+    getDataTypeById(id:ID!):DataType
+}
+
+extend type Mutation {
+    newDataType(uid:String!,
+    name:String!,
+    description:String!):DataType!
+
+    deleteDataType(id:ID!):String
+
+    updateDataType(id:ID!,uid:String,
+    name:String,
+    description:String):DataType!
+}

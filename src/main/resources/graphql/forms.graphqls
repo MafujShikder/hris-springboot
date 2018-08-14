@@ -1,0 +1,23 @@
+type Form{
+    id:ID
+    uid:String
+    name:String
+    hypertext:String
+    title:String
+    datecreated:String
+    lastupdated: String
+
+}
+
+extend type Query {
+    forms:[Form]!
+    getFormById(id:ID!):Form
+}
+
+extend type Mutation {
+    newForm(uid:String!, name:String!, hypertext:String!, title:String!):Form!
+
+    deleteForm(id:ID!):String
+
+    updateForm(id:ID!, uid:String, name:String, hypertext:String, title:String):Form
+}

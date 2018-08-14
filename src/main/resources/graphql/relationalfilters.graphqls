@@ -1,0 +1,21 @@
+type RelationalFilter{
+    id: ID!
+    fieldId:String
+    uid:String
+    name: String
+    excludefieldoptions: String
+    datecreated: String
+    lastupdated: String
+}
+extend type Query {
+    relationalFilters:[RelationalFilter]!
+    getRelationalFilterById(id:ID!):RelationalFilter
+}
+
+extend type Mutation {
+    newRelationalFilter(fieldId:String!, uid:String!, name: String!, excludefieldoptions: String!):RelationalFilter!
+
+    deleteRelationalFilter(id:ID!):String
+
+    updateRelationalFilter(id:ID!, fieldId:String, uid:String, name: String ,excludefieldoptions: String):RelationalFilter!
+}

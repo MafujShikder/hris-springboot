@@ -1,0 +1,34 @@
+type ArithmeticFilter{
+    id:ID
+    uid:String
+    name:String
+    description:String
+    operator:String
+    leftexpression:String
+    rightexpression:String
+    datecreated:String
+    lastupdated:String
+}
+
+extend type Query {
+    arithmeticFilters:[ArithmeticFilter]!
+    getArithmeticFilterById(id:ID!):ArithmeticFilter
+}
+
+extend type Mutation {
+    newArithmeticFilter(uid:String!,
+    name:String!,
+    description:String!,
+    operator:String!,
+    leftexpression:String!,
+    rightexpression:String!):ArithmeticFilter!
+
+    deleteArithmeticFilter(id:ID!):String
+
+    updateArithmeticFilter(id:ID!, uid:String,
+    name:String,
+    description:String,
+    operator:String,
+    leftexpression:String,
+    rightexpression:String):ArithmeticFilter
+}

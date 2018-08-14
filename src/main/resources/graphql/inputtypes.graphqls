@@ -1,0 +1,28 @@
+type InputType{
+    id:ID
+    uid:String
+    name:String
+    description:String
+    htmltag:String
+    dateCreated:String
+    lastUpdated: String
+}
+
+extend type Query {
+    inputTypes:[InputType]!
+    getInputTypeById(id:ID!):InputType
+}
+
+extend type Mutation {
+    newInputType(uid:String!,
+    name:String!,
+    description:String!,
+    htmltag:String!):InputType!
+
+    deleteInputType(id:ID!):String
+
+    updateInputType(id:ID!, uid:String,
+    name:String,
+    description:String,
+    htmltag:String):InputType!
+}

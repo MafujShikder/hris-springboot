@@ -15,8 +15,6 @@ import com.hisptz.hris.Bundles.FieldOptionGroupSetBundle.FieldOptionGroupSetReso
 import com.hisptz.hris.Bundles.UserBundle.UserMutation;
 import com.hisptz.hris.Bundles.UserBundle.UserRepository;
 import com.hisptz.hris.exception.GraphQLErrorAdapter;
-import com.hisptz.hris.resolver.Mutation;
-import com.hisptz.hris.resolver.Query;
 import com.hisptz.hris.Bundles.UserBundle.UserResolver;
 import com.hisptz.hris.Bundles.UserBundle.UserQuery;
 import graphql.ExceptionWhileDataFetching;

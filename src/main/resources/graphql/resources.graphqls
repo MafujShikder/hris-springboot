@@ -1,0 +1,31 @@
+type Resource{
+    id:ID
+    uid:String
+    name:String
+    description:String
+    isgenerating:String
+    datecreated:String
+    lastupdated:String
+    lastgenerated:String
+    messagelog: String
+}
+
+extend type Query {
+    resources:[Resource]!
+    getResourceById(id:ID!):Resource
+}
+
+extend type Mutation {
+    newResource(uid:String!,
+    name:String!,
+    description:String!,
+    isgenerating:String!,messagelog: String!):Resource
+
+    deleteResource(id:ID!):String
+
+    updateResource(id:ID!,
+    uid:String,
+    name:String,
+    description:String, isgenerating:String, messagelog: String):Resource
+
+}
