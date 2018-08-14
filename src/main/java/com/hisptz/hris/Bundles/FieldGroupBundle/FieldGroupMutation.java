@@ -17,8 +17,8 @@ public class FieldGroupMutation implements GraphQLMutationResolver {
         this.fieldGroupRepository = fieldGroupRepository;
     }
 
-    public FieldGroup newFieldGroup(String uid, String name, String operator, String description) {
-        FieldGroup fieldGroup = new FieldGroup(uid, name, operator, description);
+    public FieldGroup newFieldGroup(String uid, String name, String description) {
+        FieldGroup fieldGroup = new FieldGroup(uid, name, description);
 
         fieldGroupRepository.save(fieldGroup);
         return fieldGroup;
@@ -29,7 +29,7 @@ public class FieldGroupMutation implements GraphQLMutationResolver {
         return true;
     }
 
-    public FieldGroup updateFieldGroup(Long id, String uid, String name, String operator, String description) {
+    public FieldGroup updateFieldGroup(Long id, String uid, String name, String description) {
         FieldGroup fieldGroup = fieldGroupRepository.findOne(id);
 
         if (uid != null)
@@ -40,9 +40,6 @@ public class FieldGroupMutation implements GraphQLMutationResolver {
 
         if (description != null)
             fieldGroup.setDescription(description);
-
-        if (operator != null)
-            fieldGroup.setOperator(operator);
 
         fieldGroupRepository.save(fieldGroup);
         return fieldGroup;

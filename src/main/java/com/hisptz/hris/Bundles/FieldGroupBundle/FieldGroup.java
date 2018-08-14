@@ -19,10 +19,6 @@ public class FieldGroup {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String operator;
-
-
-
     private String uid;
     private String name;
     private String description;
@@ -39,19 +35,10 @@ public class FieldGroup {
     }
 
 
-    public FieldGroup(String uid, String name, String description, String operator) {
+    public FieldGroup(String uid, String name, String description) {
         this.uid = uid;
         this.name = name;
         this.description = description;
-        this.operator = operator;
-    }
-
-    public String getOperator() {
-        return operator;
-    }
-
-    public void setOperator(String operator) {
-        this.operator = operator;
     }
     @Basic
     @Column(name = "id")
