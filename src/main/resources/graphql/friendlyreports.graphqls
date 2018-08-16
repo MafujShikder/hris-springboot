@@ -1,0 +1,49 @@
+type FriendlyReport{
+    id:ID
+    seriesId:Int
+    uid:String
+    name:String
+    description:String
+    sort:Int
+    ignoreskipinreport:String
+    usetargets:String
+    showdeficitsurplus:String
+    datecreated:String
+    lastupdated:String
+    type:String
+    sql_statement:String
+    javascript:String
+    stylesheet:String
+}
+extend type Query {
+    friendlyReports:[FriendlyReport]!
+    getFriendlyReportById(id:ID!):FriendlyReport
+}
+
+extend type Mutation {
+    newFriendlyReport(seriesId:Int!,
+    uid:String!,
+    name:String!,
+    description:String!,
+    sort:Int!,
+    ignoreskipinreport:String!,
+    usetargets:String
+    showdeficitsurplus:String!,type:String!,
+    sql_statement:String!,
+    javascript:String!,
+    stylesheet:String!):FriendlyReport!
+
+    deleteFriendlyReport(id:ID!):String
+
+    updateFriendlyReport(id:ID!,seriesId:Int,
+    uid:String,
+    name:String,
+    description:String,
+    sort:Int,
+    ignoreskipinreport:String,
+    usetargets:String,
+    showdeficitsurplus:String,type:String,
+    sql_statement:String,
+    javascript:String,
+    stylesheet:String):FriendlyReport
+}
