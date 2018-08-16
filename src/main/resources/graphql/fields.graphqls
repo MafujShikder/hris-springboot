@@ -16,7 +16,7 @@ type field{
     skipinreport:String
     datecreated:String
     lastupdated:String
-   # parent_id:ID
+    fieldGroups:[FieldGroup]
 }
 
 extend type Query {

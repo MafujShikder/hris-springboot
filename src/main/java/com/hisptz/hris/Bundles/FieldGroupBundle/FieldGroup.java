@@ -3,13 +3,13 @@ package com.hisptz.hris.Bundles.FieldGroupBundle;
 /**
  * Created by Guest on 8/10/18.
  */
+import com.hisptz.hris.Bundles.FieldBundle.Field;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
@@ -31,15 +31,31 @@ public class FieldGroup {
     @LastModifiedDate
     private Date lastupdated;
 
-    public FieldGroup() {
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },
+            mappedBy = "fieldGroups")
+    private List<Field> fields = new ArrayList<>();
+
+    public List<Field> getFields() {
+        return fields;
     }
 
+    public void setFields(List<Field> fields) {
+        this.fields = fields;
+    }
+
+    public FieldGroup() {
+    }
 
     public FieldGroup(String uid, String name, String description) {
         this.uid = uid;
         this.name = name;
         this.description = description;
     }
+
     @Basic
     @Column(name = "id")
     public Long getId() {

@@ -5,6 +5,7 @@ package com.hisptz.hris.Bundles.FieldBundle;
  */
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.hisptz.hris.Bundles.FieldGroupBundle.FieldGroup;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +15,12 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "field")
 public class Field {
-//    @Autowired
-//    private static FieldRepository fieldRepository;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -43,13 +40,23 @@ public class Field {
     private Boolean fieldrelation;
     private Boolean skipinreport;
 
-//    @OneToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "parent_id", nullable = false)
-//    @OnDelete(action = OnDeleteAction.CASCADE)
-//    @JsonIgnore
-//    private Field parentField;
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "FieldGroupFieldMembers",
+            joinColumns = { @JoinColumn(name = "field_id") },
+            inverseJoinColumns = { @JoinColumn(name = "fieldgroup_id") })
+    private List<FieldGroup> fieldGroups = new ArrayList<>();
 
+    public List<FieldGroup> getFieldGroups() {
+        return fieldGroups;
+    }
 
+    public void setFieldGroups(List<FieldGroup> fieldGroups) {
+        this.fieldGroups = fieldGroups;
+    }
 
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
@@ -62,6 +69,9 @@ public class Field {
     public Field() {
     }
 
+    public Field(Long id) {
+        this.id = id;
+    }
     public Field(Integer datatypeId, Integer inputtypeId, String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport) {
         this.datatypeId = datatypeId;
         this.inputtypeId = inputtypeId;
@@ -77,16 +87,7 @@ public class Field {
         this.hastarget = hastarget;
         this.fieldrelation = fieldrelation;
         this.skipinreport = skipinreport;
-        //this.parentField = fieldRepository.getOne(parent_id);
     }
-
-//    public Field getParentField() {
-//        return parentField;
-//    }
-//
-//    public void setParentField(Field parentField) {
-//        this.parentField = parentField;
- //   }
 
     @Basic
     @Column(name = "id")

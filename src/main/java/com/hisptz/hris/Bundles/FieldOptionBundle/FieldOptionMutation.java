@@ -1,6 +1,8 @@
 package com.hisptz.hris.Bundles.FieldOptionBundle;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import com.hisptz.hris.Bundles.FieldBundle.Field;
+import com.hisptz.hris.Bundles.FieldBundle.FieldRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,13 +14,18 @@ public class FieldOptionMutation implements GraphQLMutationResolver {
     @Autowired
     protected FieldOptionRepository fieldOptionRepository;
 
-    public FieldOptionMutation(FieldOptionRepository fieldOptionRepository) {
+    @Autowired
+    private FieldRepository fieldRepository;
+
+    public FieldOptionMutation(FieldOptionRepository fieldOptionRepository, FieldRepository fieldRepository) {
         this.fieldOptionRepository = fieldOptionRepository;
+        this.fieldRepository = fieldRepository;
     }
 
-    public FieldOption newFieldOption(Integer fieldId, String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining) {
+    public FieldOption newFieldOption(Integer fieldId, String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining, Long field) {
         FieldOption fieldOption = new FieldOption(fieldId, uid, value, skipinreport, description, sort, hastraining);
 
+        fieldOption.setField(new Field(field));
         fieldOptionRepository.save(fieldOption);
         return fieldOption;
     }
