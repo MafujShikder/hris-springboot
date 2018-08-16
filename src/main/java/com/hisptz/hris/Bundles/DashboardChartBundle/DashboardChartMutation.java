@@ -52,6 +52,7 @@ public class DashboardChartMutation implements GraphQLMutationResolver{
         if (systemwide != null)
             dashboardChart.setSystemwide(systemwide);
 
+        dashboardChartRepository.save(dashboardChart);
         return dashboardChart;
     }
 }

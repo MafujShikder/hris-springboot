@@ -1,0 +1,26 @@
+type FormSection{
+    id:ID
+    uid:String
+    formId:Int
+    name:String
+    description:String
+    datecreated:String
+    lastupdated:String
+}
+
+extend type Query {
+    formSections:[FormSection]
+    getFormSectionById(id:ID!):FormSection
+}
+
+extend type Mutation {
+    newFormSection(formId:Int!, uid:String!,
+    name:String!,
+    description:String!):FormSection
+
+    deleteFormSection(id:ID!):String
+
+    updateFormSection(id:ID!,formId:Int,uid:String
+    name:String
+    description:String):FormSection
+}
