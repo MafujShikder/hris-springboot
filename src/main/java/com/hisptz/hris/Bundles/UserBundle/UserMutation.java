@@ -1,6 +1,9 @@
 package com.hisptz.hris.Bundles.UserBundle;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import com.hisptz.hris.core.Model;
+import com.hisptz.hris.core.ModelMutation;
+import com.hisptz.hris.core.ModelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,28 +13,25 @@ import java.util.Date;
  * Created by Guest on 8/13/18.
  */
 @Component
-public class UserMutation implements GraphQLMutationResolver {
-    @Autowired
-    protected UserRepository userRepository;
+public class UserMutation extends ModelMutation<User> {
 
-    public UserMutation(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserMutation(UserRepository<User> repository) {
+        super(repository);
     }
-
-    public User newUser(Integer organisationunitId, String username, String usernameCanonical, String email, String emailCanonical, Boolean enabled, String salt, String password, Boolean locked, Boolean expired, Date expiresAt, String confirmationToken, Date passwordRequestedAt, String roles, Boolean credentialsExpired, Date credentialsExpireAt, String uid, String phonenumber, String jobtitle, String firstname, String middlename, String surname, Date deletedat, String description) {
+    public User createUser(Integer organisationunitId, String username, String usernameCanonical, String email, String emailCanonical, Boolean enabled, String salt, String password, Boolean locked, Boolean expired, Date expiresAt, String confirmationToken, Date passwordRequestedAt, String roles, Boolean credentialsExpired, Date credentialsExpireAt, String uid, String phonenumber, String jobtitle, String firstname, String middlename, String surname, Date deletedat, String description) {
         User user = new User(organisationunitId, username, usernameCanonical, email, emailCanonical, enabled, salt, password, locked, expired, expiresAt, confirmationToken, passwordRequestedAt, roles, credentialsExpired, credentialsExpireAt, uid, phonenumber, jobtitle, firstname, middlename, surname, deletedat, description);
 
-        userRepository.save(user);
+        repository.save(user);
         return user;
     }
 
-    public Boolean deleteUser(Long id) {
-        userRepository.delete(userRepository.findOne(id));
+    /*public Boolean delete(Long id) {
+        repository.delete(repository.findOne(id));
         return true;
-    }
+    }*/
 
-    public User updateUser(Long id, Integer organisationunitId, String username, String usernameCanonical, String email, String emailCanonical, Boolean enabled, String salt, String password, Boolean locked, Boolean expired, Date expiresAt, String confirmationToken, Date passwordRequestedAt, String roles, Boolean credentialsExpired, Date credentialsExpireAt, String uid, String phonenumber, String jobtitle, String firstname, String middlename, String surname, Date deletedat, String description) {
-        User user = userRepository.findOne(id);
+    public User update(Long id, Integer organisationunitId, String username, String usernameCanonical, String email, String emailCanonical, Boolean enabled, String salt, String password, Boolean locked, Boolean expired, Date expiresAt, String confirmationToken, Date passwordRequestedAt, String roles, Boolean credentialsExpired, Date credentialsExpireAt, String uid, String phonenumber, String jobtitle, String firstname, String middlename, String surname, Date deletedat, String description) {
+        User user = repository.findOne(id);
 
         /**
          * TODO: Optimize using the State Pattern
@@ -116,8 +116,7 @@ public class UserMutation implements GraphQLMutationResolver {
         if (description != null)
             user.setDescription(description);
 
-        userRepository.save(user);
+        repository.save(user);
         return user;
     }
-
 }
