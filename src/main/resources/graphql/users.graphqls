@@ -5,6 +5,7 @@
 
 type Query {
     users:[User]!
+    getUsers(query:String!):[User]!
     getUserById(id:ID!):User
 }
 

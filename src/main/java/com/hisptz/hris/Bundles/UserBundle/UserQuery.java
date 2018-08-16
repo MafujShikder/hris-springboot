@@ -19,4 +19,8 @@ public class UserQuery extends ModelQuery<User> {
     public UserQuery(ModelRepository<User> repository) {
         super(repository);
     }
+    public List<User> getUsers(String query){
+        System.console().printf("Query:" + query);
+        return this.query(query);
+    }
 }
