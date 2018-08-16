@@ -3,6 +3,9 @@ package com.hisptz.hris.Bundles.FieldOptionBundle;
 /**
  * Created by Guest on 8/10/18.
  */
+import com.hisptz.hris.Bundles.FieldBundle.Field;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -35,6 +38,11 @@ public class FieldOption{
     @LastModifiedDate
     private Date lastupdated;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "field", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Field field;
+
 
     public FieldOption() {
     }
@@ -47,6 +55,14 @@ public class FieldOption{
         this.description = description;
         this.sort = sort;
         this.hastraining = hastraining;
+    }
+
+    public Field getField() {
+        return field;
+    }
+
+    public void setField(Field field) {
+        this.field = field;
     }
 
     @Basic

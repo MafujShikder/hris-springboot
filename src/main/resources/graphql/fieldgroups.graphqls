@@ -5,6 +5,7 @@ type FieldGroup{
     description:String
     datecreated:String
     lastupdated:String
+    fields:[field]
 }
 extend type Query {
     fieldGroups:[FieldGroup]!

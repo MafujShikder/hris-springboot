@@ -1,0 +1,42 @@
+type DashboardChart{
+    id:ID
+    fieldoneId:Int
+    fieldtwoId:Int
+    userId:String
+    uid:String
+    name:String
+    description:String
+    graphtype:String
+    lowerlevels:String
+    systemwide:String
+    datecreated: String
+    lastupdated: String
+}
+
+extend type Query {
+
+    dashboardCharts:[DashboardChart]
+    getDashboardChartById(id:ID!):DashboardChart
+}
+
+extend type Mutation {
+    newDashboardChart(fieldoneId:Int!,
+    fieldtwoId:Int!,
+    userId:Int!,
+    name:String!,
+    description:String!,
+    graphtype:String!,
+    lowerlevels:String!,
+    systemwide:String!):DashboardChart!
+
+    deleteDashboardChart(id:ID!):String
+
+    updateDashboardChart(id:ID!,fieldoneId:Int,
+    fieldtwoId:Int,
+    userId:String,
+    name:String,
+    description:String,
+    graphtype:String,
+    lowerlevels:String,
+    systemwide:String):DashboardChart
+}

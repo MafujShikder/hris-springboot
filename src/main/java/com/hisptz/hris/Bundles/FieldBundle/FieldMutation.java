@@ -1,8 +1,11 @@
 package com.hisptz.hris.Bundles.FieldBundle;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import com.hisptz.hris.Bundles.FieldGroupBundle.FieldGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Set;
 
 /**
  * Created by Guest on 8/13/18.
@@ -73,8 +76,6 @@ public class FieldMutation implements GraphQLMutationResolver {
         if (skipinreport != null)
             field.setSkipinreport(skipinreport);
 
-//        if (parent_id != null)
-//            field.setParentField(fieldRepository.getOne(parent_id));
 
         fieldRepository.save(field);
         return field;
