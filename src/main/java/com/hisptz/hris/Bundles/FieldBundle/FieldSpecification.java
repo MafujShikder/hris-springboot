@@ -22,10 +22,17 @@ public class FieldSpecification implements Specification<Field> {
         if (queryCriteria.getOperation().equalsIgnoreCase("ilike")){
             return criteriaBuilder.like(
                     root.<String> get(queryCriteria.getKey()), queryCriteria.getValue().toString());
-        } else if (queryCriteria.getOperation().equalsIgnoreCase("eq")){
+        } else if (queryCriteria.getOperation().equalsIgnoreCase("eq")) {
             return criteriaBuilder.equal(
-                    root.<String> get(queryCriteria.getKey()), queryCriteria.getValue().toString());
+                    root.<String>get(queryCriteria.getKey()), queryCriteria.getValue().toString());
         }
+//        } else {
+//            try {
+//                throw new Exception("Wrong format");
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
         return null;
     }
 

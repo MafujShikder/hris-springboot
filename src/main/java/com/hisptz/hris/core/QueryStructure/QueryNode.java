@@ -10,6 +10,7 @@ public class QueryNode {
     private List<QueryCriteria> queryCriterias;
 
     public QueryNode(String query) {
+        String rootPattern = ":\\[";
 
     }
 
