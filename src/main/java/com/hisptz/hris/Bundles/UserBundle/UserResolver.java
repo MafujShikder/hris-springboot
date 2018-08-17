@@ -1,11 +1,7 @@
 package com.hisptz.hris.Bundles.UserBundle;
 
-import com.coxautodev.graphql.tools.GraphQLResolver;
-import com.hisptz.hris.Bundles.UserBundle.User;
-import com.hisptz.hris.Bundles.UserBundle.UserRepository;
-import com.hisptz.hris.core.ModelRepository;
-import com.hisptz.hris.core.ModelResolver;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.hisptz.hris.core.Model.ModelRepository;
+import com.hisptz.hris.core.Model.ModelResolver;
 import org.springframework.stereotype.Component;
 
 /**

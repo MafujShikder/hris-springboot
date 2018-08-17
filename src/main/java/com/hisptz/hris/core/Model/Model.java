@@ -1,4 +1,4 @@
-package com.hisptz.hris.core;
+package com.hisptz.hris.core.Model;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 

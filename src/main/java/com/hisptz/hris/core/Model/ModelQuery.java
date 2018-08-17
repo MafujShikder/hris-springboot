@@ -1,9 +1,8 @@
-package com.hisptz.hris.core;
+package com.hisptz.hris.core.Model;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.criteria.Predicate;
 import java.util.List;
 
 /**
@@ -30,6 +29,9 @@ public class ModelQuery<T extends Model> implements GraphQLQueryResolver {
     }
 
     public List<T> query(String query){
+        //name:ilike:ART;periodType:eq:Monthly
+//        query.split(";");
+//        Specifications.where()
         return repository.findAll();
     }
 

@@ -72,6 +72,7 @@ public class Field {
     public Field(Long id) {
         this.id = id;
     }
+
     public Field(Integer datatypeId, Integer inputtypeId, String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport) {
         this.datatypeId = datatypeId;
         this.inputtypeId = inputtypeId;

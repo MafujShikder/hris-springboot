@@ -22,6 +22,7 @@ type field{
 extend type Query {
     fields:[field]!
     getFieldById(id:ID!):field
+    queryField(where:String!):[field]
 }
 
 extend type Mutation{
