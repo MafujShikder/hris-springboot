@@ -1,6 +1,7 @@
 package com.hisptz.hris.Bundles.UserBundle;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import com.hisptz.hris.core.Model.ModelMutation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +11,7 @@ import java.util.Date;
  * Created by Guest on 8/13/18.
  */
 @Component
-public class UserMutation implements GraphQLMutationResolver {
+public class UserMutation extends ModelMutation {
     @Autowired
     protected UserRepository userRepository;
 
@@ -26,8 +27,7 @@ public class UserMutation implements GraphQLMutationResolver {
     }
 
     public Boolean deleteUser(Long id) {
-        userRepository.delete(userRepository.findOne(id));
-        return true;
+       return deleteModel(id, userRepository);
     }
 
     public User updateUser(Long id, Integer organisationunitId, String username, String usernameCanonical, String email, String emailCanonical, Boolean enabled, String salt, String password, Boolean locked, Boolean expired, Date expiresAt, String confirmationToken, Date passwordRequestedAt, String roles, Boolean credentialsExpired, Date credentialsExpireAt, String uid, String phonenumber, String jobtitle, String firstname, String middlename, String surname, Date deletedat, String description) {

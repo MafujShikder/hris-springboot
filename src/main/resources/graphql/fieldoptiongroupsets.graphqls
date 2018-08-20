@@ -8,6 +8,7 @@ type FieldOptionGroupSet{
 extend type Query {
     fieldOptionGroupSets:[FieldOptionGroupSet]!
     getFieldOptionGroupSetById(id:ID!):FieldOptionGroupSet
+    queryFieldOptionGroupSet(where:String!):[FieldOptionGroupSet]!
 }
 
 extend type Mutation {

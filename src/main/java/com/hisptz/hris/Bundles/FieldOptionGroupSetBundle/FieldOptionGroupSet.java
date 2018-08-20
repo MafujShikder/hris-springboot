@@ -1,5 +1,6 @@
 package com.hisptz.hris.Bundles.FieldOptionGroupSetBundle;
 
+import com.hisptz.hris.core.Model.Model;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "fieldoptiongroupset")
-public class FieldOptionGroupSet {
+public class FieldOptionGroupSet extends Model{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

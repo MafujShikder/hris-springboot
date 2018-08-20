@@ -2,6 +2,7 @@ package com.hisptz.hris.Bundles.FieldOptionMergeBundle;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.hisptz.hris.Bundles.FieldBundle.Field;
+import com.hisptz.hris.core.Model.ModelMutation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
  * Created by Guest on 8/16/18.
  */
 @Component
-public class FieldOptionMergeMutation implements GraphQLMutationResolver{
+public class FieldOptionMergeMutation extends ModelMutation<FieldOptionMerge>{
     @Autowired
     private FieldOptionMergeRepository fieldOptionMergeRepository;
 
@@ -22,8 +23,7 @@ public class FieldOptionMergeMutation implements GraphQLMutationResolver{
     }
 
     public Boolean deleteFieldOptionMerge(Long id){
-        fieldOptionMergeRepository.delete(fieldOptionMergeRepository.findOne(id));
-        return true;
+        return deleteModel(id, fieldOptionMergeRepository);
     }
     public FieldOptionMerge updateFieldOptionMerge(Long id, Integer fieldId, Integer mergedfieldoptionId, String uid, String removedfieldoptionvalue, String removedfieldoptionuid){
         FieldOptionMerge fieldOptionMerge = fieldOptionMergeRepository.findOne(id);

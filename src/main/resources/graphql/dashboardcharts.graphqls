@@ -17,6 +17,7 @@ extend type Query {
 
     dashboardCharts:[DashboardChart]
     getDashboardChartById(id:ID!):DashboardChart
+    queryDashboardCharts(where:String!):[DashboardChart]!
 }
 
 extend type Mutation {

@@ -12,6 +12,7 @@ type Form{
 extend type Query {
     forms:[Form]!
     getFormById(id:ID!):Form
+    queryForms(where:String!):[Form]!
 }
 
 extend type Mutation {

@@ -1,6 +1,7 @@
 package com.hisptz.hris.Bundles.FriendlyReportBundle;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import com.hisptz.hris.core.Model.ModelMutation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
  * Created by Guest on 8/16/18.
  */
 @Component
-public class FriendlyReportMutation implements GraphQLMutationResolver{
+public class FriendlyReportMutation extends ModelMutation<FriendlyReport>{
     @Autowired
     private FriendlyReportRepository friendlyReportRepository;
 
@@ -21,8 +22,7 @@ public class FriendlyReportMutation implements GraphQLMutationResolver{
     }
 
     public Boolean deleteFriendlyReport(Long id) {
-        friendlyReportRepository.delete(friendlyReportRepository.findOne(id));
-        return true;
+        return deleteModel(id, friendlyReportRepository);
     }
 
     public FriendlyReport updateFriendlyReport(Long id, Integer seriesId, String uid, String name, String description, Integer sort, Boolean ignoreskipinreport, Boolean usetargets, Boolean showdeficitsurplus, String type, String sql_statement, String javascript, String stylesheet) {

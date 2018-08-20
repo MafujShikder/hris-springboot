@@ -16,7 +16,7 @@ import java.util.List;
  * Created by Guest on 8/13/18.
  */
 @Component
-public class UserQuery extends ModelQuery<User> implements GraphQLQueryResolver{
+public class UserQuery extends ModelQuery<User>{
     @Autowired
     protected UserRepository userRepository;
     private ModelSpecification<User> spec;

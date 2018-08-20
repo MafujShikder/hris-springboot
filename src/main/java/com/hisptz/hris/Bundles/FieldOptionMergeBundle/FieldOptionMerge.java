@@ -3,6 +3,7 @@ package com.hisptz.hris.Bundles.FieldOptionMergeBundle;
 /**
  * Created by Guest on 8/16/18.
  */
+import com.hisptz.hris.core.Model.Model;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -12,7 +13,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "fieldoptionmerge")
-public class FieldOptionMerge {
+public class FieldOptionMerge extends Model {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

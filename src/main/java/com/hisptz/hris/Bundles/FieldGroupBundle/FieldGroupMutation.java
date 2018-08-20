@@ -2,6 +2,7 @@ package com.hisptz.hris.Bundles.FieldGroupBundle;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.hisptz.hris.Bundles.FieldBundle.Field;
+import com.hisptz.hris.core.Model.ModelMutation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +13,7 @@ import java.util.Set;
  */
 
 @Component
-public class FieldGroupMutation implements GraphQLMutationResolver {
+public class FieldGroupMutation extends ModelMutation<FieldGroup> {
     @Autowired
     protected FieldGroupRepository fieldGroupRepository;
 
@@ -28,8 +29,7 @@ public class FieldGroupMutation implements GraphQLMutationResolver {
     }
 
     public Boolean deleteFieldGroup(Long id) {
-        fieldGroupRepository.delete(fieldGroupRepository.findOne(id));
-        return true;
+        return deleteModel(id, fieldGroupRepository);
     }
 
     public FieldGroup updateFieldGroup(Long id, String uid, String name, String description) {

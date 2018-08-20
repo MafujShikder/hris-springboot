@@ -1,6 +1,7 @@
 package com.hisptz.hris.Bundles.ArithmeticFilterBundle;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import com.hisptz.hris.core.Model.ModelMutation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
  * Created by Guest on 8/14/18.
  */
 @Component
-public class ArithmeticFilterMutation implements GraphQLMutationResolver{
+public class ArithmeticFilterMutation extends ModelMutation<ArithmeticFilter>{
     @Autowired
     private ArithmeticFilterRepository arithmeticFilterRepository;
 
@@ -21,8 +22,7 @@ public class ArithmeticFilterMutation implements GraphQLMutationResolver{
     }
 
     public Boolean deleteArithmeticFilter(Long id){
-        arithmeticFilterRepository.delete(arithmeticFilterRepository.findOne(id));
-        return true;
+        return deleteModel(id, arithmeticFilterRepository);
     }
 
     public ArithmeticFilter updateArithmeticFilter(Long id, String uid, String name, String description, String operator, String leftexpression, String rightexpression){

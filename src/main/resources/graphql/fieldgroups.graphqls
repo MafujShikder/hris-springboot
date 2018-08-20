@@ -10,6 +10,7 @@ type FieldGroup{
 extend type Query {
     fieldGroups:[FieldGroup]!
     getFieldGroupById(id:ID!):FieldGroup
+    queryFieldGroups(where:String!):[FieldGroup]!
 }
 
 extend type Mutation {

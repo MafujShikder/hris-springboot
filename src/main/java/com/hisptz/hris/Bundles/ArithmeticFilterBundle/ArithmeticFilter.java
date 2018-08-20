@@ -3,6 +3,7 @@ package com.hisptz.hris.Bundles.ArithmeticFilterBundle;
 /**
  * Created by Guest on 8/14/18.
  */
+import com.hisptz.hris.core.Model.Model;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -14,7 +15,7 @@ import java.util.Objects;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "arithmeticfilter")
-public class ArithmeticFilter {
+public class ArithmeticFilter extends Model{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -1,6 +1,7 @@
 package com.hisptz.hris.Bundles.RelationalFilter;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import com.hisptz.hris.core.Model.ModelMutation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +11,7 @@ import java.util.Date;
  * Created by Guest on 8/14/18.
  */
 @Component
-public class RelationalFilterMutation implements GraphQLMutationResolver {
+public class RelationalFilterMutation extends ModelMutation<RelationalFilter> {
     @Autowired
     protected RelationalFilterRepository relationalFilterRepository;
 
@@ -24,9 +25,7 @@ public class RelationalFilterMutation implements GraphQLMutationResolver {
     }
 
     public Boolean deleteRelationalFilter(Long id){
-        relationalFilterRepository.delete(relationalFilterRepository.findOne(id));
-
-        return true;
+        return deleteModel(id, relationalFilterRepository);
     }
 
     public RelationalFilter updateRelationalFilter(Long id, Integer fieldId, String uid, String name, Boolean excludefieldoptions){

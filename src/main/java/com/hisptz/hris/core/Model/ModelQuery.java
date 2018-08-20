@@ -1,5 +1,6 @@
 package com.hisptz.hris.core.Model;
 
+import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.hisptz.hris.core.QueryStructure.QueryCriteria;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.Set;
 /**
  * Created by Guest on 8/20/18.
  */
-public class ModelQuery<T extends Model> {
+public class ModelQuery<T extends Model> implements GraphQLQueryResolver {
     
    public List<QueryCriteria> spliter(String where) {
 

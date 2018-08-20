@@ -11,6 +11,7 @@ type InputType{
 extend type Query {
     inputTypes:[InputType]!
     getInputTypeById(id:ID!):InputType
+    queryInputType(where:String!):[InputType]!
 }
 
 extend type Mutation {

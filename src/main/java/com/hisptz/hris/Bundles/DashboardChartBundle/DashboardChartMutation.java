@@ -1,6 +1,7 @@
 package com.hisptz.hris.Bundles.DashboardChartBundle;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import com.hisptz.hris.core.Model.ModelMutation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
  * Created by Guest on 8/16/18.
  */
 @Component
-public class DashboardChartMutation implements GraphQLMutationResolver{
+public class DashboardChartMutation extends ModelMutation<DashboardChart>{
     @Autowired
     private DashboardChartRepository dashboardChartRepository;
 
@@ -21,8 +22,7 @@ public class DashboardChartMutation implements GraphQLMutationResolver{
     }
 
     public Boolean deleteDashboardChart(Long id){
-        dashboardChartRepository.delete(dashboardChartRepository.findOne(id));
-        return true;
+       return deleteModel(id, dashboardChartRepository);
     }
 
     public DashboardChart updateDashboardChart(Long id,Integer fieldoneId, Integer fieldtwoId, Integer userId, String name, String description, String graphtype, Boolean lowerlevels, Boolean systemwide){

@@ -1,6 +1,7 @@
 package com.hisptz.hris.Bundles.ResourceBundle;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import com.hisptz.hris.core.Model.ModelMutation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +11,7 @@ import java.util.Date;
  * Created by Guest on 8/14/18.
  */
 @Component
-public class ResourceMutation implements GraphQLMutationResolver{
+public class ResourceMutation extends ModelMutation<Resource>{
     @Autowired
     ResourceRepository resourceRepository;
 
@@ -24,8 +25,7 @@ public class ResourceMutation implements GraphQLMutationResolver{
     }
 
     public Boolean deleteResource(Long id){
-        resourceRepository.delete(resourceRepository.findOne(id));
-        return true;
+        return deleteModel(id, resourceRepository);
     }
 
     public Resource updateResource(Long id, String uid, String name, String description, Boolean isgenerating, String messagelog){

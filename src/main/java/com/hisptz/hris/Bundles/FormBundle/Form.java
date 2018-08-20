@@ -3,6 +3,7 @@ package com.hisptz.hris.Bundles.FormBundle;
 /**
  * Created by Guest on 8/14/18.
  */
+import com.hisptz.hris.core.Model.Model;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -12,7 +13,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "form")
-public class Form {
+public class Form extends Model{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

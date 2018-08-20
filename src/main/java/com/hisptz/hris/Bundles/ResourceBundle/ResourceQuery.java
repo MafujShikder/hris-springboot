@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Guest on 8/14/18.
  */
 @Component
-public class ResourceQuery extends ModelQuery<Resource> implements GraphQLQueryResolver{
+public class ResourceQuery extends ModelQuery<Resource>{
     @Autowired
     ResourceRepository resourceRepository;
 

@@ -1,6 +1,7 @@
 package com.hisptz.hris.Bundles.InputTypeBundle;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import com.hisptz.hris.core.Model.ModelMutation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
  * Created by Guest on 8/14/18.
  */
 @Component
-public class InputTypeMutation implements GraphQLMutationResolver{
+public class InputTypeMutation extends ModelMutation<InputType>{
     @Autowired
     InputTypeRepository inputTypeRepository;
 
@@ -24,8 +25,7 @@ public class InputTypeMutation implements GraphQLMutationResolver{
     }
 
     public Boolean deleteInputType(Long id){
-        inputTypeRepository.delete(inputTypeRepository.findOne(id));
-        return true;
+        return deleteModel(id, inputTypeRepository);
     }
 
     public InputType updateInputType(Long id,String uid, String name, String description, String htmltag){

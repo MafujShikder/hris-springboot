@@ -10,6 +10,7 @@ type RelationalFilter{
 extend type Query {
     relationalFilters:[RelationalFilter]!
     getRelationalFilterById(id:ID!):RelationalFilter
+    queryRelationalFilters(where:String!):[RelationalFilter]!
 }
 
 extend type Mutation {

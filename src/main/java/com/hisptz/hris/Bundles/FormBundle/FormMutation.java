@@ -1,6 +1,7 @@
 package com.hisptz.hris.Bundles.FormBundle;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import com.hisptz.hris.core.Model.ModelMutation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
  * Created by Guest on 8/14/18.
  */
 @Component
-public class FormMutation implements GraphQLMutationResolver{
+public class FormMutation extends ModelMutation<Form>{
     @Autowired
     private FormRepository formRepository;
 
@@ -21,8 +22,7 @@ public class FormMutation implements GraphQLMutationResolver{
     }
 
     public Boolean deleteForm(Long id){
-        formRepository.delete(formRepository.findOne(id));
-        return true;
+        return deleteModel(id, formRepository);
     }
 
     public Form updateForm(Long id, String uid, String name, String hypertext, String title){

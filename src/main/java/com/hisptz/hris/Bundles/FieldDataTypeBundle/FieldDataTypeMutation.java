@@ -1,6 +1,7 @@
 package com.hisptz.hris.Bundles.FieldDataTypeBundle;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import com.hisptz.hris.core.Model.ModelMutation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
  * Created by Guest on 8/16/18.
  */
 @Component
-public class FieldDataTypeMutation implements GraphQLMutationResolver{
+public class FieldDataTypeMutation extends ModelMutation<FieldDataType>{
     @Autowired
     private FieldDataTypeRepository fieldDataTypeRepository;
 
@@ -21,8 +22,7 @@ public class FieldDataTypeMutation implements GraphQLMutationResolver{
     }
 
     public Boolean deleteFieldDataType(Long id){
-        fieldDataTypeRepository.delete(fieldDataTypeRepository.findOne(id));
-        return true;
+        return deleteModel(id, fieldDataTypeRepository);
     }
 
     public FieldDataType updateFieldDataType(Long id, String uid, String name, String description){

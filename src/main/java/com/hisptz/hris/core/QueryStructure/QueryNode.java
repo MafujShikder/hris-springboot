@@ -14,5 +14,19 @@ public class QueryNode {
 
     }
 
+    public String getJoinOperation() {
+        return joinOperation;
+    }
 
+    public void setJoinOperation(String joinOperation) {
+        this.joinOperation = joinOperation;
+    }
+
+    public List<QueryCriteria> getQueryCriterias() {
+        return queryCriterias;
+    }
+
+    public void setQueryCriterias(List<QueryCriteria> queryCriterias) {
+        this.queryCriterias = queryCriterias;
+    }
 }

@@ -11,6 +11,7 @@ type FormSection{
 extend type Query {
     formSections:[FormSection]
     getFormSectionById(id:ID!):FormSection
+    queryFormSections(where:String!):[FormSection]!
 }
 
 extend type Mutation {

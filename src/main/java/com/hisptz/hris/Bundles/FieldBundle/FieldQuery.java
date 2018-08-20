@@ -17,7 +17,7 @@ import java.util.Set;
  * Created by Guest on 8/13/18.
  */
 @Component
-public class FieldQuery extends ModelQuery<Field> implements GraphQLQueryResolver {
+public class FieldQuery extends ModelQuery<Field>{
     @Autowired
     protected FieldRepository fieldRepository;
     private ModelSpecification<Field> spec;

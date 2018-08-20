@@ -4,6 +4,7 @@ package com.hisptz.hris.Bundles.FieldGroupBundle;
  * Created by Guest on 8/10/18.
  */
 import com.hisptz.hris.Bundles.FieldBundle.Field;
+import com.hisptz.hris.core.Model.Model;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -14,7 +15,7 @@ import java.util.*;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "fieldgroup")
-public class FieldGroup {
+public class FieldGroup extends Model{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

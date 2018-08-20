@@ -2,6 +2,7 @@ package com.hisptz.hris.Bundles.FormSectionBundle;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.hisptz.hris.Bundles.FormSectionBundle.FormSection;
+import com.hisptz.hris.core.Model.ModelMutation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
  * Created by Guest on 8/14/18.
  */
 @Component
-public class FormSectionMutation implements GraphQLMutationResolver {
+public class FormSectionMutation extends ModelMutation<FormSection> {
     @Autowired
     private FormSectionRepository formSectionRepository;
 
@@ -24,8 +25,7 @@ public class FormSectionMutation implements GraphQLMutationResolver {
     }
 
     public Boolean deleteFormSection(Long id){
-        formSectionRepository.delete(formSectionRepository.findOne(id));
-        return true;
+        return deleteModel(id, formSectionRepository);
     }
 
     public FormSection updateFormSection(Long id,Integer formId,String uid, String name, String description){

@@ -10,6 +10,7 @@ type FieldGroupSet{
 extend type Query {
     fieldGroupSets:[FieldGroupSet]!
     getFieldGroupSetsById(id:ID!):FieldGroupSet
+    queryFieldGroupSets(where:String):[FieldGroupSet]!
 }
 
 extend type Mutation {

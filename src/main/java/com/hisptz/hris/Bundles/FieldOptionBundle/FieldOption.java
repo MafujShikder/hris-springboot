@@ -4,6 +4,7 @@ package com.hisptz.hris.Bundles.FieldOptionBundle;
  * Created by Guest on 8/10/18.
  */
 import com.hisptz.hris.Bundles.FieldBundle.Field;
+import com.hisptz.hris.core.Model.Model;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.annotation.CreatedDate;
@@ -17,7 +18,7 @@ import java.util.Objects;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "fieldoption")
-public class FieldOption{
+public class FieldOption extends Model {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

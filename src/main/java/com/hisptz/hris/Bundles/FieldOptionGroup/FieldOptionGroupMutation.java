@@ -1,6 +1,7 @@
 package com.hisptz.hris.Bundles.FieldOptionGroup;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import com.hisptz.hris.core.Model.ModelMutation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
  * Created by Guest on 8/13/18.
  */
 @Component
-public class FieldOptionGroupMutation implements GraphQLMutationResolver {
+public class FieldOptionGroupMutation extends ModelMutation<FieldOptionGroup> {
     @Autowired
     protected FieldOptionGroupRepository fieldOptionGroupRepository;
 
@@ -24,8 +25,7 @@ public class FieldOptionGroupMutation implements GraphQLMutationResolver {
     }
 
     public Boolean deleteFieldOptionGroup(Long id){
-        fieldOptionGroupRepository.delete(fieldOptionGroupRepository.findOne(id));
-        return true;
+        return deleteModel(id, fieldOptionGroupRepository);
     }
 
     public FieldOptionGroup updateFieldOptionGroup(Long id, String uid, String name, String description, String operator, Integer fieldId){

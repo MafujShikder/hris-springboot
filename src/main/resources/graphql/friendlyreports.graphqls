@@ -18,6 +18,7 @@ type FriendlyReport{
 extend type Query {
     friendlyReports:[FriendlyReport]!
     getFriendlyReportById(id:ID!):FriendlyReport
+    queryFriendlyReport(where:String!):[FriendlyReport]!
 }
 
 extend type Mutation {

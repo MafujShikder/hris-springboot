@@ -3,6 +3,7 @@ package com.hisptz.hris.Bundles.FieldOptionBundle;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.hisptz.hris.Bundles.FieldBundle.Field;
 import com.hisptz.hris.Bundles.FieldBundle.FieldRepository;
+import com.hisptz.hris.core.Model.ModelMutation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Component;
  * Created by Guest on 8/13/18.
  */
 @Component
-public class FieldOptionMutation implements GraphQLMutationResolver {
+public class FieldOptionMutation extends ModelMutation<FieldOption> {
     @Autowired
     protected FieldOptionRepository fieldOptionRepository;
 
@@ -31,8 +32,7 @@ public class FieldOptionMutation implements GraphQLMutationResolver {
     }
 
     public Boolean deleteFieldOption(Long id) {
-        fieldOptionRepository.delete(fieldOptionRepository.findOne(id));
-        return true;
+        return deleteModel(id, fieldOptionRepository);
     }
 
     public FieldOption updateFieldOption(Long id, Integer fieldId, String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining) {

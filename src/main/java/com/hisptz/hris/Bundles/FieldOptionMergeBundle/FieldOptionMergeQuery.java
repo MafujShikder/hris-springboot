@@ -2,6 +2,8 @@ package com.hisptz.hris.Bundles.FieldOptionMergeBundle;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOption;
+import com.hisptz.hris.core.Model.ModelQuery;
+import com.hisptz.hris.core.Model.ModelSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,9 +13,10 @@ import java.util.List;
  * Created by Guest on 8/16/18.
  */
 @Component
-public class FieldOptionMergeQuery implements GraphQLQueryResolver {
+public class FieldOptionMergeQuery extends ModelQuery<FieldOptionMerge> {
     @Autowired
     private FieldOptionMergeRepository fieldOptionMergeRepository;
+    private ModelSpecification<FieldOptionMerge> spec;
 
     public FieldOptionMergeQuery(FieldOptionMergeRepository fieldOptionMergeRepository) {
         this.fieldOptionMergeRepository = fieldOptionMergeRepository;
@@ -28,4 +31,7 @@ public class FieldOptionMergeQuery implements GraphQLQueryResolver {
         return fieldOptionMergeRepository.findOne(id);
     }
 
+    public List<FieldOptionMerge> queryFieldOptionMerge(String where){
+        return query(where, spec, fieldOptionMergeRepository);
+    }
 }
