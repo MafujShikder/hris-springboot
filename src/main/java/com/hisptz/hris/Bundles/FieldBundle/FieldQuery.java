@@ -53,7 +53,8 @@ public class FieldQuery implements GraphQLQueryResolver {
             System.out.println(queryCriteria);
             FieldSpecification spec =
                     new FieldSpecification(new QueryCriteria(queryCriteria.getKey(),queryCriteria.getOperation(),queryCriteria.getValue()));
-            temps.add(fieldRepository.findAll(spec)); // add the results of each query into the a list of lists
+           // temps.add(fieldRepository.findAll(spec)); // add the results of each query into the a list of lists
+            tempResults.addAll(fieldRepository.findAll());
         }
 
         for (List temp: temps){
