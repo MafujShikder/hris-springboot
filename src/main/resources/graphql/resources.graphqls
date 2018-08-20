@@ -13,6 +13,7 @@ type Resource{
 extend type Query {
     resources:[Resource]!
     getResourceById(id:ID!):Resource
+    queryResources(where:String!):[Resource]!
 }
 
 extend type Mutation {
