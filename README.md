@@ -68,7 +68,78 @@ Instead of using the graphiql interface the same responce above can be initiated
         "query":"{users{id, username, email}}"
     }
 
+The following are queries to achieve differently desired responces:
 
+    mutation{
+ 
+      newFieldDataType(name:"FieldOne",description:"SDfaf",uid:"343"){ # Create a new FieldDataType record
+        name
+        id
+        description
+      }
+
+      newInputType(name:"InputOne",uid:"2323",htmltag:"23143", description:"This"){ # Create a new InputType record
+        name
+        id
+        description
+      }
+
+      newFormSection(description:"fegsfgs",formId:993,uid:"343",name:"adfa"){  # Create a new FormSection record
+         description
+         id
+      }
+
+       newFieldGroup(description:"This is the test "){
+        id
+        description
+        fields{
+          fieldDataType{
+            name
+            description
+          }
+        }
+      }
+
+      newField(datatypeId:3, compulsory:"true", fieldDataType:1, inputType:1,fieldGroup:1){ # Create a new Field record 
+        uid
+        fieldGroups{
+          fields{
+            caption
+            compulsory
+          }
+        }
+        fieldDataType{
+          name
+          description
+        }
+       caption
+        inputType{
+          name
+        }
+      }
+
+
+
+      updateField(id:1, compulsory:"false", uid:"Hey Eliah is me"){  # update the field 
+        compulsory
+        uid
+      }
+
+
+      updateFieldGroup(id:1, field:1){  # update the field group and add a new field 
+        description
+        fields{
+          uid
+          compulsory
+          fieldDataType{
+            name
+            description
+          }
+        }
+      }
+
+
+    }
 
 
 
