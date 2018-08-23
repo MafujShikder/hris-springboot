@@ -3,7 +3,10 @@ package com.hisptz.hris.Bundles.FieldOptionGroup;
 /**
  * Created by Guest on 8/10/18.
  */
+import com.hisptz.hris.Bundles.FieldBundle.Field;
 import com.hisptz.hris.core.Model.Model;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -35,16 +38,29 @@ public class FieldOptionGroup extends Model{
     
     private String operator;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "field", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Field field;
 
     public FieldOptionGroup() {
     }
 
-    public FieldOptionGroup(Integer fieldId, String uid, String name, String description, String operator) {
+    public FieldOptionGroup(Integer fieldId, String uid, String name, String description, String operator, Long field) {
         this.fieldId = fieldId;
         this.uid = uid;
         this.name = name;
         this.description = description;
         this.operator = operator;
+        this.field = new Field(field);
+    }
+
+    public Field getField() {
+        return field;
+    }
+
+    public void setField(Long id) {
+        this.field = new Field(id);
     }
 
     @Basic

@@ -2,6 +2,7 @@ package com.hisptz.hris.Bundles.FieldBundle;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.hisptz.hris.Bundles.FieldGroupBundle.FieldGroup;
+import com.hisptz.hris.Bundles.FieldGroupBundle.FieldGroupRepository;
 import com.hisptz.hris.core.Model.ModelMutation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,14 +17,20 @@ public class FieldMutation extends ModelMutation<Field> {
     @Autowired
     protected FieldRepository fieldRepository;
 
-    public FieldMutation(FieldRepository fieldRepository) {
+    private FieldGroupRepository fieldGroupRepository;
+
+    public FieldMutation(FieldRepository fieldRepository, FieldGroupRepository fieldGroupRepository) {
         this.fieldRepository = fieldRepository;
+        this.fieldGroupRepository = fieldGroupRepository;
     }
 
-    public Field newField(Integer datatypeId, Integer inputtypeId, String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport) {
-        Field field = new Field(datatypeId, inputtypeId, uid, name, caption, compulsory, isunique, iscalculated, description, calculatedexpression, hashistory, hastarget, fieldrelation, skipinreport);
+    public Field newField(Integer datatypeId, Integer inputtypeId, String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport, Long inputType, Long dataType, Long fieldGroup) {
+        Field field = new Field(datatypeId, inputtypeId, uid, name, caption, compulsory, isunique, iscalculated, description, calculatedexpression, hashistory, hastarget, fieldrelation, skipinreport, inputType, dataType);
 
-        fieldRepository.save(field);
+        if (fieldGroup != null)
+            field.getFieldGroups().add(fieldGroupRepository.findOne(fieldGroup));
+
+        fieldRepository.saveAndFlush(field);
         return field;
     }
 
@@ -31,7 +38,7 @@ public class FieldMutation extends ModelMutation<Field> {
        return deleteModel(id, fieldRepository);
     }
 
-    public Field updateField(Long id, Integer datatypeId, Integer inputtypeId, String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport) {
+    public Field updateField(Long id, Integer datatypeId, Integer inputtypeId, String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport, Long inputType, Long dataType, Long fieldGroup) {
         Field field = fieldRepository.findOne(id);
 
         if (datatypeId != null)
@@ -76,6 +83,14 @@ public class FieldMutation extends ModelMutation<Field> {
         if (skipinreport != null)
             field.setSkipinreport(skipinreport);
 
+        if (inputType != null)
+            field.setInputType(inputType);
+
+        if (dataType != null)
+            field.setFieldDataType(dataType);
+
+        if (fieldGroup != null)
+            field.getFieldGroups().add(fieldGroupRepository.findOne(fieldGroup));
 
         fieldRepository.save(field);
         return field;

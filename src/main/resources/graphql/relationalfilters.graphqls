@@ -6,6 +6,7 @@ type RelationalFilter{
     excludefieldoptions: String
     datecreated: String
     lastupdated: String
+    field:field
 }
 extend type Query {
     relationalFilters:[RelationalFilter]!
@@ -14,9 +15,9 @@ extend type Query {
 }
 
 extend type Mutation {
-    newRelationalFilter(fieldId:String!, uid:String!, name: String!, excludefieldoptions: String!):RelationalFilter!
+    newRelationalFilter(fieldId:String!, uid:String!, name: String!, excludefieldoptions: String!, field:ID!):RelationalFilter!
 
     deleteRelationalFilter(id:ID!):String
 
-    updateRelationalFilter(id:ID!, fieldId:String, uid:String, name: String ,excludefieldoptions: String):RelationalFilter!
+    updateRelationalFilter(id:ID!, fieldId:String, uid:String, name: String ,excludefieldoptions: String, field:ID):RelationalFilter!
 }

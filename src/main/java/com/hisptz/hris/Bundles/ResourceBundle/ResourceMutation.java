@@ -21,7 +21,10 @@ public class ResourceMutation extends ModelMutation<Resource>{
 
 
     public Resource newResource(String uid, String name, String description, Boolean isgenerating, String messagelog){
-        return new Resource(uid, name, description, isgenerating, messagelog);
+        Resource resource =  new Resource(uid, name, description, isgenerating, messagelog);
+
+        resourceRepository.save(resource);
+        return resource;
     }
 
     public Boolean deleteResource(Long id){

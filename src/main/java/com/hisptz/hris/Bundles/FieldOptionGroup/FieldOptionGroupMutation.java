@@ -17,8 +17,8 @@ public class FieldOptionGroupMutation extends ModelMutation<FieldOptionGroup> {
         this.fieldOptionGroupRepository = fieldOptionGroupRepository;
     }
 
-    public FieldOptionGroup newFieldOptionGroup(String uid, String name, String description, Integer fieldId, String operator) {
-        FieldOptionGroup fieldOptionGroup = new FieldOptionGroup(fieldId,uid, name, description, operator);
+    public FieldOptionGroup newFieldOptionGroup(String uid, String name, String description, Integer fieldId, String operator, Long field) {
+        FieldOptionGroup fieldOptionGroup = new FieldOptionGroup(fieldId,uid, name, description, operator, field);
 
         fieldOptionGroupRepository.save(fieldOptionGroup);
         return fieldOptionGroup;
@@ -28,7 +28,7 @@ public class FieldOptionGroupMutation extends ModelMutation<FieldOptionGroup> {
         return deleteModel(id, fieldOptionGroupRepository);
     }
 
-    public FieldOptionGroup updateFieldOptionGroup(Long id, String uid, String name, String description, String operator, Integer fieldId){
+    public FieldOptionGroup updateFieldOptionGroup(Long id, String uid, String name, String description, String operator, Integer fieldId, Long field){
         FieldOptionGroup fieldOptionGroup = fieldOptionGroupRepository.findOne(id);
 
         if (uid != null)
@@ -45,6 +45,9 @@ public class FieldOptionGroupMutation extends ModelMutation<FieldOptionGroup> {
 
         if (operator != null)
             fieldOptionGroup.setOperator(operator);
+
+        if (field != null)
+            fieldOptionGroup.setField(field);
 
         fieldOptionGroupRepository.save(fieldOptionGroup);
         return fieldOptionGroup;

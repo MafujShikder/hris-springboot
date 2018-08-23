@@ -13,7 +13,7 @@ import java.util.Set;
  */
 public class ModelQuery<T extends Model> implements GraphQLQueryResolver {
     
-   public List<QueryCriteria> spliter(String where) {
+   public List<QueryCriteria> splitter(String where) {
 
        List<QueryCriteria> queryCriteriaList = new ArrayList<>();
        String[] queries = where.split("&");  // get all component queries eg id:ilike:1
@@ -34,7 +34,7 @@ public class ModelQuery<T extends Model> implements GraphQLQueryResolver {
        Set<T> tempResults = new HashSet<>(); // maintain only unique items
        List<T> results = new ArrayList<>();
        List<List<T>> temps = new ArrayList<>();
-       List<QueryCriteria> queryCriteriaList = spliter(where);
+       List<QueryCriteria> queryCriteriaList = splitter(where);
 
        for (QueryCriteria queryCriteria : queryCriteriaList){
            System.out.println(queryCriteria);

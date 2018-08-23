@@ -34,23 +34,25 @@ public class FieldGroup extends Model{
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
-                    CascadeType.PERSIST,
                     CascadeType.MERGE
             },
             mappedBy = "fieldGroups")
-    private List<Field> fields = new ArrayList<>();
+    private Set<Field> fields = new HashSet<>();
 
-    public List<Field> getFields() {
+    public Set<Field> getFields() {
         return fields;
     }
 
-    public void setFields(List<Field> fields) {
+    public void setFields(Set<Field> fields) {
         this.fields = fields;
     }
 
     public FieldGroup() {
     }
 
+    public FieldGroup(Long id) {
+        this.id = id;
+    }
     public FieldGroup(String uid, String name, String description) {
         this.uid = uid;
         this.name = name;

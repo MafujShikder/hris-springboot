@@ -14,9 +14,9 @@ extend type Query {
 }
 
 extend type Mutation {
-    newFieldGroup( uid:String!, name:String!, description:String!):FieldGroup!
+    newFieldGroup( uid:String, name:String, description:String, field:ID):FieldGroup!
 
     deleteFieldGroup(id:ID!):String
 
-    updateFieldGroup(id:ID!, uid:String, name:String, description:String):FieldGroup!
+    updateFieldGroup(id:ID!, uid:String, name:String, description:String, field:ID):FieldGroup!
 }

@@ -5,7 +5,9 @@ package com.hisptz.hris.Bundles.FieldBundle;
  */
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.hisptz.hris.Bundles.FieldDataTypeBundle.FieldDataType;
 import com.hisptz.hris.Bundles.FieldGroupBundle.FieldGroup;
+import com.hisptz.hris.Bundles.InputTypeBundle.InputType;
 import com.hisptz.hris.core.Model.Model;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -43,21 +45,23 @@ public class Field extends Model{
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
-                    CascadeType.PERSIST,
                     CascadeType.MERGE
             })
     @JoinTable(name = "FieldGroupFieldMembers",
             joinColumns = { @JoinColumn(name = "field_id") },
             inverseJoinColumns = { @JoinColumn(name = "fieldgroup_id") })
-    private List<FieldGroup> fieldGroups = new ArrayList<>();
+    private Set<FieldGroup> fieldGroups = new HashSet<>();;
 
-    public List<FieldGroup> getFieldGroups() {
-        return fieldGroups;
-    }
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "inputtype", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private InputType inputType;
 
-    public void setFieldGroups(List<FieldGroup> fieldGroups) {
-        this.fieldGroups = fieldGroups;
-    }
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "field_datatype", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private FieldDataType fieldDataType;
+
 
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
@@ -67,6 +71,14 @@ public class Field extends Model{
     @LastModifiedDate
     private Date lastupdated;
 
+    public Set<FieldGroup> getFieldGroups() {
+        return fieldGroups;
+    }
+
+    public void setFieldGroups(Set<FieldGroup> fieldGroups) {
+        this.fieldGroups = fieldGroups;
+    }
+
     public Field() {
     }
 
@@ -74,7 +86,7 @@ public class Field extends Model{
         this.id = id;
     }
 
-    public Field(Integer datatypeId, Integer inputtypeId, String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport) {
+    public Field(Integer datatypeId, Integer inputtypeId, String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport, Long inputTypeId, Long fieldDataTypeId) {
         this.datatypeId = datatypeId;
         this.inputtypeId = inputtypeId;
         this.uid = uid;
@@ -89,6 +101,24 @@ public class Field extends Model{
         this.hastarget = hastarget;
         this.fieldrelation = fieldrelation;
         this.skipinreport = skipinreport;
+        this.inputType = new InputType(inputTypeId);
+        this.fieldDataType = new FieldDataType(fieldDataTypeId);
+    }
+
+    public InputType getInputType() {
+        return inputType;
+    }
+
+    public void setInputType(Long id) {
+        this.inputType = new InputType(id);
+    }
+
+    public FieldDataType getFieldDataType() {
+        return fieldDataType;
+    }
+
+    public void setFieldDataType(Long id) {
+        this.fieldDataType = new FieldDataType(id);
     }
 
     @Basic

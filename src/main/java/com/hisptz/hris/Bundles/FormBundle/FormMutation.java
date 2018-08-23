@@ -18,7 +18,10 @@ public class FormMutation extends ModelMutation<Form>{
     }
 
     public Form newForm(String uid, String name, String hypertext, String title){
-        return new Form(uid, name, hypertext, title);
+        Form form = new Form(uid, name, hypertext, title);
+
+        formRepository.save(form);
+        return form;
     }
 
     public Boolean deleteForm(Long id){

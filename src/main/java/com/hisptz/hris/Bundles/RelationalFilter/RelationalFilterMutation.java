@@ -20,15 +20,18 @@ public class RelationalFilterMutation extends ModelMutation<RelationalFilter> {
     }
 
 
-    public RelationalFilter newRelationalFilter(Integer fieldId, String uid, String name, Boolean excludefieldoptions){
-       return new RelationalFilter(fieldId, uid, name, excludefieldoptions);
+    public RelationalFilter newRelationalFilter(Integer fieldId, String uid, String name, Boolean excludefieldoptions, Long field){
+        RelationalFilter relationalFilter = new RelationalFilter(fieldId, uid, name, excludefieldoptions, field);
+
+        relationalFilterRepository.save(relationalFilter);
+        return relationalFilter;
     }
 
     public Boolean deleteRelationalFilter(Long id){
         return deleteModel(id, relationalFilterRepository);
     }
 
-    public RelationalFilter updateRelationalFilter(Long id, Integer fieldId, String uid, String name, Boolean excludefieldoptions){
+    public RelationalFilter updateRelationalFilter(Long id, Integer fieldId, String uid, String name, Boolean excludefieldoptions, Long field){
         RelationalFilter relationalFilter = relationalFilterRepository.findOne(id);
 
         if (fieldId != null)
@@ -42,6 +45,9 @@ public class RelationalFilterMutation extends ModelMutation<RelationalFilter> {
 
         if (excludefieldoptions != null)
             relationalFilter.setExcludefieldoptions(excludefieldoptions);
+
+        if (field != null)
+            relationalFilter.setField(field);
 
         return relationalFilter;
     }

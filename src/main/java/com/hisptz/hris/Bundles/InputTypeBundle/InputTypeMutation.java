@@ -21,6 +21,7 @@ public class InputTypeMutation extends ModelMutation<InputType>{
     public InputType newInputType(String uid, String name, String description, String htmltag){
         InputType inputType = new InputType(uid, name, description, htmltag);
 
+        inputTypeRepository.save(inputType);
         return inputType;
     }
 

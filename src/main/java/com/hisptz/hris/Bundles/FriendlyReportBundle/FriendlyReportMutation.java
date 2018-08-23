@@ -18,7 +18,10 @@ public class FriendlyReportMutation extends ModelMutation<FriendlyReport>{
     }
 
     public FriendlyReport newFriendlyReport(Integer seriesId, String uid, String name, String description, Integer sort, Boolean ignoreskipinreport, Boolean usetargets, Boolean showdeficitsurplus, String type, String sql_statement, String javascript, String stylesheet) {
-        return new FriendlyReport(seriesId, uid, name, description, sort, ignoreskipinreport, usetargets, showdeficitsurplus, type, sql_statement, javascript, stylesheet);
+        FriendlyReport friendlyReport = new FriendlyReport(seriesId, uid, name, description, sort, ignoreskipinreport, usetargets, showdeficitsurplus, type, sql_statement, javascript, stylesheet);
+
+        friendlyReportRepository.save(friendlyReport);
+        return friendlyReport;
     }
 
     public Boolean deleteFriendlyReport(Long id) {

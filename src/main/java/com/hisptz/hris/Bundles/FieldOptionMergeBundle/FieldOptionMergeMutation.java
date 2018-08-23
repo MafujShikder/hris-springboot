@@ -19,7 +19,10 @@ public class FieldOptionMergeMutation extends ModelMutation<FieldOptionMerge>{
     }
 
     public FieldOptionMerge newFieldOptionMerge(Integer fieldId, Integer mergedfieldoptionId, String uid, String removedfieldoptionvalue, String removedfieldoptionuid){
-        return new FieldOptionMerge(fieldId, mergedfieldoptionId, uid,removedfieldoptionvalue,removedfieldoptionuid);
+        FieldOptionMerge fieldOptionMerge = new FieldOptionMerge(fieldId, mergedfieldoptionId, uid,removedfieldoptionvalue,removedfieldoptionuid);
+
+        fieldOptionMergeRepository.save(fieldOptionMerge);
+        return fieldOptionMerge;
     }
 
     public Boolean deleteFieldOptionMerge(Long id){

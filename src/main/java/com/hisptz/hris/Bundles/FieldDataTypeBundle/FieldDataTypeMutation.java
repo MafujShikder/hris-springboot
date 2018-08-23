@@ -18,7 +18,10 @@ public class FieldDataTypeMutation extends ModelMutation<FieldDataType>{
     }
 
     public FieldDataType newFieldDataType(String uid, String name, String description){
-        return new FieldDataType(uid, name, description);
+        FieldDataType fieldDataType =  new FieldDataType(uid, name, description);
+
+        fieldDataTypeRepository.save(fieldDataType);
+        return fieldDataType;
     }
 
     public Boolean deleteFieldDataType(Long id){

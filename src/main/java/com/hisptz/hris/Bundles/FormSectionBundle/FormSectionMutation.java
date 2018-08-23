@@ -21,6 +21,7 @@ public class FormSectionMutation extends ModelMutation<FormSection> {
     public FormSection newFormSection(Integer formId, String uid, String name, String description){
         FormSection formSection = new FormSection(formId, uid, name, description);
 
+        formSectionRepository.save(formSection);
         return formSection;
     }
 

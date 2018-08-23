@@ -18,7 +18,10 @@ public class ArithmeticFilterMutation extends ModelMutation<ArithmeticFilter>{
     }
 
     public ArithmeticFilter newArithmeticFilter(String uid, String name, String description, String operator, String leftexpression, String rightexpression){
-        return new ArithmeticFilter(uid, name, description, operator, leftexpression, rightexpression);
+        ArithmeticFilter arithmeticFilter = new  ArithmeticFilter(uid, name, description, operator, leftexpression, rightexpression);
+
+        arithmeticFilterRepository.save(arithmeticFilter);
+        return arithmeticFilter;
     }
 
     public Boolean deleteArithmeticFilter(Long id){

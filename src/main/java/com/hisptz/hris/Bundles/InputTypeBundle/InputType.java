@@ -34,6 +34,9 @@ public class InputType extends Model{
 
     public InputType() {
     }
+    public InputType(Long id) {
+        this.id = id;
+    }
 
     public InputType(String uid, String name, String description, String htmltag) {
         this.uid = uid;

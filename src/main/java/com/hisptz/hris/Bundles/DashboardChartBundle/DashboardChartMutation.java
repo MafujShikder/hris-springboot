@@ -18,7 +18,10 @@ public class DashboardChartMutation extends ModelMutation<DashboardChart>{
     }
 
     public DashboardChart newDashboardChart(Integer fieldoneId, Integer fieldtwoId, Integer userId, String name, String description, String graphtype, Boolean lowerlevels, Boolean systemwide){
-        return new DashboardChart(fieldoneId, fieldtwoId, userId, name, description, graphtype, lowerlevels,systemwide);
+        DashboardChart dashboardChart =  new DashboardChart(fieldoneId, fieldtwoId, userId, name, description, graphtype, lowerlevels,systemwide);
+
+        dashboardChartRepository.save(dashboardChart);
+        return dashboardChart;
     }
 
     public Boolean deleteDashboardChart(Long id){
