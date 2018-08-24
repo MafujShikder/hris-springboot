@@ -16,9 +16,6 @@ import java.util.Objects;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "field_datatype")
 public class FieldDataType  extends Model {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String uid;
     private String name;
     private String description;
@@ -42,16 +39,6 @@ public class FieldDataType  extends Model {
         this.uid = uid;
         this.name = name;
         this.description = description;
-    }
-
-    @Basic
-    @Column(name = "id")
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     @Basic

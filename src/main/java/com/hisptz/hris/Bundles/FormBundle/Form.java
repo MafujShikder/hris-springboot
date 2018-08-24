@@ -14,10 +14,6 @@ import java.util.Objects;
 @Entity
 @Table(name = "form")
 public class Form extends Model{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     private String uid;
     private String name;
     private String hypertext;
@@ -40,16 +36,6 @@ public class Form extends Model{
         this.name = name;
         this.hypertext = hypertext;
         this.title = title;
-    }
-
-    @Basic
-    @Column(name = "id")
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     @Basic

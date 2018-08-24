@@ -15,9 +15,7 @@ import java.util.Date;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "users")
 public class User extends Model {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
     private Integer organisationunitId;
     private String username;
     private String usernameCanonical;
@@ -93,15 +91,7 @@ public class User extends Model {
         this.description = description;
     }
 
-    @Basic
-    @Column(name = "id")
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     @Basic
     @Column(name = "organisationunit_id")

@@ -19,9 +19,6 @@ import java.util.Objects;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "relationalfilter")
 public class RelationalFilter extends Model {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     private Integer fieldId;
     private String uid;
@@ -63,16 +60,6 @@ public class RelationalFilter extends Model {
 
     public Boolean getExcludefieldoptions() {
         return excludefieldoptions;
-    }
-
-    @Basic
-    @Column(name = "id")
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     @Basic
@@ -135,23 +122,4 @@ public class RelationalFilter extends Model {
         this.lastupdated = lastupdated;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RelationalFilter that = (RelationalFilter) o;
-        return id == that.id &&
-                excludefieldoptions == that.excludefieldoptions &&
-                Objects.equals(fieldId, that.fieldId) &&
-                Objects.equals(uid, that.uid) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(datecreated, that.datecreated) &&
-                Objects.equals(lastupdated, that.lastupdated);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, fieldId, uid, name, excludefieldoptions, datecreated, lastupdated);
-    }
 }

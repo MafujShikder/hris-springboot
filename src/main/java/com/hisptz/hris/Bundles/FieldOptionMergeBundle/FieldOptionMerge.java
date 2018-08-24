@@ -14,10 +14,6 @@ import java.util.Objects;
 @Entity
 @Table(name = "fieldoptionmerge")
 public class FieldOptionMerge extends Model {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
     private Integer fieldId;
     private Integer mergedfieldoptionId;
     private String uid;
@@ -45,16 +41,6 @@ public class FieldOptionMerge extends Model {
         this.uid = uid;
         this.removedfieldoptionvalue = removedfieldoptionvalue;
         this.removedfieldoptionuid = removedfieldoptionuid;
-    }
-
-    @Basic
-    @Column(name = "id")
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     @Basic

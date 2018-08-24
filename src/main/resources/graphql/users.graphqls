@@ -1,16 +1,15 @@
 type Query {
-    users:[User]!
     getUserById(id:ID!):User
-    queryUsers(where:String!):[User]!
+    Users(where:String, orderBy:String):[User]!
 }
 
 type Mutation{
     # newUser(organisationunitId:Int!, username:String!):User!
-    newUser(organisationunitId:Int!, username:String!, usernameCanonical:String!, email:String!,emailCanonical:String!,
-    enabled:String!, salt:String!, password:String!, locked:Int!,expired:Int!, expiresAt:String!, confirmationToken:String!,
-    passwordRequestedAt:String!,roles:String!, credentialsExpired:Int!, credentialsExpireAt:String!, uid:String!,
-    phonenumber:String!, jobtitle:String!, firstname:String!, middlename:String!, surname:String!, deletedat:String!,
-    description:String!):User!
+    newUser(organisationunitId:Int, username:String, usernameCanonical:String, email:String,emailCanonical:String,
+    enabled:String, salt:String, password:String, locked:Int,expired:Int, expiresAt:String, confirmationToken:String,
+    passwordRequestedAt:String,roles:String, credentialsExpired:Int, credentialsExpireAt:String, uid:String,
+    phonenumber:String, jobtitle:String, firstname:String, middlename:String, surname:String, deletedat:String,
+    description:String):User!
 
     deleteUser(id:ID!):String
 

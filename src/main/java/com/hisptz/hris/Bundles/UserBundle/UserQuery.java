@@ -26,16 +26,12 @@ public class UserQuery extends ModelQuery<User>{
         this.userRepository = userRepository;
     }
 
-    public List<User> users(){
-        return userRepository.findAll();
-    }
-
     public User getUserById(Long id){
         return userRepository.findOne(id);
     }
 
-    public List<User> queryUsers(String where){
-        return query(where, spec, userRepository);
+    public List<User> Users(String where, String orderBy){
+        return query2(where, spec, userRepository, orderBy);
     }
 
 }

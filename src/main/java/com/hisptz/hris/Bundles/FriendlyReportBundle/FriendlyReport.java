@@ -16,10 +16,6 @@ import java.util.Objects;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "friendlyreport")
 public class FriendlyReport extends Model{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     private Integer seriesId;
     private String uid;
     private String name;
@@ -62,16 +58,6 @@ public class FriendlyReport extends Model{
         this.sql_statement = sql_statement;
         this.javascript = javascript;
         this.stylesheet = stylesheet;
-    }
-
-    @Basic
-    @Column(name = "id")
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     @Basic

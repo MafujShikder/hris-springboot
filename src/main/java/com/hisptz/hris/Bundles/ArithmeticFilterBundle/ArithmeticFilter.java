@@ -16,10 +16,6 @@ import java.util.Objects;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "arithmeticfilter")
 public class ArithmeticFilter extends Model{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
     private String uid;
     private String name;
     private String description;
@@ -46,16 +42,6 @@ public class ArithmeticFilter extends Model{
         this.operator = operator;
         this.leftexpression = leftexpression;
         this.rightexpression = rightexpression;
-    }
-
-    @Basic
-    @Column(name = "id")
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     @Basic

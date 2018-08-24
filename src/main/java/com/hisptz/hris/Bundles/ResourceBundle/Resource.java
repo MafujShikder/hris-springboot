@@ -16,10 +16,10 @@ import java.util.Objects;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "resource")
 public class Resource extends Model {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
+
     private String uid;
     private String name;
     private String description;
@@ -51,15 +51,6 @@ public class Resource extends Model {
         this.messagelog = messagelog;
     }
 
-    @Basic
-    @Column(name = "id")
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     @Basic
     @Column(name = "uid")
@@ -141,25 +132,5 @@ public class Resource extends Model {
         this.messagelog = messagelog;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Resource that = (Resource) o;
-        return id == that.id &&
-                Objects.equals(uid, that.uid) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(description, that.description) &&
-                Objects.equals(isgenerating, that.isgenerating) &&
-                Objects.equals(datecreated, that.datecreated) &&
-                Objects.equals(lastupdated, that.lastupdated) &&
-                Objects.equals(lastgenerated, that.lastgenerated) &&
-                Objects.equals(messagelog, that.messagelog);
-    }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, uid, name, description, isgenerating, datecreated, lastupdated, lastgenerated, messagelog);
-    }
 }

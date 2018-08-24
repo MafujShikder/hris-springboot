@@ -13,10 +13,6 @@ import javax.persistence.*;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "fieldoptiongroupset")
 public class FieldOptionGroupSet extends Model{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     private String uid;
     private String name;
     private String description;
@@ -28,14 +24,6 @@ public class FieldOptionGroupSet extends Model{
         this.uid = uid;
         this.name = name;
         this.description = description;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getUid() {

@@ -20,10 +20,6 @@ import java.util.Objects;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "dashboardchart")
 public class DashboardChart extends Model {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
     private Integer fieldoneId;
     private Integer fieldtwoId;
     private Integer userId;
@@ -65,15 +61,14 @@ public class DashboardChart extends Model {
         this.systemwide = systemwide;
     }
 
-    @Basic
-    @Column(name = "id")
-    public Long getId() {
-        return id;
+    public Boolean getLowerlevels() {
+        return lowerlevels;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Boolean getSystemwide() {
+        return systemwide;
     }
+
 
     @Basic
     @Column(name = "fieldone_id")

@@ -24,10 +24,6 @@ import java.util.*;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "field")
 public class Field extends Model{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     private Integer datatypeId;
     private Integer inputtypeId;
     private String uid;
@@ -121,15 +117,6 @@ public class Field extends Model{
         this.fieldDataType = new FieldDataType(id);
     }
 
-    @Basic
-    @Column(name = "id")
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     @Basic
     @Column(name = "datatype_id")
