@@ -3,6 +3,8 @@ package com.hisptz.hris.Bundles.FieldOptionBundle;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.hisptz.hris.Bundles.FieldBundle.Field;
 import com.hisptz.hris.Bundles.FieldBundle.FieldRepository;
+import com.hisptz.hris.Bundles.FieldOptionGroup.FieldOptionGroup;
+import com.hisptz.hris.Bundles.FieldOptionGroup.FieldOptionGroupRepository;
 import com.hisptz.hris.core.Model.ModelMutation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,15 +20,24 @@ public class FieldOptionMutation extends ModelMutation<FieldOption> {
     @Autowired
     private FieldRepository fieldRepository;
 
-    public FieldOptionMutation(FieldOptionRepository fieldOptionRepository, FieldRepository fieldRepository) {
+    @Autowired
+    private FieldOptionGroupRepository fieldOptionGroupRepository;
+
+    public FieldOptionMutation(FieldOptionRepository fieldOptionRepository, FieldRepository fieldRepository, FieldOptionGroupRepository fieldOptionGroupRepository) {
         this.fieldOptionRepository = fieldOptionRepository;
         this.fieldRepository = fieldRepository;
+        this.fieldOptionGroupRepository = fieldOptionGroupRepository;
     }
 
-    public FieldOption newFieldOption(Integer fieldId, String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining, Long field) {
+    public FieldOption newFieldOption(Integer fieldId, String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining, Long field, Long fieldOptionGroup) {
         FieldOption fieldOption = new FieldOption(fieldId, uid, value, skipinreport, description, sort, hastraining);
 
-        fieldOption.setField(new Field(field));
+        if (field != null)
+         fieldOption.setField(fieldRepository.findOne(field));
+
+        if (fieldOptionGroup != null)
+            fieldOption.getFieldOptionGroups().add(fieldOptionGroupRepository.findOne(fieldOptionGroup));
+
         fieldOptionRepository.save(fieldOption);
         return fieldOption;
     }
@@ -35,7 +46,7 @@ public class FieldOptionMutation extends ModelMutation<FieldOption> {
         return deleteModel(id, fieldOptionRepository);
     }
 
-    public FieldOption updateFieldOption(Long id, Integer fieldId, String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining) {
+    public FieldOption updateFieldOption(Long id, Integer fieldId, String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining, Long fieldOptionGroup) {
         FieldOption fieldOption = fieldOptionRepository.findOne(id);
 
         if (fieldId != null)
@@ -58,6 +69,9 @@ public class FieldOptionMutation extends ModelMutation<FieldOption> {
 
         if (hastraining != null)
             fieldOption.setHastraining(hastraining);
+
+        if (fieldOptionGroup != null)
+            fieldOption.getFieldOptionGroups().add(fieldOptionGroupRepository.findOne(fieldOptionGroup));
 
         fieldOptionRepository.save(fieldOption);
         return fieldOption;

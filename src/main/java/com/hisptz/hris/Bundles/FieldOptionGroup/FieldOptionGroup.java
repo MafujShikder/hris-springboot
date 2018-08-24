@@ -4,6 +4,7 @@ package com.hisptz.hris.Bundles.FieldOptionGroup;
  * Created by Guest on 8/10/18.
  */
 import com.hisptz.hris.Bundles.FieldBundle.Field;
+import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOption;
 import com.hisptz.hris.core.Model.Model;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -13,7 +14,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
@@ -43,6 +46,15 @@ public class FieldOptionGroup extends Model{
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Field field;
 
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "fieldGroupfieldGroupOption",
+            joinColumns = {@JoinColumn(name = "field_group_id")},
+            inverseJoinColumns = {@JoinColumn(name = "field_group_option_id")})
+    private Set<FieldOption> fieldOptions = new HashSet<>();
+
     public FieldOptionGroup() {
     }
 
@@ -52,7 +64,21 @@ public class FieldOptionGroup extends Model{
         this.name = name;
         this.description = description;
         this.operator = operator;
-        this.field = new Field(field);
+
+        if (field != null)
+            this.field = new Field(field);
+    }
+
+    public Set<FieldOption> getFieldOptions() {
+        return fieldOptions;
+    }
+
+    public void setFieldOptions(Set<FieldOption> fieldOptions) {
+        this.fieldOptions = fieldOptions;
+    }
+
+    public void setField(Field field) {
+        this.field = field;
     }
 
     public Field getField() {

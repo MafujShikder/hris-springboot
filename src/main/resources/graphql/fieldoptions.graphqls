@@ -10,6 +10,7 @@ type FieldOption{
     datecreated:String
     lastupdated:String
     field:field
+    fieldOptionGroups:[FieldOptionGroup]
 }
 
 extend type Query {
@@ -19,12 +20,12 @@ extend type Query {
 }
 
 extend type Mutation {
-    newFieldOption(fieldId:Int!, uid:String!, value:String!, skipinreport:String!, description:String!,
-    sort:String!, hastraining:String!,field:ID!):FieldOption!
+    newFieldOption(fieldId:Int, uid:String, value:String, skipinreport:String, description:String,
+    sort:String, hastraining:String,field:ID, fieldOptionGroup:ID):FieldOption!
 
     deleteFieldOption(id:ID!):String
 
     updateFieldOption(id:ID!, fieldId:Int, uid:String, value:String, skipinreport:String, description:String,
-    sort:String, hastraining:String):FieldOption!
+    sort:String, hastraining:String, fieldOptionGroup:ID):FieldOption!
 
 }

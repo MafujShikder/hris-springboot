@@ -53,12 +53,12 @@ public class Field extends Model{
     private Set<FieldGroup> fieldGroups = new HashSet<>();;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "inputtype", nullable = false)
+    @JoinColumn(name = "inputtype", nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private InputType inputType;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "field_datatype", nullable = false)
+    @JoinColumn(name = "field_datatype", nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private FieldDataType fieldDataType;
 

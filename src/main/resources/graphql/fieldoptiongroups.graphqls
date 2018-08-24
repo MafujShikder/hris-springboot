@@ -8,6 +8,7 @@ type FieldOptionGroup{
     datecreated:String
     lastupdated:String
     field:field
+    fieldOptions:[FieldOption]
 }
 
 extend type Query {
@@ -17,10 +18,10 @@ extend type Query {
 }
 
 extend type Mutation {
-    newFieldOptionGroup(uid:String!, name:String!, description:String!, fieldId:String!,operator:String!,field:ID):FieldOptionGroup!
+    newFieldOptionGroup(uid:String, name:String, description:String, fieldId:String,operator:String,field:ID, fieldOption:ID):FieldOptionGroup!
 
     deleteFieldOptionGroup(id:ID!):String
 
-    updateFieldOptionGroup(id:ID!,uid:String, name:String, description:String,fieldId:String,operator:String,field:ID):FieldOptionGroup
+    updateFieldOptionGroup(id:ID!,uid:String, name:String, description:String,fieldId:String,operator:String,field:ID, fieldOption:ID):FieldOptionGroup
 
 }

@@ -4,6 +4,7 @@ package com.hisptz.hris.Bundles.FieldOptionBundle;
  * Created by Guest on 8/10/18.
  */
 import com.hisptz.hris.Bundles.FieldBundle.Field;
+import com.hisptz.hris.Bundles.FieldOptionGroup.FieldOptionGroup;
 import com.hisptz.hris.core.Model.Model;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -13,7 +14,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
@@ -40,14 +43,23 @@ public class FieldOption extends Model {
     private Date lastupdated;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "field", nullable = false)
+    @JoinColumn(name = "field")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Field field;
 
+    @ManyToMany(fetch = FetchType.LAZY,
+                cascade = {
+                        CascadeType.MERGE
+                },
+    mappedBy = "fieldOptions")
+    private Set<FieldOptionGroup> fieldOptionGroups = new HashSet<>();
 
     public FieldOption() {
     }
 
+    public FieldOption(Long id) {
+        this.id = id;
+    }
     public FieldOption(Integer fieldId, String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining) {
         this.fieldId = fieldId;
         this.uid = uid;
@@ -56,6 +68,14 @@ public class FieldOption extends Model {
         this.description = description;
         this.sort = sort;
         this.hastraining = hastraining;
+    }
+
+    public Set<FieldOptionGroup> getFieldOptionGroups() {
+        return fieldOptionGroups;
+    }
+
+    public void setFieldOptionGroups(Set<FieldOptionGroup> fieldOptionGroups) {
+        this.fieldOptionGroups = fieldOptionGroups;
     }
 
     public Field getField() {
