@@ -23,15 +23,11 @@ public class ResourceQuery extends ModelQuery<Resource>{
         this.resourceRepository = resourceRepository;
     }
 
-    public List<Resource> resources(){
-        return resourceRepository.findAll();
-    }
-
     public Resource getResourceById(Long id){
         return resourceRepository.findOne(id);
     }
 
-    public List<Resource> queryResources(String where){
-        return query(where, spec, resourceRepository);
+    public List<Resource> Resources(String where, String orderBy){
+        return query(where, spec, resourceRepository, orderBy);
     }
 }

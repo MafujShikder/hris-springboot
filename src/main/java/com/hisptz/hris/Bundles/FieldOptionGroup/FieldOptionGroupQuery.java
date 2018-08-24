@@ -23,16 +23,12 @@ public class FieldOptionGroupQuery extends ModelQuery<FieldOptionGroup> {
         this.fieldOptionGroupRepository = fieldOptionGroupRepository;
     }
 
-    public List<FieldOptionGroup> fieldOptionGroups(){
-        return fieldOptionGroupRepository.findAll();
-    }
-
     public FieldOptionGroup getFieldOptionGroupById(Long id){
         return fieldOptionGroupRepository.findOne(id);
     }
 
-    public List<FieldOptionGroup> queryFieldOptionGroup(String where){
-        return query(where, spec, fieldOptionGroupRepository);
+    public List<FieldOptionGroup> FieldOptionGroup(String where,String orderBy){
+        return query(where, spec, fieldOptionGroupRepository, orderBy);
     }
 
 }

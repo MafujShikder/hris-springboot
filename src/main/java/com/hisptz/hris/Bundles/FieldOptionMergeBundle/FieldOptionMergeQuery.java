@@ -22,16 +22,11 @@ public class FieldOptionMergeQuery extends ModelQuery<FieldOptionMerge> {
         this.fieldOptionMergeRepository = fieldOptionMergeRepository;
     }
 
-
-    public List<FieldOptionMerge> fieldOptionMerges(){
-        return fieldOptionMergeRepository.findAll();
-    }
-
     public FieldOptionMerge getFieldOptionMergeById(Long id){
         return fieldOptionMergeRepository.findOne(id);
     }
 
-    public List<FieldOptionMerge> queryFieldOptionMerge(String where){
-        return query(where, spec, fieldOptionMergeRepository);
+    public List<FieldOptionMerge> queryFieldOptionMerge(String where, String orderBy){
+        return query(where, spec, fieldOptionMergeRepository, orderBy);
     }
 }

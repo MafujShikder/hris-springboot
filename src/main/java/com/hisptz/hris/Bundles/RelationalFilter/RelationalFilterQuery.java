@@ -22,15 +22,11 @@ public class RelationalFilterQuery extends ModelQuery<RelationalFilter>  {
         this.relationalFilterRepository = RelationalFilterRepository;
     }
 
-    public List<RelationalFilter> relationalFilters(){
-       return relationalFilterRepository.findAll();
-    }
-
     public RelationalFilter getRelationalFilterById(Long id){
       return relationalFilterRepository.findOne(id);
     }
 
-    public List<RelationalFilter> queryRelationalFilters(String where){
-        return query(where, spec, relationalFilterRepository);
+    public List<RelationalFilter> RelationalFilters(String where, String orderBy){
+        return query(where, spec, relationalFilterRepository, orderBy);
     }
 }

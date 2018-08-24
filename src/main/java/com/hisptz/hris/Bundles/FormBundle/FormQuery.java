@@ -22,15 +22,11 @@ public class FormQuery extends ModelQuery<Form>{
         this.formRepository = formRepository;
     }
 
-    public List<Form> forms(){
-        return formRepository.findAll();
-    }
-
     public Form getFormById(Long id){
         return formRepository.findOne(id);
     }
 
-    public List<Form> queryForms(String where){
-        return query(where, spec, formRepository);
+    public List<Form> Forms(String where, String orderBy){
+        return query(where, spec, formRepository, orderBy);
     }
 }

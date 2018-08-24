@@ -11,9 +11,8 @@ type Resource{
 }
 
 extend type Query {
-    resources:[Resource]!
     getResourceById(id:ID!):Resource
-    queryResources(where:String!):[Resource]!
+    Resources(where:String, orderBy:String):[Resource]!
 }
 
 extend type Mutation {

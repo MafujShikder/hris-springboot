@@ -14,10 +14,8 @@ type DashboardChart{
 }
 
 extend type Query {
-
-    dashboardCharts:[DashboardChart]
     getDashboardChartById(id:ID!):DashboardChart
-    queryDashboardCharts(where:String!):[DashboardChart]!
+    DashboardCharts(where:String, orderBy:String):[DashboardChart]!
 }
 
 extend type Mutation {

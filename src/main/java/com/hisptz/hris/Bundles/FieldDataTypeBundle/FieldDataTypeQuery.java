@@ -22,15 +22,11 @@ public class FieldDataTypeQuery extends ModelQuery<FieldDataType>{
         this.fieldDataTypeRepository = fieldDataTypeRepository;
     }
 
-    public List<FieldDataType> fieldDataTypes(){
-       return fieldDataTypeRepository.findAll();
-    }
-
     public FieldDataType getFieldDataTypeById(Long id){
         return fieldDataTypeRepository.findOne(id);
     }
 
-    public List<FieldDataType> queryFieldDataType(String where){
-        return query(where, spec, fieldDataTypeRepository);
+    public List<FieldDataType> FieldDataType(String where, String orderBy){
+        return query(where, spec, fieldDataTypeRepository, orderBy);
     }
 }

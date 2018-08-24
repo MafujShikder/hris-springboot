@@ -24,15 +24,11 @@ public class FieldOptionGroupSetQuery extends ModelQuery<FieldOptionGroupSet> {
         this.fieldOptionGroupSetRepository = fieldOptionGroupSetRepository;
     }
 
-    public List<FieldOptionGroupSet> fieldOptionGroupSets(){
-        return fieldOptionGroupSetRepository.findAll();
-    }
-
     public FieldOptionGroupSet getFieldOptionGroupSetById(Long id){
         return fieldOptionGroupSetRepository.findOne(id);
     }
 
-    public List<FieldOptionGroupSet> queryFieldOptionGroupSet(String where){
-        return query(where, spec, fieldOptionGroupSetRepository);
+    public List<FieldOptionGroupSet> FieldOptionGroupSet(String where, String orderBy){
+        return query(where, spec, fieldOptionGroupSetRepository, orderBy);
     }
 }

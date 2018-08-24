@@ -22,15 +22,11 @@ public class FieldGroupSetQuery extends ModelQuery<FieldGroupSet> {
         this.fieldGroupSetRepository = fieldGroupSetRepository;
     }
 
-    public List<FieldGroupSet> fieldGroupSets(){
-        return fieldGroupSetRepository.findAll();
-    }
-
     public FieldGroupSet getFieldGroupSetsById(Long id){
         return fieldGroupSetRepository.findOne(id);
     }
 
-    public List<FieldGroupSet> queryFieldGroupSets(String where){
-        return query(where, spec, fieldGroupSetRepository);
+    public List<FieldGroupSet> FieldGroupSets(String where, String orderBy){
+        return query(where, spec, fieldGroupSetRepository,orderBy);
     }
 }

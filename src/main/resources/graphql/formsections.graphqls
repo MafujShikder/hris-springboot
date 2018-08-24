@@ -9,9 +9,8 @@ type FormSection{
 }
 
 extend type Query {
-    formSections:[FormSection]
     getFormSectionById(id:ID!):FormSection
-    queryFormSections(where:String!):[FormSection]!
+    FormSections(where:String, orderBy:String):[FormSection]!
 }
 
 extend type Mutation {

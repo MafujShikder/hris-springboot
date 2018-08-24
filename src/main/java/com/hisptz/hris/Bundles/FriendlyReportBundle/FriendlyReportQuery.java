@@ -23,16 +23,13 @@ public class FriendlyReportQuery extends ModelQuery<FriendlyReport>{
         this.friendlyReportRepository = friendlyReportRepository;
     }
 
-    public List<FriendlyReport> friendlyReports(){
-        return friendlyReportRepository.findAll();
-    }
 
     public FriendlyReport getFriendlyReportById(Long id){
         return friendlyReportRepository.findOne(id);
     }
 
-    public List<FriendlyReport> queryFriendlyReport(String where){
-        return query(where, spec, friendlyReportRepository);
+    public List<FriendlyReport> FriendlyReport(String where, String orderBy){
+        return query(where, spec, friendlyReportRepository, orderBy);
     }
 
 }

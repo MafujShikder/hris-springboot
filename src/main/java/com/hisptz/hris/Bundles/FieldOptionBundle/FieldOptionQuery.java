@@ -23,15 +23,11 @@ public class FieldOptionQuery extends ModelQuery<FieldOption>{
         this.fieldOptionRepository = fieldOptionRepository;
     }
 
-    public List<FieldOption> fieldOptions(){
-        return fieldOptionRepository.findAll();
-    }
-
     public FieldOption getFieldOptionById(Long id){
         return fieldOptionRepository.findOne(id);
     }
 
-    public List<FieldOption> queryFieldOptions(String where){
-        return query(where, spec, fieldOptionRepository);
+    public List<FieldOption> FieldOptions(String where, String orderBy){
+        return query(where, spec, fieldOptionRepository, orderBy);
     }
 }

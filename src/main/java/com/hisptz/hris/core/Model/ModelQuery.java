@@ -27,29 +27,29 @@ public class ModelQuery<T extends Model> implements GraphQLQueryResolver {
        return queryCriteriaList;
    }
 
-   public List query(String where, ModelSpecification spec, ModelRepository repository){
-       Set<T> tempResults = new HashSet<>(); // maintain only unique items
-       List<T> results = new ArrayList<>();
-       List<List<T>> temps = new ArrayList<>();
-       List<QueryCriteria> queryCriteriaList = splitter(where);
+//   public List query(String where, ModelSpecification spec, ModelRepository repository){
+//       Set<T> tempResults = new HashSet<>(); // maintain only unique items
+//       List<T> results = new ArrayList<>();
+//       List<List<T>> temps = new ArrayList<>();
+//       List<QueryCriteria> queryCriteriaList = splitter(where);
+//
+//       for (QueryCriteria queryCriteria : queryCriteriaList){
+//           System.out.println(queryCriteria);
+//           spec = new ModelSpecification(new QueryCriteria(queryCriteria.getKey(),queryCriteria.getOperation(),queryCriteria.getValue()));
+//           temps.add(repository.findAll(spec)); // add the results of each query into the a list of lists
+//       }
+//
+//       for (List temp: temps){
+//           for (Object field: temp){
+//               tempResults.add((T) field); // ensure that only unique elements are returned
+//           }
+//       }
+//
+//       results.addAll(tempResults);// Copy unique elements only
+//       return results;
+//   }
 
-       for (QueryCriteria queryCriteria : queryCriteriaList){
-           System.out.println(queryCriteria);
-           spec = new ModelSpecification(new QueryCriteria(queryCriteria.getKey(),queryCriteria.getOperation(),queryCriteria.getValue()));
-           temps.add(repository.findAll(spec)); // add the results of each query into the a list of lists
-       }
-
-       for (List temp: temps){
-           for (Object field: temp){
-               tempResults.add((T) field); // ensure that only unique elements are returned
-           }
-       }
-
-       results.addAll(tempResults);// Copy unique elements only
-       return results;
-   }
-
-   public List query2(String where, ModelSpecification spec, ModelRepository repository, String orderBy){
+   public List query(String where, ModelSpecification spec, ModelRepository repository, String orderBy){
         Set<T> tempResults = new HashSet<>(); // maintain only unique items
         List<T> results = new ArrayList<>();
         List<List<T>> temps = new ArrayList<>();

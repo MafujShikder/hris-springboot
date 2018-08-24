@@ -14,9 +14,8 @@ type FieldOption{
 }
 
 extend type Query {
-    fieldOptions:[FieldOption]!
     getFieldOptionById(id:ID!):FieldOption
-    queryFieldOptions(where:String!):[FieldOption]!
+    FieldOptions(where:String, orderBy:String):[FieldOption]!
 }
 
 extend type Mutation {

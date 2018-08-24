@@ -22,16 +22,12 @@ public class FieldGroupQuery extends ModelQuery<FieldGroup> {
         this.fieldGroupRepository = fieldGroupRepository;
     }
 
-    public List<FieldGroup> fieldGroups(){
-        return fieldGroupRepository.findAll();
-    }
-
     public FieldGroup getFieldGroupById(Long id){
         return fieldGroupRepository.findOne(id);
     }
 
-    public List<FieldGroup> queryFieldGroups(String where){
-        return query(where, spec, fieldGroupRepository);
+    public List<FieldGroup> FieldGroups(String where, String orderBy){
+        return query(where, spec, fieldGroupRepository, orderBy);
     }
 
 }

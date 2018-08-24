@@ -12,9 +12,8 @@ type FieldOptionGroup{
 }
 
 extend type Query {
-    fieldOptionGroups:[FieldOptionGroup]!
     getFieldOptionGroupById(id:ID!):FieldOptionGroup
-    queryFieldOptionGroup(where:String!):[FieldOptionGroup]!
+    FieldOptionGroup(where:String, orderBy:String):[FieldOptionGroup]!
 }
 
 extend type Mutation {

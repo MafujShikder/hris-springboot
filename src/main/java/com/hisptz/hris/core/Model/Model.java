@@ -13,6 +13,9 @@ public class Model{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    protected String uid;
+
     @Basic
     @Column(name = "id")
     public Long getId() {
@@ -21,5 +24,13 @@ public class Model{
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

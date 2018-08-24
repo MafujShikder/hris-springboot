@@ -23,15 +23,11 @@ public class InputTypeQuery extends ModelQuery<InputType> {
         this.inputTypeRepository = inputTypeRepository;
     }
 
-    public List<InputType> inputTypes(){
-       return  inputTypeRepository.findAll();
-    }
-
     public InputType getInputTypeById(Long id){
         return inputTypeRepository.findOne(id);
     }
 
-    public List<InputType> queryInputType(String where){
-        return query(where, spec, inputTypeRepository);
+    public List<InputType> InputType(String where, String orderBy){
+        return query(where, spec, inputTypeRepository, orderBy);
     }
 }

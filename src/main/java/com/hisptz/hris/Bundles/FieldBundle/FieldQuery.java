@@ -26,17 +26,13 @@ public class FieldQuery extends ModelQuery<Field>{
         this.fieldRepository = fieldRepository;
     }
 
-    public List<Field> fields(){
-        return fieldRepository.findAll();
-    }
-
     public Field getFieldById(Long id){
         return fieldRepository.findOne(id);
     }
 
 
-    public List<Field> queryField(String where){
-       return query(where, spec, fieldRepository);
+    public List<Field> Field(String where, String orderBy){
+       return query(where, spec, fieldRepository, orderBy);
     }
 
 }

@@ -9,9 +9,8 @@ type FieldDataType{
 }
 
 extend type Query {
-    fieldDataTypes:[FieldDataType]!
     getFieldDataTypeById(id:ID!):FieldDataType
-    queryFieldDataType(where:String!):[FieldDataType]!
+    FieldDataType(where:String, orderBy:String):[FieldDataType]!
 }
 
 extend type Mutation {

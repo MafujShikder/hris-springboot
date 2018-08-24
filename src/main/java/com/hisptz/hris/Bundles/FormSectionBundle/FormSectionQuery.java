@@ -23,15 +23,11 @@ public class FormSectionQuery extends ModelQuery<FormSection>{
         this.formSectionRepository = formSectionRepository;
     }
 
-    public List<FormSection> formSections(){
-        return  formSectionRepository.findAll();
-    }
-
     public FormSection getFormSectionById(Long id){
         return formSectionRepository.findOne(id);
     }
 
-    public List<FormSection> queryFormSections(String where){
-        return query(where, spec, formSectionRepository);
+    public List<FormSection> FormSections(String where, String orderBy){
+        return query(where, spec, formSectionRepository, orderBy);
     }
 }

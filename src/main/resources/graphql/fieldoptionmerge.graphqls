@@ -12,9 +12,8 @@ type FieldOptionMerge{
 }
 
 type Query {
-    fieldOptionMerges:[FieldOptionMerge]!
     getFieldOptionMergeById(id:ID!):FieldOptionMerge
-    queryFieldOptionMerge(where:String):[FieldOptionMerge]!
+    FieldOptionMerge(where:String, orderBy:String):[FieldOptionMerge]!
 }
 
 type Mutation {

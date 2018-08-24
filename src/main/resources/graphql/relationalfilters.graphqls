@@ -9,9 +9,8 @@ type RelationalFilter{
     field:field
 }
 extend type Query {
-    relationalFilters:[RelationalFilter]!
     getRelationalFilterById(id:ID!):RelationalFilter
-    queryRelationalFilters(where:String!):[RelationalFilter]!
+    RelationalFilters(where:String, orderBy: String):[RelationalFilter]!
 }
 
 extend type Mutation {

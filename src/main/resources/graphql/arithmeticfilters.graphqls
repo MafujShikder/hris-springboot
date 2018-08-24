@@ -11,9 +11,8 @@ type ArithmeticFilter{
 }
 
 extend type Query {
-    arithmeticFilters:[ArithmeticFilter]!
     getArithmeticFilterById(id:ID!):ArithmeticFilter
-    queryArithmeticfilter(where:String!):[ArithmeticFilter]!
+    Arithmeticfilter(where:String, orderBy:String):[ArithmeticFilter]!
 }
 
 extend type Mutation {

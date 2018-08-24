@@ -16,9 +16,8 @@ type FriendlyReport{
     stylesheet:String
 }
 extend type Query {
-    friendlyReports:[FriendlyReport]!
     getFriendlyReportById(id:ID!):FriendlyReport
-    queryFriendlyReport(where:String!):[FriendlyReport]!
+    FriendlyReport(where:String, orderBy:String):[FriendlyReport]!
 }
 
 extend type Mutation {

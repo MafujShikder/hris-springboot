@@ -31,7 +31,7 @@ public class UserQuery extends ModelQuery<User>{
     }
 
     public List<User> Users(String where, String orderBy){
-        return query2(where, spec, userRepository, orderBy);
+        return query(where, spec, userRepository, orderBy);
     }
 
 }

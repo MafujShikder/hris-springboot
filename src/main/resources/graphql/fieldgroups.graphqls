@@ -8,9 +8,8 @@ type FieldGroup{
     fields:[field]
 }
 extend type Query {
-    fieldGroups:[FieldGroup]!
     getFieldGroupById(id:ID!):FieldGroup
-    queryFieldGroups(where:String!):[FieldGroup]!
+    FieldGroups(where:String, orderBy:String):[FieldGroup]!
 }
 
 extend type Mutation {

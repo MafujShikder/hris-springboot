@@ -41,7 +41,7 @@ public class User extends Model {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date credentialsExpireAt;
-    private String uid;
+
     private String phonenumber;
     private String jobtitle;
     private String firstname;

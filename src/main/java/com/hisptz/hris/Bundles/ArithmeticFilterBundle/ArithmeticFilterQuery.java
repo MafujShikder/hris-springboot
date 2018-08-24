@@ -22,15 +22,11 @@ public class ArithmeticFilterQuery extends ModelQuery<ArithmeticFilter> {
         this.arithmeticFilterRepository = arithmeticFilterRepository;
     }
 
-    public List<ArithmeticFilter> arithmeticFilters(){
-       return arithmeticFilterRepository.findAll();
-    }
-
     public ArithmeticFilter getArithmeticFilterById(Long id){
         return arithmeticFilterRepository.findOne(id);
     }
 
-    public List<ArithmeticFilter> queryArithmeticfilter(String where){
-        return query(where, spec, arithmeticFilterRepository);
+    public List<ArithmeticFilter> Arithmeticfilter(String where, String orderBy){
+        return query(where, spec, arithmeticFilterRepository, orderBy);
     }
 }

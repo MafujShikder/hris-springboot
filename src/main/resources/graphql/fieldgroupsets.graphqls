@@ -8,9 +8,8 @@ type FieldGroupSet{
 }
 
 extend type Query {
-    fieldGroupSets:[FieldGroupSet]!
     getFieldGroupSetsById(id:ID!):FieldGroupSet
-    queryFieldGroupSets(where:String):[FieldGroupSet]!
+    FieldGroupSets(where:String, orderBy:String):[FieldGroupSet]!
 }
 
 extend type Mutation {

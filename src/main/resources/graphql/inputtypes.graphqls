@@ -9,9 +9,8 @@ type InputType{
 }
 
 extend type Query {
-    inputTypes:[InputType]!
     getInputTypeById(id:ID!):InputType
-    queryInputType(where:String!):[InputType]!
+    InputType(where:String, orderBy: String):[InputType]!
 }
 
 extend type Mutation {
