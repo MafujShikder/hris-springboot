@@ -26,7 +26,7 @@ public class RelationalFilterQuery extends ModelQuery<RelationalFilter>  {
       return relationalFilterRepository.findOne(id);
     }
 
-    public List<RelationalFilter> RelationalFilters(String where, String orderBy){
-        return query(where, spec, relationalFilterRepository, orderBy);
+    public List<RelationalFilter> RelationalFilters(String where, String sort){
+        return query(where, spec, relationalFilterRepository, sort);
     }
 }

@@ -26,7 +26,7 @@ public class FieldDataTypeQuery extends ModelQuery<FieldDataType>{
         return fieldDataTypeRepository.findOne(id);
     }
 
-    public List<FieldDataType> FieldDataType(String where, String orderBy){
-        return query(where, spec, fieldDataTypeRepository, orderBy);
+    public List<FieldDataType> FieldDataType(String where, String sort){
+        return query(where, spec, fieldDataTypeRepository, sort);
     }
 }

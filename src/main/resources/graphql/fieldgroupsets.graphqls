@@ -3,13 +3,13 @@ type FieldGroupSet{
     uid:String
     name:String
     description:String
-    datecreated:String
-    lastupdated:String
+    dateCreated:String
+    lastUpdated:String
 }
 
 extend type Query {
     getFieldGroupSetsById(id:ID!):FieldGroupSet
-    FieldGroupSets(where:String, orderBy:String):[FieldGroupSet]!
+    FieldGroupSets(where:String, sort:String):[FieldGroupSet]!
 }
 
 extend type Mutation {

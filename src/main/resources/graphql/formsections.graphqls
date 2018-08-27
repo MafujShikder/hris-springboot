@@ -4,13 +4,13 @@ type FormSection{
     formId:Int
     name:String
     description:String
-    datecreated:String
-    lastupdated:String
+    dateCreated:String
+    lastUpdated:String
 }
 
 extend type Query {
     getFormSectionById(id:ID!):FormSection
-    FormSections(where:String, orderBy:String):[FormSection]!
+    FormSections(where:String, sort:String):[FormSection]!
 }
 
 extend type Mutation {

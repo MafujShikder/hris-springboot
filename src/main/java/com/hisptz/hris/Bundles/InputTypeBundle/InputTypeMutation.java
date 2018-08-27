@@ -10,8 +10,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class InputTypeMutation extends ModelMutation<InputType>{
-    @Autowired
-    InputTypeRepository inputTypeRepository;
+
 
     public InputTypeMutation(InputTypeRepository inputTypeRepository) {
         this.inputTypeRepository = inputTypeRepository;

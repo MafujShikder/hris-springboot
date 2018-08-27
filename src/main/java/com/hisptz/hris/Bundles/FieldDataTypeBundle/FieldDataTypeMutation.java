@@ -10,8 +10,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class FieldDataTypeMutation extends ModelMutation<FieldDataType>{
-    @Autowired
-    private FieldDataTypeRepository fieldDataTypeRepository;
 
     public FieldDataTypeMutation(FieldDataTypeRepository fieldDataTypeRepository) {
         this.fieldDataTypeRepository = fieldDataTypeRepository;

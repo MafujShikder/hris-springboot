@@ -27,7 +27,7 @@ public class DashboardChartQuery extends ModelQuery<DashboardChart>{
         return dashboardChartRepository.findOne(id);
     }
 
-    public List<DashboardChart> DashboardCharts(String where, String orderBy){
-        return query(where, spec, dashboardChartRepository, orderBy);
+    public List<DashboardChart> DashboardCharts(String where, String sort){
+        return query(where, spec, dashboardChartRepository, sort);
     }
 }

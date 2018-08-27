@@ -4,14 +4,14 @@ type Form{
     name:String
     hypertext:String
     title:String
-    datecreated:String
-    lastupdated: String
+    dateCreated:String
+    lastUpdated: String
 
 }
 
 extend type Query {
     getFormById(id:ID!):Form
-    Forms(where:String, order:String):[Form]!
+    Forms(where:String, sort:String):[Form]!
 }
 
 extend type Mutation {

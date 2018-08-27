@@ -10,8 +10,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class FieldGroupSetMutation extends ModelMutation<FieldGroupSet> {
-    @Autowired
-    protected FieldGroupSetRepository fieldGroupSetRepository;
 
     public FieldGroupSetMutation(FieldGroupSetRepository fieldGroupSetRepository) {
         this.fieldGroupSetRepository = fieldGroupSetRepository;

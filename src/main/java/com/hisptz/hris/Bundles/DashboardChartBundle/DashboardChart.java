@@ -32,15 +32,6 @@ public class DashboardChart extends Model {
     private String graphtype;
     private Boolean lowerlevels;
     private Boolean systemwide;
-    
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date datecreated;
-    
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date lastupdated;
-
 
     public DashboardChart() {
     }
@@ -160,48 +151,4 @@ public class DashboardChart extends Model {
         this.systemwide = systemwide;
     }
 
-    @Basic
-    @Column(name = "datecreated")
-    public Date getDatecreated() {
-        return datecreated;
-    }
-
-    public void setDatecreated(Date datecreated) {
-        this.datecreated = datecreated;
-    }
-
-    @Basic
-    @Column(name = "lastupdated")
-    public Date getLastupdated() {
-        return lastupdated;
-    }
-
-    public void setLastupdated(Date lastupdated) {
-        this.lastupdated = lastupdated;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        DashboardChart that = (DashboardChart) o;
-        return id == that.id &&
-                lowerlevels == that.lowerlevels &&
-                systemwide == that.systemwide &&
-                Objects.equals(fieldoneId, that.fieldoneId) &&
-                Objects.equals(fieldtwoId, that.fieldtwoId) &&
-                Objects.equals(userId, that.userId) &&
-                Objects.equals(uid, that.uid) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(description, that.description) &&
-                Objects.equals(graphtype, that.graphtype) &&
-                Objects.equals(datecreated, that.datecreated) &&
-                Objects.equals(lastupdated, that.lastupdated);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, fieldoneId, fieldtwoId, userId, uid, name, description, graphtype, lowerlevels, systemwide, datecreated, lastupdated);
-    }
 }

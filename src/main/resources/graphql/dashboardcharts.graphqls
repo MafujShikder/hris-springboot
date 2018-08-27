@@ -9,13 +9,13 @@ type DashboardChart{
     graphtype:String
     lowerlevels:String
     systemwide:String
-    datecreated: String
-    lastupdated: String
+    dateCreated: String
+    lastUpdated: String
 }
 
 extend type Query {
     getDashboardChartById(id:ID!):DashboardChart
-    DashboardCharts(where:String, orderBy:String):[DashboardChart]!
+    DashboardCharts(where:String, sort:String):[DashboardChart]!
 }
 
 extend type Mutation {

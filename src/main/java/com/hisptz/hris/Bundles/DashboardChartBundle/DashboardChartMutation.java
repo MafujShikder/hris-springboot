@@ -10,8 +10,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class DashboardChartMutation extends ModelMutation<DashboardChart>{
-    @Autowired
-    private DashboardChartRepository dashboardChartRepository;
 
     public DashboardChartMutation(DashboardChartRepository dashboardChartRepository) {
         this.dashboardChartRepository = dashboardChartRepository;

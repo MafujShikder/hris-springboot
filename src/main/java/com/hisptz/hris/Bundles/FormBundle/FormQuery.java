@@ -26,7 +26,7 @@ public class FormQuery extends ModelQuery<Form>{
         return formRepository.findOne(id);
     }
 
-    public List<Form> Forms(String where, String orderBy){
-        return query(where, spec, formRepository, orderBy);
+    public List<Form> Forms(String where, String sort){
+        return query(where, spec, formRepository, sort);
     }
 }

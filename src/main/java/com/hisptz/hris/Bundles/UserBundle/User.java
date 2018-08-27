@@ -48,13 +48,7 @@ public class User extends Model {
     private String middlename;
     private String surname;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date datecreated;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date lastupdated;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedat;
@@ -293,22 +287,6 @@ public class User extends Model {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public Date getDatecreated() {
-        return datecreated;
-    }
-
-    public void setDatecreated(Date datecreated) {
-        this.datecreated = datecreated;
-    }
-
-    public Date getLastupdated() {
-        return lastupdated;
-    }
-
-    public void setLastupdated(Date lastupdated) {
-        this.lastupdated = lastupdated;
     }
 
     public Date getDeletedat() {

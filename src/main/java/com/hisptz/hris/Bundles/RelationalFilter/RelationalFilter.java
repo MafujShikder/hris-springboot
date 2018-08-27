@@ -4,6 +4,8 @@ package com.hisptz.hris.Bundles.RelationalFilter;
  * Created by Guest on 8/14/18.
  */
 import com.hisptz.hris.Bundles.FieldBundle.Field;
+import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOption;
+import com.hisptz.hris.Bundles.FriendlyReportBundle.FriendlyReport;
 import com.hisptz.hris.core.Model.Model;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -13,7 +15,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
@@ -25,19 +29,28 @@ public class RelationalFilter extends Model {
     private String name;
     private Boolean excludefieldoptions;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date datecreated;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date lastupdated;
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "field", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Field field;
 
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "relational_filter_field_group_option",
+            joinColumns = {@JoinColumn(name = "relational_filter_id")},
+            inverseJoinColumns = {@JoinColumn(name = "field_option_id")})
+    private Set<FieldOption> fieldOptions = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "relational_filter_friendly_report",
+            joinColumns = {@JoinColumn(name = "relational_filter_id")},
+            inverseJoinColumns = {@JoinColumn(name = "friendly_report_id")})
+    private Set<FriendlyReport> friendlyReports = new HashSet<>();
 
     public RelationalFilter() {
     }
@@ -60,6 +73,26 @@ public class RelationalFilter extends Model {
 
     public Boolean getExcludefieldoptions() {
         return excludefieldoptions;
+    }
+
+    public Set<FriendlyReport> getFriendlyReports() {
+        return friendlyReports;
+    }
+
+    public void setFriendlyReports(Set<FriendlyReport> friendlyReports) {
+        this.friendlyReports = friendlyReports;
+    }
+
+    public Set<FieldOption> getFieldOptions() {
+        return fieldOptions;
+    }
+
+    public void setField(Field field) {
+        this.field = field;
+    }
+
+    public void setFieldOptions(Set<FieldOption> fieldOptions) {
+        this.fieldOptions = fieldOptions;
     }
 
     @Basic
@@ -102,24 +135,5 @@ public class RelationalFilter extends Model {
         this.excludefieldoptions = excludefieldoptions;
     }
 
-    @Basic
-    @Column(name = "datecreated")
-    public Date getDatecreated() {
-        return datecreated;
-    }
-
-    public void setDatecreated(Date datecreated) {
-        this.datecreated = datecreated;
-    }
-
-    @Basic
-    @Column(name = "lastupdated")
-    public Date getLastupdated() {
-        return lastupdated;
-    }
-
-    public void setLastupdated(Date lastupdated) {
-        this.lastupdated = lastupdated;
-    }
 
 }

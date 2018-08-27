@@ -27,7 +27,7 @@ public class FormSectionQuery extends ModelQuery<FormSection>{
         return formSectionRepository.findOne(id);
     }
 
-    public List<FormSection> FormSections(String where, String orderBy){
-        return query(where, spec, formSectionRepository, orderBy);
+    public List<FormSection> FormSections(String where, String sort){
+        return query(where, spec, formSectionRepository, sort);
     }
 }

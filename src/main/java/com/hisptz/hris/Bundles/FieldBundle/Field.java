@@ -59,14 +59,6 @@ public class Field extends Model{
     private FieldDataType fieldDataType;
 
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date datecreated;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date lastupdated;
-
     public Set<FieldGroup> getFieldGroups() {
         return fieldGroups;
     }
@@ -258,53 +250,4 @@ public class Field extends Model{
         this.skipinreport = skipinreport;
     }
 
-    @Basic
-    @Column(name = "datecreated")
-    public Date getDatecreated() {
-        return datecreated;
-    }
-
-    public void setDatecreated(Date datecreated) {
-        this.datecreated = datecreated;
-    }
-
-    @Basic
-    @Column(name = "lastupdated")
-    public Date getLastupdated() {
-        return lastupdated;
-    }
-
-    public void setLastupdated(Date lastupdated) {
-        this.lastupdated = lastupdated;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Field that = (Field) o;
-        return id == that.id &&
-                Objects.equals(datatypeId, that.datatypeId) &&
-                Objects.equals(inputtypeId, that.inputtypeId) &&
-                Objects.equals(uid, that.uid) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(caption, that.caption) &&
-                Objects.equals(compulsory, that.compulsory) &&
-                Objects.equals(isunique, that.isunique) &&
-                Objects.equals(iscalculated, that.iscalculated) &&
-                Objects.equals(description, that.description) &&
-                Objects.equals(calculatedexpression, that.calculatedexpression) &&
-                Objects.equals(hashistory, that.hashistory) &&
-                Objects.equals(hastarget, that.hastarget) &&
-                Objects.equals(fieldrelation, that.fieldrelation) &&
-                Objects.equals(skipinreport, that.skipinreport) &&
-                Objects.equals(datecreated, that.datecreated) &&
-                Objects.equals(lastupdated, that.lastupdated);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, datatypeId, inputtypeId, uid, name, caption, compulsory, isunique, iscalculated, description, calculatedexpression, hashistory, hastarget, fieldrelation, skipinreport, datecreated, lastupdated);
-    }
 }

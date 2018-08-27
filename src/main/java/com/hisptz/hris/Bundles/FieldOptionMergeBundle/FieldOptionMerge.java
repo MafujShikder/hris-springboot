@@ -19,14 +19,6 @@ public class FieldOptionMerge extends Model {
     private String uid;
     private String removedfieldoptionvalue;
     private String removedfieldoptionuid;
-    
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date datecreated;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date lastupdated;
 
     public FieldOptionMerge() {
     }
@@ -93,44 +85,4 @@ public class FieldOptionMerge extends Model {
         this.removedfieldoptionuid = removedfieldoptionuid;
     }
 
-    @Basic
-    @Column(name = "datecreated")
-    public Date getDatecreated() {
-        return datecreated;
-    }
-
-    public void setDatecreated(Date datecreated) {
-        this.datecreated = datecreated;
-    }
-
-    @Basic
-    @Column(name = "lastupdated")
-    public Date getLastupdated() {
-        return lastupdated;
-    }
-
-    public void setLastupdated(Date lastupdated) {
-        this.lastupdated = lastupdated;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        FieldOptionMerge that = (FieldOptionMerge) o;
-        return id == that.id &&
-                Objects.equals(fieldId, that.fieldId) &&
-                Objects.equals(mergedfieldoptionId, that.mergedfieldoptionId) &&
-                Objects.equals(uid, that.uid) &&
-                Objects.equals(removedfieldoptionvalue, that.removedfieldoptionvalue) &&
-                Objects.equals(removedfieldoptionuid, that.removedfieldoptionuid) &&
-                Objects.equals(datecreated, that.datecreated) &&
-                Objects.equals(lastupdated, that.lastupdated);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, fieldId, mergedfieldoptionId, uid, removedfieldoptionvalue, removedfieldoptionuid, datecreated, lastupdated);
-    }
 }

@@ -27,7 +27,7 @@ public class InputTypeQuery extends ModelQuery<InputType> {
         return inputTypeRepository.findOne(id);
     }
 
-    public List<InputType> InputType(String where, String orderBy){
-        return query(where, spec, inputTypeRepository, orderBy);
+    public List<InputType> InputType(String where, String sort){
+        return query(where, spec, inputTypeRepository, sort);
     }
 }

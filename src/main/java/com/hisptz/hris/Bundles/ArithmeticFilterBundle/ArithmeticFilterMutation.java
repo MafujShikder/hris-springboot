@@ -1,6 +1,7 @@
 package com.hisptz.hris.Bundles.ArithmeticFilterBundle;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import com.hisptz.hris.Bundles.FriendlyReportBundle.FriendlyReportRepository;
 import com.hisptz.hris.core.Model.ModelMutation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,15 +11,17 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class ArithmeticFilterMutation extends ModelMutation<ArithmeticFilter>{
-    @Autowired
-    private ArithmeticFilterRepository arithmeticFilterRepository;
 
-    public ArithmeticFilterMutation(ArithmeticFilterRepository arithmeticFilterRepository) {
+    public ArithmeticFilterMutation(ArithmeticFilterRepository arithmeticFilterRepository, FriendlyReportRepository friendlyReportRepository) {
         this.arithmeticFilterRepository = arithmeticFilterRepository;
+        this.friendlyReportRepository = friendlyReportRepository;
     }
 
-    public ArithmeticFilter newArithmeticFilter(String uid, String name, String description, String operator, String leftexpression, String rightexpression){
+    public ArithmeticFilter newArithmeticFilter(String uid, String name, String description, String operator, String leftexpression, String rightexpression, Long friendlyReportId){
         ArithmeticFilter arithmeticFilter = new  ArithmeticFilter(uid, name, description, operator, leftexpression, rightexpression);
+
+        if (friendlyReportId != null)
+            arithmeticFilter.getFriendlyReports().add(friendlyReportRepository.findOne(friendlyReportId));
 
         arithmeticFilterRepository.save(arithmeticFilter);
         return arithmeticFilter;
@@ -28,7 +31,7 @@ public class ArithmeticFilterMutation extends ModelMutation<ArithmeticFilter>{
         return deleteModel(id, arithmeticFilterRepository);
     }
 
-    public ArithmeticFilter updateArithmeticFilter(Long id, String uid, String name, String description, String operator, String leftexpression, String rightexpression){
+    public ArithmeticFilter updateArithmeticFilter(Long id, String uid, String name, String description, String operator, String leftexpression, String rightexpression, Long friendlyReportId){
         ArithmeticFilter arithmeticFilter = arithmeticFilterRepository.findOne(id);
 
         if (uid != null)
@@ -48,6 +51,9 @@ public class ArithmeticFilterMutation extends ModelMutation<ArithmeticFilter>{
 
         if (rightexpression != null)
             arithmeticFilter.setRightexpression(rightexpression);
+
+        if (friendlyReportId != null)
+            arithmeticFilter.getFriendlyReports().add(friendlyReportRepository.findOne(friendlyReportId));
 
         return arithmeticFilter;
     }

@@ -28,8 +28,8 @@ public class FriendlyReportQuery extends ModelQuery<FriendlyReport>{
         return friendlyReportRepository.findOne(id);
     }
 
-    public List<FriendlyReport> FriendlyReport(String where, String orderBy){
-        return query(where, spec, friendlyReportRepository, orderBy);
+    public List<FriendlyReport> FriendlyReport(String where, String sort){
+        return query(where, spec, friendlyReportRepository, sort);
     }
 
 }

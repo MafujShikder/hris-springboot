@@ -6,14 +6,14 @@ type FieldOptionMerge{
     uid:String
     removedfieldoptionvalue:String
     removedfieldoptionuid:String
-    datecreated:String
-    lastupdated:String
+    dateCreated:String
+    lastUpdated:String
 
 }
 
 type Query {
     getFieldOptionMergeById(id:ID!):FieldOptionMerge
-    FieldOptionMerge(where:String, orderBy:String):[FieldOptionMerge]!
+    FieldOptionMerge(where:String, sort:String):[FieldOptionMerge]!
 }
 
 type Mutation {

@@ -27,7 +27,7 @@ public class ResourceQuery extends ModelQuery<Resource>{
         return resourceRepository.findOne(id);
     }
 
-    public List<Resource> Resources(String where, String orderBy){
-        return query(where, spec, resourceRepository, orderBy);
+    public List<Resource> Resources(String where, String sort){
+        return query(where, spec, resourceRepository, sort);
     }
 }

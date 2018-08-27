@@ -11,8 +11,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class FieldOptionMergeMutation extends ModelMutation<FieldOptionMerge>{
-    @Autowired
-    private FieldOptionMergeRepository fieldOptionMergeRepository;
 
     public FieldOptionMergeMutation(FieldOptionMergeRepository fieldOptionMergeRepository) {
         this.fieldOptionMergeRepository = fieldOptionMergeRepository;

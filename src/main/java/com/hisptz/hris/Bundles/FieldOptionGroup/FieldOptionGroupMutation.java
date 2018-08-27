@@ -12,11 +12,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class FieldOptionGroupMutation extends ModelMutation<FieldOptionGroup> {
-    @Autowired
-    protected FieldOptionGroupRepository fieldOptionGroupRepository;
 
-    @Autowired
-    private FieldOptionRepository fieldOptionRepository;
 
     public FieldOptionGroupMutation(FieldOptionGroupRepository fieldOptionGroupRepository, FieldOptionRepository fieldOptionRepository) {
         this.fieldOptionGroupRepository = fieldOptionGroupRepository;
@@ -59,7 +55,7 @@ public class FieldOptionGroupMutation extends ModelMutation<FieldOptionGroup> {
         if (field != null)
             fieldOptionGroup.setField(field);
 
-        if (fieldOptionId != null)
+        if (fieldOptionId != null & !fieldOptionGroup.getFieldOptions().contains(fieldOptionRepository.findOne(fieldOptionId)))
             fieldOptionGroup.getFieldOptions().add(fieldOptionRepository.findOne(fieldOptionId));
 
         fieldOptionGroupRepository.save(fieldOptionGroup);

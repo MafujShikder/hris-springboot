@@ -26,7 +26,7 @@ public class FieldOptionMergeQuery extends ModelQuery<FieldOptionMerge> {
         return fieldOptionMergeRepository.findOne(id);
     }
 
-    public List<FieldOptionMerge> queryFieldOptionMerge(String where, String orderBy){
-        return query(where, spec, fieldOptionMergeRepository, orderBy);
+    public List<FieldOptionMerge> queryFieldOptionMerge(String where, String sort){
+        return query(where, spec, fieldOptionMergeRepository, sort);
     }
 }

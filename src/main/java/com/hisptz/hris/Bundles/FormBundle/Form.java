@@ -13,20 +13,11 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "form")
-public class Form extends Model{
+public class Form extends Model {
     private String uid;
     private String name;
     private String hypertext;
     private String title;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date datecreated;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date lastupdated;
-
 
     public Form() {
     }
@@ -78,43 +69,4 @@ public class Form extends Model{
         this.title = title;
     }
 
-    @Basic
-    @Column(name = "datecreated")
-    public Date getDatecreated() {
-        return datecreated;
-    }
-
-    public void setDatecreated(Date datecreated) {
-        this.datecreated = datecreated;
-    }
-
-    @Basic
-    @Column(name = "lastupdated")
-    public Date getLastupdated() {
-        return lastupdated;
-    }
-
-    public void setLastupdated(Date lastupdated) {
-        this.lastupdated = lastupdated;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Form that = (Form) o;
-        return id == that.id &&
-                Objects.equals(uid, that.uid) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(hypertext, that.hypertext) &&
-                Objects.equals(title, that.title) &&
-                Objects.equals(datecreated, that.datecreated) &&
-                Objects.equals(lastupdated, that.lastupdated);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, uid, name, hypertext, title, datecreated, lastupdated);
-    }
 }

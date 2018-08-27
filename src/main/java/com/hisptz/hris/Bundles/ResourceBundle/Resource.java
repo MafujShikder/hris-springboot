@@ -24,14 +24,6 @@ public class Resource extends Model {
     private String name;
     private String description;
     private Boolean isgenerating;
-    
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date datecreated;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date lastupdated;
 
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
@@ -90,26 +82,6 @@ public class Resource extends Model {
 
     public void setIsgenerating(Boolean isgenerating) {
         this.isgenerating = isgenerating;
-    }
-
-    @Basic
-    @Column(name = "datecreated")
-    public Date getDatecreated() {
-        return datecreated;
-    }
-
-    public void setDatecreated(Date datecreated) {
-        this.datecreated = datecreated;
-    }
-
-    @Basic
-    @Column(name = "lastupdated")
-    public Date getLastupdated() {
-        return lastupdated;
-    }
-
-    public void setLastupdated(Date lastupdated) {
-        this.lastupdated = lastupdated;
     }
 
     @Basic

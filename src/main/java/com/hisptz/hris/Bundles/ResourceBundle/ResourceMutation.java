@@ -12,8 +12,6 @@ import java.util.Date;
  */
 @Component
 public class ResourceMutation extends ModelMutation<Resource>{
-    @Autowired
-    ResourceRepository resourceRepository;
 
     public ResourceMutation(ResourceRepository resourceRepository) {
         this.resourceRepository = resourceRepository;

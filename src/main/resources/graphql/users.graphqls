@@ -1,6 +1,6 @@
 type Query {
     getUserById(id:ID!):User
-    Users(where:String, orderBy:String):[User]!
+    Users(where:String, sort:String):[User]!
 }
 
 type Mutation{
@@ -46,8 +46,8 @@ type User{
     firstname:String
     middlename:String
     surname:String
-    datecreated:String
-    lastupdated:String
+    dateCreated:String
+    lastUpdated:String
     deletedat:String
     description:String
 }

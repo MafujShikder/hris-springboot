@@ -20,14 +20,6 @@ public class InputType extends Model{
     private String description;
     private String htmltag;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date dateCreated;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date lastUpdated;
-
     public InputType() {
     }
     public InputType(Long id) {
@@ -74,19 +66,4 @@ public class InputType extends Model{
         this.htmltag = htmltag;
     }
 
-    public Date getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
-    public Date getLastUpdated() {
-        return lastUpdated;
-    }
-
-    public void setLastUpdated(Date lastUpdated) {
-        this.lastUpdated = lastUpdated;
-    }
 }

@@ -27,8 +27,8 @@ public class FieldOptionGroupQuery extends ModelQuery<FieldOptionGroup> {
         return fieldOptionGroupRepository.findOne(id);
     }
 
-    public List<FieldOptionGroup> FieldOptionGroup(String where,String orderBy){
-        return query(where, spec, fieldOptionGroupRepository, orderBy);
+    public List<FieldOptionGroup> FieldOptionGroup(String where,String sort){
+        return query(where, spec, fieldOptionGroupRepository, sort);
     }
 
 }

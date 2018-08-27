@@ -8,34 +8,40 @@ type FriendlyReport{
     ignoreskipinreport:String
     usetargets:String
     showdeficitsurplus:String
-    datecreated:String
-    lastupdated:String
+    dateCreated:String
+    lastUpdated:String
     type:String
     sql_statement:String
     javascript:String
     stylesheet:String
+    relationalFilters:[RelationalFilter]
+    arithmeticFilters:[ArithmeticFilter]
 }
 extend type Query {
     getFriendlyReportById(id:ID!):FriendlyReport
-    FriendlyReport(where:String, orderBy:String):[FriendlyReport]!
+    FriendlyReport(where:String, sort:String):[FriendlyReport]!
 }
 
 extend type Mutation {
-    newFriendlyReport(seriesId:Int!,
-    uid:String!,
-    name:String!,
-    description:String!,
-    sort:Int!,
-    ignoreskipinreport:String!,
+    newFriendlyReport(seriesId:Int,
+    uid:String,
+    name:String,
+    description:String,
+    sort:Int,
+    ignoreskipinreport:String,
     usetargets:String
-    showdeficitsurplus:String!,type:String!,
-    sql_statement:String!,
-    javascript:String!,
-    stylesheet:String!):FriendlyReport!
+    showdeficitsurplus:String,
+    type:String,
+    sql_statement:String,
+    javascript:String,
+    stylesheet:String,
+    relationalFilterId:ID,
+    arithmeticFilterId:ID):FriendlyReport!
 
     deleteFriendlyReport(id:ID!):String
 
-    updateFriendlyReport(id:ID!,seriesId:Int,
+    updateFriendlyReport(id:ID!,
+    seriesId:Int,
     uid:String,
     name:String,
     description:String,
@@ -45,5 +51,7 @@ extend type Mutation {
     showdeficitsurplus:String,type:String,
     sql_statement:String,
     javascript:String,
-    stylesheet:String):FriendlyReport
+    stylesheet:String,
+    relationalFilterId:ID,
+    arithmeticFilterId:ID):FriendlyReport
 }

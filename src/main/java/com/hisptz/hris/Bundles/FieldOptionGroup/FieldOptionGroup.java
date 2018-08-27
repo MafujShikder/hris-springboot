@@ -26,14 +26,6 @@ public class FieldOptionGroup extends Model{
     private String uid;
     private String name;
     private String description;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date datecreated;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date lastupdated;
     
     private String operator;
 
@@ -125,25 +117,6 @@ public class FieldOptionGroup extends Model{
         this.description = description;
     }
 
-    @Basic
-    @Column(name = "datecreated")
-    public Date getDatecreated() {
-        return datecreated;
-    }
-
-    public void setDatecreated(Date datecreated) {
-        this.datecreated = datecreated;
-    }
-
-    @Basic
-    @Column(name = "lastupdated")
-    public Date getLastupdated() {
-        return lastupdated;
-    }
-
-    public void setLastupdated(Date lastupdated) {
-        this.lastupdated = lastupdated;
-    }
 
     @Basic
     @Column(name = "operator")
@@ -155,24 +128,4 @@ public class FieldOptionGroup extends Model{
         this.operator = operator;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        FieldOptionGroup that = (FieldOptionGroup) o;
-        return id == that.id &&
-                Objects.equals(fieldId, that.fieldId) &&
-                Objects.equals(uid, that.uid) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(description, that.description) &&
-                Objects.equals(datecreated, that.datecreated) &&
-                Objects.equals(lastupdated, that.lastupdated) &&
-                Objects.equals(operator, that.operator);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, fieldId, uid, name, description, datecreated, lastupdated, operator);
-    }
 }

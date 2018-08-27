@@ -12,12 +12,10 @@ import java.util.Date;
  */
 @Component
 public class UserMutation extends ModelMutation {
-    @Autowired
-    protected UserRepository userRepository;
 
-    public UserMutation(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+//    public UserMutation(UserRepository userRepository) {
+//        this.userRepository = userRepository;
+//    }
 
     public User newUser(Integer organisationunitId, String username, String usernameCanonical, String email, String emailCanonical, Boolean enabled, String salt, String password, Boolean locked, Boolean expired, Date expiresAt, String confirmationToken, Date passwordRequestedAt, String roles, Boolean credentialsExpired, Date credentialsExpireAt, String uid, String phonenumber, String jobtitle, String firstname, String middlename, String surname, Date deletedat, String description) {
         User user = new User(organisationunitId, username, usernameCanonical, email, emailCanonical, enabled, salt, password, locked, expired, expiresAt, confirmationToken, passwordRequestedAt, roles, credentialsExpired, credentialsExpireAt, uid, phonenumber, jobtitle, firstname, middlename, surname, deletedat, description);

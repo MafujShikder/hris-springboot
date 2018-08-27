@@ -11,8 +11,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class FormSectionMutation extends ModelMutation<FormSection> {
-    @Autowired
-    private FormSectionRepository formSectionRepository;
 
     public FormSectionMutation(FormSectionRepository formSectionRepository) {
         this.formSectionRepository = formSectionRepository;

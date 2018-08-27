@@ -2,12 +2,14 @@ type FieldOptionGroupSet{
     id:ID
     uid:String
     name:String
+    dateCreated:String
+    lastUpdated:String
     description:String
 }
 
 extend type Query {
     getFieldOptionGroupSetById(id:ID!):FieldOptionGroupSet
-    FieldOptionGroupSet(where:String, orderBy:String):[FieldOptionGroupSet]!
+    FieldOptionGroupSet(where:String, sort:String):[FieldOptionGroupSet]!
 }
 
 extend type Mutation {

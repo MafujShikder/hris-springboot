@@ -4,19 +4,21 @@ type RelationalFilter{
     uid:String
     name: String
     excludefieldoptions: String
-    datecreated: String
-    lastupdated: String
+    dateCreated: String
+    lastUpdated: String
     field:field
+    fieldOptions:[FieldOption]
+    friendlyReports:[FriendlyReport]
 }
 extend type Query {
     getRelationalFilterById(id:ID!):RelationalFilter
-    RelationalFilters(where:String, orderBy: String):[RelationalFilter]!
+    RelationalFilters(where:String, sort: String):[RelationalFilter]!
 }
 
 extend type Mutation {
-    newRelationalFilter(fieldId:String!, uid:String!, name: String!, excludefieldoptions: String!, field:ID!):RelationalFilter!
+    newRelationalFilter(fieldId:String!, uid:String!, name: String!, excludefieldoptions: String!, field:ID!, fieldOptionId:ID, friendlyReportId:ID ):RelationalFilter!
 
     deleteRelationalFilter(id:ID!):String
 
-    updateRelationalFilter(id:ID!, fieldId:String, uid:String, name: String ,excludefieldoptions: String, field:ID):RelationalFilter!
+    updateRelationalFilter(id:ID!, fieldId:String, uid:String, name: String ,excludefieldoptions: String, field:ID, fieldOptionId:ID, friendlyReportId:ID):RelationalFilter!
 }

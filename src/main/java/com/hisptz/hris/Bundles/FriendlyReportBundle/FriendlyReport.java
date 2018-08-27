@@ -3,6 +3,8 @@ package com.hisptz.hris.Bundles.FriendlyReportBundle;
 /**
  * Created by Guest on 8/16/18.
  */
+import com.hisptz.hris.Bundles.ArithmeticFilterBundle.ArithmeticFilter;
+import com.hisptz.hris.Bundles.RelationalFilter.RelationalFilter;
 import com.hisptz.hris.core.Model.Model;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -10,7 +12,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
@@ -25,18 +29,24 @@ public class FriendlyReport extends Model{
     private Boolean usetargets;
     private Boolean showdeficitsurplus;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date datecreated;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date lastupdated;
-
     private String type;
     private String sql_statement;
     private String javascript;
     private String stylesheet;
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.MERGE
+            },
+            mappedBy = "friendlyReports")
+    private Set<RelationalFilter> relationalFilters = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.MERGE
+            },
+            mappedBy = "friendlyReports")
+    private Set<ArithmeticFilter> arithmeticFilters = new HashSet<>();
 
     public FriendlyReport() {
     }
@@ -58,6 +68,30 @@ public class FriendlyReport extends Model{
         this.sql_statement = sql_statement;
         this.javascript = javascript;
         this.stylesheet = stylesheet;
+    }
+
+    public Set<ArithmeticFilter> getArithmeticFilters() {
+        return arithmeticFilters;
+    }
+
+    public void setArithmeticFilters(Set<ArithmeticFilter> arithmeticFilters) {
+        this.arithmeticFilters = arithmeticFilters;
+    }
+
+    public String getSql_statement() {
+        return sql_statement;
+    }
+
+    public void setSql_statement(String sql_statement) {
+        this.sql_statement = sql_statement;
+    }
+
+    public Set<RelationalFilter> getRelationalFilters() {
+        return relationalFilters;
+    }
+
+    public void setRelationalFilters(Set<RelationalFilter> relationalFilters) {
+        this.relationalFilters = relationalFilters;
     }
 
     @Basic
@@ -140,25 +174,6 @@ public class FriendlyReport extends Model{
         this.showdeficitsurplus = showdeficitsurplus;
     }
 
-    @Basic
-    @Column(name = "datecreated")
-    public Date getDatecreated() {
-        return datecreated;
-    }
-
-    public void setDatecreated(Date datecreated) {
-        this.datecreated = datecreated;
-    }
-
-    @Basic
-    @Column(name = "lastupdated")
-    public Date getLastupdated() {
-        return lastupdated;
-    }
-
-    public void setLastupdated(Date lastupdated) {
-        this.lastupdated = lastupdated;
-    }
 
     @Basic
     @Column(name = "type")
@@ -200,31 +215,5 @@ public class FriendlyReport extends Model{
         this.stylesheet = stylesheet;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        FriendlyReport that = (FriendlyReport) o;
-        return id == that.id &&
-                sort == that.sort &&
-                Objects.equals(seriesId, that.seriesId) &&
-                Objects.equals(uid, that.uid) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(description, that.description) &&
-                Objects.equals(ignoreskipinreport, that.ignoreskipinreport) &&
-                Objects.equals(usetargets, that.usetargets) &&
-                Objects.equals(showdeficitsurplus, that.showdeficitsurplus) &&
-                Objects.equals(datecreated, that.datecreated) &&
-                Objects.equals(lastupdated, that.lastupdated) &&
-                Objects.equals(type, that.type) &&
-                Objects.equals(sql_statement, that.sql_statement) &&
-                Objects.equals(javascript, that.javascript) &&
-                Objects.equals(stylesheet, that.stylesheet);
-    }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, seriesId, uid, name, description, sort, ignoreskipinreport, usetargets, showdeficitsurplus, datecreated, lastupdated, type, sql_statement, javascript, stylesheet);
-    }
 }

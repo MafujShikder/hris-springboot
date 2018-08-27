@@ -4,15 +4,15 @@ type Resource{
     name:String
     description:String
     isgenerating:String
-    datecreated:String
-    lastupdated:String
+    dateCreated:String
+    lastUpdated:String
     lastgenerated:String
     messagelog: String
 }
 
 extend type Query {
     getResourceById(id:ID!):Resource
-    Resources(where:String, orderBy:String):[Resource]!
+    Resources(where:String, sort:String):[Resource]!
 }
 
 extend type Mutation {

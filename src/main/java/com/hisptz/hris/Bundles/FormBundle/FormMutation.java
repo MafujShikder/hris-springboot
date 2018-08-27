@@ -10,8 +10,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class FormMutation extends ModelMutation<Form>{
-    @Autowired
-    private FormRepository formRepository;
 
     public FormMutation(FormRepository formRepository) {
         this.formRepository = formRepository;

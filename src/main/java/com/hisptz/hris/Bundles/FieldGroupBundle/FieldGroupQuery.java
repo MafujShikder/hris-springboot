@@ -26,8 +26,8 @@ public class FieldGroupQuery extends ModelQuery<FieldGroup> {
         return fieldGroupRepository.findOne(id);
     }
 
-    public List<FieldGroup> FieldGroups(String where, String orderBy){
-        return query(where, spec, fieldGroupRepository, orderBy);
+    public List<FieldGroup> FieldGroups(String where, String sort){
+        return query(where, spec, fieldGroupRepository, sort);
     }
 
 }

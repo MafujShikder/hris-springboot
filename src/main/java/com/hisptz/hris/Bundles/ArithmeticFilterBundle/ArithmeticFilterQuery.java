@@ -26,7 +26,7 @@ public class ArithmeticFilterQuery extends ModelQuery<ArithmeticFilter> {
         return arithmeticFilterRepository.findOne(id);
     }
 
-    public List<ArithmeticFilter> Arithmeticfilter(String where, String orderBy){
-        return query(where, spec, arithmeticFilterRepository, orderBy);
+    public List<ArithmeticFilter> Arithmeticfilter(String where, String sort){
+        return query(where, spec, arithmeticFilterRepository, sort);
     }
 }

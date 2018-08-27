@@ -14,8 +14,8 @@ type field{
     hastarget:String
     fieldrelation:String
     skipinreport:String
-    datecreated:String
-    lastupdated:String
+    dateCreated:String
+    lastUpdated:String
     fieldGroups:[FieldGroup]
     inputType:InputType
     fieldDataType:FieldDataType
@@ -23,7 +23,7 @@ type field{
 
 extend type Query {
     getFieldById(id:ID!):field
-    Field(where:String, orderBy:String):[field]
+    Field(where:String, sort:String):[field]
 }
 
 extend type Mutation{

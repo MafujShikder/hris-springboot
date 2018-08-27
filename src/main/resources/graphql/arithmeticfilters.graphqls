@@ -6,22 +6,24 @@ type ArithmeticFilter{
     operator:String
     leftexpression:String
     rightexpression:String
-    datecreated:String
-    lastupdated:String
+    dateCreated:String
+    lastUpdated:String
+    friendlyReports:[FriendlyReport]
 }
 
 extend type Query {
     getArithmeticFilterById(id:ID!):ArithmeticFilter
-    Arithmeticfilter(where:String, orderBy:String):[ArithmeticFilter]!
+    Arithmeticfilter(where:String, sort:String):[ArithmeticFilter]!
 }
 
 extend type Mutation {
-    newArithmeticFilter(uid:String!,
-    name:String!,
-    description:String!,
-    operator:String!,
-    leftexpression:String!,
-    rightexpression:String!):ArithmeticFilter!
+    newArithmeticFilter(uid:String,
+    name:String,
+    description:String,
+    operator:String,
+    leftexpression:String,
+    rightexpression:String,
+    friendlyReportId:ID):ArithmeticFilter!
 
     deleteArithmeticFilter(id:ID!):String
 
@@ -30,5 +32,6 @@ extend type Mutation {
     description:String,
     operator:String,
     leftexpression:String,
-    rightexpression:String):ArithmeticFilter
+    rightexpression:String,
+    friendlyReportId:ID):ArithmeticFilter
 }

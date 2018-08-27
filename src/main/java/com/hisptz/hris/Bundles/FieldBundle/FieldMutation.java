@@ -14,10 +14,6 @@ import java.util.Set;
  */
 @Component
 public class FieldMutation extends ModelMutation<Field> {
-    @Autowired
-    protected FieldRepository fieldRepository;
-
-    private FieldGroupRepository fieldGroupRepository;
 
     public FieldMutation(FieldRepository fieldRepository, FieldGroupRepository fieldGroupRepository) {
         this.fieldRepository = fieldRepository;

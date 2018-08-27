@@ -31,8 +31,8 @@ public class FieldQuery extends ModelQuery<Field>{
     }
 
 
-    public List<Field> Field(String where, String orderBy){
-       return query(where, spec, fieldRepository, orderBy);
+    public List<Field> Field(String where, String sort){
+       return query(where, spec, fieldRepository, sort);
     }
 
 }

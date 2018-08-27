@@ -5,15 +5,15 @@ type FieldOptionGroup{
     operator:String
     name:String
     description:String
-    datecreated:String
-    lastupdated:String
+    dateCreated:String
+    lastUpdated:String
     field:field
     fieldOptions:[FieldOption]
 }
 
 extend type Query {
     getFieldOptionGroupById(id:ID!):FieldOptionGroup
-    FieldOptionGroup(where:String, orderBy:String):[FieldOptionGroup]!
+    FieldOptionGroup(where:String, sort:String):[FieldOptionGroup]!
 }
 
 extend type Mutation {

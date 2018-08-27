@@ -7,24 +7,25 @@ type FieldOption{
     description:String
     sort:String
     hastraining:String
-    datecreated:String
-    lastupdated:String
+    dateCreated:String
+    lastUpdated:String
     field:field
     fieldOptionGroups:[FieldOptionGroup]
+    relationalFilters:[RelationalFilter]
 }
 
 extend type Query {
     getFieldOptionById(id:ID!):FieldOption
-    FieldOptions(where:String, orderBy:String):[FieldOption]!
+    FieldOptions(where:String, sort:String):[FieldOption]!
 }
 
 extend type Mutation {
     newFieldOption(fieldId:Int, uid:String, value:String, skipinreport:String, description:String,
-    sort:String, hastraining:String,field:ID, fieldOptionGroup:ID):FieldOption!
+    sort:String, hastraining:String,field:ID, fieldOptionGroup:ID, relationalFilterId:ID):FieldOption!
 
     deleteFieldOption(id:ID!):String
 
     updateFieldOption(id:ID!, fieldId:Int, uid:String, value:String, skipinreport:String, description:String,
-    sort:String, hastraining:String, fieldOptionGroup:ID):FieldOption!
+    sort:String, hastraining:String, fieldOptionGroup:ID, relationalFilterId:ID):FieldOption!
 
 }

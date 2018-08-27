@@ -10,8 +10,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class FieldOptionGroupSetMutation extends ModelMutation<FieldOptionGroupSet>{
-    @Autowired
-    protected FieldOptionGroupSetRepository fieldOptionGroupSetRepository;
 
     public FieldOptionGroupSetMutation(FieldOptionGroupSetRepository fieldOptionGroupSetRepository) {
         this.fieldOptionGroupSetRepository = fieldOptionGroupSetRepository;

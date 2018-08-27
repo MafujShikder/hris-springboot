@@ -3,14 +3,14 @@ type FieldDataType{
     uid:String
     name:String
     description:String
-    datecreated:String
-    lastupdated:String
+    dateCreated:String
+    lastUpdated:String
 
 }
 
 extend type Query {
     getFieldDataTypeById(id:ID!):FieldDataType
-    FieldDataType(where:String, orderBy:String):[FieldDataType]!
+    FieldDataType(where:String, sort:String):[FieldDataType]!
 }
 
 extend type Mutation {

@@ -30,8 +30,8 @@ public class UserQuery extends ModelQuery<User>{
         return userRepository.findOne(id);
     }
 
-    public List<User> Users(String where, String orderBy){
-        return query(where, spec, userRepository, orderBy);
+    public List<User> Users(String where, String sort){
+        return query(where, spec, userRepository, sort);
     }
 
 }

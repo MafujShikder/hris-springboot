@@ -5,6 +5,7 @@ package com.hisptz.hris.Bundles.FieldOptionBundle;
  */
 import com.hisptz.hris.Bundles.FieldBundle.Field;
 import com.hisptz.hris.Bundles.FieldOptionGroup.FieldOptionGroup;
+import com.hisptz.hris.Bundles.RelationalFilter.RelationalFilter;
 import com.hisptz.hris.core.Model.Model;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -30,25 +31,24 @@ public class FieldOption extends Model {
     private Integer sort;
     private Boolean hastraining;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date datecreated;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date lastupdated;
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "field")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Field field;
 
     @ManyToMany(fetch = FetchType.LAZY,
-                cascade = {
-                        CascadeType.MERGE
-                },
+//                cascade = {
+//                        CascadeType.MERGE
+  //              },
     mappedBy = "fieldOptions")
     private Set<FieldOptionGroup> fieldOptionGroups = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.MERGE
+            },
+            mappedBy = "fieldOptions")
+    private Set<RelationalFilter> relationalFilters = new HashSet<>();
 
     public FieldOption() {
     }
@@ -64,6 +64,14 @@ public class FieldOption extends Model {
         this.description = description;
         this.sort = sort;
         this.hastraining = hastraining;
+    }
+
+    public Set<RelationalFilter> getRelationalFilters() {
+        return relationalFilters;
+    }
+
+    public void setRelationalFilters(Set<RelationalFilter> relationalFilters) {
+        this.relationalFilters = relationalFilters;
     }
 
     public Set<FieldOptionGroup> getFieldOptionGroups() {
@@ -143,26 +151,6 @@ public class FieldOption extends Model {
     }
 
     @Basic
-    @Column(name = "datecreated")
-    public Date getDatecreated() {
-        return datecreated;
-    }
-
-    public void setDatecreated(Date datecreated) {
-        this.datecreated = datecreated;
-    }
-
-    @Basic
-    @Column(name = "lastupdated")
-    public Date getLastupdated() {
-        return lastupdated;
-    }
-
-    public void setLastupdated(Date lastupdated) {
-        this.lastupdated = lastupdated;
-    }
-
-    @Basic
     @Column(name = "hastraining")
     public Boolean getHastraining() {
         return hastraining;
@@ -172,26 +160,4 @@ public class FieldOption extends Model {
         this.hastraining = hastraining;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        FieldOption that = (FieldOption) o;
-        return id == that.id &&
-                fieldId == that.fieldId &&
-                Objects.equals(uid, that.uid) &&
-                Objects.equals(value, that.value) &&
-                Objects.equals(skipinreport, that.skipinreport) &&
-                Objects.equals(description, that.description) &&
-                Objects.equals(sort, that.sort) &&
-                Objects.equals(datecreated, that.datecreated) &&
-                Objects.equals(lastupdated, that.lastupdated) &&
-                Objects.equals(hastraining, that.hastraining);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, fieldId, uid, value, skipinreport, description, sort, datecreated, lastupdated, hastraining);
-    }
 }
