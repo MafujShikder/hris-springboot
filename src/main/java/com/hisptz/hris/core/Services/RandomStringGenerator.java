@@ -12,8 +12,6 @@ public class RandomStringGenerator {
 
         String generatedString = RandomStringUtils.randomAlphabetic(length);
 
-        System.out.println(generatedString);
-
         return generatedString;
     }
 }
