@@ -24,7 +24,6 @@ import java.util.Set;
 @Table(name = "fieldoption")
 public class FieldOption extends Model {
     private Integer fieldId;
-    private String uid;
     private String value;
     private Boolean skipinreport;
     private String description;
@@ -57,8 +56,8 @@ public class FieldOption extends Model {
         this.id = id;
     }
     public FieldOption(Integer fieldId, String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining) {
+        super();
         this.fieldId = fieldId;
-        this.uid = uid;
         this.value = value;
         this.skipinreport = skipinreport;
         this.description = description;

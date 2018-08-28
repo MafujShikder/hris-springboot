@@ -3,7 +3,7 @@ package com.hisptz.hris.core.Model;
 import com.hisptz.hris.Bundles.ArithmeticFilterBundle.ArithmeticFilterRepository;
 import com.hisptz.hris.Bundles.DashboardChartBundle.DashboardChartRepository;
 import com.hisptz.hris.Bundles.FieldBundle.FieldRepository;
-import com.hisptz.hris.Bundles.FieldDataTypeBundle.FieldDataTypeRepository;
+import com.hisptz.hris.Bundles.DataTypeBundle.DataTypeRepository;
 import com.hisptz.hris.Bundles.FieldGroupBundle.FieldGroupRepository;
 import com.hisptz.hris.Bundles.FieldGroupSetBundle.FieldGroupSetRepository;
 import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOptionRepository;
@@ -68,7 +68,7 @@ public class ModelRepositories {
     protected FieldGroupRepository fieldGroupRepository;
 
     @Autowired
-    protected FieldDataTypeRepository fieldDataTypeRepository;
+    protected DataTypeRepository dataTypeRepository;
 
     @Autowired
     protected DashboardChartRepository dashboardChartRepository;

@@ -25,7 +25,6 @@ import java.util.Set;
 public class RelationalFilter extends Model {
 
     private Integer fieldId;
-    private String uid;
     private String name;
     private Boolean excludefieldoptions;
 
@@ -53,11 +52,12 @@ public class RelationalFilter extends Model {
     private Set<FriendlyReport> friendlyReports = new HashSet<>();
 
     public RelationalFilter() {
+        super();
     }
 
     public RelationalFilter(Integer fieldId, String uid, String name, Boolean excludefieldoptions, Long field) {
+        super();
         this.fieldId = fieldId;
-        this.uid = uid;
         this.name = name;
         this.excludefieldoptions = excludefieldoptions;
         this.field = new Field(field);

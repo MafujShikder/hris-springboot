@@ -16,15 +16,15 @@ import java.util.Objects;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "fieldgroupset")
 public class FieldGroupSet extends Model{
-    private String uid;
     private String name;
     private String description;
 
     public FieldGroupSet() {
+        super();
     }
 
     public FieldGroupSet(String uid, String name, String description) {
-        this.uid = uid;
+        super();
         this.name = name;
         this.description = description;
     }

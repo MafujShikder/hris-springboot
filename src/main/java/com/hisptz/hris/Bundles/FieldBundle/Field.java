@@ -4,20 +4,15 @@ package com.hisptz.hris.Bundles.FieldBundle;
  * Created by Guest on 8/10/18.
  */
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.hisptz.hris.Bundles.FieldDataTypeBundle.FieldDataType;
+import com.hisptz.hris.Bundles.DataTypeBundle.DataType;
 import com.hisptz.hris.Bundles.FieldGroupBundle.FieldGroup;
 import com.hisptz.hris.Bundles.InputTypeBundle.InputType;
 import com.hisptz.hris.core.Model.Model;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.*;
 
 @Entity
@@ -26,7 +21,6 @@ import java.util.*;
 public class Field extends Model{
     private Integer datatypeId;
     private Integer inputtypeId;
-    private String uid;
     private String name;
     private String caption;
     private Boolean compulsory;
@@ -53,11 +47,6 @@ public class Field extends Model{
     @OnDelete(action = OnDeleteAction.CASCADE)
     private InputType inputType;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "field_datatype", nullable = true)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private FieldDataType fieldDataType;
-
 
     public Set<FieldGroup> getFieldGroups() {
         return fieldGroups;
@@ -68,16 +57,18 @@ public class Field extends Model{
     }
 
     public Field() {
+        super();
     }
 
     public Field(Long id) {
+        super();
         this.id = id;
     }
 
-    public Field(Integer datatypeId, Integer inputtypeId, String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport, Long inputTypeId, Long fieldDataTypeId) {
+    public Field(Integer datatypeId, Integer inputtypeId, String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport, Long inputTypeId) {
+        super();
         this.datatypeId = datatypeId;
         this.inputtypeId = inputtypeId;
-        this.uid = uid;
         this.name = name;
         this.caption = caption;
         this.compulsory = compulsory;
@@ -90,7 +81,6 @@ public class Field extends Model{
         this.fieldrelation = fieldrelation;
         this.skipinreport = skipinreport;
         this.inputType = new InputType(inputTypeId);
-        this.fieldDataType = new FieldDataType(fieldDataTypeId);
     }
 
     public InputType getInputType() {
@@ -99,14 +89,6 @@ public class Field extends Model{
 
     public void setInputType(Long id) {
         this.inputType = new InputType(id);
-    }
-
-    public FieldDataType getFieldDataType() {
-        return fieldDataType;
-    }
-
-    public void setFieldDataType(Long id) {
-        this.fieldDataType = new FieldDataType(id);
     }
 
 

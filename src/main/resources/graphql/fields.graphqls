@@ -18,7 +18,6 @@ type field{
     lastUpdated:String
     fieldGroups:[FieldGroup]
     inputType:InputType
-    fieldDataType:FieldDataType
 }
 
 extend type Query {
@@ -30,13 +29,13 @@ extend type Mutation{
     newField(datatypeId:Int,inputtypeId:Int,uid:String,
     name:String, caption:String, compulsory:String, isunique:String, iscalculated:String,
     description:String, calculatedexpression:String,
-    hashistory:String, hastarget:String, fieldrelation:String, skipinreport:String,inputType:ID,fieldDataType:ID, fieldGroup:ID):field!
+    hashistory:String, hastarget:String, fieldrelation:String, skipinreport:String,inputType:ID, fieldGroup:ID):field!
 
     deleteField(id:ID!):String
 
     updateField(id:ID!, datatypeId:Int, inputtypeId:Int, uid:String, name:String, caption:String, compulsory:String,
     isunique:String, iscalculated:String, description:String, calculatedexpression:String,
-    hashistory:String, hastarget:String, fieldrelation:String, skipinreport:String,inputType:ID,fieldDataType:ID, fieldGroup:ID):field!,
+    hashistory:String, hastarget:String, fieldrelation:String, skipinreport:String,inputType:ID, fieldGroup:ID):field!,
 
 
 }

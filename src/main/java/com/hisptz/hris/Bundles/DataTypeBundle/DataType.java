@@ -1,36 +1,51 @@
-package com.hisptz.hris.Bundles.FieldDataTypeBundle;
+package com.hisptz.hris.Bundles.DataTypeBundle;
 
 /**
  * Created by Guest on 8/16/18.
  */
+import com.hisptz.hris.Bundles.FieldBundle.Field;
 import com.hisptz.hris.core.Model.Model;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.Objects;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "field_datatype")
-public class FieldDataType  extends Model {
-    private String uid;
+public class DataType extends Model {
     private String name;
     private String description;
 
-    public FieldDataType() {
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "field", nullable = true)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Field field;
+
+    public DataType() {
+        super();
     }
 
-    public FieldDataType(Long id) {
+    public DataType(Long id) {
+        super();
         this.id = id;
     }
 
-    public FieldDataType(String uid, String name, String description) {
-        this.uid = uid;
+    public DataType(String name, String description) {
+        super();
         this.name = name;
         this.description = description;
+    }
+
+    public Field getField() {
+        return field;
+    }
+
+    public void setField(Field field) {
+        this.field = field;
     }
 
     @Basic

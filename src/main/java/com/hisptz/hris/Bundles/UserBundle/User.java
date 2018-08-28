@@ -56,9 +56,11 @@ public class User extends Model {
 
 
     public User() {
+        super();
     }
 
     public User(int organisationunitId, String username, String usernameCanonical, String email, String emailCanonical, Boolean enabled, String salt, String password, Boolean locked, Boolean expired, Date expiresAt, String confirmationToken, Date passwordRequestedAt, String roles, Boolean credentialsExpired, Date credentialsExpireAt, String uid, String phonenumber, String jobtitle, String firstname, String middlename, String surname, Date deletedat, String description) {
+        super();
         this.organisationunitId = organisationunitId;
         this.username = username;
         this.usernameCanonical = usernameCanonical;
@@ -75,7 +77,6 @@ public class User extends Model {
         this.roles = roles;
         this.credentialsExpired = credentialsExpired;
         this.credentialsExpireAt = credentialsExpireAt;
-        this.uid = uid;
         this.phonenumber = phonenumber;
         this.jobtitle = jobtitle;
         this.firstname = firstname;

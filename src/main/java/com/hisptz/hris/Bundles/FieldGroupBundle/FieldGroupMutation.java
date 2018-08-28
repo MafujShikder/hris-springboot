@@ -49,9 +49,9 @@ public class FieldGroupMutation extends ModelMutation<FieldGroup> {
         if (description != null)
             fieldGroup.setDescription(description);
 
-        if (field != null) {
+        //if (field != null) {
             fieldGroup.getFields().add(fieldRepository.findOne(field));
-        }
+        //}
 
         fieldGroupRepository.save(fieldGroup);
         return fieldGroup;

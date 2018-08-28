@@ -93,14 +93,14 @@ The following are queries to achieve differently desired responces:
         id
         description
         fields{
-          fieldDataType{
+          dataType{
             name
             description
           }
         }
       }
 
-      newField(datatypeId:3, compulsory:"true", fieldDataType:1, inputType:1,fieldGroup:1){ # Create a new Field record 
+      newField(datatypeId:3, compulsory:"true", dataType:1, inputType:1,fieldGroup:1){ # Create a new Field record
         uid
         fieldGroups{
           fields{
@@ -108,7 +108,7 @@ The following are queries to achieve differently desired responces:
             compulsory
           }
         }
-        fieldDataType{
+        dataType{
           name
           description
         }
@@ -131,7 +131,7 @@ The following are queries to achieve differently desired responces:
         fields{
           uid
           compulsory
-          fieldDataType{
+          dataType{
             name
             description
           }

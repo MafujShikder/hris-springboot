@@ -1,20 +1,13 @@
 package com.hisptz.hris.Bundles.FieldBundle;
 
 import com.coxautodev.graphql.tools.GraphQLResolver;
-import com.hisptz.hris.Bundles.FieldDataTypeBundle.FieldDataType;
-import com.hisptz.hris.Bundles.FieldDataTypeBundle.FieldDataTypeRepository;
-import com.hisptz.hris.Bundles.FieldGroupBundle.FieldGroup;
+import com.hisptz.hris.Bundles.DataTypeBundle.DataType;
+import com.hisptz.hris.Bundles.DataTypeBundle.DataTypeRepository;
 import com.hisptz.hris.Bundles.FieldGroupBundle.FieldGroupRepository;
-import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOption;
 import com.hisptz.hris.Bundles.InputTypeBundle.InputType;
 import com.hisptz.hris.Bundles.InputTypeBundle.InputTypeRepository;
-import com.hisptz.hris.Bundles.UserBundle.User;
-import com.hisptz.hris.Bundles.UserBundle.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Guest on 8/10/18.
@@ -31,21 +24,17 @@ public class FieldResolver implements GraphQLResolver<Field>{
     private InputTypeRepository inputTypeRepository;
 
     @Autowired
-    private FieldDataTypeRepository fieldDataTypeRepository;
+    private DataTypeRepository dataTypeRepository;
 
-    public FieldResolver(FieldRepository fieldRepository,FieldGroupRepository fieldGroupRepository,InputTypeRepository inputTypeRepository, FieldDataTypeRepository fieldDataTypeRepository) {
+    public FieldResolver(FieldRepository fieldRepository, FieldGroupRepository fieldGroupRepository, InputTypeRepository inputTypeRepository, DataTypeRepository dataTypeRepository) {
         this.fieldRepository = fieldRepository;
         this.fieldGroupRepository = fieldGroupRepository;
         this.inputTypeRepository = inputTypeRepository;
-        this.fieldDataTypeRepository = fieldDataTypeRepository;
+        this.dataTypeRepository = dataTypeRepository;
     }
 
     public InputType getInputType(Field field){
         return inputTypeRepository.findOne(field.getInputType().getId());
-    }
-
-    public FieldDataType getFieldDataType(Field field){
-        return fieldDataTypeRepository.findOne(field.getFieldDataType().getId());
     }
 
 }

@@ -14,16 +14,16 @@ import java.util.Objects;
 @Entity
 @Table(name = "form")
 public class Form extends Model {
-    private String uid;
     private String name;
     private String hypertext;
     private String title;
 
     public Form() {
+        super();
     }
 
     public Form(String uid, String name, String hypertext, String title) {
-        this.uid = uid;
+        super();
         this.name = name;
         this.hypertext = hypertext;
         this.title = title;

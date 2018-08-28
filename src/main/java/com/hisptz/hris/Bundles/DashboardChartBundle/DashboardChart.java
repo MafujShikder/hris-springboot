@@ -23,10 +23,7 @@ public class DashboardChart extends Model {
     private Integer fieldoneId;
     private Integer fieldtwoId;
     private Integer userId;
-    
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String uid;
-    
+
     private String name;
     private String description;
     private String graphtype;
@@ -34,14 +31,17 @@ public class DashboardChart extends Model {
     private Boolean systemwide;
 
     public DashboardChart() {
+        super();
     }
 
 
     public DashboardChart(Long id) {
+        super();
         this.id = id;
     }
 
     public DashboardChart(Integer fieldoneId, Integer fieldtwoId, Integer userId, String name, String description, String graphtype, Boolean lowerlevels, Boolean systemwide) {
+        super();
         this.fieldoneId = fieldoneId;
         this.fieldtwoId = fieldtwoId;
         this.userId = userId;

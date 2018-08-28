@@ -21,7 +21,6 @@ import java.util.Set;
 @Table(name = "friendlyreport")
 public class FriendlyReport extends Model{
     private Integer seriesId;
-    private String uid;
     private String name;
     private String description;
     private Integer sort;
@@ -49,16 +48,18 @@ public class FriendlyReport extends Model{
     private Set<ArithmeticFilter> arithmeticFilters = new HashSet<>();
 
     public FriendlyReport() {
+        super();
     }
 
     public FriendlyReport(Long id) {
+        super();
         this.id = id;
     }
 
     public FriendlyReport(Integer seriesId, String uid, String name, String description, Integer sort, Boolean ignoreskipinreport, Boolean usetargets, Boolean showdeficitsurplus, String type, String sql_statement, String javascript, String stylesheet) {
-        this.seriesId = seriesId;
-        this.uid = uid;
+        super();
         this.name = name;
+        this.seriesId = seriesId;
         this.description = description;
         this.sort = sort;
         this.ignoreskipinreport = ignoreskipinreport;

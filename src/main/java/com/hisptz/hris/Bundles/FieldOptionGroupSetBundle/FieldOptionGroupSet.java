@@ -13,15 +13,15 @@ import javax.persistence.*;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "fieldoptiongroupset")
 public class FieldOptionGroupSet extends Model{
-    private String uid;
     private String name;
     private String description;
 
     public FieldOptionGroupSet() {
+        super();
     }
 
     public FieldOptionGroupSet(String uid, String name, String description) {
-        this.uid = uid;
+        super();
         this.name = name;
         this.description = description;
     }

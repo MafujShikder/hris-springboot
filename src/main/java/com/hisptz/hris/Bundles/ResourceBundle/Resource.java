@@ -19,8 +19,6 @@ public class Resource extends Model {
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    private Long id;
-
-    private String uid;
     private String name;
     private String description;
     private Boolean isgenerating;
@@ -33,10 +31,11 @@ public class Resource extends Model {
 
 
     public Resource() {
+        super();
     }
 
     public Resource(String uid, String name, String description, Boolean isgenerating, String messagelog) {
-        this.uid = uid;
+        super();
         this.name = name;
         this.description = description;
         this.isgenerating = isgenerating;

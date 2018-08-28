@@ -16,7 +16,6 @@ import java.util.*;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "fieldgroup")
 public class FieldGroup extends Model{
-    private String uid;
     private String name;
     private String description;
 
@@ -36,13 +35,15 @@ public class FieldGroup extends Model{
     }
 
     public FieldGroup() {
+        super();
     }
 
     public FieldGroup(Long id) {
+        super();
         this.id = id;
     }
     public FieldGroup(String uid, String name, String description) {
-        this.uid = uid;
+        super();
         this.name = name;
         this.description = description;
     }

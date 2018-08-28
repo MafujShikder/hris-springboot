@@ -1,5 +1,6 @@
 package com.hisptz.hris.core.Model;
 
+import com.hisptz.hris.core.Services.RandomStringGenerator;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.stereotype.Component;
@@ -21,12 +22,18 @@ public class Model{
 
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
-    private Date dateCreated;
+    protected Date dateCreated;
 
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
-    private Date lastUpdated;
+    protected Date lastUpdated;
 
+
+
+    public Model() {
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+        this.uid = randomStringGenerator.givenUsingApache_whenGeneratingRandomAlphabeticString_thenCorrect(12);
+    }
 
     @Basic
     @Column(name = "id")

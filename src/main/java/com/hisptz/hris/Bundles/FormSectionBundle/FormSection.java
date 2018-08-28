@@ -15,22 +15,23 @@ import java.util.Objects;
 @Table(name = "formsection")
 public class FormSection extends Model{
     private Integer formId;
-    private String uid;
     private String name;
     private String description;
 
     public FormSection(Long id) {
+        super();
         this.id = id;
     }
 
     public FormSection(Integer formId, String uid, String name, String description) {
+        super();
         this.formId = formId;
-        this.uid = uid;
         this.name = name;
         this.description = description;
     }
 
     public FormSection() {
+        super();
     }
 
     @Basic

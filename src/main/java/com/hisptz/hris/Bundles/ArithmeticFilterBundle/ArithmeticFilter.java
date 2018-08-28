@@ -19,7 +19,6 @@ import java.util.Set;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "arithmeticfilter")
 public class ArithmeticFilter extends Model{
-    private String uid;
     private String name;
     private String description;
     private String operator;

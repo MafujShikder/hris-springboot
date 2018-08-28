@@ -23,7 +23,6 @@ import java.util.Set;
 @Table(name = "fieldoptiongroup")
 public class FieldOptionGroup extends Model{
     private Integer fieldId;
-    private String uid;
     private String name;
     private String description;
     
@@ -44,11 +43,12 @@ public class FieldOptionGroup extends Model{
     private Set<FieldOption> fieldOptions = new HashSet<>();
 
     public FieldOptionGroup() {
+        super();
     }
 
     public FieldOptionGroup(Integer fieldId, String uid, String name, String description, String operator, Long field) {
+        super();
         this.fieldId = fieldId;
-        this.uid = uid;
         this.name = name;
         this.description = description;
         this.operator = operator;

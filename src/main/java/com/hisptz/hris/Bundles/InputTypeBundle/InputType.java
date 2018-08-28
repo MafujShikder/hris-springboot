@@ -15,19 +15,20 @@ import java.util.Date;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "inputtype")
 public class InputType extends Model{
-    private String uid;
     private String name;
     private String description;
     private String htmltag;
 
     public InputType() {
+        super();
     }
     public InputType(Long id) {
+        super();
         this.id = id;
     }
 
     public InputType(String uid, String name, String description, String htmltag) {
-        this.uid = uid;
+        super();
         this.name = name;
         this.description = description;
         this.htmltag = htmltag;

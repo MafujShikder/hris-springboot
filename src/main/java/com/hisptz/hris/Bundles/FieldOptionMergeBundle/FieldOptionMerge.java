@@ -16,21 +16,22 @@ import java.util.Objects;
 public class FieldOptionMerge extends Model {
     private Integer fieldId;
     private Integer mergedfieldoptionId;
-    private String uid;
     private String removedfieldoptionvalue;
     private String removedfieldoptionuid;
 
     public FieldOptionMerge() {
+        super();
     }
 
     public FieldOptionMerge(Long id) {
+        super();
         this.id = id;
     }
 
     public FieldOptionMerge(Integer fieldId, Integer mergedfieldoptionId, String uid, String removedfieldoptionvalue, String removedfieldoptionuid) {
+        super();
         this.fieldId = fieldId;
         this.mergedfieldoptionId = mergedfieldoptionId;
-        this.uid = uid;
         this.removedfieldoptionvalue = removedfieldoptionvalue;
         this.removedfieldoptionuid = removedfieldoptionuid;
     }
