@@ -1,4 +1,4 @@
-package com.hisptz.hris.core.Model;
+package com.hisptz.hris.core.Model.main;
 
 import com.hisptz.hris.core.Services.RandomStringGenerator;
 import org.springframework.data.annotation.CreatedDate;

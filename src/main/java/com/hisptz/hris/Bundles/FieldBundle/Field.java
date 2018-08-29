@@ -4,10 +4,9 @@ package com.hisptz.hris.Bundles.FieldBundle;
  * Created by Guest on 8/10/18.
  */
 
-import com.hisptz.hris.Bundles.DataTypeBundle.DataType;
 import com.hisptz.hris.Bundles.FieldGroupBundle.FieldGroup;
 import com.hisptz.hris.Bundles.InputTypeBundle.InputType;
-import com.hisptz.hris.core.Model.Model;
+import com.hisptz.hris.core.Model.main.Model;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;

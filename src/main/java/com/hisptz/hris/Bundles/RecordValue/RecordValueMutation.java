@@ -1,6 +1,6 @@
 package com.hisptz.hris.Bundles.RecordValue;
 
-import com.hisptz.hris.core.Model.ModelMutation;
+import com.hisptz.hris.core.Model.main.ModelMutation;
 import org.springframework.stereotype.Component;
 
 /**

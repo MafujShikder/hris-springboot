@@ -1,7 +1,7 @@
 package com.hisptz.hris.Bundles.FieldBundle;
 
 import com.hisptz.hris.Bundles.FieldGroupBundle.FieldGroupRepository;
-import com.hisptz.hris.core.Model.ModelMutation;
+import com.hisptz.hris.core.Model.main.ModelMutation;
 import org.springframework.stereotype.Component;
 
 /**

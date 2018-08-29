@@ -1,13 +1,9 @@
 package com.hisptz.hris.Bundles.RecordBundle;
 
-import com.hisptz.hris.Bundles.RecordValue.RecordValue;
-import com.hisptz.hris.core.Model.Model;
+import com.hisptz.hris.core.Model.main.Model;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by Guest on 8/29/18.

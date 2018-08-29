@@ -1,6 +1,6 @@
-package com.hisptz.hris.core.Model;
+package com.hisptz.hris.core.Model.common;
 
-import com.hisptz.hris.Bundles.FieldBundle.Field;
+import com.hisptz.hris.core.Model.main.Model;
 import com.hisptz.hris.core.QueryStructure.Operation;
 import com.hisptz.hris.core.QueryStructure.QueryCriteria;
 import org.springframework.data.jpa.domain.Specification;
@@ -25,10 +25,10 @@ public class ModelSpecification<T extends Model> implements Specification<T> {
     public Predicate toPredicate(Root<T> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
         if (queryCriteria.getOperation().equalsIgnoreCase(Operation.ILIKE.getOp())){
             return criteriaBuilder.like(
-                    root.<String> get(queryCriteria.getKey()), queryCriteria.getValue().toString());
+                    root.<String> get(queryCriteria.getKey()), queryCriteria.getValue());
         } else if (queryCriteria.getOperation().equalsIgnoreCase(Operation.EQ.getOp())) {
             return criteriaBuilder.equal(
-                    root.<String> get(queryCriteria.getKey()), queryCriteria.getValue().toString());
+                    root.<String> get(queryCriteria.getKey()), queryCriteria.getValue());
         }
 //        } else {
 //            try {

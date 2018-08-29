@@ -1,16 +1,13 @@
 package com.hisptz.hris.Bundles.RecordValue;
 
 import com.hisptz.hris.Bundles.FieldBundle.Field;
-import com.hisptz.hris.Bundles.FieldGroupBundle.FieldGroup;
 import com.hisptz.hris.Bundles.RecordBundle.Record;
-import com.hisptz.hris.core.Model.Model;
+import com.hisptz.hris.core.Model.main.Model;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by Guest on 8/29/18.

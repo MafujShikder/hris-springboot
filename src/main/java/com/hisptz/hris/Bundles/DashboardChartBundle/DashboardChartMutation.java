@@ -1,8 +1,6 @@
 package com.hisptz.hris.Bundles.DashboardChartBundle;
 
-import com.coxautodev.graphql.tools.GraphQLMutationResolver;
-import com.hisptz.hris.core.Model.ModelMutation;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.hisptz.hris.core.Model.main.ModelMutation;
 import org.springframework.stereotype.Component;
 
 /**

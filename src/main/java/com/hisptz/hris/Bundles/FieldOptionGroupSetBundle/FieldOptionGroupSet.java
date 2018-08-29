@@ -1,6 +1,6 @@
 package com.hisptz.hris.Bundles.FieldOptionGroupSetBundle;
 
-import com.hisptz.hris.core.Model.Model;
+import com.hisptz.hris.core.Model.main.Model;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;

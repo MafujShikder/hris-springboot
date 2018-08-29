@@ -1,7 +1,11 @@
-package com.hisptz.hris.core.Model;
+package com.hisptz.hris.core.Model.main;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import com.hisptz.hris.core.Model.common.ModelRepositories;
+import com.hisptz.hris.core.Model.common.ModelSpecification;
 import com.hisptz.hris.core.QueryStructure.QueryCriteria;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 
 import java.util.*;
 

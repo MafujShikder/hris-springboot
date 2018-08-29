@@ -1,9 +1,7 @@
 package com.hisptz.hris.Bundles.InputTypeBundle;
 
-import com.coxautodev.graphql.tools.GraphQLQueryResolver;
-import com.hisptz.hris.Bundles.UserBundle.User;
-import com.hisptz.hris.core.Model.ModelQuery;
-import com.hisptz.hris.core.Model.ModelSpecification;
+import com.hisptz.hris.core.Model.main.ModelQuery;
+import com.hisptz.hris.core.Model.common.ModelSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

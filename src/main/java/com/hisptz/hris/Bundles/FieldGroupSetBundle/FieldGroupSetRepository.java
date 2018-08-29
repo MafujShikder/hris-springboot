@@ -1,8 +1,6 @@
 package com.hisptz.hris.Bundles.FieldGroupSetBundle;
 
-import com.hisptz.hris.Bundles.FieldGroupBundle.FieldGroup;
-import com.hisptz.hris.core.Model.ModelRepository;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.hisptz.hris.core.Model.main.ModelRepository;
 import org.springframework.stereotype.Repository;
 
 /**

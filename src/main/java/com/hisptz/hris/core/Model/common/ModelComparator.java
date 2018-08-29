@@ -1,4 +1,4 @@
-package com.hisptz.hris.core.Model;
+package com.hisptz.hris.core.Model.common;
 
 import java.util.Comparator;
 

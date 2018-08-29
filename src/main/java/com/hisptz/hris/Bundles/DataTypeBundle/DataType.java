@@ -4,14 +4,12 @@ package com.hisptz.hris.Bundles.DataTypeBundle;
  * Created by Guest on 8/16/18.
  */
 import com.hisptz.hris.Bundles.FieldBundle.Field;
-import com.hisptz.hris.core.Model.Model;
+import com.hisptz.hris.core.Model.main.Model;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)

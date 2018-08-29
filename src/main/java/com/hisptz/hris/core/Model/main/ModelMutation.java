@@ -1,6 +1,7 @@
-package com.hisptz.hris.core.Model;
+package com.hisptz.hris.core.Model.main;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import com.hisptz.hris.core.Model.common.ModelRepositories;
 
 /**
  * Created by Guest on 8/20/18.

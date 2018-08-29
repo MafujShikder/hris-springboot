@@ -1,13 +1,9 @@
 package com.hisptz.hris.Bundles.FieldOptionBundle;
 
-import com.coxautodev.graphql.tools.GraphQLMutationResolver;
-import com.hisptz.hris.Bundles.FieldBundle.Field;
 import com.hisptz.hris.Bundles.FieldBundle.FieldRepository;
-import com.hisptz.hris.Bundles.FieldOptionGroup.FieldOptionGroup;
 import com.hisptz.hris.Bundles.FieldOptionGroup.FieldOptionGroupRepository;
 import com.hisptz.hris.Bundles.RelationalFilter.RelationalFilterRepository;
-import com.hisptz.hris.core.Model.ModelMutation;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.hisptz.hris.core.Model.main.ModelMutation;
 import org.springframework.stereotype.Component;
 
 /**

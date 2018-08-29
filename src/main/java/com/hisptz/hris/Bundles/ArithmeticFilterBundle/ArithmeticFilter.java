@@ -4,15 +4,11 @@ package com.hisptz.hris.Bundles.ArithmeticFilterBundle;
  * Created by Guest on 8/14/18.
  */
 import com.hisptz.hris.Bundles.FriendlyReportBundle.FriendlyReport;
-import com.hisptz.hris.core.Model.Model;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import com.hisptz.hris.core.Model.main.Model;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Entity

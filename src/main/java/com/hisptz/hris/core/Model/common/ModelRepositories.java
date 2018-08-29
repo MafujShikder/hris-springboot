@@ -1,4 +1,4 @@
-package com.hisptz.hris.core.Model;
+package com.hisptz.hris.core.Model.common;
 
 import com.hisptz.hris.Bundles.ArithmeticFilterBundle.ArithmeticFilterRepository;
 import com.hisptz.hris.Bundles.DashboardChartBundle.DashboardChartRepository;

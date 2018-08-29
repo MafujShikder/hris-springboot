@@ -1,10 +1,7 @@
 package com.hisptz.hris.Bundles.FieldOptionGroup;
 
-import com.coxautodev.graphql.tools.GraphQLMutationResolver;
-import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOption;
 import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOptionRepository;
-import com.hisptz.hris.core.Model.ModelMutation;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.hisptz.hris.core.Model.main.ModelMutation;
 import org.springframework.stereotype.Component;
 
 /**

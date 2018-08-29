@@ -3,8 +3,7 @@ package com.hisptz.hris.Bundles.UserBundle;
 /**
  * Created by Guest on 8/7/18.
  */
-import com.hisptz.hris.core.Model.Model;
-import org.springframework.data.annotation.CreatedDate;
+import com.hisptz.hris.core.Model.main.Model;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 

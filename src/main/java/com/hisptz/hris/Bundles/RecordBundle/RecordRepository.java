@@ -1,6 +1,6 @@
 package com.hisptz.hris.Bundles.RecordBundle;
 
-import com.hisptz.hris.core.Model.ModelRepository;
+import com.hisptz.hris.core.Model.main.ModelRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface RecordRepository extends ModelRepository<Record>{
+
 }

@@ -1,7 +1,6 @@
 package com.hisptz.hris.Bundles.FieldOptionBundle;
 
-import com.hisptz.hris.core.Model.ModelRepository;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.hisptz.hris.core.Model.main.ModelRepository;
 
 /**
  * Created by Guest on 8/10/18.

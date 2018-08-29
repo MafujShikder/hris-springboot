@@ -1,8 +1,7 @@
 package com.hisptz.hris.Bundles.RecordValue;
 
-import com.hisptz.hris.Bundles.RecordBundle.Record;
-import com.hisptz.hris.core.Model.ModelQuery;
-import com.hisptz.hris.core.Model.ModelSpecification;
+import com.hisptz.hris.core.Model.main.ModelQuery;
+import com.hisptz.hris.core.Model.common.ModelSpecification;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

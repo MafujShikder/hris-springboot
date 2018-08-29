@@ -1,8 +1,6 @@
 package com.hisptz.hris.Bundles.FieldBundle;
 
-import com.hisptz.hris.core.Model.ModelRepository;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import com.hisptz.hris.core.Model.main.ModelRepository;
 import org.springframework.stereotype.Repository;
 
 /**
