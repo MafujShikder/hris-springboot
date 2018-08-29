@@ -1,0 +1,21 @@
+type RecordValue{
+    id:ID
+    uid:String
+    dateCreated:String
+    lastUpdated: String
+    record:Record
+    field:field
+    value:String
+}
+
+extend type Query {
+    RecordValue(where:String, sort:String):[RecordValue]!
+}
+
+extend type Mutation {
+    newRecordValue(recordId:ID, fieldId:ID, value:String):RecordValue!
+
+    deleteRecordValue(id:ID!):String
+
+    updateRecordValue(id:ID!, recordId:ID, fieldId:ID, value:String):RecordValue
+}

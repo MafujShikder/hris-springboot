@@ -20,7 +20,7 @@ public class DataType extends Model {
     private String name;
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "field", nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Field field;

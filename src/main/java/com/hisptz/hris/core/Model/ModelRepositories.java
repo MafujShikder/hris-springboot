@@ -14,6 +14,8 @@ import com.hisptz.hris.Bundles.FormBundle.FormRepository;
 import com.hisptz.hris.Bundles.FormSectionBundle.FormSectionRepository;
 import com.hisptz.hris.Bundles.FriendlyReportBundle.FriendlyReportRepository;
 import com.hisptz.hris.Bundles.InputTypeBundle.InputTypeRepository;
+import com.hisptz.hris.Bundles.RecordBundle.RecordRepository;
+import com.hisptz.hris.Bundles.RecordValue.RecordValueRepository;
 import com.hisptz.hris.Bundles.RelationalFilter.RelationalFilterRepository;
 import com.hisptz.hris.Bundles.ResourceBundle.ResourceRepository;
 import com.hisptz.hris.Bundles.UserBundle.UserRepository;
@@ -73,4 +75,9 @@ public class ModelRepositories {
     @Autowired
     protected DashboardChartRepository dashboardChartRepository;
 
+    @Autowired
+    protected RecordRepository recordRepository;
+
+    @Autowired
+    protected RecordValueRepository recordValueRepository;
 }

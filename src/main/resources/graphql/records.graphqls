@@ -1,0 +1,40 @@
+type Record{
+    id:ID
+    uid:String
+    dateCreated:String
+    lastUpdated: String
+    organisationunitId:Int
+    formId:Int
+    instance:String
+    complete:String
+    correct:String
+    hasHistory:String
+    hasTraining:String
+    username:String
+}
+
+extend type Query {
+    Record(where:String, sort: String):[Record]!
+}
+
+extend type Mutation {
+    newRecord(organisationunitId:Int,
+    formId:Int,
+    instance:String,
+    complete:String,
+    correct:String,
+    hasHistory:String,
+    hasTraining:String,
+    username:String):Record!
+
+    deleteRecord(id:ID!):String
+
+    updateRecord(id:ID!,organisationunitId:Int,
+    formId:Int,
+    instance:String,
+    complete:String,
+    correct:String,
+    hasHistory:String,
+    hasTraining:String,
+    username:String): Record
+}
