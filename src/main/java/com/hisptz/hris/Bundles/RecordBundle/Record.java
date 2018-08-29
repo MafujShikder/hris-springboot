@@ -26,6 +26,7 @@ public class Record extends Model{
     private String username;
 
     public Record() {
+        super();
     }
 
     public Record(Long organisationunitId, Long formId, String instance, Boolean complete, Boolean correct, Boolean hasHistory, Boolean hasTraining, String username) {

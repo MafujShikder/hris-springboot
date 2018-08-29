@@ -33,6 +33,7 @@ public class RecordValue extends Model {
     private String value;
 
     public RecordValue() {
+        super();
     }
 
     public RecordValue(String value) {
