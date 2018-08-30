@@ -14,10 +14,10 @@ extend type Query {
 }
 
 extend type Mutation {
-    newInputType(uid:String!,
-    name:String!,
-    description:String!,
-    htmltag:String!):InputType!
+    newInputType(uid:String,
+    name:String,
+    description:String,
+    htmltag:String):InputType!
 
     deleteInputType(id:ID!):String
 

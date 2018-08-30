@@ -1,5 +1,6 @@
 package com.hisptz.hris.Bundles.RecordBundle;
 
+import com.hisptz.hris.core.Model.rest.ModelController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -13,15 +14,11 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/Record")
-public class RecordController {
-    @Autowired
-    RecordQuery recordQuery;
+public class RecordController extends ModelController<Record>{
 
     @GetMapping()
     public Page<Record> getRecords(@RequestParam(required = false) String where, @RequestParam(required = false) String sort){
-        Page<Record> page = new PageImpl<Record>(recordQuery.Record(where, sort));
-        return page;
+        return makePage(recordQuery.Record(where, sort));
     }
-
 
 }

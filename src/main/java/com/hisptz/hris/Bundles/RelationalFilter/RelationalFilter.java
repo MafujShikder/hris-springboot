@@ -24,7 +24,7 @@ public class RelationalFilter extends Model {
     private String name;
     private Boolean excludefieldoptions;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "field", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Field field;
