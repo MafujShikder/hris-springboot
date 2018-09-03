@@ -7,9 +7,10 @@ import com.hisptz.hris.core.Model.common.ModelQueries;
 import com.hisptz.hris.core.Model.main.Model;
 import com.hisptz.hris.core.Model.main.ModelQuery;
 import com.hisptz.hris.core.Model.common.ModelRepositories;
+import com.hisptz.hris.core.QueryStructure.ApiQuery;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import com.sun.deploy.util.SessionState;
+import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,9 +19,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -34,7 +33,7 @@ import java.util.Map;
  */
 @Component
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api")
 public class ModelController<T extends Model> extends ModelQueries {
     ModelQuery<T> modelQuery;
 
@@ -43,39 +42,62 @@ public class ModelController<T extends Model> extends ModelQueries {
         return page;
     }
 
-    @GetMapping("this")
-    public List<T> get(@RequestParam(required = false) String query){
-        perfomQuery();
-        return new ArrayList<T>();
+    @GetMapping("")
+    public String get(@RequestParam(required = false) String model, @RequestParam(required = false) String fields, @RequestParam(required = false) String filters){
+        ApiQuery query = createQuery(model,fields,filters);
+       return perfomQuery(query.toString()).toString();
+       // System.out.println(query.toString());
+       // return new ArrayList<T>();
     }
-    // use java jax-rs api to consume graphql api
 
-    public void perfomQuery(){
+    private ApiQuery createQuery(String model, String fields, String filters){
+        ApiQuery query = new ApiQuery(model,filters);
+        List<String> fieldsList  = new ArrayList<>();
+        String[] myfields;
+
+        if (fields != null) {
+            myfields = fields.split(",");
+
+            for (String field : myfields) {
+                fieldsList.add(field);
+            }
+        }
+
+        query.setFields(fieldsList);
+
+        return query;
+    }
+
+    public JSONObject perfomQuery(String graphqlQuery){
+        JSONObject myResponse = new JSONObject();
+        String query_url = "http://localhost:8080/graphql";
 
         try {
-            Unirest.post("http://localhost:8080/graphql")
-                    .queryString("query", "{Users{id uid}}").asJson();
-        } catch (UnirestException e){
+            URL url = new URL(query_url);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setConnectTimeout(5000);
+            conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setRequestMethod("POST");
+            OutputStream os = conn.getOutputStream();
+            os.write(graphqlQuery.getBytes("UTF-8"));
+            os.close();
+
+
+            // read the response
+            InputStream in = new BufferedInputStream(conn.getInputStream());
+            String result = IOUtils.toString(in, "UTF-8");
+            System.out.println(result);
+            System.out.println("result after Reading JSON Response");
+            myResponse = new JSONObject(result);
+
+
+            return myResponse;
+        } catch (Exception e){
             e.printStackTrace();
         }
-    }
-
-    @PostMapping("this")
-    public List<T> create(@RequestParam(required = false) String query){
-        perfomQuery();
-        return new ArrayList<T>();
-    }
-
-    @PutMapping("this")
-    public List<T> update(@RequestParam(required = false) String query){
-        perfomQuery();
-        return new ArrayList<T>();
-    }
-
-    @DeleteMapping("this")
-    public List<T> delete(@RequestParam(required = false) String query){
-        perfomQuery();
-        return new ArrayList<T>();
+        return myResponse;
     }
 
     // Page performQuery(String query, String requestType)
