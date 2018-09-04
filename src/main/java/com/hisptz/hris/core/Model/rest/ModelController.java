@@ -8,8 +8,6 @@ import com.hisptz.hris.core.Model.main.Model;
 import com.hisptz.hris.core.Model.main.ModelQuery;
 import com.hisptz.hris.core.Model.common.ModelRepositories;
 import com.hisptz.hris.core.QueryStructure.ApiQuery;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +69,7 @@ public class ModelController<T extends Model> extends ModelQueries {
     public JSONObject perfomQuery(String graphqlQuery){
         JSONObject myResponse = new JSONObject();
         String query_url = "http://localhost:8080/graphql";
+        Data data = new Data();
 
         try {
             URL url = new URL(query_url);
@@ -91,7 +90,8 @@ public class ModelController<T extends Model> extends ModelQueries {
             System.out.println(result);
             System.out.println("result after Reading JSON Response");
             myResponse = new JSONObject(result);
-
+            data.setData("data");
+            data.setModels(myResponse.get("data"));
 
             return myResponse;
         } catch (Exception e){

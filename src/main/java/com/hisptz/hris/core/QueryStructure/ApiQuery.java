@@ -54,9 +54,15 @@ public class ApiQuery {
     // what about complex queries ?
     @Override
     public String toString() {
-        String json = "{\"query\":\"{Users(where:\\\"id:eq:3\\\"){id uid}}\"}";
 
-        String thisString = "{\"query\":\"" + "{"+ model +"(where:\\\"" + filters + "\\\")"+ "{" ;
+        String thisString = "{\"query\":\"" + "{"+ model  ;
+
+        if (filters != null){
+            thisString += "(where:\\\"" + filters + "\\\")" ;
+        }
+
+        thisString +=  "{";
+
         for (String field: fields) {
             thisString = thisString + field + " ";
         }
