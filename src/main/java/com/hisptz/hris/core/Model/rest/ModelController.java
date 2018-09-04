@@ -9,6 +9,7 @@ import com.hisptz.hris.core.Model.main.ModelQuery;
 import com.hisptz.hris.core.Model.common.ModelRepositories;
 import com.hisptz.hris.core.QueryStructure.ApiQuery;
 import org.apache.commons.io.IOUtils;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,10 +22,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Guest on 8/29/18.
@@ -41,11 +39,9 @@ public class ModelController<T extends Model> extends ModelQueries {
     }
 
     @GetMapping("")
-    public String get(@RequestParam(required = false) String model, @RequestParam(required = false) String fields, @RequestParam(required = false) String filters){
+    public Data get(@RequestParam(required = false) String model, @RequestParam(required = false) String fields, @RequestParam(required = false) String filters){
         ApiQuery query = createQuery(model,fields,filters);
-       return perfomQuery(query.toString()).toString();
-       // System.out.println(query.toString());
-       // return new ArrayList<T>();
+       return perfomQuery(query.toString(), query);
     }
 
     private ApiQuery createQuery(String model, String fields, String filters){
@@ -66,10 +62,11 @@ public class ModelController<T extends Model> extends ModelQueries {
         return query;
     }
 
-    public JSONObject perfomQuery(String graphqlQuery){
+    public Data perfomQuery(String graphqlQuery, ApiQuery query){
         JSONObject myResponse = new JSONObject();
         String query_url = "http://localhost:8080/graphql";
         Data data = new Data();
+        List<String> fields = query.getFields();
 
         try {
             URL url = new URL(query_url);
@@ -90,14 +87,37 @@ public class ModelController<T extends Model> extends ModelQueries {
             System.out.println(result);
             System.out.println("result after Reading JSON Response");
             myResponse = new JSONObject(result);
-            data.setData("data");
-            data.setModels(myResponse.get("data"));
 
-            return myResponse;
+            data.model = query.getModel();
+
+            JSONArray mainData = myResponse.getJSONObject("data").getJSONArray(query.getModel());
+
+            List<JSONObject> objs = new ArrayList<>();
+            for (int i = 0; i < mainData.length(); i++) {
+                if (mainData.getJSONObject(i) != null)
+                    objs.add(mainData.getJSONObject(i));
+            }
+
+            List<Map<String, String>> lists = new ArrayList<>();
+
+            for (JSONObject jsonList: objs) {
+                Map<String, String> eachList = new HashMap<>();
+                for (String field: fields){
+                    eachList.put(field, jsonList.getString(field));
+                }
+                lists.add(eachList);
+            }
+
+            data.setColumns(lists);
+
+            System.out.println(lists);
+            //return myResponse;
+            return data;
         } catch (Exception e){
             e.printStackTrace();
         }
-        return myResponse;
+        //return myResponse;
+        return data;
     }
 
     // Page performQuery(String query, String requestType)

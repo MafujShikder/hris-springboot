@@ -4,31 +4,33 @@ import com.hisptz.hris.core.Model.main.Model;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Guest on 9/4/18.
  */
 @Component
 public class Data {
-    String data;
-    Object models;
+    String model;
+    List<Map<String, String>> columns;
 
     public Data() {
+
     }
 
-    public String getData() {
-        return data;
+    public String getModel() {
+        return model;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setModel(String model) {
+        this.model = model;
     }
 
-    public Object getModels() {
-        return models;
+    public List<Map<String, String>> getColumns() {
+        return columns;
     }
 
-    public void setModels(Object models) {
-        this.models = models;
+    public void setColumns(List<Map<String, String>> columns) {
+        this.columns = columns;
     }
 }
