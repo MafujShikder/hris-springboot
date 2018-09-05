@@ -13,11 +13,13 @@ public class ApiQuery {
     private String model;
     private List<String> fields;
     private String filters;
+    private String sort;
 
-    public ApiQuery(String model, List<String> fields, String filters) {
+    public ApiQuery(String model, List<String> fields, String filters,String sort) {
         this.model = StringUtils.capitalize(model);
         this.fields = fields;
         this.filters = filters;
+        this.sort = sort;
     }
 
     public ApiQuery(String model, String filters) {
@@ -48,6 +50,14 @@ public class ApiQuery {
     public void setFilters(String filters) {
         this.filters = filters;
     }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
+    }
     //'{"query":"{Users(where:\"id:eq:3\"){id uid}}"}'
     //"{\"query\":\"{Users(where:\\\"id:eq:3\\\"){id uid}}\"}"
 
@@ -57,7 +67,7 @@ public class ApiQuery {
 
         String thisString = "{\"query\":\"" + "{"+ model  ;
 
-        if (filters != null){
+        if (filters != null ){
             thisString += "(where:\\\"" + filters + "\\\")" ;
         }
 

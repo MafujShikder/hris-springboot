@@ -12,8 +12,7 @@ import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,17 +30,27 @@ import java.util.*;
 @RestController
 @RequestMapping("/api")
 public class ModelController<T extends Model> extends ModelQueries {
-    ModelQuery<T> modelQuery;
-
-    public Page<T> makePage( List<T> objects){
-        Page<T> page = new PageImpl<T>(objects);
-        return page;
-    }
 
     @GetMapping("")
-    public Data get(@RequestParam(required = false) String model, @RequestParam(required = false) String fields, @RequestParam(required = false) String filters){
+    public Page<Map<String, String>> get(@RequestParam(required = false) String model, @RequestParam(required = false) String fields, @RequestParam(required = false) String filters, @RequestParam(required = false) String sort, @RequestParam(required = false) Integer size, @RequestParam(required = false) Integer page){
         ApiQuery query = createQuery(model,fields,filters);
-       return perfomQuery(query.toString(), query);
+        List<Map<String, String>> results = perfomQuery(query.toString(), query);
+
+        if (size == null || size <= 0){
+            size = results.size() ;
+        }
+
+        if (page == null){
+            page = 0;
+        }
+
+        Pageable pageRequest = createPageRequest(page,size, sort);
+        int start = size*(page + 1) - size;
+        int end = size*(page+1) < results.size() ? size*(page+1) : results.size();
+
+        Page<Map<String, String>> thisPage = new PageImpl<>(results.subList(start, end), pageRequest, results.size());
+
+        return thisPage;
     }
 
     private ApiQuery createQuery(String model, String fields, String filters){
@@ -62,11 +71,20 @@ public class ModelController<T extends Model> extends ModelQueries {
         return query;
     }
 
-    public Data perfomQuery(String graphqlQuery, ApiQuery query){
+    private  Pageable createPageRequest(int page, int size, String sort) {
+
+       PageRequest pageRequest = new PageRequest(page, size, Sort.Direction.DESC, "id");
+        return pageRequest;
+    }
+
+    public List<Map<String, String>> perfomQuery(String graphqlQuery, ApiQuery query){
         JSONObject myResponse = new JSONObject();
         String query_url = "http://localhost:8080/graphql";
         Data data = new Data();
         List<String> fields = query.getFields();
+
+        List<Map<String, String>> lists = new ArrayList<>();
+
 
         try {
             URL url = new URL(query_url);
@@ -84,8 +102,8 @@ public class ModelController<T extends Model> extends ModelQueries {
             // read the response
             InputStream in = new BufferedInputStream(conn.getInputStream());
             String result = IOUtils.toString(in, "UTF-8");
-            System.out.println(result);
-            System.out.println("result after Reading JSON Response");
+//            System.out.println(result);
+//            System.out.println("result after Reading JSON Response");
             myResponse = new JSONObject(result);
 
             data.model = query.getModel();
@@ -98,7 +116,6 @@ public class ModelController<T extends Model> extends ModelQueries {
                     objs.add(mainData.getJSONObject(i));
             }
 
-            List<Map<String, String>> lists = new ArrayList<>();
 
             for (JSONObject jsonList: objs) {
                 Map<String, String> eachList = new HashMap<>();
@@ -109,15 +126,15 @@ public class ModelController<T extends Model> extends ModelQueries {
             }
 
             data.setColumns(lists);
-
-            System.out.println(lists);
             //return myResponse;
-            return data;
+            //return data;
+            return lists;
         } catch (Exception e){
             e.printStackTrace();
         }
         //return myResponse;
-        return data;
+        //return data;
+        return lists;
     }
 
     // Page performQuery(String query, String requestType)
