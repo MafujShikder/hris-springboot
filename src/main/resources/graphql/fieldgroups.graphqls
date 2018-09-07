@@ -5,7 +5,7 @@ type FieldGroup{
     description:String
     dateCreated:String
     lastUpdated:String
-    fields:[field]
+    fields:[Field]
 }
 extend type Query {
     getFieldGroupById(id:ID!):FieldGroup

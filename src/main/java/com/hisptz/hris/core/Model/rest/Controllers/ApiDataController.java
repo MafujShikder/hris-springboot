@@ -1,26 +1,21 @@
-package com.hisptz.hris.core.Model.rest;
+package com.hisptz.hris.core.Model.rest.Controllers;
 
-import com.hisptz.hris.Bundles.FormSectionBundle.FormSection;
-import com.hisptz.hris.Bundles.FriendlyReportBundle.FriendlyReport;
-import com.hisptz.hris.Bundles.RecordBundle.Record;
-import com.hisptz.hris.core.Model.common.ModelQueries;
-import com.hisptz.hris.core.Model.main.Model;
-import com.hisptz.hris.core.Model.main.ModelQuery;
-import com.hisptz.hris.core.Model.common.ModelRepositories;
+import com.hisptz.hris.core.Model.rest.ErrorHandling.Error;
+import com.hisptz.hris.core.Model.rest.ErrorHandling.HttpStatus;
+import com.hisptz.hris.core.Model.rest.ErrorHandling.HttpStatusCode;
+import com.hisptz.hris.core.Model.rest.ErrorHandling.Status;
 import com.hisptz.hris.core.QueryStructure.ApiQuery;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.*;
 
 /**
@@ -29,14 +24,29 @@ import java.util.*;
 @Component
 @RestController
 @RequestMapping("/api")
-public class ModelController<T extends Model> extends ModelQueries {
+public class ApiDataController {
+    private ApiQuery query;
+    private List<Map<String, String>> results;
+    private Page<Map<String, String>> thisPage;
+    private Pageable pageRequest;
+    private List<Map<String, String>> errors = new ArrayList<>();
+    private Error error;
+    private int start;
+    private int end;
 
     @GetMapping("")
-    public Page<Map<String, String>> get(@RequestParam(required = false) String model, @RequestParam(required = false) String fields, @RequestParam(required = false) String filters, @RequestParam(required = false) String sort, @RequestParam(required = false) Integer size, @RequestParam(required = false) Integer page){
-        ApiQuery query = createQuery(model,fields,filters);
-        List<Map<String, String>> results = perfomQuery(query.toString(), query);
+    public Page<Map<String, String>> get(@RequestParam String model, @RequestParam(required = false) String fields, @RequestParam(required = false) String filters, @RequestParam(required = false) String sort, @RequestParam(required = false) Integer size, @RequestParam(required = false) Integer page){
+        query = createQuery(model,fields,filters);
+        results = perfomQuery(query.toString(), query);
 
-        if (size == null || size <= 0){
+        if (errors != null && errors.containsAll(results)){
+            List<Map<String, String>> temp = new ArrayList<>();
+            temp.addAll(errors);
+            errors.clear();
+            return new PageImpl<>(temp);
+        }
+
+        if (size == null || size <= 0 || size > results.size()){
             size = results.size() ;
         }
 
@@ -44,11 +54,16 @@ public class ModelController<T extends Model> extends ModelQueries {
             page = 0;
         }
 
-        Pageable pageRequest = createPageRequest(page,size, sort);
-        int start = size*(page + 1) - size;
-        int end = size*(page+1) < results.size() ? size*(page+1) : results.size();
+        if (results.size() == 0){
+            size = 2;
+        }
+        pageRequest = createPageRequest(page,size, sort);
 
-        Page<Map<String, String>> thisPage = new PageImpl<>(results.subList(start, end), pageRequest, results.size());
+        start = size*(page + 1) - size;
+        end = size*(page+1) < results.size() ? size*(page+1) : results.size();
+
+        // sort the data here
+        thisPage = new PageImpl<>(results.subList(start, end), pageRequest, results.size());
 
         return thisPage;
     }
@@ -72,17 +87,16 @@ public class ModelController<T extends Model> extends ModelQueries {
     }
 
     private  Pageable createPageRequest(int page, int size, String sort) {
-
-       PageRequest pageRequest = new PageRequest(page, size, Sort.Direction.DESC, "id");
+        pageRequest = new PageRequest(page, size, Sort.Direction.DESC, "id");
         return pageRequest;
     }
 
     public List<Map<String, String>> perfomQuery(String graphqlQuery, ApiQuery query){
         JSONObject myResponse = new JSONObject();
         String query_url = "http://localhost:8080/graphql";
+        String errorMessage = "";
         Data data = new Data();
         List<String> fields = query.getFields();
-
         List<Map<String, String>> lists = new ArrayList<>();
 
 
@@ -130,7 +144,16 @@ public class ModelController<T extends Model> extends ModelQueries {
             //return data;
             return lists;
         } catch (Exception e){
-            e.printStackTrace();
+            //e.printStackTrace();
+            try {
+                JSONObject errorData = myResponse.getJSONObject("errors");
+
+                errorMessage = errorData.getString("message");
+            } catch (JSONException e1){
+
+            }
+            error = new Error(HttpStatus.ERROR, e.getLocalizedMessage(), HttpStatusCode.HTTP_STATUS_CODE_403, Status.ERROR);
+            errors.add(error.getErrorMap());
         }
         //return myResponse;
         //return data;

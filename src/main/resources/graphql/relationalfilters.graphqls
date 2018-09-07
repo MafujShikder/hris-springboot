@@ -6,7 +6,7 @@ type RelationalFilter{
     excludefieldoptions: String
     dateCreated: String
     lastUpdated: String
-    field:field
+    field:Field
     fieldOptions:[FieldOption]
     friendlyReports:[FriendlyReport]
 }

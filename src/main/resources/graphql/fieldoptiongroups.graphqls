@@ -7,7 +7,7 @@ type FieldOptionGroup{
     description:String
     dateCreated:String
     lastUpdated:String
-    field:field
+    field:Field
     fieldOptions:[FieldOption]
 }
 

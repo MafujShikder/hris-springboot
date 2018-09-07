@@ -5,7 +5,7 @@ type DataType{
     description:String
     dateCreated:String
     lastUpdated:String
-    field:field
+    field:Field
 }
 
 extend type Query {

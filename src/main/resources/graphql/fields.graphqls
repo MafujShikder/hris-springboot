@@ -1,4 +1,4 @@
-type field{
+type Field{
     id:ID
     datatypeId:Int
     inputtypeId:Int
@@ -21,21 +21,21 @@ type field{
 }
 
 extend type Query {
-    getFieldById(id:ID!):field
-    Field(where:String, sort:String):[field]
+    getFieldById(id:ID!):Field
+    Field(where:String, sort:String):[Field]
 }
 
 extend type Mutation{
     newField(datatypeId:Int,inputtypeId:Int,uid:String,
     name:String, caption:String, compulsory:String, isunique:String, iscalculated:String,
     description:String, calculatedexpression:String,
-    hashistory:String, hastarget:String, fieldrelation:String, skipinreport:String,inputType:ID, fieldGroup:ID):field!
+    hashistory:String, hastarget:String, fieldrelation:String, skipinreport:String,inputType:ID, fieldGroup:ID):Field!
 
     deleteField(id:ID!):String
 
     updateField(id:ID!, datatypeId:Int, inputtypeId:Int, uid:String, name:String, caption:String, compulsory:String,
     isunique:String, iscalculated:String, description:String, calculatedexpression:String,
-    hashistory:String, hastarget:String, fieldrelation:String, skipinreport:String,inputType:ID, fieldGroup:ID):field!,
+    hashistory:String, hastarget:String, fieldrelation:String, skipinreport:String,inputType:ID, fieldGroup:ID):Field!,
 
 
 }

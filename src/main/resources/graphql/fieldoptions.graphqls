@@ -9,7 +9,7 @@ type FieldOption{
     hastraining:String
     dateCreated:String
     lastUpdated:String
-    field:field
+    field:Field
     fieldOptionGroups:[FieldOptionGroup]
     relationalFilters:[RelationalFilter]
 }

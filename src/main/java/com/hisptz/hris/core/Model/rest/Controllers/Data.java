@@ -1,4 +1,4 @@
-package com.hisptz.hris.core.Model.rest;
+package com.hisptz.hris.core.Model.rest.Controllers;
 
 import com.hisptz.hris.core.Model.main.Model;
 import org.springframework.stereotype.Component;

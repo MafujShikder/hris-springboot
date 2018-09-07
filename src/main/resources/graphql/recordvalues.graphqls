@@ -4,7 +4,7 @@ type RecordValue{
     dateCreated:String
     lastUpdated: String
     record:Record
-    field:field
+    field:Field
     value:String
 }
 
