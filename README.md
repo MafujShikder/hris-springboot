@@ -35,9 +35,29 @@ Check out the mutations and queries defined in the GraphQL schemas found in the 
 
     /hris/src/main/resources/graphql
   
- ## Examples
+ ## Accessing the Hris api
+ ### Using the rest api
+ You can access the hris api using the rest api via the url:
     
- A sample mutation would be like:
+    http://localhost:8080/api/
+    
+ An example of a get request would be:
+ 
+    http://localhot:8080/api/users.json/?fields=id,uid,email
+    
+    
+    
+ ### Using the graphql service
+ Using the graphql interface POST request of the form:
+    
+    {"query":"{Users{id uid}}}"
+  
+  can be sent to the uri
+  
+    http://localhost:8080/graphiql
+    
+    
+The following the are the sample of the queries that can be sent:
  
     mutation{
           newUser(organisationunitId:4, username:"testing",usernameCanonical:"tester", email:"testing@gmail.com",       emailCanonical:"test@yahoo.com",
