@@ -48,9 +48,9 @@ Check out the mutations and queries defined in the GraphQL schemas found in the 
     
     
  ### Using the graphql service
- Using the graphql interface POST request of the form:
+ Using the graphql interface json POST request of the form:
     
-    {"query":"{Users{id uid}}}"
+    {"query":"{Users{id uid}}"}
   
   can be sent to the uri
   
