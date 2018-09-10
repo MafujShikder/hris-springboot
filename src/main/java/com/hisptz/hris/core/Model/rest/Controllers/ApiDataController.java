@@ -34,8 +34,8 @@ public class ApiDataController {
     private int start;
     private int end;
 
-    @GetMapping("")
-    public Page<Map<String, String>> get(@RequestParam String model, @RequestParam(required = false) String fields, @RequestParam(required = false) String filters, @RequestParam(required = false) String sort, @RequestParam(required = false) Integer size, @RequestParam(required = false) Integer page){
+    @GetMapping("{model}.json")
+    public Page<Map<String, String>> get(@PathVariable("model") String model, @RequestParam(required = false) String fields, @RequestParam(required = false) String filters, @RequestParam(required = false) String sort, @RequestParam(required = false) Integer size, @RequestParam(required = false) Integer page){
         query = createQuery(model,fields,filters);
         results = perfomQuery(query.toString(), query);
 
