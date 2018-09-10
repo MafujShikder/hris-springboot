@@ -1,6 +1,5 @@
-package com.hisptz.hris.core.Model.rest.Controllers;
+package com.hisptz.hris.core.rest.Controllers;
 
-import com.hisptz.hris.core.Model.main.Model;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

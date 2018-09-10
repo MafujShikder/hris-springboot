@@ -1,6 +1,5 @@
-package com.hisptz.hris.core.QueryStructure;
+package com.hisptz.hris.core.rest.QueryStructure;
 
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
@@ -81,4 +80,8 @@ public class ApiQuery {
 
         return thisString;
     }
+
+    //TODO: Implement complex queries
+    //TODO: Implement sorting into the rest api
+    //TODO: Immplement security and authentication into the app
 }

@@ -1,8 +1,4 @@
-package com.hisptz.hris.core.Model.rest;
-
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+package com.hisptz.hris.core.rest;
 
 /**
  * Created by Guest on 9/5/18.

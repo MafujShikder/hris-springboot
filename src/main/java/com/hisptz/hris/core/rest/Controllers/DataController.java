@@ -1,10 +1,10 @@
-package com.hisptz.hris.core.Model.rest.Controllers;
+package com.hisptz.hris.core.rest.Controllers;
 
-import com.hisptz.hris.core.Model.rest.ErrorHandling.Error;
-import com.hisptz.hris.core.Model.rest.ErrorHandling.HttpStatus;
-import com.hisptz.hris.core.Model.rest.ErrorHandling.HttpStatusCode;
-import com.hisptz.hris.core.Model.rest.ErrorHandling.Status;
-import com.hisptz.hris.core.QueryStructure.ApiQuery;
+import com.hisptz.hris.core.rest.ErrorHandling.Error;
+import com.hisptz.hris.core.rest.ErrorHandling.HttpStatus;
+import com.hisptz.hris.core.rest.ErrorHandling.HttpStatusCode;
+import com.hisptz.hris.core.rest.ErrorHandling.Status;
+import com.hisptz.hris.core.rest.QueryStructure.ApiQuery;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,7 +24,7 @@ import java.util.*;
 @Component
 @RestController
 @RequestMapping("/api")
-public class ApiDataController {
+public class DataController {
     private ApiQuery query;
     private List<Map<String, String>> results;
     private Page<Map<String, String>> thisPage;
@@ -147,12 +147,11 @@ public class ApiDataController {
             //e.printStackTrace();
             try {
                 JSONObject errorData = myResponse.getJSONObject("errors");
-
                 errorMessage = errorData.getString("message");
             } catch (JSONException e1){
 
             }
-            error = new Error(HttpStatus.ERROR, e.getLocalizedMessage(), HttpStatusCode.HTTP_STATUS_CODE_403, Status.ERROR);
+            error = new Error(HttpStatus.ERROR, "The model "+ query.getModel() +" doesn't exist in the schema. Please check the schema definition", HttpStatusCode.HTTP_STATUS_CODE_403, Status.ERROR);
             errors.add(error.getErrorMap());
         }
         //return myResponse;
@@ -160,7 +159,21 @@ public class ApiDataController {
         return lists;
     }
 
+    @PostMapping("{model}.json")
+    public Page<Map<String, String>> create(@PathVariable("model") String model, @RequestParam(required = false) String fields, @RequestParam(required = false) String filters, @RequestParam(required = false) String sort, @RequestParam(required = false) Integer size, @RequestParam(required = false) Integer page){
+
+        return new PageImpl<Map<String, String>>(new ArrayList<>());
+    }
+
+    @PutMapping("{model}.json")
+    public Page<Map<String, String>> update(@PathVariable("model") String model, @RequestParam(required = false) String fields, @RequestParam(required = false) String filters, @RequestParam(required = false) String sort, @RequestParam(required = false) Integer size, @RequestParam(required = false) Integer page){
+
+        return new PageImpl<Map<String, String>>(new ArrayList<>());
+    }
     // Page performQuery(String query, String requestType)
     // localhost:8080/api/users.json?fields=id,name&filters=name:eq:Vincent;AND;id:in:[wyte,wyeiw]
     // curl --header "Content-Type:application/json" --request POST --data '{"query":"{Users{id}}"}' http://localhost:8080/graphql
+
+    //TODO: Send a dynamic error according to the result of the graphql call
+    // TODO: Implement mutations creating and updating a model
 }

@@ -1,10 +1,8 @@
-package com.hisptz.hris.core.Model.rest.ErrorHandling;
+package com.hisptz.hris.core.rest.ErrorHandling;
 
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**

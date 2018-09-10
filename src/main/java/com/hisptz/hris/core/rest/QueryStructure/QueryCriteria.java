@@ -1,6 +1,4 @@
-package com.hisptz.hris.core.QueryStructure;
-
-import org.springframework.stereotype.Component;
+package com.hisptz.hris.core.rest.QueryStructure;
 
 /**
  * Created by Guest on 8/17/18.

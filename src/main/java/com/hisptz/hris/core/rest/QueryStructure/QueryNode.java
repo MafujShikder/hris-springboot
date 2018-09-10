@@ -1,4 +1,4 @@
-package com.hisptz.hris.core.QueryStructure;
+package com.hisptz.hris.core.rest.QueryStructure;
 
 import java.util.List;
 

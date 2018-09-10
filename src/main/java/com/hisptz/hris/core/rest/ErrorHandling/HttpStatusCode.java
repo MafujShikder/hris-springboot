@@ -1,4 +1,4 @@
-package com.hisptz.hris.core.Model.rest.ErrorHandling;
+package com.hisptz.hris.core.rest.ErrorHandling;
 
 /**
  * Created by Guest on 9/7/18.

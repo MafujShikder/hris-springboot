@@ -17,7 +17,7 @@ extend type Mutation {
     newInputType(uid:String,
     name:String,
     description:String,
-    htmltag:String):InputType!
+    htmltag:String!):InputType!
 
     deleteInputType(id:ID!):String
 

@@ -1,16 +1,14 @@
 package com.hisptz.hris.core.Model.common;
 
 import com.hisptz.hris.core.Model.main.Model;
-import com.hisptz.hris.core.QueryStructure.Operator;
-import com.hisptz.hris.core.QueryStructure.QueryCriteria;
+import com.hisptz.hris.core.rest.QueryStructure.Operator;
+import com.hisptz.hris.core.rest.QueryStructure.QueryCriteria;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Guest on 8/20/18.

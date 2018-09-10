@@ -1,7 +1,7 @@
-package com.hisptz.hris.core.Model.rest;
+package com.hisptz.hris.core.rest;
 
 
-import com.hisptz.hris.core.QueryStructure.ApiQuery;
+import com.hisptz.hris.core.rest.QueryStructure.ApiQuery;
 
 import java.util.ArrayList;
 import java.util.List;
