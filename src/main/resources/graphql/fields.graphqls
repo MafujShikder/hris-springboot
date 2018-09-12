@@ -22,7 +22,7 @@ type Field{
 
 extend type Query {
     getFieldById(id:ID!):Field
-    Field(where:String, sort:String):[Field]
+    Fields(where:String, sort:String):[Field]
 }
 
 extend type Mutation{

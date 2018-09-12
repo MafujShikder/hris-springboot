@@ -94,33 +94,13 @@ public class DataController {
     public List<Map<String, String>> perfomQuery(String graphqlQuery, ApiQuery query){
         JSONObject myResponse = new JSONObject();
         String query_url = "http://localhost:8080/graphql";
-        String errorMessage = "";
-        Data data = new Data();
         List<String> fields = query.getFields();
         List<Map<String, String>> lists = new ArrayList<>();
 
 
         try {
-            URL url = new URL(query_url);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setConnectTimeout(5000);
-            conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-            conn.setDoOutput(true);
-            conn.setDoInput(true);
-            conn.setRequestMethod("POST");
-            OutputStream os = conn.getOutputStream();
-            os.write(graphqlQuery.getBytes("UTF-8"));
-            os.close();
+            myResponse = connectToResourse(graphqlQuery, query_url);
 
-
-            // read the response
-            InputStream in = new BufferedInputStream(conn.getInputStream());
-            String result = IOUtils.toString(in, "UTF-8");
-//            System.out.println(result);
-//            System.out.println("result after Reading JSON Response");
-            myResponse = new JSONObject(result);
-
-            data.model = query.getModel();
 
             JSONArray mainData = myResponse.getJSONObject("data").getJSONArray(query.getModel());
 
@@ -139,18 +119,10 @@ public class DataController {
                 lists.add(eachList);
             }
 
-            data.setColumns(lists);
             //return myResponse;
             //return data;
             return lists;
         } catch (Exception e){
-            //e.printStackTrace();
-            try {
-                JSONObject errorData = myResponse.getJSONObject("errors");
-                errorMessage = errorData.getString("message");
-            } catch (JSONException e1){
-
-            }
             error = new Error(HttpStatus.ERROR, "The model "+ query.getModel() +" doesn't exist in the schema. Please check the schema definition", HttpStatusCode.HTTP_STATUS_CODE_403, Status.ERROR);
             errors.add(error.getErrorMap());
         }
@@ -159,6 +131,33 @@ public class DataController {
         return lists;
     }
 
+    public JSONObject connectToResourse(String graphqlQuery, String query_url){
+        String result = "";
+        JSONObject object = new JSONObject();
+        try {
+            URL url = new URL(query_url);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setConnectTimeout(5000);
+            conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setRequestMethod("POST");
+            OutputStream os = conn.getOutputStream();
+            os.write(graphqlQuery.getBytes("UTF-8"));
+            os.close();
+
+
+            // read the response
+            InputStream in = new BufferedInputStream(conn.getInputStream());
+            result = IOUtils.toString(in, "UTF-8");
+            object = new JSONObject(result);
+        } catch (Exception e){
+            error = new Error(HttpStatus.ERROR, e.getLocalizedMessage(), HttpStatusCode.HTTP_STATUS_CODE_403, Status.ERROR);
+            errors.add(error.getErrorMap());
+        }
+        return object;
+    }
+    
     @PostMapping("{model}.json")
     public Page<Map<String, String>> create(@PathVariable("model") String model, @RequestParam(required = false) String fields, @RequestParam(required = false) String filters, @RequestParam(required = false) String sort, @RequestParam(required = false) Integer size, @RequestParam(required = false) Integer page){
 
