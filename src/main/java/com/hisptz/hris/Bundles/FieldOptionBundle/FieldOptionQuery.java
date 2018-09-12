@@ -22,7 +22,7 @@ public class FieldOptionQuery extends ModelQuery<FieldOption>{
     }
 
     public FieldOption getFieldOptionById(Long id){
-        return fieldOptionRepository.findOne(id);
+        return fieldOptionRepository.getOne(id);
     }
 
     public List<FieldOption> FieldOptions(String where, String sort){

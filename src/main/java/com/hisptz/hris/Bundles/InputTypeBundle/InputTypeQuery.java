@@ -22,7 +22,7 @@ public class InputTypeQuery extends ModelQuery<InputType> {
     }
 
     public InputType getInputTypeById(Long id){
-        return inputTypeRepository.findOne(id);
+        return inputTypeRepository.getOne(id);
     }
 
     public List<InputType> InputType(String where, String sort){

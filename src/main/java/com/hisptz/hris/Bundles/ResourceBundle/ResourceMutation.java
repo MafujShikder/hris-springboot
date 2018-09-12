@@ -26,7 +26,7 @@ public class ResourceMutation extends ModelMutation<Resource>{
     }
 
     public Resource updateResource(Long id, String uid, String name, String description, Boolean isgenerating, String messagelog){
-        Resource resource = resourceRepository.findOne(id);
+        Resource resource = resourceRepository.getOne(id);
 
         if (uid != null)
             resource.setUid(uid);

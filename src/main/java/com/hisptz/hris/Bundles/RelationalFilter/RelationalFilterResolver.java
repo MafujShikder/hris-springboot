@@ -24,7 +24,7 @@ public class RelationalFilterResolver implements GraphQLResolver<RelationalFilte
     }
 
     public Field getField(RelationalFilter relationalFilter){
-        return fieldRepository.findOne(relationalFilter.getField().getId());
+        return fieldRepository.getOne(relationalFilter.getField().getId());
     }
 
 }

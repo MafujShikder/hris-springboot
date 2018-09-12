@@ -22,7 +22,7 @@ public class FormSectionQuery extends ModelQuery<FormSection>{
     }
 
     public FormSection getFormSectionById(Long id){
-        return formSectionRepository.findOne(id);
+        return formSectionRepository.getOne(id);
     }
 
     public List<FormSection> FormSections(String where, String sort){

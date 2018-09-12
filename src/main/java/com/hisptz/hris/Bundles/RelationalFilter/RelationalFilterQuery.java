@@ -21,7 +21,7 @@ public class RelationalFilterQuery extends ModelQuery<RelationalFilter>  {
     }
 
     public RelationalFilter getRelationalFilterById(Long id){
-      return relationalFilterRepository.findOne(id);
+      return relationalFilterRepository.getOne(id);
     }
 
     public List<RelationalFilter> RelationalFilters(String where, String sort){

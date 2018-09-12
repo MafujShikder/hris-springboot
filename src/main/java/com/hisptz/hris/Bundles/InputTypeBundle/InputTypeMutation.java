@@ -27,7 +27,7 @@ public class InputTypeMutation extends ModelMutation<InputType>{
     }
 
     public InputType updateInputType(Long id,String uid, String name, String description, String htmltag){
-        InputType inputType = inputTypeRepository.findOne(id);
+        InputType inputType = inputTypeRepository.getOne(id);
 
         if (uid != null)
             inputType.setUid(uid);

@@ -27,7 +27,7 @@ public class UserMutation extends ModelMutation {
     }
 
     public User updateUser(Long id, Integer organisationunitId, String username, String usernameCanonical, String email, String emailCanonical, Boolean enabled, String salt, String password, Boolean locked, Boolean expired, Date expiresAt, String confirmationToken, Date passwordRequestedAt, String roles, Boolean credentialsExpired, Date credentialsExpireAt, String uid, String phonenumber, String jobtitle, String firstname, String middlename, String surname, Date deletedat, String description) {
-        User user = userRepository.findOne(id);
+        User user = userRepository.getOne(id);
 
         if (organisationunitId != null)
             user.setOrganisationunitId(organisationunitId);

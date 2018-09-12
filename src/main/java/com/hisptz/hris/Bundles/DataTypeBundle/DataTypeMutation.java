@@ -19,7 +19,7 @@ public class DataTypeMutation extends ModelMutation<DataType>{
 //        if (fieldId != null)
 //            dataType.getFields().add(fieldRepository.getOne(fieldId));
         if (fieldId != null)
-            dataType.setField(fieldRepository.findOne(fieldId));
+            dataType.setField(fieldRepository.getOne(fieldId));
 
         dataTypeRepository.save(dataType);
         return dataType;
@@ -30,7 +30,7 @@ public class DataTypeMutation extends ModelMutation<DataType>{
     }
 
     public DataType updateDataType(Long id, String uid, String name, String description, Long fieldId){
-        DataType dataType = dataTypeRepository.findOne(id);
+        DataType dataType = dataTypeRepository.getOne(id);
 
         if (uid != null)
             dataType.setUid(uid);
@@ -44,7 +44,7 @@ public class DataTypeMutation extends ModelMutation<DataType>{
 //        if (fieldId != null)
 //            dataType.getFields().add(fieldRepository.getOne(fieldId));
         if (fieldId != null)
-            dataType.setField(fieldRepository.findOne(fieldId));
+            dataType.setField(fieldRepository.getOne(fieldId));
 
         dataTypeRepository.save(dataType);
         return dataType;

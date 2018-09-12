@@ -19,7 +19,7 @@ public class FieldMutation extends ModelMutation<Field> {
         Field field = new Field(datatypeId, inputtypeId, uid, name, caption, compulsory, isunique, iscalculated, description, calculatedexpression, hashistory, hastarget, fieldrelation, skipinreport, inputType);
 
         if (fieldGroup != null)
-            field.getFieldGroups().add(fieldGroupRepository.findOne(fieldGroup));
+            field.getFieldGroups().add(fieldGroupRepository.getOne(fieldGroup));
 
         fieldRepository.save(field);
         return field;
@@ -30,7 +30,7 @@ public class FieldMutation extends ModelMutation<Field> {
     }
 
     public Field updateField(Long id, Integer datatypeId, Integer inputtypeId, String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport, Long inputType, Long fieldGroup) {
-        Field field = fieldRepository.findOne(id);
+        Field field = fieldRepository.getOne(id);
 
         if (datatypeId != null)
             field.setDatatypeId(datatypeId);
@@ -79,7 +79,7 @@ public class FieldMutation extends ModelMutation<Field> {
 
 
         if (fieldGroup != null)
-            field.getFieldGroups().add(fieldGroupRepository.findOne(fieldGroup));
+            field.getFieldGroups().add(fieldGroupRepository.getOne(fieldGroup));
 
         fieldRepository.save(field);
         return field;

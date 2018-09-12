@@ -23,13 +23,13 @@ public class FieldOptionMutation extends ModelMutation<FieldOption> {
         FieldOption fieldOption = new FieldOption(fieldId, uid, value, skipinreport, description, sort, hastraining);
 
         if (field != null)
-         fieldOption.setField(fieldRepository.findOne(field));
+         fieldOption.setField(fieldRepository.getOne(field));
 
         if (fieldOptionGroup != null)
-            fieldOption.getFieldOptionGroups().add(fieldOptionGroupRepository.findOne(fieldOptionGroup));
+            fieldOption.getFieldOptionGroups().add(fieldOptionGroupRepository.getOne(fieldOptionGroup));
 
         if (relationalFilterId != null)
-            fieldOption.getRelationalFilters().add(relationalFilterRepository.findOne(relationalFilterId));
+            fieldOption.getRelationalFilters().add(relationalFilterRepository.getOne(relationalFilterId));
 
 
         fieldOptionRepository.save(fieldOption);
@@ -41,7 +41,7 @@ public class FieldOptionMutation extends ModelMutation<FieldOption> {
     }
 
     public FieldOption updateFieldOption(Long id, Integer fieldId, String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining, Long fieldOptionGroup,  Long relationalFilterId) {
-        FieldOption fieldOption = fieldOptionRepository.findOne(id);
+        FieldOption fieldOption = fieldOptionRepository.getOne(id);
 
         if (fieldId != null)
             fieldOption.setFieldId(fieldId);
@@ -65,10 +65,10 @@ public class FieldOptionMutation extends ModelMutation<FieldOption> {
             fieldOption.setHastraining(hastraining);
 
         if (fieldOptionGroup != null)
-            fieldOption.getFieldOptionGroups().add(fieldOptionGroupRepository.findOne(fieldOptionGroup));
+            fieldOption.getFieldOptionGroups().add(fieldOptionGroupRepository.getOne(fieldOptionGroup));
 
-        if (relationalFilterId != null & !fieldOption.getRelationalFilters().contains(relationalFilterRepository.findOne(relationalFilterId)))
-            fieldOption.getRelationalFilters().add(relationalFilterRepository.findOne(relationalFilterId));
+        if (relationalFilterId != null & !fieldOption.getRelationalFilters().contains(relationalFilterRepository.getOne(relationalFilterId)))
+            fieldOption.getRelationalFilters().add(relationalFilterRepository.getOne(relationalFilterId));
 
         fieldOptionRepository.save(fieldOption);
         return fieldOption;

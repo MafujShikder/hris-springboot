@@ -25,7 +25,7 @@ public class FormSectionMutation extends ModelMutation<FormSection> {
     }
 
     public FormSection updateFormSection(Long id,Integer formId,String uid, String name, String description){
-        FormSection formSection = formSectionRepository.findOne(id);
+        FormSection formSection = formSectionRepository.getOne(id);
 
         if (uid != null)
             formSection.setUid(uid);

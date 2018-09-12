@@ -24,7 +24,7 @@ public class FieldOptionMergeMutation extends ModelMutation<FieldOptionMerge>{
         return deleteModel(id, fieldOptionMergeRepository);
     }
     public FieldOptionMerge updateFieldOptionMerge(Long id, Integer fieldId, Integer mergedfieldoptionId, String uid, String removedfieldoptionvalue, String removedfieldoptionuid){
-        FieldOptionMerge fieldOptionMerge = fieldOptionMergeRepository.findOne(id);
+        FieldOptionMerge fieldOptionMerge = fieldOptionMergeRepository.getOne(id);
 
         if (fieldId != null)
             fieldOptionMerge.setFieldId(fieldId);

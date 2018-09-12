@@ -19,7 +19,7 @@ public class ArithmeticFilterMutation extends ModelMutation<ArithmeticFilter>{
         ArithmeticFilter arithmeticFilter = new  ArithmeticFilter(uid, name, description, operator, leftexpression, rightexpression);
 
         if (friendlyReportId != null)
-            arithmeticFilter.getFriendlyReports().add(friendlyReportRepository.findOne(friendlyReportId));
+            arithmeticFilter.getFriendlyReports().add(friendlyReportRepository.getOne(friendlyReportId));
 
         arithmeticFilterRepository.save(arithmeticFilter);
         return arithmeticFilter;
@@ -30,7 +30,7 @@ public class ArithmeticFilterMutation extends ModelMutation<ArithmeticFilter>{
     }
 
     public ArithmeticFilter updateArithmeticFilter(Long id, String uid, String name, String description, String operator, String leftexpression, String rightexpression, Long friendlyReportId){
-        ArithmeticFilter arithmeticFilter = arithmeticFilterRepository.findOne(id);
+        ArithmeticFilter arithmeticFilter = arithmeticFilterRepository.getOne(id);
 
         if (uid != null)
             arithmeticFilter.setUid(uid);
@@ -51,7 +51,7 @@ public class ArithmeticFilterMutation extends ModelMutation<ArithmeticFilter>{
             arithmeticFilter.setRightexpression(rightexpression);
 
         if (friendlyReportId != null)
-            arithmeticFilter.getFriendlyReports().add(friendlyReportRepository.findOne(friendlyReportId));
+            arithmeticFilter.getFriendlyReports().add(friendlyReportRepository.getOne(friendlyReportId));
 
         return arithmeticFilter;
     }

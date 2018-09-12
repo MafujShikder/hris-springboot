@@ -17,10 +17,10 @@ public class RecordValueMutation extends ModelMutation<RecordValue>{
         RecordValue recordValue = new RecordValue(value);
 
         if (recordId != null)
-            recordValue.setRecord(recordRepository.findOne(recordId));
+            recordValue.setRecord(recordRepository.getOne(recordId));
 
         if (fieldId != null)
-            recordValue.setField(fieldRepository.findOne(fieldId));
+            recordValue.setField(fieldRepository.getOne(fieldId));
 
         recordValueRepository.save(recordValue);
         return recordValue;
@@ -33,16 +33,16 @@ public class RecordValueMutation extends ModelMutation<RecordValue>{
     }
 
    public RecordValue updateRecordValue(Long id, Long recordId, Long fieldId, String value){
-       RecordValue recordValue = recordValueRepository.findOne(id);
+       RecordValue recordValue = recordValueRepository.getOne(id);
 
        if (value != null)
            recordValue.setValue(value);
 
        if (recordId != null)
-           recordValue.setRecord(recordRepository.findOne(recordId));
+           recordValue.setRecord(recordRepository.getOne(recordId));
 
        if (fieldId != null)
-           recordValue.setField(fieldRepository.findOne(fieldId));
+           recordValue.setField(fieldRepository.getOne(fieldId));
 
        recordValueRepository.save(recordValue);
        return recordValue;

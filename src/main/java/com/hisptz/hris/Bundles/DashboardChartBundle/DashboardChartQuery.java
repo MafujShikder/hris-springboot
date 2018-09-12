@@ -23,7 +23,7 @@ public class DashboardChartQuery extends ModelQuery<DashboardChart>{
     }
 
     public DashboardChart getDashboardChartById(Long id){
-        return dashboardChartRepository.findOne(id);
+        return dashboardChartRepository.getOne(id);
     }
 
     public List<DashboardChart> DashboardCharts(String where, String sort){

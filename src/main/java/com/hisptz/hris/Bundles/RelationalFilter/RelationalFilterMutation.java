@@ -36,7 +36,7 @@ public class RelationalFilterMutation extends ModelMutation<RelationalFilter> {
     }
 
     public RelationalFilter updateRelationalFilter(Long id, Integer fieldId, String uid, String name, Boolean excludefieldoptions, Long field, Long fieldOptionId, Long friendlyReportId){
-        RelationalFilter relationalFilter = relationalFilterRepository.findOne(id);
+        RelationalFilter relationalFilter = relationalFilterRepository.getOne(id);
 
         if (fieldId != null)
             relationalFilter.setFieldId(fieldId);

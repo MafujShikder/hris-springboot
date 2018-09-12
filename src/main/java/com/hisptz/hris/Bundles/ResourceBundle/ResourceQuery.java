@@ -22,7 +22,7 @@ public class ResourceQuery extends ModelQuery<Resource>{
     }
 
     public Resource getResourceById(Long id){
-        return resourceRepository.findOne(id);
+        return resourceRepository.getOne(id);
     }
 
     public List<Resource> Resources(String where, String sort){

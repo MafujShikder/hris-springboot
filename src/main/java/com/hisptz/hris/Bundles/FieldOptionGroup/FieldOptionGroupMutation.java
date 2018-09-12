@@ -21,7 +21,7 @@ public class FieldOptionGroupMutation extends ModelMutation<FieldOptionGroup> {
 
 
         if (fieldOptionId != null)
-            fieldOptionGroup.getFieldOptions().add(fieldOptionRepository.findOne(fieldOptionId));
+            fieldOptionGroup.getFieldOptions().add(fieldOptionRepository.getOne(fieldOptionId));
 
         fieldOptionGroupRepository.save(fieldOptionGroup);
         return fieldOptionGroup;
@@ -32,7 +32,7 @@ public class FieldOptionGroupMutation extends ModelMutation<FieldOptionGroup> {
     }
 
     public FieldOptionGroup updateFieldOptionGroup(Long id, String uid, String name, String description, String operator, Integer fieldId, Long field, Long fieldOptionId){
-        FieldOptionGroup fieldOptionGroup = fieldOptionGroupRepository.findOne(id);
+        FieldOptionGroup fieldOptionGroup = fieldOptionGroupRepository.getOne(id);
 
         if (uid != null)
             fieldOptionGroup.setUid(uid);
@@ -52,8 +52,8 @@ public class FieldOptionGroupMutation extends ModelMutation<FieldOptionGroup> {
         if (field != null)
             fieldOptionGroup.setField(field);
 
-        if (fieldOptionId != null & !fieldOptionGroup.getFieldOptions().contains(fieldOptionRepository.findOne(fieldOptionId)))
-            fieldOptionGroup.getFieldOptions().add(fieldOptionRepository.findOne(fieldOptionId));
+        if (fieldOptionId != null & !fieldOptionGroup.getFieldOptions().contains(fieldOptionRepository.getOne(fieldOptionId)))
+            fieldOptionGroup.getFieldOptions().add(fieldOptionRepository.getOne(fieldOptionId));
 
         fieldOptionGroupRepository.save(fieldOptionGroup);
         return fieldOptionGroup;

@@ -25,7 +25,7 @@ public class FieldOptionGroupSetMutation extends ModelMutation<FieldOptionGroupS
     }
 
     public FieldOptionGroupSet updateFieldOptionGroupSet(Long id, String uid, String name, String description){
-        FieldOptionGroupSet fieldOptionGroupSet = fieldOptionGroupSetRepository.findOne(id);
+        FieldOptionGroupSet fieldOptionGroupSet = fieldOptionGroupSetRepository.getOne(id);
 
         if (uid != null)
             fieldOptionGroupSet.setUid(uid);

@@ -21,7 +21,7 @@ public class FieldOptionMergeQuery extends ModelQuery<FieldOptionMerge> {
     }
 
     public FieldOptionMerge getFieldOptionMergeById(Long id){
-        return fieldOptionMergeRepository.findOne(id);
+        return fieldOptionMergeRepository.getOne(id);
     }
 
     public List<FieldOptionMerge> queryFieldOptionMerge(String where, String sort){

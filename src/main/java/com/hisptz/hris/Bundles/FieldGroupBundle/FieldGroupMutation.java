@@ -20,7 +20,7 @@ public class FieldGroupMutation extends ModelMutation<FieldGroup> {
         FieldGroup fieldGroup = new FieldGroup(uid, name, description);
 
         if (field != null) {
-            fieldGroup.getFields().add(fieldRepository.findOne(field));
+            fieldGroup.getFields().add(fieldRepository.getOne(field));
         }
 
         fieldGroupRepository.save(fieldGroup);
@@ -32,7 +32,7 @@ public class FieldGroupMutation extends ModelMutation<FieldGroup> {
     }
 
     public FieldGroup updateFieldGroup(Long id, String uid, String name, String description, Long field) {
-        FieldGroup fieldGroup = fieldGroupRepository.findOne(id);
+        FieldGroup fieldGroup = fieldGroupRepository.getOne(id);
 
         if (uid != null)
             fieldGroup.setUid(uid);
@@ -44,7 +44,7 @@ public class FieldGroupMutation extends ModelMutation<FieldGroup> {
             fieldGroup.setDescription(description);
 
         //if (field != null) {
-            fieldGroup.getFields().add(fieldRepository.findOne(field));
+            fieldGroup.getFields().add(fieldRepository.getOne(field));
         //}
 
         fieldGroupRepository.save(fieldGroup);

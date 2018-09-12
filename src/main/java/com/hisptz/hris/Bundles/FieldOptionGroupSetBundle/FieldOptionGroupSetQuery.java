@@ -22,7 +22,7 @@ public class FieldOptionGroupSetQuery extends ModelQuery<FieldOptionGroupSet> {
     }
 
     public FieldOptionGroupSet getFieldOptionGroupSetById(Long id){
-        return fieldOptionGroupSetRepository.findOne(id);
+        return fieldOptionGroupSetRepository.getOne(id);
     }
 
     public List<FieldOptionGroupSet> FieldOptionGroupSet(String where, String sort){
