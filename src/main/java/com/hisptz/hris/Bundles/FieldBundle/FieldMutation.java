@@ -29,13 +29,8 @@ public class FieldMutation extends ModelMutation<Field> {
        return deleteModel(id, fieldRepository);
     }
 
-<<<<<<< HEAD
     public Field updateField(Long id, String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport, Long inputType, Long fieldGroup) {
-        Field field = fieldRepository.findOne(id);
-=======
-    public Field updateField(Long id, Integer datatypeId, Integer inputtypeId, String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport, Long inputType, Long fieldGroup) {
         Field field = fieldRepository.getOne(id);
->>>>>>> origin/develop
 
 
         if (uid != null)

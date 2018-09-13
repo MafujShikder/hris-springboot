@@ -12,7 +12,7 @@ public class TestingApi {
     public static void main(String args[]){
        // System.out.print("{\"query\":\"{Users(where:\\\"id:eq:3\\\"){id uid}}\"}");
         ApiQuery query = new ApiQuery("users", "id:ilike:1");
-        List<String> fields = new ArrayList<>();
+        List<String> fields = new ArrayList();
         fields.add("id");
         query.setFields(fields);
 

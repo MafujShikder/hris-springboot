@@ -8,7 +8,6 @@ import com.hisptz.hris.core.rest.QueryStructure.ApiMutation;
 import com.hisptz.hris.core.rest.QueryStructure.ApiOperation;
 import com.hisptz.hris.core.rest.QueryStructure.ApiQuery;
 import com.hisptz.hris.core.rest.QueryStructure.MutationType;
-import com.sun.xml.internal.bind.v2.TODO;
 import graphql.GraphQL;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
@@ -35,7 +34,7 @@ public class DataController {
     private List<Map<String, String>> results;
     private Page<Map<String, String>> thisPage;
     private Pageable pageRequest;
-    private List<Map<String, String>> errors = new ArrayList<>();
+    private List<Map<String, String>> errors = new ArrayList();
     private final String QUERY_URL = "http://localhost:8080/graphql";
     private Error error;
     private int start;
@@ -56,10 +55,10 @@ public class DataController {
         results = perfomOperation(query.toString(), query);
 
         if (errors != null && errors.containsAll(results)){
-            List<Map<String, String>> temp = new ArrayList<>();
+            List<Map<String, String>> temp = new ArrayList();
             temp.addAll(errors);
             errors.clear();
-            return new PageImpl<>(temp);
+            return new PageImpl(temp);
         }
 
         if (pageSize == null || pageSize <= 0 || pageSize > results.size()){
@@ -79,7 +78,7 @@ public class DataController {
         end = pageSize*(page+1) < results.size() ? pageSize*(page+1) : results.size();
 
         // sort the data here
-        thisPage = new PageImpl<>(results.subList(start, end), pageRequest, results.size());
+        thisPage = new PageImpl(results.subList(start, end), pageRequest, results.size());
 
         return thisPage;
     }
@@ -103,7 +102,7 @@ public class DataController {
 
     private ApiQuery createQuery(String model, String fields, String filters){
         ApiQuery query = new ApiQuery(model,filters);
-        List<String> fieldsList  = new ArrayList<>();
+        List<String> fieldsList  = new ArrayList();
         String[] myfields;
 
         if (fields != null) {
@@ -127,7 +126,7 @@ public class DataController {
     public List<Map<String, String>> perfomOperation(String graphqlQuery, ApiOperation operation){
         JSONObject myResponse = new JSONObject();
         List<String> fields = operation.getFields();
-        List<Map<String, String>> lists = new ArrayList<>();
+        List<Map<String, String>> lists = new ArrayList();
 
 
         try {
@@ -136,7 +135,7 @@ public class DataController {
 
             JSONArray mainData = myResponse.getJSONObject("data").getJSONArray(operation.getModel());
 
-            List<JSONObject> objs = new ArrayList<>();
+            List<JSONObject> objs = new ArrayList();
             for (int i = 0; i < mainData.length(); i++) {
                 if (mainData.getJSONObject(i) != null)
                     objs.add(mainData.getJSONObject(i));
@@ -144,7 +143,7 @@ public class DataController {
 
 
             for (JSONObject jsonList: objs) {
-                Map<String, String> eachList = new HashMap<>();
+                Map<String, String> eachList = new HashMap();
                 for (String field: fields){
                     eachList.put(field, jsonList.getString(field));
                 }
@@ -197,8 +196,8 @@ public class DataController {
     public ApiMutation createMutation(String model, String body, MutationType mutationType){
         ApiMutation mutation = new ApiMutation(model, mutationType);
 
-        List<String> fields = new ArrayList<>();
-        List<Object> values = new ArrayList<>();
+        List<String> fields = new ArrayList();
+        List<Object> values = new ArrayList();
         JSONObject object = new JSONObject();
 
         try {
@@ -245,7 +244,7 @@ public class DataController {
     public List<Map<String, String>> sendMutationToGraphql(String graphqlQuery, ApiMutation mutation){
         JSONObject myResponse = new JSONObject();
         List<String> fields = mutation.getFields();
-        List<Map<String, String>> lists = new ArrayList<>();
+        List<Map<String, String>> lists = new ArrayList();
 
 
         try {
@@ -258,7 +257,7 @@ public class DataController {
 
             if (mutation.getMutationType() == MutationType.DELETE) {
                  key = "delete" + mutation.getModel();
-                Map<String, String> resultsMap = new HashMap<>();
+                Map<String, String> resultsMap = new HashMap();
                 resultsMap.put(key, resultsObject.getString(key));
                 lists.add(resultsMap);
                 return lists;
@@ -271,7 +270,7 @@ public class DataController {
             JSONArray mainData = resultsObject.names();
 
             for (int i = 0; i < mainData.length(); i++){
-                Map<String, String> resultsMap = new HashMap<>();
+                Map<String, String> resultsMap = new HashMap();
                 resultsMap.put(mainData.getString(i), (String)resultsObject.get(mainData.getString(i)));
                 lists.add(resultsMap);
             }

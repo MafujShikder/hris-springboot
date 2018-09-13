@@ -40,13 +40,9 @@ public class FieldOptionMutation extends ModelMutation<FieldOption> {
         return deleteModel(id, fieldOptionRepository);
     }
 
-<<<<<<< HEAD
+
     public FieldOption updateFieldOption(Long id, String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining, Long fieldOptionGroup,  Long relationalFilterId) {
-        FieldOption fieldOption = fieldOptionRepository.findOne(id);
-=======
-    public FieldOption updateFieldOption(Long id, Integer fieldId, String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining, Long fieldOptionGroup,  Long relationalFilterId) {
         FieldOption fieldOption = fieldOptionRepository.getOne(id);
->>>>>>> origin/develop
 
 
         if (value != null)

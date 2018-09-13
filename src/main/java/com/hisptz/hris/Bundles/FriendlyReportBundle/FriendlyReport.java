@@ -34,14 +34,14 @@ public class FriendlyReport extends Model{
                     CascadeType.MERGE
             },
             mappedBy = "friendlyReports")
-    private Set<RelationalFilter> relationalFilters = new HashSet<>();
+    private Set<RelationalFilter> relationalFilters = new HashSet();
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
                     CascadeType.MERGE
             },
             mappedBy = "friendlyReports")
-    private Set<ArithmeticFilter> arithmeticFilters = new HashSet<>();
+    private Set<ArithmeticFilter> arithmeticFilters = new HashSet();
 
     public FriendlyReport() {
         super();

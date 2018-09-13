@@ -35,7 +35,7 @@ public class FieldOptionGroup extends Model{
     @JoinTable(name = "fieldGroupfieldGroupOption",
             joinColumns = {@JoinColumn(name = "field_group_id")},
             inverseJoinColumns = {@JoinColumn(name = "field_group_option_id")})
-    private Set<FieldOption> fieldOptions = new HashSet<>();
+    private Set<FieldOption> fieldOptions = new HashSet();
 
     public FieldOptionGroup() {
         super();

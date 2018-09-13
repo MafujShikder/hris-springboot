@@ -15,7 +15,7 @@ public class Error {
     private HttpStatusCode httpStatusCode;
     private Status status;
 
-    private Map<String, String> errorMap = new HashMap<>();
+    private Map<String, String> errorMap = new HashMap();
 
     public Error(HttpStatus httpStatus, String message, HttpStatusCode httpStatusCode, Status status) {
         this.httpStatus = httpStatus;

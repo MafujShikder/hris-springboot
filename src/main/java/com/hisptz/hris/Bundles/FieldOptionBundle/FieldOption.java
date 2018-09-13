@@ -35,14 +35,14 @@ public class FieldOption extends Model {
 //                        CascadeType.MERGE
   //              },
     mappedBy = "fieldOptions")
-    private Set<FieldOptionGroup> fieldOptionGroups = new HashSet<>();
+    private Set<FieldOptionGroup> fieldOptionGroups = new HashSet();
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
                     CascadeType.MERGE
             },
             mappedBy = "fieldOptions")
-    private Set<RelationalFilter> relationalFilters = new HashSet<>();
+    private Set<RelationalFilter> relationalFilters = new HashSet();
 
     public FieldOption() {
     }

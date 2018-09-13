@@ -34,7 +34,7 @@ public class RelationalFilter extends Model {
     @JoinTable(name = "relational_filter_field_group_option",
             joinColumns = {@JoinColumn(name = "relational_filter_id")},
             inverseJoinColumns = {@JoinColumn(name = "field_option_id")})
-    private Set<FieldOption> fieldOptions = new HashSet<>();
+    private Set<FieldOption> fieldOptions = new HashSet();
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
@@ -43,7 +43,7 @@ public class RelationalFilter extends Model {
     @JoinTable(name = "relational_filter_friendly_report",
             joinColumns = {@JoinColumn(name = "relational_filter_id")},
             inverseJoinColumns = {@JoinColumn(name = "friendly_report_id")})
-    private Set<FriendlyReport> friendlyReports = new HashSet<>();
+    private Set<FriendlyReport> friendlyReports = new HashSet();
 
     public RelationalFilter() {
         super();

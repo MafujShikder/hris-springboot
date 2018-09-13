@@ -29,7 +29,7 @@ public class ArithmeticFilter extends Model{
     @JoinTable(name = "arithmetic_filter_friendly_report",
             joinColumns = {@JoinColumn(name = "arithmetic_filter_id")},
             inverseJoinColumns = {@JoinColumn(name = "friendly_report_id")})
-    private Set<FriendlyReport> friendlyReports = new HashSet<>();
+    private Set<FriendlyReport> friendlyReports = new HashSet();
 
     public ArithmeticFilter() {
     }

@@ -37,7 +37,7 @@ public class Field extends Model{
     @JoinTable(name = "FieldGroupFieldMembers",
             joinColumns = { @JoinColumn(name = "field_id") },
             inverseJoinColumns = { @JoinColumn(name = "fieldgroup_id") })
-    private Set<FieldGroup> fieldGroups = new HashSet<>();
+    private Set<FieldGroup> fieldGroups = new HashSet();
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "inputtype", nullable = true)

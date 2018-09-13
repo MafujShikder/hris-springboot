@@ -21,7 +21,6 @@ public class ModelSpecification<T extends Model> implements Specification<T> {
     }
 
 
-    @Override
     public Predicate toPredicate(Root<T> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
         if (queryCriteria.getOperation().equalsIgnoreCase(Operator.ILIKE.getOp()) || queryCriteria.getOperation().equalsIgnoreCase(Operator.LIKE.getOp())){
 
@@ -31,24 +30,26 @@ public class ModelSpecification<T extends Model> implements Specification<T> {
 
             return criteriaBuilder.equal(
                     root.<String> get(queryCriteria.getKey()), queryCriteria.getValue());
-        } else if (queryCriteria.getOperation().equalsIgnoreCase(Operator.NOTILIKE.getOp()) || queryCriteria.getOperation().equalsIgnoreCase(Operator.NOTLIKE.getOp())){
 
-            return criteriaBuilder.notLike(root.get(queryCriteria.getKey()), queryCriteria.getValue());
+        }
+        else if (queryCriteria.getOperation().equalsIgnoreCase(Operator.NOTILIKE.getOp()) || queryCriteria.getOperation().equalsIgnoreCase(Operator.NOTLIKE.getOp())){
+
+            //return criteriaBuilder.notLike(root.get(queryCriteria.getKey()), queryCriteria.getValue());
         } else if (queryCriteria.getOperation().equalsIgnoreCase(Operator.GE.getOp())){
 
-            return criteriaBuilder.greaterThanOrEqualTo(root.get(queryCriteria.getKey()), queryCriteria.getValue());
+           // return criteriaBuilder.greaterThanOrEqualTo(root.get(queryCriteria.getKey()), queryCriteria.getValue());
         }   else if (queryCriteria.getOperation().equalsIgnoreCase(Operator.GT.getOp())){
 
-            return criteriaBuilder.greaterThan(root.get(queryCriteria.getKey()), queryCriteria.getValue());
+           // return criteriaBuilder.greaterThan(root.get(queryCriteria.getKey()), queryCriteria.getValue());
         }   else if (queryCriteria.getOperation().equalsIgnoreCase(Operator.LT.getOp())){
 
-            return criteriaBuilder.lessThan(root.get(queryCriteria.getKey()), queryCriteria.getValue());
+           // return criteriaBuilder.lessThan(root.get(queryCriteria.getKey()), queryCriteria.getValue());
         }   else if (queryCriteria.getOperation().equalsIgnoreCase(Operator.LE.getOp())){
 
-            return criteriaBuilder.lessThanOrEqualTo(root.get(queryCriteria.getKey()), queryCriteria.getValue());
+            //return criteriaBuilder.lessThanOrEqualTo(root.get(queryCriteria.getKey()), queryCriteria.getValue());
         } else if (queryCriteria.getOperation().equalsIgnoreCase(Operator.NE.getOp())){
 
-            return criteriaBuilder.notEqual(root.get(queryCriteria.getKey()), queryCriteria.getValue());
+           // return criteriaBuilder.notEqual(root.get(queryCriteria.getKey()), queryCriteria.getValue());
         }
 //        } else {
 //            try {

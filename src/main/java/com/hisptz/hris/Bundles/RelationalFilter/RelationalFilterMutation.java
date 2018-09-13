@@ -35,13 +35,10 @@ public class RelationalFilterMutation extends ModelMutation<RelationalFilter> {
         return deleteModel(id, relationalFilterRepository);
     }
 
-<<<<<<< HEAD
+
     public RelationalFilter updateRelationalFilter(Long id, String uid, String name, Boolean excludefieldoptions, Long field, Long fieldOptionId, Long friendlyReportId){
-        RelationalFilter relationalFilter = relationalFilterRepository.findOne(id);
-=======
-    public RelationalFilter updateRelationalFilter(Long id, Integer fieldId, String uid, String name, Boolean excludefieldoptions, Long field, Long fieldOptionId, Long friendlyReportId){
         RelationalFilter relationalFilter = relationalFilterRepository.getOne(id);
->>>>>>> origin/develop
+
 
         if (uid != null)
             relationalFilter.setUid(uid);

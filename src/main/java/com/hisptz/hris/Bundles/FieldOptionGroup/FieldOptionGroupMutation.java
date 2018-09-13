@@ -31,13 +31,10 @@ public class FieldOptionGroupMutation extends ModelMutation<FieldOptionGroup> {
         return deleteModel(id, fieldOptionGroupRepository);
     }
 
-<<<<<<< HEAD
-    public FieldOptionGroup updateFieldOptionGroup(Long id, String uid, String name, String description, String operator, Long field, Long fieldOptionId){
-        FieldOptionGroup fieldOptionGroup = fieldOptionGroupRepository.findOne(id);
-=======
-    public FieldOptionGroup updateFieldOptionGroup(Long id, String uid, String name, String description, String operator, Integer fieldId, Long field, Long fieldOptionId){
+
+    public FieldOptionGroup updateFieldOptionGroup(Long id, String uid, String name, String description, String operator, Long field, Long fieldOptionId) {
         FieldOptionGroup fieldOptionGroup = fieldOptionGroupRepository.getOne(id);
->>>>>>> origin/develop
+
 
         if (uid != null)
             fieldOptionGroup.setUid(uid);

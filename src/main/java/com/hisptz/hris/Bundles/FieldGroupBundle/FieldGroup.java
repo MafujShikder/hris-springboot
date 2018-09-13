@@ -22,7 +22,7 @@ public class FieldGroup extends Model{
                     CascadeType.MERGE
             },
             mappedBy = "fieldGroups")
-    private Set<Field> fields = new HashSet<>();
+    private Set<Field> fields = new HashSet();
 
     public Set<Field> getFields() {
         return fields;
