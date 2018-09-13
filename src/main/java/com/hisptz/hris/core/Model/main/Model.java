@@ -32,7 +32,7 @@ public class Model{
 
     public Model() {
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
-        this.uid = randomStringGenerator.givenUsingApache_whenGeneratingRandomAlphabeticString_thenCorrect(12);
+        this.uid = randomStringGenerator.givenUsingApache_whenGeneratingRandomAlphabeticString_thenCorrect(13);
     }
 
     @Basic

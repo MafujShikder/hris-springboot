@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class RandomStringGenerator {
     public String givenUsingApache_whenGeneratingRandomAlphabeticString_thenCorrect(int length) {
 
-        String generatedString = RandomStringUtils.randomAlphabetic(length);
+        String generatedString = RandomStringUtils.randomAlphanumeric(length);
 
         return generatedString;
     }

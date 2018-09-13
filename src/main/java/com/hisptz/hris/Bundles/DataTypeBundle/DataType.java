@@ -13,7 +13,7 @@ import javax.persistence.*;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "field_datatype")
+@Table(name = "datatype")
 public class DataType extends Model {
     private String name;
     private String description;
