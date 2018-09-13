@@ -23,7 +23,7 @@ public class UserQuery extends ModelQuery<User>{
     }
 
     public User getUserById(Long id){
-        return userRepository.findOne(id);
+        return userRepository.getOne(id);
     }
 
     public List<User> Users(String where, String sort){

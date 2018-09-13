@@ -24,7 +24,7 @@ public class FieldOptionGroupResolver implements GraphQLResolver<FieldOptionGrou
     }
 
     public Field getField(FieldOptionGroup fieldOptionGroup){
-        return fieldRepository.findOne(fieldOptionGroup.getField().getId());
+        return fieldRepository.getOne(fieldOptionGroup.getField().getId());
     }
 
 }

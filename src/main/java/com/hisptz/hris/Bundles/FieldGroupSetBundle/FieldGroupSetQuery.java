@@ -22,7 +22,7 @@ public class FieldGroupSetQuery extends ModelQuery<FieldGroupSet> {
     }
 
     public FieldGroupSet getFieldGroupSetsById(Long id){
-        return fieldGroupSetRepository.findOne(id);
+        return fieldGroupSetRepository.getOne(id);
     }
 
     public List<FieldGroupSet> FieldGroupSets(String where, String sort){

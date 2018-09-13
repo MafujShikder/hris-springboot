@@ -22,7 +22,7 @@ public class FormQuery extends ModelQuery<Form>{
     }
 
     public Form getFormById(Long id){
-        return formRepository.findOne(id);
+        return formRepository.getOne(id);
     }
 
     public List<Form> Forms(String where, String sort){

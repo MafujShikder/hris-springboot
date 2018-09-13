@@ -22,7 +22,7 @@ public class ArithmeticFilterQuery extends ModelQuery<ArithmeticFilter> {
     }
 
     public ArithmeticFilter getArithmeticFilterById(Long id){
-        return arithmeticFilterRepository.findOne(id);
+        return arithmeticFilterRepository.getOne(id);
     }
 
     public List<ArithmeticFilter> Arithmeticfilter(String where, String sort){

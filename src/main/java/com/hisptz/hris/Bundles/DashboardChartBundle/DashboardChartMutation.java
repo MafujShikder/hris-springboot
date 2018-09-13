@@ -25,7 +25,7 @@ public class DashboardChartMutation extends ModelMutation<DashboardChart>{
     }
 
     public DashboardChart updateDashboardChart(Long id,Integer fieldoneId, Integer fieldtwoId, Integer userId, String name, String description, String graphtype, Boolean lowerlevels, Boolean systemwide){
-        DashboardChart dashboardChart = dashboardChartRepository.findOne(id);
+        DashboardChart dashboardChart = dashboardChartRepository.getOne(id);
 
         if (fieldoneId!= null)
             dashboardChart.setFieldoneId(fieldoneId);

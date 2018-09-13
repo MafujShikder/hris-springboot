@@ -23,7 +23,7 @@ public class FriendlyReportQuery extends ModelQuery<FriendlyReport>{
 
 
     public FriendlyReport getFriendlyReportById(Long id){
-        return friendlyReportRepository.findOne(id);
+        return friendlyReportRepository.getOne(id);
     }
 
     public List<FriendlyReport> FriendlyReport(String where, String sort){

@@ -22,7 +22,7 @@ public class DataTypeQuery extends ModelQuery<DataType>{
     }
 
     public DataType getDataTypeById(Long id){
-        return dataTypeRepository.findOne(id);
+        return dataTypeRepository.getOne(id);
     }
 
     public List<DataType> DataType(String where, String sort){

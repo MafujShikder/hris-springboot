@@ -21,7 +21,7 @@ public class FieldQuery extends ModelQuery<Field>{
     }
 
     public Field getFieldById(Long id){
-        return fieldRepository.findOne(id);
+        return fieldRepository.getOne(id);
     }
 
 

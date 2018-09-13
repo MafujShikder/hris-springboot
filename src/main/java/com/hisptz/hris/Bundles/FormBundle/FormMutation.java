@@ -25,7 +25,7 @@ public class FormMutation extends ModelMutation<Form>{
     }
 
     public Form updateForm(Long id, String uid, String name, String hypertext, String title){
-        Form form = formRepository.findOne(id);
+        Form form = formRepository.getOne(id);
 
         if (uid != null)
             form.setUid(uid);

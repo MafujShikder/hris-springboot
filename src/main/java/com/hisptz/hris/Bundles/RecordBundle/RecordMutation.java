@@ -26,7 +26,7 @@ public class RecordMutation extends ModelMutation<Record>{
     }
 
     public Record updateRecord(Long id, Long organisationunitId, Long formId, String instance, Boolean complete, Boolean correct, Boolean hasHistory, Boolean hasTraining, String username){
-        Record record = recordRepository.findOne(id);
+        Record record = recordRepository.getOne(id);
 
         if (organisationunitId != null)
             record.setOrganisationunitId(organisationunitId);

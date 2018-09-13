@@ -34,7 +34,7 @@ public class FieldResolver implements GraphQLResolver<Field>{
     }
 
     public InputType getInputType(Field field){
-        return inputTypeRepository.findOne(field.getInputType().getId());
+        return inputTypeRepository.getOne(field.getInputType().getId());
     }
 
 }

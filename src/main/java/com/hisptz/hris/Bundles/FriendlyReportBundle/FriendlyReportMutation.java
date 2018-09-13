@@ -21,10 +21,10 @@ public class FriendlyReportMutation extends ModelMutation<FriendlyReport>{
         FriendlyReport friendlyReport = new FriendlyReport(seriesId, uid, name, description, sort, ignoreskipinreport, usetargets, showdeficitsurplus, type, sql_statement, javascript, stylesheet);
 
         if (relationalFilterId != null)
-            friendlyReport.getRelationalFilters().add(relationalFilterRepository.findOne(relationalFilterId));
+            friendlyReport.getRelationalFilters().add(relationalFilterRepository.getOne(relationalFilterId));
 
         if (arithmeticFilterId != null)
-            friendlyReport.getArithmeticFilters().add(arithmeticFilterRepository.findOne(arithmeticFilterId));
+            friendlyReport.getArithmeticFilters().add(arithmeticFilterRepository.getOne(arithmeticFilterId));
 
         friendlyReportRepository.save(friendlyReport);
         return friendlyReport;
@@ -35,7 +35,7 @@ public class FriendlyReportMutation extends ModelMutation<FriendlyReport>{
     }
 
     public FriendlyReport updateFriendlyReport(Long id, Integer seriesId, String uid, String name, String description, Integer sort, Boolean ignoreskipinreport, Boolean usetargets, Boolean showdeficitsurplus, String type, String sql_statement, String javascript, String stylesheet, Long relationalFilterId, Long arithmeticFilterId) {
-        FriendlyReport friendlyReport = friendlyReportRepository.findOne(id);
+        FriendlyReport friendlyReport = friendlyReportRepository.getOne(id);
 
         if (seriesId != null)
             friendlyReport.setSeriesId(seriesId);
@@ -74,10 +74,10 @@ public class FriendlyReportMutation extends ModelMutation<FriendlyReport>{
             friendlyReport.setStylesheet(stylesheet);
 
         if (relationalFilterId != null)
-            friendlyReport.getRelationalFilters().add(relationalFilterRepository.findOne(relationalFilterId));
+            friendlyReport.getRelationalFilters().add(relationalFilterRepository.getOne(relationalFilterId));
 
         if (arithmeticFilterId != null)
-            friendlyReport.getArithmeticFilters().add(arithmeticFilterRepository.findOne(arithmeticFilterId));
+            friendlyReport.getArithmeticFilters().add(arithmeticFilterRepository.getOne(arithmeticFilterId));
 
         friendlyReportRepository.save(friendlyReport);
         return friendlyReport;

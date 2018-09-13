@@ -25,7 +25,7 @@ public class FieldGroupSetMutation extends ModelMutation<FieldGroupSet> {
     }
 
     public FieldGroupSet updateFieldGroupSet(Long id, String uid, String name, String description) {
-        FieldGroupSet fieldGroupSet = fieldGroupSetRepository.findOne(id);
+        FieldGroupSet fieldGroupSet = fieldGroupSetRepository.getOne(id);
 
         if (uid != null)
             fieldGroupSet.setUid(uid);
