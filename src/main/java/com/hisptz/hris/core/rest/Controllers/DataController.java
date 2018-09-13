@@ -48,7 +48,29 @@ public class DataController {
 
         if (fields.trim().equalsIgnoreCase("*")){
             //TODO: use introspection to get all fields and then return them as a string
+            JSONObject myResponse = new JSONObject();
+            String graphqlQuery = "";
+//
+//            JSONObject resultsObject = myResponse.getJSONObject("data");
+//
+//            String key = "";
+//            resultsObject = resultsObject.getJSONObject(key);
+//            JSONArray mainData = resultsObject.names();
+//
+//            for (int i = 0; i < mainData.length(); i++){
+//                Map<String, String> resultsMap = new HashMap();
+//                resultsMap.put(mainData.getString(i), (String)resultsObject.get(mainData.getString(i)));
+//                lists.add(resultsMap);
+//            }
 
+            try {
+                myResponse = connectToResourse(graphqlQuery);
+                JSONObject resultsObject = myResponse.getJSONObject("data");
+
+            } catch (JSONException e){
+                e.printStackTrace();
+                errors.add(new Error(HttpStatus.ERROR, e.getLocalizedMessage(), HttpStatusCode.HTTP_STATUS_CODE_403, Status.ERROR).getErrorMap());
+            }
         }
 
         query = createQuery(model,fields,filters);
@@ -192,7 +214,6 @@ public class DataController {
         return object;
     }
 
-
     public ApiMutation createMutation(String model, String body, MutationType mutationType){
         ApiMutation mutation = new ApiMutation(model, mutationType);
 
@@ -221,8 +242,6 @@ public class DataController {
         mutation.setFields(fields);
         mutation.setValues(values);
 
-        System.out.println(mutation.toString());
-
         return mutation;
     }
 
@@ -241,6 +260,7 @@ public class DataController {
 
         return results;
     }
+
     public List<Map<String, String>> sendMutationToGraphql(String graphqlQuery, ApiMutation mutation){
         JSONObject myResponse = new JSONObject();
         List<String> fields = mutation.getFields();
@@ -288,6 +308,5 @@ public class DataController {
     // TODO: Use graphql introspection to allow for return all columns upon * in the fields parameter
     // TODO: Redo the documentation
     // TODO: upload csv
-    // TODO: Merge with the development branch
     // TODO: Submit the assignment
 }

@@ -84,22 +84,24 @@ public class ModelQuery<T extends Model> extends ModelRepositories implements Gr
 
     }
 
-    public List<T> sorting(List<T> results, String sort){
+    public List<T> sorting(List<T> results, final String sort){
             if (sort.equalsIgnoreCase("asc")){
-//                results.sort(new Comparator<T>() {
-//                    @Override
-//                    public int compare(T o1, T o2) {
-//                        return compareT(o1, o2, sort);
-//                    }
-//                });
+                //noinspection Since15
+                results.sort(new Comparator<T>() {
+                    @Override
+                    public int compare(T o1, T o2) {
+                        return compareT(o1, o2, sort);
+                    }
+                });
                 return results;
             } else if (sort.equalsIgnoreCase("desc")){
-//                results.sort(new Comparator<T>() {
-//                    @Override
-//                    public int compare(T o1, T o2) {
-//                        return compareT(o1, o2, sort);
-//                    }
-//                });
+                //noinspection Since15
+                results.sort(new Comparator<T>() {
+                    @Override
+                    public int compare(T o1, T o2) {
+                        return compareT(o1, o2, sort);
+                    }
+                });
                 return results;
             } else {
                 return results;
