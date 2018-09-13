@@ -1,6 +1,5 @@
 type FieldOption{
     id:ID
-    fieldId:Int
     uid:String
     value:String
     skipinreport:String
@@ -20,12 +19,12 @@ extend type Query {
 }
 
 extend type Mutation {
-    newFieldOption(fieldId:Int, uid:String, value:String, skipinreport:String, description:String,
+    newFieldOption( uid:String, value:String, skipinreport:String, description:String,
     sort:String, hastraining:String,field:ID, fieldOptionGroup:ID, relationalFilterId:ID):FieldOption!
 
     deleteFieldOption(id:ID!):String
 
-    updateFieldOption(id:ID!, fieldId:Int, uid:String, value:String, skipinreport:String, description:String,
+    updateFieldOption(id:ID!, uid:String, value:String, skipinreport:String, description:String,
     sort:String, hastraining:String, fieldOptionGroup:ID, relationalFilterId:ID):FieldOption!
 
 }

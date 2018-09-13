@@ -15,8 +15,8 @@ public class FieldMutation extends ModelMutation<Field> {
         this.fieldGroupRepository = fieldGroupRepository;
     }
 
-    public Field newField(Integer datatypeId, Integer inputtypeId, String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport, Long inputType, Long fieldGroup) {
-        Field field = new Field(datatypeId, inputtypeId, uid, name, caption, compulsory, isunique, iscalculated, description, calculatedexpression, hashistory, hastarget, fieldrelation, skipinreport, inputType);
+    public Field newField(String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport, Long inputType, Long fieldGroup) {
+        Field field = new Field( uid, name, caption, compulsory, isunique, iscalculated, description, calculatedexpression, hashistory, hastarget, fieldrelation, skipinreport, inputType);
 
         if (fieldGroup != null)
             field.getFieldGroups().add(fieldGroupRepository.findOne(fieldGroup));
@@ -29,14 +29,9 @@ public class FieldMutation extends ModelMutation<Field> {
        return deleteModel(id, fieldRepository);
     }
 
-    public Field updateField(Long id, Integer datatypeId, Integer inputtypeId, String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport, Long inputType, Long fieldGroup) {
+    public Field updateField(Long id, String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport, Long inputType, Long fieldGroup) {
         Field field = fieldRepository.findOne(id);
 
-        if (datatypeId != null)
-            field.setDatatypeId(datatypeId);
-
-        if (inputtypeId != null)
-            field.setInputtypeId(inputtypeId);
 
         if (uid != null)
             field.setUid(uid);

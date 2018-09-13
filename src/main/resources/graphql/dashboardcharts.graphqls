@@ -19,14 +19,14 @@ extend type Query {
 }
 
 extend type Mutation {
-    newDashboardChart(fieldoneId:Int!,
-    fieldtwoId:Int!,
-    userId:Int!,
-    name:String!,
-    description:String!,
-    graphtype:String!,
-    lowerlevels:String!,
-    systemwide:String!):DashboardChart!
+    newDashboardChart(fieldoneId:Int,
+    fieldtwoId:Int,
+    userId:Int,
+    name:String,
+    description:String,
+    graphtype:String,
+    lowerlevels:String,
+    systemwide:String):DashboardChart!
 
     deleteDashboardChart(id:ID!):String
 

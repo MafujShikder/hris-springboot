@@ -17,11 +17,11 @@ type Query {
 }
 
 type Mutation {
-    newFieldOptionMerge(fieldId:String!,
-    mergedfieldoptionId:String!,
-    uid:String!,
-    removedfieldoptionvalue:String!,
-    removedfieldoptionuid:String!):FieldOptionMerge!
+    newFieldOptionMerge(fieldId:String,
+    mergedfieldoptionId:String,
+    uid:String,
+    removedfieldoptionvalue:String,
+    removedfieldoptionuid:String):FieldOptionMerge!
 
     deleteFieldOptionMerge(id:ID!):String
 

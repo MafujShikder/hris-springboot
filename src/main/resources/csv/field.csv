@@ -1,0 +1,56 @@
+id,date_created,last_updated,uid,calculatedexpression,caption,compulsory,datatype_id,description,fieldrelation,hashistory,hastarget,inputtype_id,iscalculated,isunique,name,skipinreport,inputtype
+123,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e93496216,,Basic Education Level,t,7,Compulsory. `s Education Level,,f,,18,f,f,basic_education_level,,18
+124,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e93499515,,Check Number,t,7,"Compulsory, Employee Salary check number, Check number is unique to all Employees.",,f,,12,f,f,check_no,,12
+125,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e9349a712,,Confirmation Date,f,10,"Optional, Date of confirming work at duty post.",,f,,17,f,f,confirmation_date,,17
+126,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e9349b885,,Contacts,t,7,"Compulsory, Enter Postal Address, Telephone/Mobile and email address. Separated by semi-colon",,f,,16,f,f,contact,,16
+127,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e9349c9cc,,Contact of Next of Kin,f,7,"Optional, Enter Postal Address, Telephone/Mobile and email address. Separated by semi-colon",,f,,16,f,f,contact_of_Next_of_Kin,,16
+130,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e934a027b,,Registered Disability,f,7,"Optional, Any legal registered disability.",,f,,18,f,f,disability,,18
+131,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e934a140e,,Date of Birth,t,10,"Compulsory, Date of birth of Employee.",,f,,17,f,f,dob,,17
+132,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e934a25cf,,District of Domicile,f,7,"Optional, District/Place of Domicile(Where you call home).",,f,,12,f,f,domicile,,12
+134,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e934a4861,,E-mail Address,f,7,You must enter a valid e-mail address,,f,,12,f,f,email,,12
+135,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e934a59a6,,Employer,t,7,"Compulsory, Employer of the Employee.",,f,,18,f,f,employer,,18
+138,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e934a8d14,,File Number,t,7,"Compulsory, Employee File number with the employer, File number is unique to all employees.",,f,,12,f,f,file_no,,12
+139,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e934a9e8a,,Date of First Appointment,t,10,"Compulsory, Date Employee was first appointed.",,f,,17,f,f,first_appointment,,17
+140,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e934ab062,,First Name,t,7,"Compulsory, Employee`s Firstname.",,f,,12,f,f,firstname,,12
+141,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e934ac1bc,,Hospital Department,t,7,"Compulsory, Hospital Department of Employee, Hospital department keeps history, update it through History.",,f,,18,f,f,hosp_dept,,18
+167,2018-04-08 05:14:17,2018-04-08 05:14:17,5289e934b733f,,Specialization,t,7,"Compulsory, Specialization of Employee, Specialization keeps history, update it through history.",t,t,t,18,f,f,specialization,f,18
+143,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e934ae449,,Hospital Salary Scale,t,7,"Compulsory, Salary scale of Hospital employee. Salary Scale keeps history, update it through history.",,f,,18,f,f,hosp_salary_scale,,18
+144,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e934af5c4,,Hospital Superlative Post,t,7,"Compulsory, Superlative substantive position, Superlative substantive position keeps history, update through history.",,f,,18,f,f,hosp_Superlative_Post,,18
+168,2018-05-28 12:34:27,2018-05-28 12:34:27,5289e934abb01,,Place of Birth,,,,,,,17,,,pob,,17
+147,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e934b2b33,,Middle Name,f,7,"Optional, Employee`s Middle name",,f,,12,f,f,middlename,,12
+148,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e934b3c2b,,Nationality,t,7,"Compulsory, Employee`s nationality.",,f,,18,f,f,nationality,,18
+149,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e934b4e25,,Next of Kin,f,7,"Optional, Name of close relative to contact in case of emergency",,f,,12,f,f,next_kin,,12
+150,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e934b615b,,Number of Children,f,8,"Optional, Number of children/Depandants an employee have.",,f,,12,f,f,number_of_children,,12
+152,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e934b84c3,,Registration Number,f,7,"Optional, Employee Registration number.",,f,,12,f,f,reg_no,,12
+153,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e934b95f9,,Relationship to Next of Kin,f,7,"Optional, Kind of relationship to mentioned next of kin.",,f,,18,f,f,relation_next_kin,,18
+157,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e934bde20,,Sex,t,7,"Compulsory, Gender of Employee.",,f,,18,f,f,sex,,18
+160,2013-11-18 10:51:34,2013-11-18 10:51:34,5289f136834a1,((floor(floor((time() - strtotime('#{dob}')) / 31556926)/5))*5) .'-'.(((floor(floor((time() - strtotime('#{dob}')) / 31556926)/5))*5)+4),Age Distribution,f,7,Distribution by age group based on Employee's birthdate,,t,f,17,t,f,AgeDistribution,f,17
+161,2013-11-18 10:52:48,2013-11-18 10:52:48,5289f180a2f84,floor((time() - strtotime('#{dob}')) / 31556926),Age,t,8,Age,,f,f,17,t,f,Age,f,17
+163,2013-11-18 10:54:49,2013-11-18 10:54:50,5289f1f9e543b,"date('Y', strtotime('#{dob}'))+60",Retirement Distribution,f,8,Annual retirement distribution based on Employee's birthdate,,t,f,17,t,f,RetirementDistribution,f,17
+133,2013-11-18 10:17:24,2013-11-18 11:34:46,5289e934a36d7,,Profession Education Level,t,7,"Compulsory, Employee`s Highest education level, Educational level keeps history, should be updated through history.",,t,f,18,f,f,edu_evel,f,18
+129,2013-11-18 10:17:24,2013-11-18 11:35:24,5289e9349f037,,Present Designation,t,7,"Compulsory, Employee`s designation, Designation keeps history, should be updated through history.",,t,f,18,f,f,designation,f,18
+158,2013-11-18 10:17:24,2013-11-18 11:36:40,5289e934bf083,,Superlative Substansive Position,t,7,"Compulsory, Employee`s Position appointed, given or acquired by vote. Superlative substantive position keeps history, update through history.",,t,f,18,f,f,superlative,f,18
+155,2013-11-18 10:17:24,2013-11-18 11:42:59,5289e934bb9f0,,Basic Salary,f,9,"Optional, Basic Monthly salary, Accepts numbers/digits only(no commas). Basic salary keeps history, update through history.",,t,f,12,f,f,salary,f,12
+145,2013-11-18 10:17:24,2013-11-18 11:43:36,5289e934b079a,,Date of Last Promotion,f,10,"Optional, Date of last promotion, Date of last promotion keeps history, update it through history.",,t,f,17,f,f,last_promo,f,17
+128,2013-11-18 10:17:24,2013-11-18 11:44:02,5289e9349dde1,,Department,t,7,"Compulsory, Enter Department of the Employee. Department keeps history, should be updated through history.",,t,f,18,f,f,department,f,18
+136,2013-11-18 10:17:24,2013-11-18 11:44:50,5289e934a6b16,,Employment Status,t,7,"Compulsory, Employment status of Employee, This data keeps history.",,t,f,18,f,f,employment_status,f,18
+154,2013-11-18 10:17:24,2013-11-18 11:45:27,5289e934ba7a3,,Religion,f,7,"Religion of Employee, Optional and can have History.",,t,f,18,f,f,Religion,f,18
+156,2013-11-18 10:17:24,2013-11-18 11:46:04,5289e934bcb36,,Salary Scale,t,7,"Compulsory, Employee`s salary scale, Salary scale keeps history, update it through history.",,t,f,18,f,f,salary_scale,f,18
+137,2013-11-18 10:17:24,2013-11-18 11:46:26,5289e934a7bb0,,Terms of Employment,t,7,"Compulsory, Terms of Employment, This data keeps history.",,t,f,18,f,f,employment_terms,f,18
+165,2013-11-18 10:57:33,2013-11-18 10:57:33,5289f29d1d884,floor((time() - strtotime('#{first_appointment}'))/31556926) . 'y' . floor(((time() - strtotime('#{first_appointment}'))%31556926)/2592000) . 'm',Employment Duration,t,7,Employment Duration,,f,f,17,t,f,EmploymentDuration,f,17
+159,2013-11-18 10:17:24,2013-11-18 11:33:55,5289e934c02a1,,Surname,t,7,"Compulsory, Employee Surname, Surname keeps history, update it through history.",,t,f,12,f,f,surname,f,12
+151,2013-11-18 10:17:24,2014-03-22 12:55:15,5289e934b733b,,Profession,t,7,"Compulsory, Profession of Employee, Profession keeps history, update it through history.",t,t,t,18,f,f,profession,f,18
+162,2013-11-18 10:53:54,2013-11-20 09:50:41,5289f1c20577e,"date('Y-m-d', strtotime('#{dob} +60 year'))",Retirement Date,t,10,Retirement date based on Employee's Date of Birth,,f,f,17,t,f,RetirementDate,f,17
+169,2018-05-28 12:34:27,2018-05-28 12:34:27,5289e934abb02,,Duty Station,,,,,,,12,,,duty_station,,12
+166,2013-11-22 00:46:34,2013-11-22 00:46:34,528e7f3a17a17,,Organisation Unit Transfer,f,7,This field will be used in history to transfer workers from one organisation unit to another,,t,f,12,f,f,Organisation Unit Transfer,f,12
+164,2013-11-18 10:56:05,2013-12-15 23:39:28,5289f24526b0b,"date('Y', strtotime('#{first_appointment}'))",Employment Distribution,f,8,Annual employment distrubtion based on Employee's Employment date,,t,f,17,t,f,EmploymentDistribution,f,17
+146,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e934b1a11,,Marital Status,t,7,"Compulsory, Marital status of Employee.",,t,,18,f,f,marital,,18
+142,2013-11-18 10:17:24,2013-11-18 10:17:24,5289e934ad302,,Hospital Designation,t,7,"Compulsory, Employee`s designation. Hospital designation keeps history, update it through history.",,t,,18,f,f,hosp_Designation,,18
+170,2018-05-28 12:34:27,2018-05-28 12:34:27,5289e934abb03,,Employment Category,,,,,,,18,,,employment_category,,18
+171,2018-05-28 12:34:27,2018-05-28 12:34:27,5289e934abb04,,Date of Employment,,,,,,,17,,,doe,,17
+172,2018-05-28 12:34:27,2018-05-28 12:34:27,5289e934abb05,,Course Admitted,,,,,,,12,,,course_admitted,,12
+173,2018-05-28 12:34:27,2018-05-28 12:34:27,5289e934abb06,,University Category,,,,,,,18,,,university_category,,18
+174,2018-05-28 12:34:27,2018-05-28 12:34:27,5289e934abb07,,University Name,,,,,,,12,,,university_name,,12
+175,2018-05-28 12:34:27,2018-05-28 12:34:27,5289e934abb08,,Type of University,,,,,,,18,,,type_of_university,,18
+176,2018-05-28 12:34:27,2018-05-28 12:34:27,5289e934abb09,,Course Duration,,,,,,,12,,,course_duration,,12
+177,2018-05-28 12:34:27,2018-05-28 12:34:27,5289e934abb10,,Year of Admission,,,,,,,12,,,year_of_admission,,12

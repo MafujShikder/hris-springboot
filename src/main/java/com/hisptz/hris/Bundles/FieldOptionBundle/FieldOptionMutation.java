@@ -19,8 +19,8 @@ public class FieldOptionMutation extends ModelMutation<FieldOption> {
         this.relationalFilterRepository = relationalFilterRepository;
     }
 
-    public FieldOption newFieldOption(Integer fieldId, String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining, Long field, Long fieldOptionGroup, Long relationalFilterId) {
-        FieldOption fieldOption = new FieldOption(fieldId, uid, value, skipinreport, description, sort, hastraining);
+    public FieldOption newFieldOption( String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining, Long field, Long fieldOptionGroup, Long relationalFilterId) {
+        FieldOption fieldOption = new FieldOption( uid, value, skipinreport, description, sort, hastraining);
 
         if (field != null)
          fieldOption.setField(fieldRepository.findOne(field));
@@ -40,14 +40,9 @@ public class FieldOptionMutation extends ModelMutation<FieldOption> {
         return deleteModel(id, fieldOptionRepository);
     }
 
-    public FieldOption updateFieldOption(Long id, Integer fieldId, String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining, Long fieldOptionGroup,  Long relationalFilterId) {
+    public FieldOption updateFieldOption(Long id, String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining, Long fieldOptionGroup,  Long relationalFilterId) {
         FieldOption fieldOption = fieldOptionRepository.findOne(id);
 
-        if (fieldId != null)
-            fieldOption.setFieldId(fieldId);
-
-        if (uid != null)
-            fieldOption.setUid(uid);
 
         if (value != null)
             fieldOption.setValue(value);

@@ -47,6 +47,11 @@ public class DataController {
             fields = "id,uid";
         }
 
+        if (fields.trim().equalsIgnoreCase("*")){
+            //TODO: use introspection to get all fields and then return them as a string
+
+        }
+
         query = createQuery(model,fields,filters);
         results = perfomOperation(query.toString(), query);
 
@@ -283,6 +288,7 @@ public class DataController {
     // TODO: Implement sorting using pageable
     // TODO: Use graphql introspection to allow for return all columns upon * in the fields parameter
     // TODO: Redo the documentation
-    // TODO: Clean up the schema
+    // TODO: upload csv
+    // TODO: Merge with the development branch
     // TODO: Submit the assignment
 }

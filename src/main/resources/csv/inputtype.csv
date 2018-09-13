@@ -1,0 +1,12 @@
+id,date_created,last_updated,uid,description,htmltag,name
+12,2013-11-17 22:01:50,2013-11-17 22:01:50,52893cce37fa6,Textbox HTML Tag,"<input type=""text"" name=""fieldName"" id=""fieldId"" required=""required""/>",Text
+13,2013-11-17 22:01:50,2013-11-17 22:01:50,52893cce3870b,Password HTML Input Tag,"<input type=""password"" name=""fieldName"" id=""fieldId"" required=""required""/>",Password
+14,2013-11-17 22:01:50,2013-11-17 22:01:50,52893cce38d46,Radio HTML Input Tag,"<input type=""radio"" name=""fieldName"" id=""fieldId"" required=""required""/>",Radio
+15,2013-11-17 22:01:50,2013-11-17 22:01:50,52893cce39368,Checkbox HTML Input Tag,"<input type=""checkbox"" name=""fieldName"" id=""fieldId"" required=""required""/>",Checkbox
+16,2013-11-17 22:01:50,2013-11-17 22:01:50,52893cce39a75,TextArea HTML Tag,"<textarea name=""fieldName"" id=""fieldId"" required=""required""></textarea>",TextArea
+17,2013-11-17 22:01:50,2013-11-17 22:01:50,52893cce3a115,Date HTML Input Tag,"<input type=""text"" name=""fieldName"" id=""fieldId"" class=""date"" required=""required"" />",Date
+18,2013-11-17 22:01:50,2013-11-17 22:01:50,52893cce3a756,Select Options HTML Tag,"<select name=""fieldName"" id=""fieldId"" onload=""loadFieldOptions(fieldId)"" onchange=""changeRelatedFieldOptions(fieldId)"" required=""required""></select>",Select
+19,2013-11-17 22:01:50,2013-11-17 22:01:50,52893cce3adb0,Email HTML Tag,"<input type=""email"" name=""fieldName"" id=""fieldId"" required=""required"" />",Email
+20,2013-11-17 22:01:50,2013-11-17 22:01:50,52893cce3b412,Telephonw HTML Tag,"<input type=""tel"" name=""fieldName"" id=""fieldId"" required=""required"" />",Telephone
+21,2013-11-17 22:01:50,2013-11-17 22:01:50,52893cce3ba60,Number HTML Tag,"<input type=""number"" name=""fieldName"" id=""fieldId"" required=""required"" />",Number
+22,2013-11-17 22:01:50,2013-11-17 22:01:50,52893cce3c0db,Double HTML Tag,"<input type=""number"" name=""fieldName"" id=""fieldId"" step=""any"" required=""required"" />",Double

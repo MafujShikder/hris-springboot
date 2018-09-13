@@ -21,6 +21,7 @@ public class ArithmeticFilter extends Model{
     private String leftexpression;
     private String rightexpression;
 
+
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
                     CascadeType.MERGE

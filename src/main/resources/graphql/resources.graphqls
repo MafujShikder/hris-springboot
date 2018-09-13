@@ -16,10 +16,10 @@ extend type Query {
 }
 
 extend type Mutation {
-    newResource(uid:String!,
-    name:String!,
-    description:String!,
-    isgenerating:String!,messagelog: String!):Resource
+    newResource(uid:String,
+    name:String,
+    description:String,
+    isgenerating:String,messagelog: String):Resource
 
     deleteResource(id:ID!):String
 

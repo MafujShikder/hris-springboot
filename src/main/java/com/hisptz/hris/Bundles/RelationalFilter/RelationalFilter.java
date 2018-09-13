@@ -19,8 +19,6 @@ import java.util.Set;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "relationalfilter")
 public class RelationalFilter extends Model {
-
-    private Integer fieldId;
     private String name;
     private Boolean excludefieldoptions;
 
@@ -51,9 +49,8 @@ public class RelationalFilter extends Model {
         super();
     }
 
-    public RelationalFilter(Integer fieldId, String uid, String name, Boolean excludefieldoptions, Long field) {
+    public RelationalFilter( String uid, String name, Boolean excludefieldoptions, Long field) {
         super();
-        this.fieldId = fieldId;
         this.name = name;
         this.excludefieldoptions = excludefieldoptions;
         this.field = new Field(field);
@@ -91,15 +88,6 @@ public class RelationalFilter extends Model {
         this.fieldOptions = fieldOptions;
     }
 
-    @Basic
-    @Column(name = "field_id")
-    public Integer getFieldId() {
-        return fieldId;
-    }
-
-    public void setFieldId(Integer fieldId) {
-        this.fieldId = fieldId;
-    }
 
     @Basic
     @Column(name = "uid")

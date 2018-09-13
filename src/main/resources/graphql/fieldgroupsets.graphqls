@@ -13,7 +13,7 @@ extend type Query {
 }
 
 extend type Mutation {
-    newFieldGroupSet(uid:String!, name:String!, description:String!):FieldGroupSet!
+    newFieldGroupSet(uid:String, name:String, description:String):FieldGroupSet!
 
     deleteFieldGroupSet(id:ID!):String
 

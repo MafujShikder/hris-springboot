@@ -18,8 +18,6 @@ import java.util.*;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "field")
 public class Field extends Model{
-    private Integer datatypeId;
-    private Integer inputtypeId;
     private String name;
     private String caption;
     private Boolean compulsory;
@@ -64,10 +62,9 @@ public class Field extends Model{
         this.id = id;
     }
 
-    public Field(Integer datatypeId, Integer inputtypeId, String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport, Long inputTypeId) {
+    public Field(String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport, Long inputTypeId) {
         super();
-        this.datatypeId = datatypeId;
-        this.inputtypeId = inputtypeId;
+
         this.name = name;
         this.caption = caption;
         this.compulsory = compulsory;
@@ -90,26 +87,6 @@ public class Field extends Model{
         this.inputType = new InputType(id);
     }
 
-
-    @Basic
-    @Column(name = "datatype_id")
-    public Integer getDatatypeId() {
-        return datatypeId;
-    }
-
-    public void setDatatypeId(Integer datatypeId) {
-        this.datatypeId = datatypeId;
-    }
-
-    @Basic
-    @Column(name = "inputtype_id")
-    public Integer getInputtypeId() {
-        return inputtypeId;
-    }
-
-    public void setInputtypeId(Integer inputtypeId) {
-        this.inputtypeId = inputtypeId;
-    }
 
     @Basic
     @Column(name = "uid")

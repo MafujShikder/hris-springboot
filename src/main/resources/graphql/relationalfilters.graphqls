@@ -1,6 +1,5 @@
 type RelationalFilter{
     id: ID!
-    fieldId:String
     uid:String
     name: String
     excludefieldoptions: String
@@ -16,9 +15,9 @@ extend type Query {
 }
 
 extend type Mutation {
-    newRelationalFilter(fieldId:String!, uid:String!, name: String!, excludefieldoptions: String!, field:ID!, fieldOptionId:ID, friendlyReportId:ID ):RelationalFilter!
+    newRelationalFilter( uid:String, name: String, excludefieldoptions: String, field:ID, fieldOptionId:ID, friendlyReportId:ID ):RelationalFilter!
 
     deleteRelationalFilter(id:ID!):String
 
-    updateRelationalFilter(id:ID!, fieldId:String, uid:String, name: String ,excludefieldoptions: String, field:ID, fieldOptionId:ID, friendlyReportId:ID):RelationalFilter!
+    updateRelationalFilter(id:ID!, uid:String, name: String ,excludefieldoptions: String, field:ID, fieldOptionId:ID, friendlyReportId:ID):RelationalFilter!
 }

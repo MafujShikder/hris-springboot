@@ -19,7 +19,6 @@ import java.util.Set;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "fieldoption")
 public class FieldOption extends Model {
-    private Integer fieldId;
     private String value;
     private Boolean skipinreport;
     private String description;
@@ -27,7 +26,7 @@ public class FieldOption extends Model {
     private Boolean hastraining;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "field")
+    @JoinColumn(name = "field_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Field field;
 
@@ -51,9 +50,8 @@ public class FieldOption extends Model {
     public FieldOption(Long id) {
         this.id = id;
     }
-    public FieldOption(Integer fieldId, String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining) {
+    public FieldOption(String uid, String value, Boolean skipinreport, String description, Integer sort, Boolean hastraining) {
         super();
-        this.fieldId = fieldId;
         this.value = value;
         this.skipinreport = skipinreport;
         this.description = description;
@@ -83,16 +81,6 @@ public class FieldOption extends Model {
 
     public void setField(Field field) {
         this.field = field;
-    }
-
-    @Basic
-    @Column(name = "field_id")
-    public Integer getFieldId() {
-        return fieldId;
-    }
-
-    public void setFieldId(Integer fieldId) {
-        this.fieldId = fieldId;
     }
 
     @Basic

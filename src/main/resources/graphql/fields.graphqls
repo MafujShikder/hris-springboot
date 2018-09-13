@@ -1,7 +1,5 @@
 type Field{
     id:ID
-    datatypeId:Int
-    inputtypeId:Int
     uid:String
     name:String
     caption:String
@@ -26,14 +24,14 @@ extend type Query {
 }
 
 extend type Mutation{
-    newField(datatypeId:Int,inputtypeId:Int,uid:String,
+    newField(uid:String,
     name:String, caption:String, compulsory:String, isunique:String, iscalculated:String,
     description:String, calculatedexpression:String,
     hashistory:String, hastarget:String, fieldrelation:String, skipinreport:String,inputType:ID, fieldGroup:ID):Field!
 
     deleteField(id:ID!):String
 
-    updateField(id:ID!, datatypeId:Int, inputtypeId:Int, uid:String, name:String, caption:String, compulsory:String,
+    updateField(id:ID!, uid:String, name:String, caption:String, compulsory:String,
     isunique:String, iscalculated:String, description:String, calculatedexpression:String,
     hashistory:String, hastarget:String, fieldrelation:String, skipinreport:String,inputType:ID, fieldGroup:ID):Field!,
 

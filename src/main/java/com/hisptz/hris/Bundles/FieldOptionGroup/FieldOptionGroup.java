@@ -18,14 +18,13 @@ import java.util.Set;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "fieldoptiongroup")
 public class FieldOptionGroup extends Model{
-    private Integer fieldId;
     private String name;
     private String description;
     
     private String operator;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "field", nullable = false)
+    @JoinColumn(name = "field_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Field field;
 
@@ -42,9 +41,8 @@ public class FieldOptionGroup extends Model{
         super();
     }
 
-    public FieldOptionGroup(Integer fieldId, String uid, String name, String description, String operator, Long field) {
+    public FieldOptionGroup( String uid, String name, String description, String operator, Long field) {
         super();
-        this.fieldId = fieldId;
         this.name = name;
         this.description = description;
         this.operator = operator;
@@ -71,16 +69,6 @@ public class FieldOptionGroup extends Model{
 
     public void setField(Long id) {
         this.field = new Field(id);
-    }
-
-    @Basic
-    @Column(name = "field_id")
-    public Integer getFieldId() {
-        return fieldId;
-    }
-
-    public void setFieldId(Integer fieldId) {
-        this.fieldId = fieldId;
     }
 
     @Basic

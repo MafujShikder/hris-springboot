@@ -14,9 +14,9 @@ extend type Query {
 }
 
 extend type Mutation {
-    newFormSection(formId:Int!, uid:String!,
-    name:String!,
-    description:String!):FormSection
+    newFormSection(formId:Int, uid:String,
+    name:String,
+    description:String):FormSection
 
     deleteFormSection(id:ID!):String
 

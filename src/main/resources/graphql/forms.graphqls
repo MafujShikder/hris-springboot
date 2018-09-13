@@ -15,7 +15,7 @@ extend type Query {
 }
 
 extend type Mutation {
-    newForm(uid:String!, name:String!, hypertext:String!, title:String!):Form!
+    newForm(uid:String, name:String, hypertext:String, title:String):Form!
 
     deleteForm(id:ID!):String
 
