@@ -1,12 +1,10 @@
 package com.hisptz.hris.Bundles.OrganisationunitBundle;
 
+import com.hisptz.hris.Bundles.OrganisationunitCompletenessBundle.OrganisationunitCompleteness;
 import com.hisptz.hris.core.Model.main.Model;
 import lombok.Data;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
@@ -89,4 +87,7 @@ public class Organisationunit extends Model {
     @Basic
     @Column(name = "description")
     private String description;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "organisationunit")
+    private OrganisationunitCompleteness organisationunitCompleteness;
 }

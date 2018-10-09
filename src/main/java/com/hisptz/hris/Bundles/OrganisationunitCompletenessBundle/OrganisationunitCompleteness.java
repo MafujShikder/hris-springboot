@@ -1,6 +1,7 @@
 package com.hisptz.hris.Bundles.OrganisationunitCompletenessBundle;
 
 
+import com.hisptz.hris.Bundles.OrganisationunitBundle.Organisationunit;
 import com.hisptz.hris.core.Model.main.Model;
 
 import javax.persistence.*;
@@ -9,10 +10,9 @@ import javax.persistence.*;
 @Table(name = "organisationunitcompleteness")
 public class OrganisationunitCompleteness extends Model {
 
-    //here to place a relationship
-    @Basic
-    @Column(name = "organisationunit_id")
-    private int organisationunitId;
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "organisationunit_id", nullable = false)
+    private Organisationunit organisationunit;
 
     @Basic
     @Column(name = "form_id")

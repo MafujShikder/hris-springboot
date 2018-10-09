@@ -1,6 +1,7 @@
 package com.hisptz.hris.Bundles.OrganisationunitGroupBundle;
 
 import com.hisptz.hris.core.Model.main.Model;
+import com.hisptz.hris.Bundles.OrganisationunitGroupsetBundle.OrganisationunitGroupset;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -10,10 +11,10 @@ import javax.validation.constraints.Size;
 @Table(name = "Organisationunitgroup")
 @Data
 public class OrganisationunitGroup extends Model {
-    @Basic
-    @Column(name = "organisationunitgroupset_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int organisationunitgroupsetId;
+   @OneToOne(fetch = FetchType.LAZY, optional = false)
+   @JoinColumn(name = "organisationunitgroupset_id", nullable = false)
+    private OrganisationunitGroupset organisationunitGroupset;
+
 
     @Basic
     @Column(name = "name")

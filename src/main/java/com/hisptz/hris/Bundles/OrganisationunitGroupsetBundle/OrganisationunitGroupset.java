@@ -2,11 +2,9 @@ package com.hisptz.hris.Bundles.OrganisationunitGroupsetBundle;
 
 import com.hisptz.hris.core.Model.main.Model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
+import com.hisptz.hris.Bundles.OrganisationunitGroupBundle.OrganisationunitGroup;
 
 @Entity
 @Table(name = "organisationgroupset")
@@ -34,4 +32,8 @@ public class OrganisationunitGroupset extends Model {
     @Column(name = "code")
     @Size(max = 50)
     private String code;
+
+    @OneToOne(fetch =  FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "organisationunitGroupset")
+    private OrganisationunitGroup organisationunitGroup;
+
 }
