@@ -1,11 +1,9 @@
 package com.hisptz.hris.Bundles.OrganisationunitLevelBundle;
 
+//import com.hisptz.hris.Bundles.OrganisationunitStructureBundle.OrganisationunitStructure;
 import com.hisptz.hris.core.Model.main.Model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -27,5 +25,8 @@ public class OrganisationunitLevel extends Model {
     @Basic
     @Column(name = "dataentrylevel")
     private boolean dataEntryLevel;
+
+//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "organisationunitLevel")
+//    private OrganisationunitStructure organisationunitStructure;
 
 }

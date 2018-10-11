@@ -1,16 +1,18 @@
 package com.hisptz.hris.Bundles.OrganisationunitBundle;
 
 import com.hisptz.hris.Bundles.OrganisationunitCompletenessBundle.OrganisationunitCompleteness;
+import com.hisptz.hris.Bundles.OrganisationunitGroupBundle.OrganisationunitGroup;
 import com.hisptz.hris.core.Model.main.Model;
 import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Date;
-
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "organisationunit", schema = "public", catalog = "hrhis")
+@Table(name = "organisationunit")
 @Data
 public class Organisationunit extends Model {
     @Basic
@@ -90,4 +92,12 @@ public class Organisationunit extends Model {
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "organisationunit")
     private OrganisationunitCompleteness organisationunitCompleteness;
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },
+            mappedBy = "organisationunit")
+    private Set<OrganisationunitGroup> organisationunitGroup = new HashSet<OrganisationunitGroup>();
 }
