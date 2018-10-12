@@ -3,9 +3,12 @@ package com.hisptz.hris.Bundles.FormBundle;
 /**
  * Created by Guest on 8/14/18.
  */
+import com.hisptz.hris.Bundles.UserBundle.User;
 import com.hisptz.hris.core.Model.main.Model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "form")
@@ -13,6 +16,16 @@ public class Form extends Model {
     private String name;
     private String hypertext;
     private String title;
+
+    @ManyToMany(fetch = FetchType.LAZY,
+                cascade = {
+                    CascadeType.PERSIST,
+                        CascadeType.MERGE
+                })
+    @JoinTable(name = "user_formmembers",
+            joinColumns = {@JoinColumn(name = "form_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")})
+    private Set<User> userId = new HashSet<User>();
 
     public Form() {
         super();

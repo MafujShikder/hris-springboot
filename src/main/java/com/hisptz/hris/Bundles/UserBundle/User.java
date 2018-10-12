@@ -3,12 +3,16 @@ package com.hisptz.hris.Bundles.UserBundle;
 /**
  * Created by Guest on 8/7/18.
  */
+import com.hisptz.hris.Bundles.FormBundle.Form;
+import com.hisptz.hris.Bundles.UserGroupBundle.UserGroup;
 import com.hisptz.hris.core.Model.main.Model;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
@@ -53,7 +57,19 @@ public class User extends Model {
     private Date deletedat;
     private String description;
 
+    @ManyToMany(fetch = FetchType.LAZY,
+                cascade = {
+                        CascadeType.PERSIST,
+                        CascadeType.MERGE
+                }, mappedBy = "user")
+    private Set<UserGroup> userGroup= new HashSet<UserGroup>();
 
+    @ManyToMany(fetch = FetchType.LAZY,
+                cascade = {
+                        CascadeType.PERSIST,
+                        CascadeType.MERGE
+                }, mappedBy = "userId")
+    private Set<Form> formId = new HashSet<Form>();
     public User() {
         super();
     }
