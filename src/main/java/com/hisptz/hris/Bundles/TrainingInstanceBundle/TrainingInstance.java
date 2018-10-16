@@ -2,10 +2,10 @@ package com.hisptz.hris.Bundles.TrainingInstanceBundle;
 
 import com.hisptz.hris.Bundles.TrainingBundle.Training;
 import com.hisptz.hris.core.Model.main.Model;
-
+import java.util.Date;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.sql.Timestamp;
+
 
 @Entity
 @Table(name = "traininginstance")
@@ -25,11 +25,13 @@ public class TrainingInstance extends Model {
     @Size(max = 255)
     private String district;
 
+    //add a relationship with trainingvenue table
     @Basic
     @Column(name = "venue")
     @Size(max = 255)
     private String venue;
 
+    //add a relationship with trainingsponsors table
     @Basic
     @Column(name = "sponsor")
     @Size(max = 255)
@@ -37,9 +39,9 @@ public class TrainingInstance extends Model {
 
     @Basic
     @Column(name = "startdate")
-    private Timestamp startDate;
+    private Date startDate;
 
     @Basic
     @Column(name = "enddate")
-    private Timestamp endDate;
+    private Date endDate;
 }

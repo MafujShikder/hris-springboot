@@ -1,0 +1,16 @@
+type OrganisationunitGroup{
+    organisationunitGroupset:OrganisationunitGroupset
+    organisationunit:[Organisationunit]
+    name:String
+    description:String
+    dhisuid:String
+    code:String
+}
+
+extend type Query{
+
+}
+
+extend type Mutation{
+
+}

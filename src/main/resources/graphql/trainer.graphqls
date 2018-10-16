@@ -1,0 +1,15 @@
+type Trainer{
+    firstName:String
+    middleName:String
+    lastName:String
+    primaryJobResponsibility:String
+    secondaryJobResponsibility:String
+    profession:String
+    placeOfWork:String
+    organisationType:String
+    trainerType:String
+    trainerLanguage:String
+    trainerAffiliation:String
+    experience:String
+    highestLevelOfQualification:String
+}

@@ -1,0 +1,16 @@
+type OrganisationunitGroupset{
+    dhisuid:String
+    name:String
+    description:String
+    compulsory:String
+    code:String
+    organisationunitGroup:OrganisationunitGroup
+}
+
+extend type Query{
+
+}
+
+extend type Mutation{
+    
+}

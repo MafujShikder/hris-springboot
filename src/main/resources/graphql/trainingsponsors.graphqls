@@ -1,0 +1,15 @@
+type TrainingSponsors{
+    sponsorName:String
+    region:String
+    phone:String
+    email:String
+    box:String
+}
+
+extend type Query{
+
+}
+
+extend type Mutation{
+    
+}

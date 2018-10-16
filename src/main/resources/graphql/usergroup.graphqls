@@ -1,0 +1,14 @@
+type UserGroup{
+    name:String
+    description:String
+    roles:String
+    user:[User]
+}
+
+extend type Query{
+
+}
+
+extend type Mutation{
+
+}

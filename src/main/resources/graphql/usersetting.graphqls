@@ -1,0 +1,15 @@
+type UserSetting{
+    user:[User]
+    emailNotification:Boolean
+    smsNotification:Boolean
+    completenessAlert:Boolean
+    qualitycheckAlert:Boolean
+}
+
+extend type Query{
+
+}
+
+extend type Mutation{
+
+}

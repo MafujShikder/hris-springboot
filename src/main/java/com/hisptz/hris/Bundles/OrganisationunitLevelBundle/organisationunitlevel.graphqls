@@ -1,0 +1,14 @@
+type OrganisationunitLevel{
+    level:Int
+    name:String
+    description:String
+    dataEntryLevel:String
+}  
+
+type Query{
+
+}
+
+type Mutation{
+
+}

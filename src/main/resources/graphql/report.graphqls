@@ -1,0 +1,14 @@
+type Report{
+    name:String
+    createdBy:String
+    uri:String
+    parameters:String
+}
+
+extend type Query{
+
+}
+
+extend type Mutation{
+
+}

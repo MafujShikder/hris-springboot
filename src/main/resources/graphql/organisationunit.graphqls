@@ -1,0 +1,27 @@
+type Organisationunit{
+    parentId:String
+    dhisuid:String
+    code:String
+    shortName:String
+    longName:String
+    active:String
+    openingDate:String
+    closingDate:String
+    geaocode:String
+    coordinates:String
+    featureType:String
+    address:String
+    email:String
+    phonenumber:String
+    description:String
+    organisationunitCompleteness:OrganisationunitCompleteness
+    organisationunitGroup:OrganisationunitGroup
+}
+
+extend type Query{
+    
+}
+
+extend type Mutation{
+
+}

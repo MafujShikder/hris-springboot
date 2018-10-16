@@ -1,0 +1,13 @@
+type OrganisationunitCompleteness{
+    organisationunit:Organisationunit
+    formId:Int
+    expectation:Int
+}
+
+extend type Query{
+
+}
+
+extend type Mutation{
+    
+}

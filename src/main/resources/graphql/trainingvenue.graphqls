@@ -1,0 +1,13 @@
+type TrainingVenue{
+    venueName:String
+    region:String
+    district:String
+}
+
+extend type Query{
+
+}
+
+extend type Mutation{
+
+}

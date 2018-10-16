@@ -1,13 +1,13 @@
 package com.hisptz.hris.Bundles.TrainersBundle;
 
 import com.hisptz.hris.core.Model.main.Model;
-import lombok.Data;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import lombok.Data;
+
 
 @Entity
 @Table(name = "trainers")
@@ -76,7 +76,7 @@ public class Trainer extends Model {
     @Basic
     @Column(name = "experience")
     @Size(max =255)
-    private String experiance;
+    private String experience;
 
     @Basic
     @Column(name = "highestlevelofqualification")

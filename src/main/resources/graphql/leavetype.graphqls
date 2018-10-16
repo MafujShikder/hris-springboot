@@ -1,0 +1,17 @@
+type LeaveType{
+    field:Int
+    name:String
+    maximumDays:Int
+    limitApplicable:String
+    description:String
+    paymentApplicable:String
+    leaveId:LeaveType
+}
+
+extend type Query{
+
+}
+
+extend type Mutation{
+
+}

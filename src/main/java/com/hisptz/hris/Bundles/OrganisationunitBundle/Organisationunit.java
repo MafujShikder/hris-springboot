@@ -3,13 +3,13 @@ package com.hisptz.hris.Bundles.OrganisationunitBundle;
 import com.hisptz.hris.Bundles.OrganisationunitCompletenessBundle.OrganisationunitCompleteness;
 import com.hisptz.hris.Bundles.OrganisationunitGroupBundle.OrganisationunitGroup;
 import com.hisptz.hris.core.Model.main.Model;
-import lombok.Data;
-
-import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.*;
+import javax.validation.constraints.Size;
+import lombok.Data;
+
 
 @Entity
 @Table(name = "organisationunit")
@@ -33,12 +33,12 @@ public class Organisationunit extends Model {
     @Basic
     @Size(max = 20)
     @Column(name = "shortname")
-    private String shortman;
+    private String shortName;
 
     @Basic
     @Size(max = 64)
     @Column(name = "longname")
-    private  String longname;
+    private  String longName;
 
     @Basic
     @Column(name = "active")
@@ -46,11 +46,11 @@ public class Organisationunit extends Model {
 
     @Basic
     @Column (name = "openingdate")
-    private Date openingdate;
+    private Date openingDate;
 
     @Basic
     @Column(name = "closingdate")
-    private Date closingdate;
+    private Date closingDate;
 
     @Basic
     @Size(max = 255)
@@ -65,7 +65,7 @@ public class Organisationunit extends Model {
     @Basic
     @Size(max = 20)
     @Column(name = "featuretype")
-    private String featureTYpe;
+    private String featureType;
 
     @Basic
     @Column(name = "address")
@@ -84,7 +84,7 @@ public class Organisationunit extends Model {
     @Basic
     @Size(max = 150)
     @Column(name = "contactperson")
-    private String contactperson;
+    private String contactPerson;
 
     @Basic
     @Column(name = "description")

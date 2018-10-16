@@ -1,0 +1,15 @@
+type Training{
+    courseName:String
+    trainingCategory:String
+    trainingInstruction:String
+    curiculum:String
+    trainingInstance:TrainingInstance
+}
+
+extend type Query{
+
+}
+
+extend type Mutation{
+    
+}

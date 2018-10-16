@@ -1,0 +1,17 @@
+type TrainingInstance{
+    training:Training
+    region:String
+    district:String
+    venue:String
+    sponsor:String
+    startDate:String
+    endDate:String
+}
+
+extend type Query{
+
+}
+
+extend type Mutation{
+    
+}
