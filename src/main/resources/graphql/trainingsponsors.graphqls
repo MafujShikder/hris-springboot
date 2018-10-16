@@ -4,6 +4,7 @@ type TrainingSponsors{
     phone:String
     email:String
     box:String
+    trainingInstance:[TrainingInstance]
 }
 
 extend type Query{

@@ -1,13 +1,13 @@
 package com.hisptz.hris.Bundles.TrainingSponsorsBundle;
 
+import com.hisptz.hris.Bundles.TrainingInstanceBundle.TrainingInstance;
 import com.hisptz.hris.core.Model.main.Model;
 import lombok.Data;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "trainingsponsors")
@@ -37,4 +37,11 @@ public class TrainingSponsors extends Model {
     @Column(name = "box")
     @Size(max = 255)
     private String box;
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            }, mappedBy = "trainingSponsors")
+    private Set<TrainingInstance> trainingInstance = new HashSet<TrainingInstance>();
 }

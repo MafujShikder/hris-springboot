@@ -2,8 +2,8 @@ type TrainingInstance{
     training:Training
     region:String
     district:String
-    venue:String
-    sponsor:String
+    trainingVenue:TrainingVenue
+    trainingSponsors:[TrainingSponsors]
     startDate:String
     endDate:String
 }

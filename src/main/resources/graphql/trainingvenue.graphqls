@@ -2,6 +2,7 @@ type TrainingVenue{
     venueName:String
     region:String
     district:String
+    trainingInstance:TrainingInstance
 }
 
 extend type Query{

@@ -1,13 +1,11 @@
 package com.hisptz.hris.Bundles.TrainingVenuesBundle;
 
+import com.hisptz.hris.Bundles.TrainingInstanceBundle.TrainingInstance;
 import com.hisptz.hris.core.Model.main.Model;
+import javax.persistence.*;
+import javax.validation.constraints.Size;
 import lombok.Data;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "trainingvenues")
@@ -28,5 +26,8 @@ public class TrainingVenue extends Model {
     @Column(name = "district")
     @Size(max = 255)
     private String district;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL , mappedBy="trainingVenue")
+    private TrainingInstance  trainingInstance;
 }
 
