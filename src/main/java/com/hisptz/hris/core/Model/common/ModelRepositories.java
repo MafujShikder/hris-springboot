@@ -2,8 +2,8 @@ package com.hisptz.hris.core.Model.common;
 
 import com.hisptz.hris.Bundles.ArithmeticFilterBundle.ArithmeticFilterRepository;
 import com.hisptz.hris.Bundles.DashboardChartBundle.DashboardChartRepository;
-import com.hisptz.hris.Bundles.FieldBundle.FieldRepository;
 import com.hisptz.hris.Bundles.DataTypeBundle.DataTypeRepository;
+import com.hisptz.hris.Bundles.FieldBundle.FieldRepository;
 import com.hisptz.hris.Bundles.FieldGroupBundle.FieldGroupRepository;
 import com.hisptz.hris.Bundles.FieldGroupSetBundle.FieldGroupSetRepository;
 import com.hisptz.hris.Bundles.FieldOptionBundle.FieldOptionRepository;
@@ -14,8 +14,8 @@ import com.hisptz.hris.Bundles.FormBundle.FormRepository;
 import com.hisptz.hris.Bundles.FormSectionBundle.FormSectionRepository;
 import com.hisptz.hris.Bundles.FriendlyReportBundle.FriendlyReportRepository;
 import com.hisptz.hris.Bundles.InputTypeBundle.InputTypeRepository;
-import com.hisptz.hris.Bundles.LeaveBundle.LeaveRepository;
-import com.hisptz.hris.Bundles.LeaveTypeBundle.LeaveTypeRepository;
+//import com.hisptz.hris.Bundles.LeaveBundle.LeaveRepository;
+//import com.hisptz.hris.Bundles.LeaveTypeBundle.LeaveTypeRepository;
 import com.hisptz.hris.Bundles.OrganisationunitBundle.OrganisationunitRepository;
 import com.hisptz.hris.Bundles.OrganisationunitCompletenessBundle.OrganisationunitCompletenessRepository;
 import com.hisptz.hris.Bundles.OrganisationunitGroupBundle.OrganisationunitGroupRepository;
@@ -94,11 +94,11 @@ public class ModelRepositories {
     @Autowired
     protected RecordValueRepository recordValueRepository;
 
-    @Autowired
-    protected LeaveRepository leaveRepository;
-
-    @Autowired
-    protected LeaveTypeRepository leaveTypeRepository;
+//    @Autowired
+//    protected LeaveRepository leaveRepository;
+//
+//    @Autowired
+//    protected LeaveTypeRepository leaveTypeRepository;
 
     @Autowired
     protected OrganisationunitRepository organisationunitRepository;
