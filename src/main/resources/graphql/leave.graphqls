@@ -2,6 +2,7 @@ type Leave{
     id:ID
     uid:String
     fieldId:Int
+    leaveType:[LeaveType]
     userName:String
     startDate:String
     endDate:String

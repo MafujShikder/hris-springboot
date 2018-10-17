@@ -1,11 +1,10 @@
 package com.hisptz.hris.Bundles.LeaveTypeBundle;
 
-import com.hisptz.hris.Bundles.LeaveBundle.Leave;
 import com.hisptz.hris.core.Model.main.Model;
-import lombok.Data;
-
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import lombok.Data;
+
 
 @Entity
 @Table(name = "leave_type")
