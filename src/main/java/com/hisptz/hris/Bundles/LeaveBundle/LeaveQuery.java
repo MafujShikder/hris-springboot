@@ -1,4 +1,4 @@
 package com.hisptz.hris.Bundles.LeaveBundle;
 
-public class LeaveResolver {
+public class LeaveQuery {
 }
