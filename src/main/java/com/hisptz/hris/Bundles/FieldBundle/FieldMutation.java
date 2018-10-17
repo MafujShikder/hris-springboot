@@ -15,8 +15,11 @@ public class FieldMutation extends ModelMutation<Field> {
         this.fieldGroupRepository = fieldGroupRepository;
     }
 
-    public Field newField(String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport, Long inputType, Long fieldGroup) {
-        Field field = new Field( uid, name, caption, compulsory, isunique, iscalculated, description, calculatedexpression, hashistory, hastarget, fieldrelation, skipinreport, inputType);
+    public Field newField(String uid, String name, String caption, Boolean compulsory, Boolean isunique,
+            Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory,
+            Boolean hastarget, Boolean fieldrelation, Boolean skipinreport, Long inputType, Long fieldGroup) {
+        Field field = new Field(uid, name, caption, compulsory, isunique, iscalculated, description,
+                calculatedexpression, hashistory, hastarget, fieldrelation, skipinreport, inputType);
 
         if (fieldGroup != null)
             field.getFieldGroups().add(fieldGroupRepository.getOne(fieldGroup));
@@ -26,12 +29,13 @@ public class FieldMutation extends ModelMutation<Field> {
     }
 
     public Boolean deleteField(Long id) {
-       return deleteModel(id, fieldRepository);
+        return deleteModel(id, fieldRepository);
     }
 
-    public Field updateField(Long id, String uid, String name, String caption, Boolean compulsory, Boolean isunique, Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory, Boolean hastarget, Boolean fieldrelation, Boolean skipinreport, Long inputType, Long fieldGroup) {
+    public Field updateField(Long id, String uid, String name, String caption, Boolean compulsory, Boolean isunique,
+            Boolean iscalculated, String description, String calculatedexpression, Boolean hashistory,
+            Boolean hastarget, Boolean fieldrelation, Boolean skipinreport, Long inputType, Long fieldGroup) {
         Field field = fieldRepository.getOne(id);
-
 
         if (uid != null)
             field.setUid(uid);
@@ -71,7 +75,6 @@ public class FieldMutation extends ModelMutation<Field> {
 
         if (inputType != null)
             field.setInputType(inputType);
-
 
         if (fieldGroup != null)
             field.getFieldGroups().add(fieldGroupRepository.getOne(fieldGroup));

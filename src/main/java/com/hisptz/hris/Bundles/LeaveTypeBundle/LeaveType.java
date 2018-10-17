@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 @Table(name = "leave_type")
 @Data
 public class LeaveType extends Model {
-    //to be checked, needs relationship with field
+    // to be checked, needs relationship with field
     @Basic
     @Column(name = "field_id")
     private int fieldId;
@@ -30,7 +30,6 @@ public class LeaveType extends Model {
     @Size(max = 53)
     private String limitApplicable;
 
-
     @Basic
     @Column(name = "description")
     private String description;
@@ -40,6 +39,17 @@ public class LeaveType extends Model {
     @Size(max = 53)
     private String paymentApplicable;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "leaveType")
-    private Leave leaveId;
+    public LeaveType(int fieldId, String name, int maximumDays, String limitApplicable, String description,
+            String paymentApplicable) {
+        this.fieldId = fieldId;
+        this.name = name;
+        this.maximumDays = maximumDays;
+        this.limitApplicable = limitApplicable;
+        this.description = description;
+        this.paymentApplicable = paymentApplicable;
+    }
+
+    // @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy =
+    // "leaveType")
+    // private Leave leaveId;
 }

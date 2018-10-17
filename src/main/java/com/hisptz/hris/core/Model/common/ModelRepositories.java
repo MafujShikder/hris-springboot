@@ -133,5 +133,4 @@ public class ModelRepositories {
     @Autowired
     protected UserSettingRepository userSettingRepository;
 
-
 }

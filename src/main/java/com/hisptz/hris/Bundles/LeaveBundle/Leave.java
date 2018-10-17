@@ -2,11 +2,12 @@ package com.hisptz.hris.Bundles.LeaveBundle;
 
 import com.hisptz.hris.Bundles.LeaveTypeBundle.LeaveType;
 import com.hisptz.hris.core.Model.main.Model;
-import lombok.Data;
-
+import java.util.Date;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.sql.Timestamp;
+import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "leave")
@@ -19,8 +20,9 @@ public class Leave extends Model {
     @Column(name = "field_id")
     private int fieldId;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "leave_type_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "leavetype_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private LeaveType leaveType;
 
     @Basic
@@ -30,11 +32,11 @@ public class Leave extends Model {
 
     @Basic
     @Column(name = "startdate")
-    private Timestamp startDate;
+    private Date startDate;
 
     @Basic
     @Column(name = "enddate")
-    private Timestamp endDate;
+    private Date endDate;
 
     @Basic
     @Column(name = "duration")
@@ -78,5 +80,23 @@ public class Leave extends Model {
     @Column(name = "reason")
     @Size(max = 255)
     private String reason;
+
+    public Leave(int fieldId, String userName, Date startDate, Date endDate, int duration, int amount,
+            String leaveBenefitApplicable, String leaveBenefitStatus, String phone, String address, String email,
+            String leaveDestination, String reason) {
+        this.fieldId = fieldId;
+        this.userName = userName;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.duration = duration;
+        this.amount = amount;
+        this.leaveBenefitApplicable = leaveBenefitApplicable;
+        this.leaveBenefitStatus = leaveBenefitStatus;
+        this.phone = phone;
+        this.address = address;
+        this.email = email;
+        this.leaveDestination = leaveDestination;
+        this.reason = reason;
+    }
 
 }

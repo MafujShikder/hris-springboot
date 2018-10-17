@@ -2,7 +2,6 @@ type Leave{
     id:ID
     uid:String
     fieldId:Int
-    leaveType:LeaveType
     userName:String
     startDate:String
     endDate:String
@@ -18,9 +17,18 @@ type Leave{
 }
 
 extend type Query{
-
+    getLeaveById(id : ID!):Leave
+    Leave(where:String, sort:String) : [Leave]!
 }
 
 extend type Mutation{
-         
+        newLeave(fieldId:Int, userName:String, startDate:String, endDate:String, duration:Int, amount:Int,
+        leaveBenefitApplicable:String, leaveBenefitStatus:String, phone:String, address:String, email:String,
+        leaveDestination:String, reason:String ) : Leave!
+
+        deleteLeave(id:ID!):String
+
+        updateLeave(id:ID!, fieldId:Int, userName:String, startDate:String, endDate:String, duration:Int, amount:Int,
+        leaveBenefitApplicable:String, leaveBenefitStatus:String, phone:String, address:String, email:String,
+        leaveDestination:String, reason:String ) : Leave
 }

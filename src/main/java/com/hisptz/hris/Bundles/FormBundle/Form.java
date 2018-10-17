@@ -5,10 +5,10 @@ package com.hisptz.hris.Bundles.FormBundle;
  */
 import com.hisptz.hris.Bundles.UserBundle.User;
 import com.hisptz.hris.core.Model.main.Model;
-
-import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.*;
+
 
 @Entity
 @Table(name = "form")
@@ -17,14 +17,9 @@ public class Form extends Model {
     private String hypertext;
     private String title;
 
-    @ManyToMany(fetch = FetchType.LAZY,
-                cascade = {
-                    CascadeType.PERSIST,
-                        CascadeType.MERGE
-                })
-    @JoinTable(name = "user_formmembers",
-            joinColumns = {@JoinColumn(name = "form_id")},
-            inverseJoinColumns = {@JoinColumn(name = "user_id")})
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @JoinTable(name = "user_formmembers", joinColumns = { @JoinColumn(name = "form_id") }, inverseJoinColumns = {
+            @JoinColumn(name = "user_id") })
     private Set<User> userId = new HashSet<User>();
 
     public Form() {

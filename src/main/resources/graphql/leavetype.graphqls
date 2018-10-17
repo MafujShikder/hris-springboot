@@ -1,17 +1,23 @@
 type LeaveType{
-    field:Int
+    fieldId:Int
     name:String
     maximumDays:Int
     limitApplicable:String
     description:String
     paymentApplicable:String
-    leaveId:LeaveType
 }
 
 extend type Query{
+    getLeaveById(id:ID!):LeaveType
+    LeaveType(where:String, sort:String):[LeaveType]!
 
 }
 
 extend type Mutation{
+    newLeaveType(fieldId:Int, name:String, maximumDays:Int, limitApplicable:String, description:String,paymentApplicable:String)
+
+    deleteLeaveType(id:ID!):String
+
+    updateLeaveType(id:ID!, fieldId:Int, name:String, maximumDays:Int, limitApplicable:String, description:String,paymentApplicable:String)
 
 }
