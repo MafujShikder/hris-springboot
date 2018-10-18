@@ -15,5 +15,9 @@ extend type Query{
 }
 
 extend type Mutation{
+    newReport(name:String, createdBy:String, uri:String, parameters:String) : Report!
 
+    deleteReport(id: ID!) : String
+
+    updateReport(id:ID!,name:String, createdBy:String, uri:String, parameters:String) : Report
 }

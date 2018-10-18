@@ -24,8 +24,10 @@ import com.hisptz.hris.Bundles.OrganisationunitLevelBundle.OrganisationunitLevel
 import com.hisptz.hris.Bundles.RecordBundle.RecordRepository;
 import com.hisptz.hris.Bundles.RecordValue.RecordValueRepository;
 import com.hisptz.hris.Bundles.RelationalFilter.RelationalFilterRepository;
+import com.hisptz.hris.Bundles.ReportBundle.ReportRepository;
 import com.hisptz.hris.Bundles.ResourceBundle.ResourceRepository;
 import com.hisptz.hris.Bundles.TrainersBundle.TrainerRepository;
+import com.hisptz.hris.Bundles.TrainingBundle.TrainingRepository;
 import com.hisptz.hris.Bundles.TrainingInstanceBundle.TrainingInstanceRepository;
 import com.hisptz.hris.Bundles.TrainingSponsorsBundle.TrainingSponsorsRepository;
 import com.hisptz.hris.Bundles.TrainingVenuesBundle.TrainingVenueRepository;
@@ -116,6 +118,9 @@ public class ModelRepositories {
     protected OrganisationunitLevelRepository organisationunitLevelRepository;
 
     @Autowired
+    protected ReportRepository reportRepository;
+
+    @Autowired
     protected TrainerRepository trainerRepository;
 
     @Autowired
@@ -126,6 +131,9 @@ public class ModelRepositories {
 
     @Autowired
     protected TrainingVenueRepository trainingVenueRepository;
+
+    @Autowired
+    protected TrainingRepository trainingRepository;
 
     @Autowired
     protected UserGroupRepository userGroupRepository;

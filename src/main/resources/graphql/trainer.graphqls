@@ -9,6 +9,7 @@ type Trainer{
     primaryJobResponsibility:String
     secondaryJobResponsibility:String
     profession:String
+    currentJobTitle:String
     placeOfWork:String
     organisationType:String
     trainerType:String
@@ -25,5 +26,9 @@ extend type Query{
 }
 
 extend type Mutation{
+    newTrainer(firstName:String, middleName:String, lastName:String, primaryJobResponsibility:String, secondaryJobResponsibility:String, profession:String, currentJobTitle:String, placeOfWork:String, organisationType:String, trainerType:String, TrainerLanguage:String, trainerAffiliation:String, experience:String,  highestLevelOfQualification:String ) : Trainer!
 
+    deleteTrainer(id:ID!) : String
+
+    updateTrainer(id:ID, firstName:String, middleName:String, lastName:String,primaryJobResponsibility:String, secondaryJobResponsibility:String, profession:String, currentJobTitle:String, placeOfWork:String, organisationType:String, trainerType:String, TrainerLanguage:String, trainerAffiliation:String, experience:String,  highestLevelOfQualification:String  ): Trainer
 }

@@ -27,7 +27,11 @@ public class TrainingVenue extends Model {
     @Size(max = 255)
     private String district;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL , mappedBy="trainingVenue")
-    private TrainingInstance  trainingInstance;
+    public TrainingVenue(String venueName, String region, String district) {
+        super();
+        this.venueName = venueName;
+        this.region = region;
+        this.district = district;
+    }
 }
 

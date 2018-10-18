@@ -1,6 +1,7 @@
 package com.hisptz.hris.Bundles.ReportBundle;
 
 import com.hisptz.hris.core.Model.main.Model;
+import lombok.Data;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "report")
+@Data
 public class Report extends Model {
     @Basic
     @Column(name = "name")

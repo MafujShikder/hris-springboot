@@ -5,8 +5,7 @@ type Training{
     courseName:String
     trainingCategory:String
     trainingInstruction:String
-    curiculum:String
-    trainingInstance:TrainingInstance
+    curriculum:String
 }
 
 extend type Query{
@@ -16,5 +15,9 @@ extend type Query{
 }
 
 extend type Mutation{
-    
+    newTraining(courseName:String, trainingCategory:String, trainingInstruction:String, curriculum:String):Training!
+
+    deleteTraining(id:ID!) : String
+
+    updateTraining(id: ID!, courseName:String, trainingCategory:String, trainingInstruction:String, curriculum:String) : Training
 }

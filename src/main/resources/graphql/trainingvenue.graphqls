@@ -6,7 +6,6 @@ type TrainingVenue{
     venueName:String
     region:String
     district:String
-    trainingInstance:TrainingInstance
 }
 
 extend type Query{
@@ -16,5 +15,11 @@ extend type Query{
 }
 
 extend type Mutation{
+
+    newTrainingVenue(venueName:String, region:String, district:String) : TrainingVenue!
+
+    deleteTrainingVenue(id:ID!):String
+
+    updateTrainingVenue(id:ID!, venueName:String, region:String, district:String):TrainingVenue
 
 }

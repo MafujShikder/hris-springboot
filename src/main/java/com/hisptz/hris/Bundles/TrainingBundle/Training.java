@@ -27,18 +27,15 @@ public class Training extends Model {
     private String trainingInstruction;
 
     @Basic
-    @Column(name = "curiculum")
+    @Column(name = "curriculum")
     @Size(max = 64)
-    private String curiculum;
+    private String curriculum;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "training")
-    private TrainingInstance trainingInstance;
-
-    public Training( String courseName,  String trainingCategory,  String trainingInstruction, String curiculum) {
+    public Training(String courseName, String trainingCategory, String trainingInstruction, String curriculum) {
         super();
         this.courseName = courseName;
         this.trainingCategory = trainingCategory;
         this.trainingInstruction = trainingInstruction;
-        this.curiculum = curiculum;
+        this.curriculum = curriculum;
     }
 }
