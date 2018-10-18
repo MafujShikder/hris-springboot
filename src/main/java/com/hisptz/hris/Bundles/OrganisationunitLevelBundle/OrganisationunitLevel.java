@@ -2,12 +2,14 @@ package com.hisptz.hris.Bundles.OrganisationunitLevelBundle;
 
 //import com.hisptz.hris.Bundles.OrganisationunitStructureBundle.OrganisationunitStructure;
 import com.hisptz.hris.core.Model.main.Model;
+import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "organisationunitlevel")
+@Data
 public class OrganisationunitLevel extends Model {
     @Basic
     @Column(name = "level")
