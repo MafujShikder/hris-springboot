@@ -68,6 +68,24 @@ public class Trainer extends Model {
     @Size(max =255)
     private String trainerLanguage;
 
+    public Trainer(String firstName, String middleName,  String lastName, String primaryJobResponsibility, @Size(max = 255) String secondaryJobResponsibility, @Size(max = 255) String profession, @Size(max = 255) String currentJobTitle,  String placeOfWork, String organisationType,  String trainerType, String trainerLanguage, String trainerAffiliation, String experience, String highestLevelOfQualification) {
+        super();
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.primaryJobResponsibility = primaryJobResponsibility;
+        this.secondaryJobResponsibility = secondaryJobResponsibility;
+        this.profession = profession;
+        this.currentJobTitle = currentJobTitle;
+        this.placeOfWork = placeOfWork;
+        this.organisationType = organisationType;
+        this.trainerType = trainerType;
+        this.trainerLanguage = trainerLanguage;
+        this.trainerAffiliation = trainerAffiliation;
+        this.experience = experience;
+        this.highestLevelOfQualification = highestLevelOfQualification;
+    }
+
     @Basic
     @Column(name = "traineraffiliation")
     @Size(max =255)
@@ -82,5 +100,7 @@ public class Trainer extends Model {
     @Column(name = "highestlevelofqualification")
     @Size(max =255)
     private String highestLevelOfQualification;
+
+
 
 }

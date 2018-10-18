@@ -1,4 +1,8 @@
 type TrainingVenue{
+    id:ID
+    uid:String
+    dateCreated:String
+    lastUpdated:String
     venueName:String
     region:String
     district:String
@@ -6,7 +10,9 @@ type TrainingVenue{
 }
 
 extend type Query{
+    getTrainingVenueById(id:ID!):TrainingVenue
 
+    TrainingVenue(where:String, sort:String):[TrainingVenue]!
 }
 
 extend type Mutation{

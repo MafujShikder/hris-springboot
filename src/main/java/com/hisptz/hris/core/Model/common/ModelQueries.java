@@ -13,14 +13,17 @@ import com.hisptz.hris.Bundles.FormBundle.FormQuery;
 import com.hisptz.hris.Bundles.FormSectionBundle.FormSectionQuery;
 import com.hisptz.hris.Bundles.FriendlyReportBundle.FriendlyReportQuery;
 import com.hisptz.hris.Bundles.InputTypeBundle.InputTypeQuery;
+import com.hisptz.hris.Bundles.OrganisationunitGroupsetBundle.OrganisationunitGroupsetQuery;
 import com.hisptz.hris.Bundles.OrganisationunitLevelBundle.OrganisationunitLevelQuery;
 import com.hisptz.hris.Bundles.RecordBundle.RecordQuery;
 import com.hisptz.hris.Bundles.RecordValue.RecordValueQuery;
 import com.hisptz.hris.Bundles.RelationalFilter.RelationalFilterQuery;
 import com.hisptz.hris.Bundles.ResourceBundle.ResourceQuery;
+import com.hisptz.hris.Bundles.TrainersBundle.TrainerQuery;
+import com.hisptz.hris.Bundles.TrainingBundle.TrainingQuery;
 import com.hisptz.hris.Bundles.UserBundle.UserQuery;
 import org.springframework.beans.factory.annotation.Autowired;
-// import com.hisptz.hris.Bundles.LeaveTypeBundle.LeaveTypeQuery;
+ import com.hisptz.hris.Bundles.LeaveTypeBundle.LeaveTypeQuery;
 //import com.hisptz.hris.Bundles.LeaveBundle.LeaveQuery;
 
 /**
@@ -84,9 +87,18 @@ public class ModelQueries {
     @Autowired
     protected OrganisationunitLevelQuery organisationunitLevelQuery;
 
-    // @Autowired
-    // protected LeaveTypeQuery leaveTypeQuery;
-    //
+    @Autowired
+    protected OrganisationunitGroupsetQuery organisationunitGroupsetQuery;
+
+    @Autowired
+    protected TrainerQuery trainerQuery;
+
+    @Autowired
+    protected TrainingQuery trainingQuery;
+
+     @Autowired
+     protected LeaveTypeQuery leaveTypeQuery;
+
     // @Autowired
     // protected LeaveQuery leaveQuery;
 

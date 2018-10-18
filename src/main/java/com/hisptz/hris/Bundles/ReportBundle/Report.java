@@ -29,4 +29,10 @@ public class Report extends Model {
     @Column(name = "parameters")
     private String parameters;
 
+    public Report(String name, String createdBy, String uri, String parameters) {
+        this.name = name;
+        this.createdBy = createdBy;
+        this.uri = uri;
+        this.parameters = parameters;
+    }
 }

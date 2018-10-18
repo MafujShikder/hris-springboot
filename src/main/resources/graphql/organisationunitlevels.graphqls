@@ -6,10 +6,14 @@ type OrganisationunitLevel{
 }
 
 extend type Query{
-    getOrganisationUnitLevelById(id : ID!) : OrganisationunitLevel
+    getOrganisationUnitLevelById(id:ID!) : OrganisationunitLevel
     OrganisationunitLevel(where:String, sort:String) : [OrganisationunitLevel]!
 }
 
 extend type Mutation{
+    newOrganisationunitLevel(level:Int, name:String, description:String, dataEntryLevel:String) : OrganisationunitLevel!
 
+    deleteOrganisationLevel(id:ID!):String
+
+    updateorganisationunitLevel(id:ID!, level:Int, name:String, description:String, dataEntryLevel:String) : OrganisationunitLevel
 }

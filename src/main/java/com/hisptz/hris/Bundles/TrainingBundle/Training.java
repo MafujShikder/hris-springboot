@@ -33,4 +33,12 @@ public class Training extends Model {
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "training")
     private TrainingInstance trainingInstance;
+
+    public Training( String courseName,  String trainingCategory,  String trainingInstruction, String curiculum) {
+        super();
+        this.courseName = courseName;
+        this.trainingCategory = trainingCategory;
+        this.trainingInstruction = trainingInstruction;
+        this.curiculum = curiculum;
+    }
 }

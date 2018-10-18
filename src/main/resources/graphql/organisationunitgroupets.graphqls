@@ -4,13 +4,17 @@ type OrganisationunitGroupset{
     description:String
     compulsory:String
     code:String
-    organisationunitGroup:OrganisationunitGroup
 }
 
 extend type Query{
-
+    getOrganisationunitGroupsetById(id:ID!): OrganisationunitGroupset
+    OrganisationunitGroupset(where:String, sort:String) : [OrganisationunitGroupset]!
 }
 
 extend type Mutation{
-    
+    newOrganisationunitGroupset(dhisuid:String, name:String, description:String, compulsory:String, code:String):OrganisationunitGroupset!
+
+    deleteOrganisationunitGroupset(id:ID!) : String
+
+    updateOrganisationunitGroupset(id:ID!, dhisuid:String, name:String, description:String, compulsory:String, code:String) : OrganisationunitGroupset
 }

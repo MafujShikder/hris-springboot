@@ -1,4 +1,8 @@
 type Trainer{
+    id:ID
+    uid:String
+    dateCreated:String
+    lastUpdated:String
     firstName:String
     middleName:String
     lastName:String
@@ -12,4 +16,14 @@ type Trainer{
     trainerAffiliation:String
     experience:String
     highestLevelOfQualification:String
+}
+
+extend type Query{
+    getTrainerById(id:ID!) : Trainer
+
+    Trainer(where:String, sort:String) : [Trainer]!
+}
+
+extend type Mutation{
+
 }

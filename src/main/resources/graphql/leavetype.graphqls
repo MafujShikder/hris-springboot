@@ -1,18 +1,20 @@
 type LeaveType{
     id:ID
-    fieldId:Int
-    uid:String
-    name:String
-    maximumDays:Int
     dateCreated:String
     lastUpdated:String
+    uid:String
+    fieldId:Int
+    name:String
+    maximumDays:Int
     limitApplicable:String
     description:String
     paymentApplicable:String
 }
 
 extend type Query{
-   
+   getLeaveTypeById(id:ID!):LeaveType
+
+   LeaveType(where:String, sort:String):[LeaveType]!
 }
 
 extend type Mutation{

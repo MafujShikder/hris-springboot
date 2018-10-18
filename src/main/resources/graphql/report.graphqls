@@ -1,4 +1,8 @@
 type Report{
+    id:ID
+    uid:String
+    dateCreated:String
+    lastUpdated:String
     name:String
     createdBy:String
     uri:String
@@ -6,7 +10,8 @@ type Report{
 }
 
 extend type Query{
-
+    getReportById(id:ID!): Report
+    Report(where:String, sort:String) : [Report]!
 }
 
 extend type Mutation{

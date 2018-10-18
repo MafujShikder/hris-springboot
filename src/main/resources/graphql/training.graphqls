@@ -1,4 +1,7 @@
 type Training{
+    id:ID
+    dateCreated:String
+    lastUpdated:String
     courseName:String
     trainingCategory:String
     trainingInstruction:String
@@ -7,7 +10,9 @@ type Training{
 }
 
 extend type Query{
+    getTrainingById(id:ID!):Training
 
+    Training(where:String, sort:String) : [Training]!
 }
 
 extend type Mutation{
