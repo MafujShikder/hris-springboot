@@ -13,6 +13,7 @@ import com.hisptz.hris.Bundles.FormBundle.FormQuery;
 import com.hisptz.hris.Bundles.FormSectionBundle.FormSectionQuery;
 import com.hisptz.hris.Bundles.FriendlyReportBundle.FriendlyReportQuery;
 import com.hisptz.hris.Bundles.InputTypeBundle.InputTypeQuery;
+import com.hisptz.hris.Bundles.OrganisationunitLevelBundle.OrganisationunitLevelQuery;
 import com.hisptz.hris.Bundles.RecordBundle.RecordQuery;
 import com.hisptz.hris.Bundles.RecordValue.RecordValueQuery;
 import com.hisptz.hris.Bundles.RelationalFilter.RelationalFilterQuery;
@@ -79,6 +80,9 @@ public class ModelQueries {
 
     @Autowired
     protected ArithmeticFilterQuery arithmeticFilterQuery;
+
+    @Autowired
+    protected OrganisationunitLevelQuery organisationunitLevelQuery;
 
     // @Autowired
     // protected LeaveTypeQuery leaveTypeQuery;

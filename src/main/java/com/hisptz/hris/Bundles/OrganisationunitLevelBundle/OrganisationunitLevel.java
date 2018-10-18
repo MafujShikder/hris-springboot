@@ -26,7 +26,11 @@ public class OrganisationunitLevel extends Model {
     @Column(name = "dataentrylevel")
     private boolean dataEntryLevel;
 
-//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "organisationunitLevel")
-//    private OrganisationunitStructure organisationunitStructure;
-
+    public OrganisationunitLevel(int level, String name, String description, Boolean dataEntryLevel) {
+        super();
+        this.level = level;
+        this.name = name;
+        this.description = description;
+        this.dataEntryLevel = dataEntryLevel;
+    }
 }

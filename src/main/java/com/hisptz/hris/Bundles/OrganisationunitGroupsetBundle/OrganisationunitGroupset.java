@@ -5,6 +5,8 @@ import com.hisptz.hris.core.Model.main.Model;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import com.hisptz.hris.Bundles.OrganisationunitGroupBundle.OrganisationunitGroup;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "organisationgroupset")
@@ -33,7 +35,12 @@ public class OrganisationunitGroupset extends Model {
     @Size(max = 50)
     private String code;
 
-    @OneToOne(fetch =  FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "organisationunitGroupset")
-    private OrganisationunitGroup organisationunitGroup;
-
+    public OrganisationunitGroupset(String dhisuid, String name, String description, Boolean compulsory,  String code) {
+        super();
+        this.dhisuid = dhisuid;
+        this.name = name;
+        this.description = description;
+        this.compulsory = compulsory;
+        this.code = code;
+    }
 }

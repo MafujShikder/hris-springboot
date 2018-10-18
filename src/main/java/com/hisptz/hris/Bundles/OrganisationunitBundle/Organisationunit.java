@@ -100,4 +100,24 @@ public class Organisationunit extends Model {
             },
             mappedBy = "organisationunit")
     private Set<OrganisationunitGroup> organisationunitGroup = new HashSet<OrganisationunitGroup>();
+
+    public Organisationunit(String parentId, String dhisuid, String code,  String shortName, String longName, boolean active, Date openingDate, Date closingDate, String geaocode, String coordinates, String featureType, String address, String email, String phonenumber, String contactPerson, String description) {
+        super();
+        this.parentId = parentId;
+        this.dhisuid = dhisuid;
+        this.code = code;
+        this.shortName = shortName;
+        this.longName = longName;
+        this.active = active;
+        this.openingDate = openingDate;
+        this.closingDate = closingDate;
+        this.geaocode = geaocode;
+        this.coordinates = coordinates;
+        this.featureType = featureType;
+        this.address = address;
+        this.email = email;
+        this.phonenumber = phonenumber;
+        this.contactPerson = contactPerson;
+        this.description = description;
+    }
 }

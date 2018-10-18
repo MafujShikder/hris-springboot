@@ -21,6 +21,12 @@ public class OrganisationunitCompleteness extends Model {
     @Basic
     @Column(name = "expectation")
     private int expectation;
+
+    public OrganisationunitCompleteness(int formId, int expectation) {
+        super();
+        this.formId = formId;
+        this.expectation = expectation;
+    }
 }
 
 

@@ -1,0 +1,15 @@
+type OrganisationunitLevel{
+    level:Int
+    name:String
+    description:String
+    dataEntryLevel:String
+}
+
+extend type Query{
+    getOrganisationUnitLevelById(id : ID!) : OrganisationunitLevel
+    OrganisationunitLevel(where:String, sort:String) : [OrganisationunitLevel]!
+}
+
+extend type Mutation{
+
+}

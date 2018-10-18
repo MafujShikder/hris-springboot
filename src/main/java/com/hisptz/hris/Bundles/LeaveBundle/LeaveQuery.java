@@ -1,10 +1,8 @@
 package com.hisptz.hris.Bundles.LeaveBundle;
 
-import com.hisptz.hris.Bundles.LeaveTypeBundle.LeaveType;
-import com.hisptz.hris.core.Model.main.ModelQuery;
-import org.springframework.stereotype.Component;
+//import com.hisptz.hris.Bundles.LeaveTypeBundle.LeaveType;
+//import com.hisptz.hris.core.Model.main.ModelQuery;
 
-@Component
-public class LeaveQuery extends ModelQuery<Leave> {
+public class LeaveQuery {
 
 }
