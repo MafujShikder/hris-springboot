@@ -1,0 +1,22 @@
+type LeaveType{
+    id:ID
+    fieldId:Int
+    uid:String
+    name:String
+    maximumDays:Int
+    dateCreated:String
+    lastUpdated:String
+    limitApplicable:String
+    description:String
+    paymentApplicable:String
+}
+
+extend type Query{
+   
+}
+
+extend type Mutation{
+   
+}
+
+

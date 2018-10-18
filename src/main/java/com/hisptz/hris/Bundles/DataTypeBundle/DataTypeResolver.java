@@ -8,4 +8,5 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class DataTypeResolver implements GraphQLResolver<DataType>{
+
 }

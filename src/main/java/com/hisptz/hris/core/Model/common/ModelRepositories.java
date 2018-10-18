@@ -15,7 +15,7 @@ import com.hisptz.hris.Bundles.FormSectionBundle.FormSectionRepository;
 import com.hisptz.hris.Bundles.FriendlyReportBundle.FriendlyReportRepository;
 import com.hisptz.hris.Bundles.InputTypeBundle.InputTypeRepository;
 //import com.hisptz.hris.Bundles.LeaveBundle.LeaveRepository;
-//import com.hisptz.hris.Bundles.LeaveTypeBundle.LeaveTypeRepository;
+import com.hisptz.hris.Bundles.LeaveTypeBundle.LeaveTypeRepository;
 import com.hisptz.hris.Bundles.OrganisationunitBundle.OrganisationunitRepository;
 import com.hisptz.hris.Bundles.OrganisationunitCompletenessBundle.OrganisationunitCompletenessRepository;
 import com.hisptz.hris.Bundles.OrganisationunitGroupBundle.OrganisationunitGroupRepository;
@@ -97,8 +97,8 @@ public class ModelRepositories {
 //    @Autowired
 //    protected LeaveRepository leaveRepository;
 //
-//    @Autowired
-//    protected LeaveTypeRepository leaveTypeRepository;
+    @Autowired
+    protected LeaveTypeRepository leaveTypeRepository;
 
     @Autowired
     protected OrganisationunitRepository organisationunitRepository;

@@ -1,0 +1,27 @@
+type Leave{
+    id:ID
+    recordId:Int
+    uid:String
+    userName:String
+    startDate:String
+    endDate:String
+    duration:Int
+    dateCreated:String
+    lastUpdated:String
+    amount:Int
+    leaveBenefitApplicable:String
+    leaveBenefitStatus:String
+    phone:String
+    address:String
+    email:String
+    leaveDestination:String
+    reason:String
+}
+
+extend type Query{
+
+}
+
+extend type Mutation{
+
+}
