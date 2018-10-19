@@ -1,0 +1,14 @@
+type LeaveRelative{
+    age:Int
+    dateOfBirth:String
+    name:String
+    uid:String
+}
+
+extend type Query{
+
+}
+
+extend type Mutation{
+
+}
