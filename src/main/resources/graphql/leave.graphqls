@@ -1,13 +1,14 @@
 type Leave{
     id:ID
-    recordId:Int
     uid:String
+    dateCreated:String
+    lastUpdated:String
+    recordId:Int
+    leaveType:LeaveType
     userName:String
     startDate:String
     endDate:String
     duration:Int
-    dateCreated:String
-    lastUpdated:String
     amount:Int
     leaveBenefitApplicable:String
     leaveBenefitStatus:String
@@ -19,9 +20,15 @@ type Leave{
 }
 
 extend type Query{
+    getLeaveById(id:ID!):Leave
 
+    Leave(where:String, sort:String) : [Leave]!
 }
 
 extend type Mutation{
+    newLeave(recordId:Int, leaveType:Long, userName:String, startDate:String, endDate:String, duration:Int, amount:Int, leaveBenefitApplicable:String, leaveBenefitStatus:String, phone:String, address:String, email:String, leaveDestination:String, reason:String ) : Leave!
 
+    deleteLeave(id:ID!) : String
+
+    updateLeave(id:ID!, recordId:Int, leaveType:Long, userName:String, startDate:String, endDate:String, duration:Int, amount:Int, leaveBenefitApplicable:String, leaveBenefitStatus:String,  phone:String, address:String, email:String, leaveDestination:String, reason:String) : Leave
 }

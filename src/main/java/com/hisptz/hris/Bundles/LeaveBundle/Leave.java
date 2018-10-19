@@ -32,7 +32,7 @@ public class Leave extends Model {
 
     @Basic
     @Column(name = "enddate")
-    private Date enddate;
+    private Date endDate;
 
     @Basic
     @Column(name = "duration")
@@ -77,12 +77,12 @@ public class Leave extends Model {
     @Size(max = 255)
     private String reason;
 
-    public Leave(int recordId, LeaveType leaveType, String userName, Date startDate, Date enddate, int duration, int amount, String leaveBenefitApplicable,  String leaveBenefitStatus, String phone, String address, String email, String leaveDestination,  String reason) {
+    public Leave(int recordId, String userName, Date startDate, Date endDate, int duration, int amount, String leaveBenefitApplicable,  String leaveBenefitStatus, String phone, String address, String email, String leaveDestination,  String reason) {
+        super();
         this.recordId = recordId;
-        this.leaveType = leaveType;
         this.userName = userName;
         this.startDate = startDate;
-        this.enddate = enddate;
+        this.endDate = endDate;
         this.duration = duration;
         this.amount = amount;
         this.leaveBenefitApplicable = leaveBenefitApplicable;

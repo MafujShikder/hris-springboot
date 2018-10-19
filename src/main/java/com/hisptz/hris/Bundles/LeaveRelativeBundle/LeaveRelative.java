@@ -39,9 +39,8 @@ public class LeaveRelative {
     @Size(max = 13)
     private String uid;
 
-    public LeaveRelative(Long id, Leave leave, String name, Date dateOfBirth, int age, String uid) {
+    public LeaveRelative(Long id, String name, Date dateOfBirth, int age, String uid) {
         this.id = id;
-        this.leave = leave;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.age = age;

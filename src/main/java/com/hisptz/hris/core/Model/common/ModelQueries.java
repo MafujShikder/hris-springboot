@@ -23,8 +23,8 @@ import com.hisptz.hris.Bundles.TrainersBundle.TrainerQuery;
 import com.hisptz.hris.Bundles.TrainingBundle.TrainingQuery;
 import com.hisptz.hris.Bundles.UserBundle.UserQuery;
 import org.springframework.beans.factory.annotation.Autowired;
- import com.hisptz.hris.Bundles.LeaveTypeBundle.LeaveTypeQuery;
-//import com.hisptz.hris.Bundles.LeaveBundle.LeaveQuery;
+import com.hisptz.hris.Bundles.LeaveTypeBundle.LeaveTypeQuery;
+import com.hisptz.hris.Bundles.LeaveBundle.LeaveQuery;
 
 /**
  * Created by Guest on 8/29/18.
@@ -99,7 +99,7 @@ public class ModelQueries {
      @Autowired
      protected LeaveTypeQuery leaveTypeQuery;
 
-    // @Autowired
-    // protected LeaveQuery leaveQuery;
+     @Autowired
+     protected LeaveQuery leaveQuery;
 
 }
