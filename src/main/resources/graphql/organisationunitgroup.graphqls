@@ -3,7 +3,7 @@ type OrganisationunitGroup{
     organisationunit:[Organisationunit]
     name:String
     description:String
-    dhisuid:String
+    dhisUid:String
     code:String
 }
 

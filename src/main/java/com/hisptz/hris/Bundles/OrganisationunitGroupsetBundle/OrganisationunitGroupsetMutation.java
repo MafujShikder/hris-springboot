@@ -9,8 +9,8 @@ public class OrganisationunitGroupsetMutation extends ModelMutation<Organisation
         this.organisationunitGroupsetRepository = organisationunitGroupsetRepository;
     }
 
-    public OrganisationunitGroupset newOrganisationunitGroupset(String dhisuid, String name, String description, Boolean compulsory,  String code){
-        OrganisationunitGroupset organisationunitGroupset = new OrganisationunitGroupset(dhisuid, name, description, compulsory, code);
+    public OrganisationunitGroupset newOrganisationunitGroupset(String dhisUid, String name, String description, Boolean compulsory,  String code){
+        OrganisationunitGroupset organisationunitGroupset = new OrganisationunitGroupset(dhisUid, name, description, compulsory, code);
         organisationunitGroupsetRepository.save(organisationunitGroupset);
 
         return organisationunitGroupset;
@@ -21,10 +21,10 @@ public class OrganisationunitGroupsetMutation extends ModelMutation<Organisation
         return true;
     }
 
-    public OrganisationunitGroupset updateOrganisationunitGroupset(Long id, String dhisuid, String name, String description, Boolean compulsory,  String code){
+    public OrganisationunitGroupset updateOrganisationunitGroupset(Long id, String dhisUid, String name, String description, Boolean compulsory,  String code){
         OrganisationunitGroupset organisationunitGroupset = organisationunitGroupsetRepository.getOne(id);
-        if(dhisuid != null){
-            organisationunitGroupset.setDhisuid(dhisuid);
+        if(dhisUid != null){
+            organisationunitGroupset.setDhisUid(dhisUid);
         }
 
         if(name != null){

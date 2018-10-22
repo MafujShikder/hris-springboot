@@ -47,18 +47,18 @@ public class OrganisationunitGroup extends Model {
     @Basic
     @Column(name = "dhisuid")
     @Size(max = 11)
-    private String dhisuid;
+    private String dhisUid;
 
     @Basic
     @Column(name = "code")
     @Size(max = 50)
     private String code;
 
- public OrganisationunitGroup(String name, String description, String dhisuid, String code) {
+ public OrganisationunitGroup(String name, String description, String dhisUid, String code) {
      super();
   this.name = name;
   this.description = description;
-  this.dhisuid = dhisuid;
+  this.dhisUid = dhisUid;
   this.code = code;
  }
 

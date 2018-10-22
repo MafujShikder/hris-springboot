@@ -1,6 +1,6 @@
 type Organisationunit{
     parentId:String
-    dhisuid:String
+    dhisUid:String
     code:String
     shortName:String
     longName:String

@@ -22,7 +22,7 @@ public class Organisationunit extends Model {
     @Basic
     @Size(max = 11)
     @Column(name = "dhisuid")
-    private String dhisuid;
+    private String dhisUid;
 
 
     @Basic
@@ -101,10 +101,10 @@ public class Organisationunit extends Model {
             mappedBy = "organisationunit")
     private Set<OrganisationunitGroup> organisationunitGroup = new HashSet<OrganisationunitGroup>();
 
-    public Organisationunit(String parentId, String dhisuid, String code,  String shortName, String longName, boolean active, Date openingDate, Date closingDate, String geaocode, String coordinates, String featureType, String address, String email, String phonenumber, String contactPerson, String description) {
+    public Organisationunit(String parentId, String dhisUid, String code,  String shortName, String longName, boolean active, Date openingDate, Date closingDate, String geaocode, String coordinates, String featureType, String address, String email, String phonenumber, String contactPerson, String description) {
         super();
         this.parentId = parentId;
-        this.dhisuid = dhisuid;
+        this.dhisUid = dhisUid;
         this.code = code;
         this.shortName = shortName;
         this.longName = longName;

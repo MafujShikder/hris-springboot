@@ -16,7 +16,7 @@ public class OrganisationunitGroupset extends Model {
     @Basic
     @Column(name = "dhisuid")
     @Size(max = 11)
-    private String dhisuid;
+    private String dhisUid;
 
     @Basic
     @Column(name = "name")
@@ -37,9 +37,9 @@ public class OrganisationunitGroupset extends Model {
     @Size(max = 50)
     private String code;
 
-    public OrganisationunitGroupset(String dhisuid, String name, String description, Boolean compulsory,  String code) {
+    public OrganisationunitGroupset(String dhisUid, String name, String description, Boolean compulsory,  String code) {
         super();
-        this.dhisuid = dhisuid;
+        this.dhisUid = dhisUid;
         this.name = name;
         this.description = description;
         this.compulsory = compulsory;

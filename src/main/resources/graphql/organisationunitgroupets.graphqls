@@ -1,5 +1,5 @@
 type OrganisationunitGroupset{
-    dhisuid:String
+    dhisUid:String
     name:String
     description:String
     compulsory:String
@@ -12,9 +12,9 @@ extend type Query{
 }
 
 extend type Mutation{
-    newOrganisationunitGroupset(dhisuid:String, name:String, description:String, compulsory:String, code:String):OrganisationunitGroupset!
+    newOrganisationunitGroupset(dhisUid:String, name:String, description:String, compulsory:String, code:String):OrganisationunitGroupset!
 
     deleteOrganisationunitGroupset(id:ID!) : String
 
-    updateOrganisationunitGroupset(id:ID!, dhisuid:String, name:String, description:String, compulsory:String, code:String) : OrganisationunitGroupset
+    updateOrganisationunitGroupset(id:ID!, dhisUid:String, name:String, description:String, compulsory:String, code:String) : OrganisationunitGroupset
 }

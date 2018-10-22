@@ -13,9 +13,16 @@ import com.hisptz.hris.Bundles.FieldOptionMergeBundle.FieldOptionMergeRepository
 import com.hisptz.hris.Bundles.FormBundle.FormRepository;
 import com.hisptz.hris.Bundles.FormSectionBundle.FormSectionRepository;
 import com.hisptz.hris.Bundles.FriendlyReportBundle.FriendlyReportRepository;
+import com.hisptz.hris.Bundles.HelpChapterBundle.HelpChapterRepository;
+import com.hisptz.hris.Bundles.HelpTopicBundle.HelpTopicRepository;
+import com.hisptz.hris.Bundles.ImportExportHistoryBundle.ImportExportHistoryRepository;
 import com.hisptz.hris.Bundles.InputTypeBundle.InputTypeRepository;
 import com.hisptz.hris.Bundles.LeaveBundle.LeaveRepository;
 import com.hisptz.hris.Bundles.LeaveTypeBundle.LeaveTypeRepository;
+import com.hisptz.hris.Bundles.MessageBundle.MessageRepository;
+import com.hisptz.hris.Bundles.MessageMetadataBundle.MessageMetadataRepository;
+import com.hisptz.hris.Bundles.MessageThreadBundle.MessageThreadRepository;
+import com.hisptz.hris.Bundles.MessageThreadMetadataBundle.MessageThreadMetadataRepository;
 import com.hisptz.hris.Bundles.OrganisationunitBundle.OrganisationunitRepository;
 import com.hisptz.hris.Bundles.OrganisationunitCompletenessBundle.OrganisationunitCompletenessRepository;
 import com.hisptz.hris.Bundles.OrganisationunitGroupBundle.OrganisationunitGroupRepository;
@@ -34,6 +41,7 @@ import com.hisptz.hris.Bundles.TrainingVenuesBundle.TrainingVenueRepository;
 import com.hisptz.hris.Bundles.UserBundle.UserRepository;
 import com.hisptz.hris.Bundles.UserGroupBundle.UserGroupRepository;
 import com.hisptz.hris.Bundles.UserSettingBundle.UserSettingRepository;
+import com.hisptz.hris.Bundles.ValidationBundle.ValidationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -140,5 +148,29 @@ public class ModelRepositories {
 
     @Autowired
     protected UserSettingRepository userSettingRepository;
+
+    @Autowired
+    protected ValidationRepository validationRepository;
+
+    @Autowired
+    protected ImportExportHistoryRepository importExportHistoryRepository;
+
+    @Autowired
+    protected HelpChapterRepository helpChapterRepository;
+
+    @Autowired
+    protected HelpTopicRepository helpTopicRepository;
+
+    @Autowired
+    protected MessageRepository messageRepository;
+
+    @Autowired
+    protected MessageMetadataRepository messageMetadataRepository;
+
+    @Autowired
+    protected MessageThreadRepository messageThreadRepository;
+
+    @Autowired
+    protected MessageThreadMetadataRepository messageThreadMetadataRepository;
 
 }
