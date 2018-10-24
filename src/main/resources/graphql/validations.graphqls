@@ -11,7 +11,9 @@ type Validation{
 }
 
 extend type Query{
+     getValidationById(id:ID) : Validation
 
+     Validation(where:String, sort:String):[Validation]!
 }
 
 extend type Mutation{

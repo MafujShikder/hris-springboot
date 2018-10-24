@@ -11,7 +11,9 @@ type MessageThread{
 }
 
 extend type Query{
+    getMessageThreadById(id:ID) : MessageThread
 
+    MessageThread(where:String, sort:String) : [MessageThread]!
 }
 
 extend type Mutation{

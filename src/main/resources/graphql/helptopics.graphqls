@@ -9,7 +9,9 @@ type HelpTopic{
 }
 
 extend type Query{
+    getHelpTopicById(id:ID) : HelpTopic
 
+    HelpTopic(where:String, sort:String) : [HelpTopic]!
 }
 
 extend type Mutation{

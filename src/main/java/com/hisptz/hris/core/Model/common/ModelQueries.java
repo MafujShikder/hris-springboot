@@ -12,7 +12,12 @@ import com.hisptz.hris.Bundles.FieldOptionMergeBundle.FieldOptionMergeQuery;
 import com.hisptz.hris.Bundles.FormBundle.FormQuery;
 import com.hisptz.hris.Bundles.FormSectionBundle.FormSectionQuery;
 import com.hisptz.hris.Bundles.FriendlyReportBundle.FriendlyReportQuery;
+import com.hisptz.hris.Bundles.HelpChapterBundle.HelpChapterQuery;
+import com.hisptz.hris.Bundles.HelpTopicBundle.HelpTopicQuery;
+import com.hisptz.hris.Bundles.ImportExportHistoryBundle.ImportExportHistoryQuery;
 import com.hisptz.hris.Bundles.InputTypeBundle.InputTypeQuery;
+import com.hisptz.hris.Bundles.MessageBundle.MessageQuery;
+import com.hisptz.hris.Bundles.MessageThreadBundle.MessageThreadQuery;
 import com.hisptz.hris.Bundles.OrganisationunitGroupsetBundle.OrganisationunitGroupsetQuery;
 import com.hisptz.hris.Bundles.OrganisationunitLevelBundle.OrganisationunitLevelQuery;
 import com.hisptz.hris.Bundles.RecordBundle.RecordQuery;
@@ -22,6 +27,7 @@ import com.hisptz.hris.Bundles.ResourceBundle.ResourceQuery;
 import com.hisptz.hris.Bundles.TrainersBundle.TrainerQuery;
 import com.hisptz.hris.Bundles.TrainingBundle.TrainingQuery;
 import com.hisptz.hris.Bundles.UserBundle.UserQuery;
+import com.hisptz.hris.Bundles.ValidationBundle.ValidationQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.hisptz.hris.Bundles.LeaveTypeBundle.LeaveTypeQuery;
 import com.hisptz.hris.Bundles.LeaveBundle.LeaveQuery;
@@ -101,5 +107,23 @@ public class ModelQueries {
 
      @Autowired
      protected LeaveQuery leaveQuery;
+
+     @Autowired
+     protected ImportExportHistoryQuery importExportHistoryQuery;
+
+     @Autowired
+    protected HelpChapterQuery helpChapterQuery;
+
+     @Autowired
+    protected HelpTopicQuery helpTopicQuery;
+
+     @Autowired
+    protected MessageQuery messageQuery;
+
+     @Autowired
+    protected MessageThreadQuery messageThreadQuery;
+
+     @Autowired
+    protected ValidationQuery validationQuery;
 
 }

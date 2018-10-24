@@ -11,7 +11,9 @@ type Message{
 }
 
 extend type Query{
+    getMessage(id:ID):Message
 
+    Message(where:String, sort:String) :[Message]!
 }
 
 extend type Mutation{

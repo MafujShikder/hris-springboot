@@ -13,9 +13,6 @@ public class MessageMetadata {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Column(name = "message_id")
-//    private int messageId;
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "message_id", nullable = false)
     private Message message;
