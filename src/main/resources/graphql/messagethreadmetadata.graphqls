@@ -1,0 +1,19 @@
+type MessageThreadMetadata{
+    id:ID
+    uid:String
+    dateCreated:String
+    lastUpdated:String
+    messageThread:MessageThread
+    participantId:ID
+    isDeleted:String
+    lastParticipantMessageDate:String
+    lastMessageDate:String
+}
+
+extend type Query{
+
+}
+
+extend type Mutation{
+
+}

@@ -1,0 +1,19 @@
+type Validation{
+    id:ID
+    uid:String
+    dateCreated:String
+    lastUpdated:String
+    name:String
+    description:String
+    operator:String
+    leftExpression:String
+    rightExpression:String
+}
+
+extend type Query{
+
+}
+
+extend type Mutation{
+
+}

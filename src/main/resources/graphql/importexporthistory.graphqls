@@ -1,0 +1,21 @@
+type ImportExportHistory{
+    id:ID
+    uid:String
+    dateCreated:String
+    lastUpdated:String
+    sessionType:String
+    object:String
+    status:String
+    count:Int
+    userName:String
+    startTime:String
+    finishTime:String
+}
+
+extend type Query{
+
+}
+
+extend type Mutation{
+    
+}

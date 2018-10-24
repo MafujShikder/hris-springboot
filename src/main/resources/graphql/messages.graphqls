@@ -1,0 +1,19 @@
+type Message{
+    id:ID
+    uid:String
+    dateCreated:String
+    lastUpdated:String
+    messageThread : messageThread
+    user:user
+    body:String
+    createdAt:String
+    messageMetadata: MessageMetadata
+}
+
+extend type Query{
+
+}
+
+extend type Mutation{
+    
+}

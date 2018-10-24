@@ -1,0 +1,19 @@
+type MessageThread{
+    id:ID
+    uid:String
+    dateCreated:String
+    lastUpdated:String
+    createBy:Int
+    subject:String
+    createDate:String
+    isSpam:String
+    messageThreadMetadata:MessageThreadMetadata
+}
+
+extend type Query{
+
+}
+
+extend type Mutation{
+    
+}

@@ -1,0 +1,14 @@
+type MessageMetadata{
+    id:ID
+    message:Message
+    isRead:String
+    uid:String
+}
+
+extend type Query{
+
+}
+
+extend type Mutation{
+
+}

@@ -1,0 +1,18 @@
+type HelpTopic{
+    id:ID
+    uid:String
+    dateCreated:String
+    lastUpdated:String
+    name:String
+    description:String
+    helpChapters:[HelpChapter]
+}
+
+extend type Query{
+
+}
+
+extend type Mutation{
+
+}
+
