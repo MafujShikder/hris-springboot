@@ -1,4 +1,8 @@
 package com.hisptz.hris.Bundles.HelpChapterBundle;
 
-public class HelpChapterResolver {
+import com.coxautodev.graphql.tools.GraphQLResolver;
+import org.springframework.stereotype.Component;
+
+@Component
+public class HelpChapterResolver implements GraphQLResolver<HelpChapter> {
 }

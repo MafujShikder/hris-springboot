@@ -3,9 +3,11 @@ package com.hisptz.hris.Bundles.MessageThreadBundle;
 import com.hisptz.hris.core.Model.common.ModelSpecification;
 import com.hisptz.hris.core.Model.main.ModelQuery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class MessageThreadQuery extends ModelQuery<MessageThread> {
     @Autowired
     MessageThreadRepository messageThreadRepository;

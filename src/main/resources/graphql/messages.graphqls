@@ -3,15 +3,15 @@ type Message{
     uid:String
     dateCreated:String
     lastUpdated:String
-    messageThread : messageThread
-    user:user
+    messageThread : MessageThread
+    user:User
     body:String
     createdAt:String
     messageMetadata: MessageMetadata
 }
 
 extend type Query{
-    getMessage(id:ID):Message
+    getMessageById(id:ID):Message
 
     Message(where:String, sort:String) :[Message]!
 }

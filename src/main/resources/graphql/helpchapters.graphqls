@@ -10,7 +10,7 @@ type HelpChapter{
 }
 
 extend type Query{
-    getHelpChapterById(id:ID):HelpChapter
+    getHelpChapterById(id:ID!):HelpChapter
 
     HelpChapter(where:String, sort:String) : [HelpChapter]!
 }
