@@ -1,8 +1,7 @@
 type FieldOptionMerge{
     id:ID!
-
-    fieldId:String
-    mergedfieldoptionId:String
+    fieldId:Int
+    mergedfieldoptionId:Int
     uid:String
     removedfieldoptionvalue:String
     removedfieldoptionuid:String
@@ -11,23 +10,15 @@ type FieldOptionMerge{
 
 }
 
-type Query {
+extend type Query {
     getFieldOptionMergeById(id:ID!):FieldOptionMerge
     FieldOptionMerge(where:String, sort:String):[FieldOptionMerge]!
 }
 
-type Mutation {
-    newFieldOptionMerge(fieldId:String,
-    mergedfieldoptionId:String,
-    uid:String,
-    removedfieldoptionvalue:String,
-    removedfieldoptionuid:String):FieldOptionMerge!
+extend type Mutation {
+    newFieldOptionMerge(fieldId:Int, mergedfieldoptionId:Int, uid:String, removedfieldoptionvalue:String, removedfieldoptionuid:String):FieldOptionMerge!
 
     deleteFieldOptionMerge(id:ID!):String
 
-    updateFieldOptionMerge(id:ID!, fieldId:String,
-    mergedfieldoptionId:String,
-    uid:String,
-    removedfieldoptionvalue:String,
-    removedfieldoptionuid:String):FieldOptionMerge
+    updateFieldOptionMerge(id:ID!, fieldId:Int, mergedfieldoptionId:Int, uid:String, removedfieldoptionvalue:String, removedfieldoptionuid:String):FieldOptionMerge
 }
